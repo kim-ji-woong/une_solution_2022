@@ -1,0 +1,65 @@
+# Android
+android/.gradle/
+android/local.properties
+android/key.properties
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+
+# Web
+web/build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Rider
+.idea/
+
+# NuGet Packages
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive config - keep base appsettings.json but exclude environment overrides
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/appsettings.Staging.json
+**/appsettings.Local.json
+
+# Logs
+Logs/
+
+# Claude
+.claude/
+
+# 기타
+*.log
+.DS_Store
+bin/
+obj/
+.svn/
