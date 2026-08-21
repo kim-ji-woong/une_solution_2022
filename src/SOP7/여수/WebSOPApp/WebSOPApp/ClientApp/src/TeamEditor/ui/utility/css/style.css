@@ -1,0 +1,200 @@
+﻿.sarTree { /* padding: 6px 26px; */ padding: 6px 40px 6px 26px; cursor: pointer; }
+.sarTreeTeam { /* padding: 6px 26px; */ padding: 6px 40px 6px 26px; cursor: pointer; }
+.sarTreePop { padding: 15px; cursor: pointer; }
+
+.treeview > li {margin-bottom: 0px; position:relative;}  /* 0106 */
+.treeview > li:last-child {margin-bottom: 0;}
+.treeview i {display: inline-block; vertical-align: top; width: 20px; height: 20px; margin-right: 6px; border: solid 1px #888; position: relative; cursor: pointer; text-indent: -9999px; 
+             border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-top: 4px; background: #333; } 
+.treeview i:before,
+.treeview i:after {content: ''; display: block; background: #fff; position: absolute; left: 50%; top: 50%;}
+.treeview i:before {width: 10px; height: 2px; margin-top: -1px; margin-left: -5px;}
+.treeview i:after {width: 2px; height: 10px; margin-top: -5px; margin-left: -1px; display: none;}
+.treeview i.fa-plus:after {display: block;}
+.treeview i.fa-minus,
+.treeview i:hover,
+.treeview i:active,
+.treeview i:focus { /* background: #fff; border-color: #000000; color: #000000; */ background: #333; border-color: #333; }
+.treeview i.fa-minus:before,
+.treeview i.fa-minus:after,
+.treeview i:hover:before,
+.treeview i:hover:after,
+.treeview i:active:before,
+.treeview i:active:after,
+.treeview i:focus:before,
+.treeview i:focus:after { /* background: #26395B; */ background: #fff; }
+.treeview ul { /* margin-top: 5px; */ padding-left: 15px; margin-bottom: 5px;}
+.treeview > li > h5 { display: inline-block; vertical-align: top; font-size: 14px; line-height: 22px; /* max-width: 75%; */ margin-bottom: 6px;
+                      margin-top: -2px; cursor: pointer; /* width: calc(100% - 10%); */ color: #000000; font-family: 'Pretendard'; margin-top: 3px; }  /* 0106 */
+.treeview > li > h5:hover,
+.treeview > li > h5:active,
+.treeview > li > h5:focus { color: #19A5FF; text-decoration: underline; }
+.treeview i:hover ~ h5,
+.treeview i:active ~ h5,
+.treeview i:focus ~ h5 {text-decoration: underline;}
+.treeview > li > ul li { /* margin-bottom: 6px; */ position:relative; } /* 0106 */
+
+
+.treeview > li > ul li:last-child {margin-bottom: 0;}
+.treeview a {display: inline-block; /* position: relative; */  padding-left: 10px; font-size: 14px; padding-right: 10px; cursor: pointer; white-space: nowrap; text-overflow: ellipsis; 
+             overflow:hidden; max-width: calc(100% - 9%); color: #000000; font-family: 'Pretendard'; margin: 4px 0px; } /* 0106 - 글자수 제한 */
+/* .treeview a:before {content: ''; display: block; width: 3px; height: 3px; background: #333; position: absolute; left: 7px; top: 11px;} */ /* 0105 */
+.treeview a:focus,
+.treeview a:hover { color: #19A5FF; text-decoration: underline;}
+.treeview > li > ul h5 {display: inline-block; vertical-align: top; font-size: 14px; /* max-width: 75%; */ max-width:82%; margin-top: -2px; cursor: pointer; /* width:calc(100% - 13%); */
+                        white-space:nowrap;  overflow:hidden;  text-overflow:ellipsis; color: #000000;  font-family: 'Pretendard'; padding: 8px 0px; }  /* 0106 */
+.treeview > li > ul h5:hover,
+.treeview > li > ul h5:active,
+.treeview > li > ul h5:focus {text-decoration: underline; color: #19A5FF; }
+.treeview i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeview i ~ a:before {display: none;}
+.treeview i ~ a:hover,
+.treeview i ~ a:active,
+.treeview i ~ a:focus {text-decoration: underline; font-weight: 700; background: none;}
+
+
+.treeview.wk a:focus,
+.treeview.wk a:hover {background: #000; color: #fff; text-decoration: none; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+.treeview.wk a:focus:before,
+.treeview.wk a:hover:before {background: #fff;}
+.treeview.wk i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeview.wk i ~ a:before {display: none;}
+.treeview.wk i ~ a:hover,
+.treeview.wk i ~ a:active,
+.treeview.wk i ~ a:focus {text-decoration: underline; font-weight: 700; background: none; color: #333;}
+
+.treeview.wkd a {color: #aaa;}
+.treeview.wkd a:focus {text-decoration: none; color: #000; font-weight: 700;}
+
+
+
+.treeviewTeam > li {margin-bottom: 10px; position:relative;}  /* 0106 */
+.treeviewTeam > li:last-child {margin-bottom: 0;}
+.treeviewTeam i {display: inline-block; vertical-align: top; width: 20px; height: 20px; margin-right: 6px; border: solid 1px #888; position: relative; cursor: pointer; text-indent: -9999px; 
+             border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; margin-top: 4px; background: #fff; } 
+.treeviewTeam i:before,
+.treeviewTeam i:after {content: ''; display: block; background: #333; position: absolute; left: 50%; top: 50%;}
+.treeviewTeam i:before {width: 10px; height: 2px; margin-top: -1px; margin-left: -5px;}
+.treeviewTeam i:after {width: 2px; height: 10px; margin-top: -5px; margin-left: -1px; display: none;}
+.treeviewTeam i.fa-plus:after {display: block;}
+.treeviewTeam i.fa-minus,
+.treeviewTeam i:hover,
+.treeviewTeam i:active,
+.treeviewTeam i:focus { /* background: #fff; border-color: #000000; color: #000000; */ background: #fff; border-color: #333; }
+.treeviewTeam i.fa-minus:before,
+.treeviewTeam i.fa-minus:after,
+.treeviewTeam i:hover:before,
+.treeviewTeam i:hover:after,
+.treeviewTeam i:active:before,
+.treeviewTeam i:active:after,
+.treeviewTeam i:focus:before,
+.treeviewTeam i:focus:after { /* background: #26395B; */ background: #333; }
+.treeviewTeam ul {margin-top: 5px; padding-left: 15px; margin-bottom: 10px;}
+.treeviewTeam > li > h5 { display: inline-block; vertical-align: top; font-size: 14px; line-height: 22px; /* max-width: 75%; */ margin-bottom: 6px;
+                      margin-top: -2px; cursor: pointer; /* width: calc(100% - 10%); */ color: #fff; font-family: 'Pretendard'; margin-top: 3px; }  /* 0106 */
+.treeviewTeam > li > h5:hover,
+.treeviewTeam > li > h5:active,
+.treeviewTeam > li > h5:focus { color: #19A5FF; text-decoration: underline; }
+.treeviewTeam i:hover ~ h5,
+.treeviewTeam i:active ~ h5,
+.treeviewTeam i:focus ~ h5 {text-decoration: underline;}
+.treeviewTeam > li > ul li { margin-bottom: 6px; position:relative; /* padding: 4px 0px; */ } /* 0106 */
+
+
+.treeviewTeam > li > ul li:last-child {margin-bottom: 0;}
+.treeviewTeam a {display: inline-block; /* position: relative; */  padding-left: 10px; font-size: 12px; padding-right: 10px; cursor: pointer; white-space: nowrap; text-overflow: ellipsis; 
+             overflow:hidden; max-width: calc(100% - 9%); color: #fff; font-family: 'Pretendard'; margin: 4px 0px; } /* 0106 - 글자수 제한 */
+/* .treeview a:before {content: ''; display: block; width: 3px; height: 3px; background: #333; position: absolute; left: 7px; top: 11px;} */ /* 0105 */
+.treeviewTeam a:focus,
+.treeviewTeam a:hover { color: #19A5FF; text-decoration: underline;}
+.treeviewTeam > li > ul h5 {display: inline-block; vertical-align: top; font-size: 14px; /* max-width: 75%; */ max-width:82%; margin-top: -2px; cursor: pointer; /* width:calc(100% - 13%); */
+                        white-space:nowrap;  overflow:hidden;  text-overflow:ellipsis; color: #fff;  font-family: 'Pretendard'; padding: 8px 0px; }  /* 0106 */
+.treeviewTeam > li > ul h5:hover,
+.treeviewTeam > li > ul h5:active,
+.treeviewTeam > li > ul h5:focus {text-decoration: underline; color: #19A5FF; }
+.treeviewTeam i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeviewTeam i ~ a:before {display: none;}
+.treeviewTeam i ~ a:hover,
+.treeviewTeam i ~ a:active,
+.treeviewTeam i ~ a:focus {text-decoration: underline; font-weight: 700; background: none;}
+
+
+.treeviewTeam.wk a:focus,
+.treeviewTeam.wk a:hover {background: #000; color: #fff; text-decoration: none; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+.treeviewTeam.wk a:focus:before,
+.treeviewTeam.wk a:hover:before {background: #fff;}
+.treeviewTeam.wk i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeviewTeam.wk i ~ a:before {display: none;}
+.treeviewTeam.wk i ~ a:hover,
+.treeviewTeam.wk i ~ a:active,
+.treeviewTeam.wk i ~ a:focus {text-decoration: underline; font-weight: 700; background: none; color: #333;}
+
+.treeviewTeam.wkd a {color: #aaa;}
+.treeviewTeam.wkd a:focus {text-decoration: none; color: #000; font-weight: 700;}
+
+
+
+/* test Tree */
+.treeviewPop > li {margin-bottom: 10px; position:relative;}  /* 0106 */
+.treeviewPop > li:last-child {margin-bottom: 0;}
+.treeviewPop i {display: inline-block; vertical-align: top; width: 20px; height: 20px; margin-right: 6px; border: solid 1px #888; position: relative; cursor: pointer; text-indent: -9999px; 
+                border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; background: #fff; } 
+.treeviewPop i:before,
+.treeviewPop i:after {content: ''; display: block; background: #333; position: absolute; left: 50%; top: 50%;}
+.treeviewPop i:before {width: 10px; height: 2px; margin-top: -1px; margin-left: -5px;}
+.treeviewPop i:after {width: 2px; height: 10px; margin-top: -5px; margin-left: -1px; display: none;}
+.treeviewPop i.fa-plus:after {display: block;}
+.treeviewPop i.fa-minus,
+.treeviewPop i:hover,
+.treeviewPop i:active,
+.treeviewPop i:focus {  background: #333; border-color: #333; }
+.treeviewPop i.fa-minus:before,
+.treeviewPop i.fa-minus:after,
+.treeviewPop i:hover:before,
+.treeviewPop i:hover:after,
+.treeviewPop i:active:before,
+.treeviewPop i:active:after,
+.treeviewPop i:focus:before,
+.treeviewPop i:focus:after { /* background: #26395B; */ background: #fff;}
+.treeviewPop ul {margin-top: 5px; padding-left: 15px; margin-bottom: 10px;}
+.treeviewPop > li > h5 { display: inline-block; vertical-align: top; font-size: 18px; font-weight: 600; line-height: 22px; margin-top: -2px;
+                        cursor: pointer; color: #000000; font-family: 'Pretendard'; }  /* 0106 */
+.treeviewPop > li > h5:hover,
+.treeviewPop > li > h5:active,
+.treeviewPop > li > h5:focus { text-decoration: underline; }
+.treeviewPop i:hover ~ h5,
+.treeviewPop i:active ~ h5,
+.treeviewPop i:focus ~ h5 {text-decoration: underline;}
+.treeviewPop > li > ul li { margin-bottom: 5px; position:relative; font-size: 14px; } /* 0106 */
+
+
+.treeviewPop > li > ul li:last-child {margin-bottom: 0;}
+.treeviewPop a {display: inline-block; /* position: relative; */  padding-left: 15px; font-size: 16px; padding-right: 10px; cursor: pointer; white-space: nowrap; text-overflow: ellipsis; 
+             overflow:hidden; max-width: calc(100% - 9%); color: #fff; font-family: 'Pretendard'; } /* 0106 - 글자수 제한 */
+/* .treeview a:before {content: ''; display: block; width: 3px; height: 3px; background: #333; position: absolute; left: 7px; top: 11px;} */ /* 0105 */
+.treeviewPop a:focus,
+.treeviewPop a:hover { text-decoration: underline;}
+.treeviewPop > li > ul h5 {display: inline-block; vertical-align: top; font-size: 18px; font-weight: 600; max-width:82%; cursor: pointer; /* width:calc(100% - 13%); */
+                           white-space:nowrap;  overflow:hidden;  text-overflow:ellipsis; color: #000000;  font-family: 'Pretendard'; }  /* 0106 */
+.treeviewPop > li > ul h5:hover,
+.treeviewPop > li > ul h5:active,
+.treeviewPop > li > ul h5:focus {text-decoration: underline; color: #19A5FF; }
+.treeviewPop i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeviewPop i ~ a:before {display: none;}
+.treeviewPop i ~ a:hover,
+.treeviewPop i ~ a:active,
+.treeviewPop i ~ a:focus {text-decoration: underline; font-weight: 700; background: none;}
+
+
+.treeviewPop.wk a:focus,
+.treeviewPop.wk a:hover {background: #000; color: #fff; text-decoration: none; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+.treeviewPop.wk a:focus:before,
+.treeviewPop.wk a:hover:before {background: #fff;}
+.treeviewPop.wk i ~ a {display: inline-block; vertical-align: top; font-size: 18px; line-height: 22px; max-width: 75%; margin-top: -2px; cursor: normal; padding-left: 0;}
+.treeviewPop.wk i ~ a:before {display: none;}
+.treeviewPop.wk i ~ a:hover,
+.treeviewPop.wk i ~ a:active,
+.treeviewPop.wk i ~ a:focus {text-decoration: underline; font-weight: 700; background: none; color: #333;}
+
+.treeviewPop.wkd a {color: #aaa;}
+.treeviewPop.wkd a:focus {text-decoration: none; color: #000; font-weight: 700;}

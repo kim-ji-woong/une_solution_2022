@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "UneToBAMService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

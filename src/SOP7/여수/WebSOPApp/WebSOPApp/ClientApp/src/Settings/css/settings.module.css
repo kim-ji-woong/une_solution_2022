@@ -1,0 +1,113 @@
+input[type="text"].settingInput {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+    height: 28px;
+    text-align: center;
+    font-size: 12px;
+    background: #393838;
+    border: solid 1px #393838;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.white {
+    color: #fff;
+    font-family: 'Pretendard';
+    margin: 0px 6px;
+}
+
+.white > input[type=checkbox]{ margin-right: 8px; }
+
+.pointCursor {
+    cursor: pointer;
+}
+
+.pointDefault {
+    cursor: default;
+}
+
+.regularMemberList > tr > td {
+    cursor: default;
+}
+
+.regularMemberList > tr > td > a {
+    cursor: pointer;
+}
+
+.regularMemberCheck {
+    color: #19A5FF;
+}
+
+.scrollbar {
+    overflow-y: auto !important;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 17.997px;
+    height: 6.01px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #d4d4d4;
+    border-radius: 17.992px;
+    background-clip: padding-box;
+    border: 7px solid transparent;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background-color: #000000;
+    background-clip: padding-box;
+    border-radius: 17.992px;
+    border: 7px solid transparent;
+}
+
+.settingRadio input[type=radio] {display: inline-block; vertical-align: middle; width: 18px; height: 18px; border: solid 1px #ddd; -webkit-appearance:none; -moz-appearance:none; appearance:none; position: relative; cursor: pointer; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;}
+.settingRadio input[type=radio]:checked {border-color: #ff8400;}
+.settingRadio input[type=radio]:checked:after {content: ''; display: block; background: #ff8400; position: absolute; left: 4px; right: 4px; top: 4px; bottom: 4px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;}
+.settingRadio input[type=radio] + label.settingRadio {display: inline; vertical-align: middle; margin-left: 7px; font-weight: 500; cursor: pointer; color: #fff; font-family: 'dotum', sans-serif; font-size: 12px;}
+
+
+/* .setCheckBox { display: inline-block; width: 18px; height: 18px; background: url('../../Settings/image/setCheckBox_disable.png')no-repeat; } */
+
+
+.sopTree { /* padding: 4px; */ height: 18px; line-height: 18px; font-size: 14px; color: #fff; font-family: 'NanumSquare', sans-serif; /* padding-right: 10px; */}
+.sopTree h5 {font-size: 14px; font-weight: 400; }
+.sopTree h5:after {content: ''; display: table; clear: both; }
+.sopTree h5 div{ padding: 4px; cursor: pointer; display: inline-flex;
+                flex-direction: row; align-items: center; align-content: center; width: 100%; border-bottom: dashed 1px #7e7e7e75; }
+.sopTree h5:hover{ }
+.sopTree ul { /* display: none; */ text-align: left; color: #fff; }
+.sopTree li{ display: block; text-align: left; }
+
+.sopTree h5 div.on{ } 
+.sopTree h5 div p.on{ color: red; } 
+.sopTree h5 span.on{ }
+.sopTree span{ cursor: pointer; display: inline-flex; flex-direction: row;
+               align-items: center; align-content: center; font-size: 12px; color: #fff; cursor:pointer;  } 
+.sopTree span.on {}
+.sopTree span:before { margin-right: 5px; }
+
+.sopTree p{ display: flex; align-items: center; }
+.sopTree p.on{}
+.sopTree a {margin-left: 10px;}
+.sopTree a{ display: inline-block; width: 100%; height: 16px; line-height: 16px; color: #fff; cursor: pointer; text-align: left; }
+
+.itemBox{ height: 23px; padding: 0px; border: 0; }
+.itemBox:hover{ /* background: #34D762; */ }
+.sFactoryText{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #fff; }
+.sAreaText{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; padding-left: 18px; }
+.sFloorText{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; padding-left: 36px; }
+
+.appliBtn{ display: block !important; width: 39px; height: 14px; line-height: 14px; background-image: linear-gradient(#0099FC, #004D7E);
+           border-radius: 7px; text-align: center; margin-left: 6px; font-size: 10px; 
+           font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; cursor: pointer; }
+.arrowIcon{ display: inline-block; width: 30px; height: 30px; background: url('../../Settings/image/treeArrow_icon.png')no-repeat center center;
+            background-size: 8px; }
+/* .treeSelect{ background:#34D762; } */

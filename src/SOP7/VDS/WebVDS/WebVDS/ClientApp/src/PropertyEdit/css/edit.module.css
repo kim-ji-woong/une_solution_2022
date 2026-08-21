@@ -1,0 +1,1588 @@
+﻿
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+/*.draggable {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all
+}*/
+
+
+/* edit 메인 Header */
+.headerBox{ display: block; width: 100%; height: 50px; line-height: 50px; border-bottom: solid 0.5px #ffffff8c; background: #1E1E21; position: relative; }
+.headerBox .editLogoBox{ }
+.headerBox .vdsEditLogo{ display: inline-block; width: 90px; height: 46px; /* line-height: 50px; */ font-size: 34px; background:url(../../Common/image/common/vds_logo.png)no-repeat; 
+                     background-position: center; background-size: 70px; border-bottom: solid 2px #00B5F7; cursor: pointer; }
+.headerBox .lgTitle{ display: inline-block; font-size: 20px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #FFF; cursor: default;
+                      position: absolute !important; left: 280px !important; top: -50px !important; }
+
+.marginTop50{ margin-top: 50px; }
+/* 개발 1팀 환경 */
+/* .editBackgroundBox{ display:block; width: 100%; height: 100%; background: #1E1E21; } */
+
+/* 개발 2팀 3D 환경 */
+.editBackgroundBox{ display:block; width: 100%; height: 100%; background: rgba(0,0,0,0); } 
+.editBackgroundBox.dark { background: #1E1E21; } 
+
+
+@media screen and (min-width:0px) and (max-width:1920px) {
+/*개발1팀*/
+/*.editContainerVDS { display: flex; padding: 40px; height: 100vh; position:relative;  }*/
+/*개발2팀*/
+.editContainerVDS { display: flex; padding: 40px; height: 100vh; position:relative; background: rgba(0,0,0,0); }
+
+.editContainerVDS.dark { background: #1E1E21; }
+
+.editContainerVDS .firstBox{ display: flex; flex-direction: column; width: 22%; }
+/* 개발1팀 */
+/*.editContainerVDS .secondBox{ display: flex; flex-direction: column; width: 56%; height: 94%; margin: 0px 27px 0px 27px; }*/
+/* 개발2팀 */
+.editContainerVDS .secondBox{ display: flex; flex-direction: column; width: 56%; height: 94%; margin: 0px 27px 0px 27px; background: rgba(0,0,0,0); position: relative; }
+.editContainerVDS .thirdBox{ display: flex; flex-direction: column; width: 22%; }
+
+.rackImage{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(100% - 170px);  } 
+.rackImage2{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:calc(100% - 160px);  } 
+.rackImageFacility{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:calc(100% - 230px);  }
+.rackImageIT{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); /* width: calc(100% - 100px); */ }
+
+.editrackModelImage{ display: inline-block; width: 40%; background: url('../../Main/image/rackModelClose.png')no-repeat; background-position-x: center; 
+                     background-size: 86%;  }
+
+.RNameE{ display: inline-block; max-width: 280px; /* display: inline-flex; */ flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; margin-left: 20px;
+         overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.RNameE:before{ content: '▶'; margin-right: 8px; /* margin-top: 4px; */ color: #BCBCBC;  }
+.RNameE.selected { color: #E71B6A; }
+
+}
+
+
+@media screen and (min-width:1921px) {
+/*개발1팀*/
+/*.editContainerVDS { display: flex; padding: 40px; height: 100vh; position:relative; }*/
+/*개발2팀*/
+.editContainerVDS { display: flex; padding: 40px; height: 100vh; position:relative; background: rgba(0,0,0,0); }
+.editContainerVDS.dark { /*background: #1E1E21;*/ background: rgba(0,0,0,0) }
+
+.editContainerVDS .firstBox{ display: flex; flex-direction: column; width: 20%; height: 99%; }
+/* 개발1팀 */
+/*.editContainerVDS .secondBox{ display: flex; flex-direction: column; width: 60%; height: 94%; margin: 0px 27px 0px 27px; }*/
+/* 개발2팀 */
+.editContainerVDS .secondBox{ display: flex; flex-direction: column; width: 60%; height: 94%; margin: 0px 27px 0px 27px; background: rgba(0,0,0,0); position: relative; }
+.editContainerVDS .thirdBox{ display: flex; flex-direction: column; width: 20%; height: 99%; }
+
+.rackImage{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(100% - 340px); } 
+.rackImage2{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:calc(100% - 340px);  } 
+.rackImageFacility{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:calc(100% - 340px);  }
+.rackImageIT{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); /* width: calc(100% - 100px); */ }
+
+.editrackModelImage{ display: inline-block; width: 40%; background: url('../../Main/image/rackModelClose.png')no-repeat; background-position-x: center; 
+                     background-size: 82%;  }
+
+.RNameE{ display: inline-block; max-width: 380px; /* display: inline-flex; */ flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; margin-left: 20px;
+         white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.RNameE:before{ content: '▶'; margin-right: 8px; /* margin-top: 4px; */ color: #BCBCBC;  }
+.RNameE.selected { color: #E71B6A; }
+}
+
+
+.editScroll { height: calc(100% - 130px); overflow-x: hidden; overflow-y: scroll;  }
+.editScroll::-webkit-scrollbar { width: 5px; background: #1E1E21; border-radius: 10px; }
+.editScroll::-webkit-scrollbar-thumb { background: #E71B6A; border-radius: 10px; opacity: .4; }
+.editScroll::-webkit-scrollbar-track { background: none}
+
+
+/* 인벤토리 EditList */
+
+.editListBox{ display: block; background:#292A2E; /* width: 400px; */ /* height: 750px; */ height: calc(100% - 240px); border-radius: 10px; padding: 17px; border: 1px solid #E71B6A4D; }
+.editTitle{ display: flex; width: 100%; }
+.editTitle p{ width: 100%; color: #E71B6A; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+.editIcon{ display: inline-block; width: 14px; height: 14px; background: url('../../PropertyEdit/image/invent_icon.png')no-repeat; margin-right: 6px; }
+.underLine{ display: block; width: 100%; height: 1px; border-bottom:dashed 1px #d7d7d770; margin: 15px 0px; }
+
+.editListBoxS{ display:flex;  margin: 23px 0px 21px 0px; line-height: 20px; height: 20px; }
+.editListBoxS .inventListTitle{ display:block; width: 100%; height: 20px; color: #ffffff; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; border-left: solid 2px #ffffff;
+                                padding-left: 8px; }
+.editListBoxS .inventListIcon{ display: inline-block; width:20px; height: 20px; background: url('../../PropertyEdit/image/inventList_icon.png')no-repeat center center; cursor: pointer; }
+
+.editSearch input[type="text"]{ display: block; background: #292A2E url('../../Main/image/glass_Icon.png')no-repeat; background-position-x: 10px; background-position-y: 11px; 
+                                  width: 100%; height: 36px; border: 1px solid #61636C; margin: 10px 0px; border-radius: 6px !important; color: #B8BBBE; padding-left: 28px;
+                                  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; }
+.editSearch input::placeholder{ color: #B8BBBE !important; }
+
+
+/* treeView */
+.editTree { /* padding: 4px; */ font-size: 13px; color: #fff; font-family: 'NanumSquare', sans-serif; padding-right: 10px;  }
+.editTree h5 {font-size: 13px; font-weight: 400;  padding: 12px 0px; }
+.editTree h5:after {content: ''; display: table; clear: both; }
+.editTree li{ display: block; text-align: left; }
+.editTree h5 { }
+.editTree h5 div{ padding: 2px; cursor: pointer; display: inline-flex; /* display: block; */ 
+                  flex-direction: row; align-items: center; align-content: center; /* width: 100%; */ width: calc(100% - 0px); }
+.editTree h5 div.on{ } 
+.editTree h5 span.on{ }
+.editTree span {  }
+.editTree span{ /* width: 228px; */ /* width: calc(100% - 50px); */ cursor: pointer; display: inline-flex; flex-direction: row;
+                 align-items: center; align-content: center; font-size: 12px; /* color: #fff; */ cursor:pointer; } 
+.editTree span.on {}
+.editTree span:before { margin-right: 5px; }
+
+.editTree p{ }
+.editTree p.on{ }
+.editTree a {margin-left: 10px;}
+.editTree ul { display: none; text-align: left; color: #fff; }
+.editTree a{ display: inline-block; width: 100%; height: 16px; line-height: 16px; color: #fff; cursor: pointer; text-align: left; }
+.editTree .dsiTreeCheck {  }
+
+
+.LNameE{ display: inline-block; max-width: 330px; flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold;
+         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  }
+.LNameE:before{ content: '▶'; margin-right: 8px; color: #BCBCBC; }
+.LNameE.selected { color: #E71B6A; }
+/* .RNameE{ display: inline-block; max-width: 280px; flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; margin-left: 20px;
+         white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.RNameE:before{ content: '▶'; margin-right: 8px; color: #BCBCBC;  }
+.RNameE.selected { color: #E71B6A; } */
+
+.LNumBoxE{ display:inline-flex;  align-items: center;  align-content: center; vertical-align: middle; font-size:12px; }
+.LFontE{ display: inline-block; width: 24px; color:#E71B6A; margin-left: 4px; background: #d7d7d738; border-radius: 16px; text-align: center; font-size: 9px; }
+
+.greenCircle{ display:inline-block; width: 10px; height: 10px; background: #00FF66; border-radius: 50%; }
+.redCircle{ display:inline-block; width: 10px; height: 10px; background: #FF0000; border-radius: 50%; }
+
+.whiteFont{ display: inline-block; width: 24px; color: #fff; margin-left: 4px; /* background: #d7d7d738; */ border-radius: 16px; text-align: center; font-size: 9px; }
+.grayFont{ display: inline-block; color: #d7d7d7; margin-left: 4px; }
+
+.flex{ display: flex; padding-left: 24px; padding: 2px 0px 2px 24px; align-items: center; }
+.borderBottom{ border-bottom: dashed 1px #d7d7d73b; }
+.borderNone{ border-bottom: none; }
+
+
+#rackArea{ display: flex; flex-direction:column; }
+#rackArea #rackBox{ display: flex; width: 100%; margin-bottom: 4px; background-color: #000B12;  }
+#rackArea #rackBox .box1{ display: block; width: 10%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                          border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+#rackArea #rackBox .box2{ display: block; width: 35%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                          border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all;  }
+#rackArea #rackBox .box3{ display: block; width: 40%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                          border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+#rackArea #rackBox .box4{ display: block; width: 40%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                          border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+#rackArea #rackBox .box5{ display: block; width: 10%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                          border-right: solid 1px #d7d7d757; }
+#rackArea #rackBox .box6{ display: block; width: 10%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; }
+
+#rackBox.selected{ border:solid 1px #E71B6A; }
+
+
+/* 랙 실장도 */
+
+.rackUploadArea{ display: block; background:#292A2E; /* width: 400px; */ /* height: 95px; */ border-radius: 10px; /* padding: 17px; */ border: 1px solid #E71B6A4D; margin-top: 14px; }
+.rackUploadTitle{ display:block; width: 100%; height: 14px; color: #fff; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; border-left: solid 2px #fff; padding-left: 8px; }
+.rackUploadBox { display: flex; padding: 25px 10px 15px 24px; border-bottom: solid 1px #d7d7d738; }
+.rackUploadBox:last-child{ border: none; }
+.rackUploadBox .squareBox{ display:block; width: 100%; height: 20px; border-radius: 3px; border:solid 0.5px #707070; margin-right:8px; }
+
+.rackUploadBox .upLoadTextBox{ display:flex; width: 100px; height: 20px; line-height: 20px; margin-right: 8px; margin-left: 14px; }
+.upLoadTextBox .upLoadText{ display:block; width: 100%; color:#ffffff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; padding-right: 8px; }
+.upLoadTextBox .upLoadIcon{ display:inline-block; width: 20px; height: 20px; background: url('../../PropertyEdit/image/upload_icon.png')no-repeat; cursor: pointer; }
+
+.rackUploadBox .downLoadTextBox{ display:flex; width: 98px; height: 20px; line-height: 20px; }
+.downLoadTextBox .downLoadText{ display:block; width: 46px; color:#ffffff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; margin-right: 8px; }
+.downLoadTextBox .downLoadIcon{ display: inline-block; width: 20px; height: 20px; background: url('../../PropertyEdit/image/down_icon.png')no-repeat; cursor: pointer; }
+
+
+
+/* IT자산 업로드 */
+
+.itUploadBox{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);  z-index: 1; display: block; width: 540px; height: 130px; background: #292A2E; 
+               border-radius: 6px; margin: 10px; padding: 26px 20px; border: 1px solid #E71B6A4D; }
+.itUploadTitle { display: block; width: 100%; height: 14px; color: #ffffff; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+                font-weight: bold; border-left: solid 2px #ffffff;  padding-left: 8px; }
+.itUploadClose{ display:inline-block; width: 10px; height: 10px; background:url(../../Main/image/close_Icon.png)no-repeat center center; cursor: pointer; }
+.rackitUploadBox { display: flex;  margin: 24px 0px; position: relative; }
+.rackitUploadBox .squareBox{ display:block; width: 100%; height: 34px; border-radius: 3px; border:solid 0.5px #707070; }
+.fileUpload{ display: inline-block; width: 20px; height: 20px; background: url(../../Dashboard/image/fileUpload_icon.png)no-repeat center center; 
+             position: absolute; right: 15px; top: 6px; cursor: pointer; }
+
+
+/* edit 이벤트박스  */
+
+.rackEventArea{ display: flex; background:#292A2E; /* width: 400px; */ height: 34px; line-height:34px; border-radius: 20px; border: 1px solid #E71B6A4D; text-align:center; position:relative; 
+                 margin-bottom: 22px; }
+.rackEventBox{ display:block; width: 100%; /* width: 988px; */  height: 34px; }
+.rackEventBox .pinkCircle{ display: inline-block; width: 10px; height: 10px; background: #E71B6A; border-radius: 50%; margin-right: 4px; }
+.rackEventBox .rackEventTitle{ display:inline-block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 18px; color: #fff; }
+
+.rackEventBtn{ display:flex; width: 150px;  z-index: 1; position: absolute; right: 10px; top: 4px; }
+.rackEventBtn .resetBtn{ display:inline-block; width: 73px; height: 25px; line-height: 25px; border-radius:13px; background: #353945; 
+                         color: #fff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; margin-right: 4px; cursor: default; }
+    .rackEventBtn .resetBtn.active { background: #E71B6A; cursor: pointer; }
+.rackEventBtn .saveBtn{ display:inline-block; width: 73px; height: 25px; line-height: 25px; border-radius: 13px; background: #353945; 
+                         color: #fff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; cursor: default; }
+    .rackEventBtn .saveBtn.active { background: #E71B6A; cursor: pointer; }
+
+
+/* 저장 팝업창 */
+
+#saveEditPop {position: fixed; z-index: 101; background: rgba(0,0,0,0.7); top: 0; left: 0; right: 0; bottom: 0;}
+#saveEditPop > div {display: table; width: 100%; height: 100%;}
+#saveEditPop > div > div {display: table-cell; width: 100%; vertical-align: middle;}
+
+.saveEditPop{ position:absolute; left: 50%; right: 50%; transform: translate(-50%, -50%); z-index:1; 
+              display: block; width: 602px; height: 187px; background: #292A2E; border-radius: 12px; border:solid 1px #E71B6A;  }
+.saveEditCloseIcon{ display: inline-block; width: 20px; height: 20px; background: url(../../Main/image/close_Icon.png)no-repeat center center;
+                    position: absolute; right: 10px; top: 10px; cursor: pointer; }
+.saveFlex1{ display: flex; margin-top: 59px; margin-left: 45px; margin-bottom: 20px; align-items: center; }
+.saveFlex2{ display: flex; justify-content: flex-end; }
+.fileSaveIcon{ display:inline-block; width: 64px; height: 64px; background: url(../../PropertyEdit/image/disk_icon.png)no-repeat center center;
+               background-size: 64px; margin-right: 33px; }
+.fileText{ display:block; color: #fff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 18px; }
+.fileCancel{ display: block; width: 73px; height: 25px; line-height: 23px; border-radius: 13px; background-image: linear-gradient(#353945, #0B0B0E); cursor: pointer; 
+             color: #fff; text-align: center; margin-right: 11px; }
+.fileConfirm{ display: block; width: 73px; height: 25px; line-height: 23px; border-radius: 13px; background-image: linear-gradient(#E71B6A, #740E35); cursor: pointer;
+             color: #fff; text-align: center; margin-right: 22px; }
+
+
+/* 편집 메인Box */
+
+/* 랙 편집모드 */
+.editMainBox{ display:block; /* width: 988px; */ width: 100%; /* height: 730px; */ height: calc(100% - 90px); background:#292A2E; border-radius: 13px; position:relative;  }
+.aIcon{ display:inline-block; width: 37px; height: 37px; background: url('../../PropertyEdit/image/a_icon.png')no-repeat; position: absolute; top: 20px; right: 20px;
+        cursor: pointer; }
+
+
+/* 3D 모델배치 */
+/* 개발2팀 3D용 */
+.rack3Ddeploy{ display: block; width: 100%; height: calc(100% - 90px); background: rgba(1,1,1,0); border-radius: 9px; position:relative; }
+/* 개발1팀 (Web UI) */
+/*.rack3Ddeploy{ display: block; width: 100%; height: calc(100% - 90px); background: #292A2E; border-radius: 9px; position:relative; }*/
+
+.rack3Dmodeling{ display: block; width: 70px; height: 70px; position:absolute; top: 20px; right: 20px; }
+.rack3Dmodeling div > canvas{ display: block; width: calc(100% - 0px) !important; height: 70px !important; }
+
+.btnArrowTop{ position: absolute; top: 4px; left: 27px; width: 19px; height: 10px; background: url(../../PropertyEdit/image/modelArrowTop_disable.png)no-repeat; background-size: 80%; z-index: 1; opacity: 0.2; }
+.btnArrowTop:hover{ background: url(../../PropertyEdit/image/modelArrowTop_active.png)no-repeat; background-size: 80%; opacity: 1; }
+.btnArrowBottom{ position: absolute; top: 58px; left: 28px; width: 19px; height: 10px; background: url(../../PropertyEdit/image/modelArrowDown_disable.png)no-repeat; background-size: 80%; z-index: 1; opacity: 0.2; }
+.btnArrowBottom:hover{ background: url(../../PropertyEdit/image/modelArrowDown_active.png)no-repeat; background-size: 80%; opacity: 1; }
+.btnArrowLeft{ position: absolute; top: 26px; left: 3px; width: 10px; height: 19px; background: url(../../PropertyEdit/image/modelArrowLeft_disable.png)no-repeat; background-size: 80%; z-index: 1; opacity: 0.2; }
+.btnArrowLeft:hover{ background: url(../../PropertyEdit/image/modelArrowLeft_active.png)no-repeat; background-size: 80%; opacity: 1; }
+.btnArrowRight{ position: absolute; top: 26px; left: 58px; width: 10px; height: 19px; background: url(../../PropertyEdit/image/modelArrowRight_disable.png)no-repeat; background-size: 80%; z-index: 1; opacity: 0.2; }
+.btnArrowRight:hover{ background: url(../../PropertyEdit/image/modelArrowRight_active.png)no-repeat; background-size: 80%; opacity: 1; }
+
+
+/* 랙 편집창 */
+.rackEditBox{ position:absolute; left: 0; top: 0; display: block; width: 230px !important; /* height: 240px !important; */ height: auto !important; background: #1E1E21; border-radius: 6px;
+              box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.rackEditBox .rackName{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; border-bottom: dashed 1px #707070;
+                        padding: 0px 10px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.rackEditBox .moveBox{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; cursor: pointer; padding: 0px 10px; }
+.rackEditBox .moveBox:hover{ color: #E71B6A; background: #303238; }
+.rackEditBox .rotateBox{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; cursor: pointer; padding: 0px 10px; }
+.rackEditBox .rotateBox:hover{ color: #E71B6A; background: #303238; }
+.rackEditBox .repetitionGrid{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; cursor: pointer; padding: 0px 10px; }
+.rackEditBox .repetitionGrid:hover{ color: #E71B6A; background: #303238; }
+.rackEditBox .itPropertyEdit{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; cursor: pointer; padding: 0px 10px; }
+.rackEditBox .itPropertyEdit:hover{ color: #E71B6A; background: #303238; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+
+.rackEditBox span:last-child::after hover{ color: #E71B6A; background: #303238; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+
+.rackSensorBox{ position:absolute; left: 0; top: 0; display: block; width: 230px !important; /* height: 240px !important; */ height: auto !important; background: #1E1E21; border-radius: 6px;
+                box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.rackSensorBox .sensorName{ display: block; height: 40px; line-height: 40px; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; border-bottom: dashed 1px #707070;
+                          padding: 0px 10px; }
+.rackSensorBox .rackInputBox input[type="text"]{ display: block; width: 100%; height: 36px; border: none; border-radius: 6px !important; color: #B8BBBE; 
+                                                padding-left: 10px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; 
+                                                background: #1E1E21; border: none; border-bottom: dashed 1px #707070; }
+.rackSensorBox .rackInputBox input::placeholder{ color: #B8BBBE !important; }
+.rackSensorBox .moveText{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; border-bottom: dashed 1px #707070; }
+.rackSensorBox .moveText:hover{ background: #424650; color: #E71B6A; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+
+
+
+/* host 작성창 */
+.rackEditBox2{ position:absolute; left: 0; top: 200px; display: block; /* width: 140px; height: 190px; */ background: #1E1E21; border-radius: 6px;
+              box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.rackEditBox2 .rackInputBox input[type="text"]{ display: block; width: 100%; height: 36px; border: none; border-radius: 6px !important; color: #B8BBBE; 
+                                                padding-left: 10px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; 
+                                                background: #1E1E21; border: none; border-bottom: dashed 1px #707070; }
+.rackEditBox2 .rackInputBox input::placeholder{ color: #B8BBBE !important; }
+.rackEditBox2 .moveBox{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackEditBox2 .moveBox:hover{ color: #E71B6A; background: #303238; }
+.rackEditBox2 .rotateBox{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackEditBox2 .rotateBox:hover{ color: #E71B6A; background: #303238; }
+.rackEditBox2 .repetitionGrid{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackEditBox2 .repetitionGrid:hover{ color: #E71B6A;  background: #303238; }
+.rackEditBox2 .itPropertyEdit{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackEditBox2 .itPropertyEdit:hover{ color: #E71B6A; background: #303238; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+
+
+/* host 작성창 */
+.rackEditBox3{ position:absolute; left: 0; top: 200px; display: block; width: 140px !important; height: auto !important; /* height: 190px; */  background: #1E1E21; border-radius: 6px;
+              box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.rackEditBox3 .rackInputBox input[type="text"]{ display: block; width: 100%; height: 36px; border: none; border-radius: 6px !important; color: #B8BBBE; 
+                                                padding-left: 10px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; 
+                                                background: #1E1E21; border: none; }
+.rackEditBox3 .rackInputBox input::placeholder{ color: #B8BBBE !important; }
+
+
+/* 그룹창 */
+.groupBox{ position:absolute; left: 0; top: 400px; display: block; width:140px !important; height: auto !important; background: #1E1E21; border-radius: 6px;
+           box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.groupBox .moveText{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; border-bottom: dashed 1px #707070; }
+.groupBox .moveText:hover{ background: #424650; color: #E71B6A; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.groupBox .groupText{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.groupBox .groupText:hover{ background: #424650; color: #E71B6A; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+
+
+/* mount창 */
+.mountBox{ position:absolute; left: 0; top: 500px; display: block; width: 140px; height: 37px; border-radius: 6px; background: #1E1E21; box-shadow: 0px 0px 20px #17192199; z-index: 100; }
+.mountBox .mountText{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; padding: 12px 9px; cursor: pointer; 
+                      color: #E71B6A;  }
+.mountBox .mountText:hover{ background: #303238; border-radius: 6px; }
+
+
+/* 그룹명 작성창 */
+.groupWriterBox{ position:absolute; left: 0px; top: 550px; display: block; width: 140px; height: 38px; border-radius : 5px; background:#1E1E21; box-shadow: 0px 0px 20px #17192199; }
+.groupWriterBox input[type=text]{ display:block; width: 140px; height: 38px; background: #1E1E21; border:none; padding-left: 10px; color: #ffffff; border-radius: 0px;
+                                   border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.groupWriterBox input::placeholder{ color: #ffffff !important; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 10px; color: rgba(255,255,255.5); }
+
+
+/* 수정창 */
+.rackFixBox{ position:absolute; left: 0; top: 600px; display: block; width: 140px; height: 76px; border-radius: 6px; background: #1E1E21; box-shadow: 0px 0px 20px #17192199; }
+/* .rackFixBox .rackFixName{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; border-bottom: dashed 1px #707070;
+                             padding: 7px 9px; } */
+.rackFixBox .rackMove{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackFixBox .rackMove:hover{ background: #424650; color: #E71B6A; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.rackFixBox .unMountText{ display: block; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #FFFFFF; padding: 12px 9px; cursor: pointer; }
+.rackFixBox .unMountText:hover{ background: #424650; color: #E71B6A; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+
+
+/* 회전창 */
+.rotateBox2{ position:absolute; left: 10px; top: 700px; display: block; width: 84px; height: 66px; border-radius : 5px; background:#1E1E21; box-shadow: 0px 0px 20px #17192199;  }
+.rotateBox2 .rotateTitle{ display: block; height: 23px; line-height: 23px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #E71B6A; border-bottom: dashed 1px #707070;
+                           padding: 2px 9px; }
+.rotateBox2 .angle{ display: block; padding: 2px 9px; line-height: 23px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #fff; }
+.rotateBox2 .angleBtnBox{ display:flex; width: 100%; place-content: flex-end; }
+.rotateBox2 .angleBtnBox div:nth-child(1){ display: inline-block; width: 26px; height: 11px; line-height: 11px; color: #fff; font-size: 8px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; 
+                                           text-align: center; cursor: pointer; background-image:linear-gradient(#353945, #0B0B0E);  margin-right: 6px; cursor:pointer; border-radius: 13px; }
+.rotateBox2 .angleBtnBox div:nth-child(2){ display: inline-block; width: 26px; height: 11px; line-height: 11px; color: #fff; font-size: 8px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; 
+                                           text-align: center; cursor: pointer; background-image:linear-gradient(#E71B6A, #740E35); cursor:pointer; border-radius: 13px; margin-right: 6px; }
+
+
+/* 반복그리드창 */
+.gridBox{ position:absolute; left: 10px; top: 770px; display: block; width: 112px; height: 88px; border-radius : 5px; background:#1E1E21; box-shadow: 0px 0px 20px #17192199;  }
+.gridTitle{ display: block; height: 23px; line-height: 23px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #E71B6A; border-bottom: dashed 1px #707070;
+            padding: 2px 9px; }
+.gridInterval{ display: block; padding: 0px 9px; line-height: 23px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #fff; }
+.gridNum{ display: block; padding: 0px 9px; line-height: 23px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #fff; }
+.gridBtnBox{ display:flex; width: 100%; place-content: flex-end; }
+.gridBtnBox div:nth-child(1){ display: inline-block; width: 26px; height: 11px; line-height: 11px; color: #fff; font-size: 8px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; 
+                              text-align: center; cursor: pointer; background-image:linear-gradient(#353945, #0B0B0E); margin-right: 6px; cursor:pointer; border-radius: 13px; }
+.gridBtnBox div:nth-child(2){ display: inline-block; width: 26px; height: 11px; line-height: 11px; color: #fff; font-size: 8px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; 
+                              text-align: center; cursor: pointer; background-image:linear-gradient(#E71B6A, #740E35); cursor:pointer; border-radius: 13px; margin-right: 6px; }
+
+
+/* IT자산 편집모드 */
+.editItMainBox{ display:flex; height: 88%; /* background: #292a2e; */ }
+.editMainFirstBox{ display: flex; width: 41.5%; flex-direction: column; padding-right: 13px; /* background: #292a2e; */ }
+.rackLocationBoxE{ display:block; /* width: 396px; */ height: 317px; /*background:#292A2E;*/ background:rgba(0,0,0,0); border-radius: 9px; }
+.rackLocationImageE{ display: inline-block; width: 100%; height: 100%; /*background: url(../../PropertyEdit/image/itRackMap.png)no-repeat center center;*/ background:rgba(0,0,0,0) }
+
+.connectItPropertyBox{ display:block; width: 100%; /* height: 445px; */ height: 420px; padding: 20px 0px; position:relative; background: #292a2e; }
+.connectItPropertyBox .connectTitle{ display:block; width: 100%; color: #ffffff; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+
+/* .rackAreaITMScroll { height: calc(100% - 20px);  overflow-x: hidden; overflow-y: scroll;  }
+.rackAreaITMScroll::-webkit-scrollbar { width: 5px; background: #1E1E21; border-radius: 10px; }
+.rackAreaITMScroll::-webkit-scrollbar-thumb { background: #E71B6A; border-radius: 10px; opacity: .4; }
+.rackAreaITMScroll::-webkit-scrollbar-track { background: none} */
+
+.rackAreaITM{ display: flex; flex-direction:column; }
+.rackAreaITM .rackNameIT{ display:block; color: #B8BBBE; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400;  padding:16px 0px; }
+.rackAreaITM .rackNameIT:before { content: '▶'; margin-right: 8px; color: #BCBCBC;  }
+.rackAreaITM .rackBoxIT{ display: flex; width: 100%; /* width: 390px; */ height: 26px; margin-bottom: 7px;  }
+.rackAreaITM .rackBoxIT .box1{ display: block; width: 10%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                             border-right: solid 1px #d7d7d757; background: #292A2E; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaITM .rackBoxIT .box2{ display: block; width: 20%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                             border-right: solid 1px #d7d7d757; background-color: #000B12; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaITM .rackBoxIT .box3{ display: block; width: 25%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                             border-right: solid 1px #d7d7d757;  background: #292A2E; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaITM .rackBoxIT .box4{ display: block; width: 25%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                             border-right: solid 1px #d7d7d757;  background: #292A2E; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaITM .rackBoxIT .box5{ display: block; width: 10%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                              background: #292A2E; border-right: solid 1px #d7d7d757; }
+.rackAreaITM .rackBoxIT .box6{ display: block; width: 10%; height: 22px; line-height:22px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                              background: #292A2E; }
+
+.selectIT{ border:solid 2px #E71B6A; }
+
+
+.connectIconBox{ display: block; width: 90px; }
+.addIcon{ display:inline-block; width: 32px; height: 32px; background: url('../../PropertyEdit/image/plus_icon.png')no-repeat; background-position: center; cursor: pointer; margin-right: 4px;
+          background-position-y: 1px; }
+.addIcon:hover{ background: url('../../PropertyEdit/image/plus_icon_active.png')no-repeat; background-position: center;  background-position-y: 1px; } 
+.minusIcon{ display:inline-block; width: 32px; height: 32px; background: url('../../PropertyEdit/image/remove_icon.png')no-repeat; background-position: center; cursor: default; }
+    .minusIcon.active { cursor: pointer; }
+    .minusIcon.active:hover{ background: url('../../PropertyEdit/image/remove_icon_active.png')no-repeat; background-position: center; } 
+
+.arrowLeftIcon{ display:inline-block; width: 30px; height: 30px; background: url('../../PropertyEdit/image/arrowLeft_disable_icon.png')no-repeat center center;
+                cursor: pointer; }
+.arrowLeftIcon:hover{ background: url('../../PropertyEdit/image/arrowLeft_active_icon.png')no-repeat center center; cursor: pointer; }
+.numberText{ display: inline-block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #fff; }
+.arrowRightIcon{ display:inline-block; width: 30px; height: 30px; background: url('../../PropertyEdit/image/arrowRight_disable_icon.png')no-repeat center center;
+                 cursor: pointer; }
+.arrowRightIcon:hover{ background: url('../../PropertyEdit/image/arrowRight_active_icon.png')no-repeat center center; cursor: pointer; }
+
+
+.editMainSecondBox{ display: block; /* width: 563px; */ width: 58.5%; /* height: 736px; */ height: 100%; background: #292A2E; border-radius: 20px; }
+.editModelTitle{ display: flex; padding: 10px 20px 10px 40px; /* width: 100%; */ white-space: nowrap; overflow: hidden;
+                 text-overflow: ellipsis; width: 480px; }
+.editModelTitle span:nth-child(1){ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; margin-right: 15px; color: #ffffff;
+                                   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.editModelTitle span:nth-child(2){ color:#FFFFFF; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; }
+
+.rackOutBox{ display: flex; align-items: center; justify-content: flex-end; /* width: 200px; */ }
+.rackOutBox .rackEditText{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #fff; margin-right: 10px; }
+.rackOutBox .rackOutIcon{ display: inline-block; width: 20px; height: 20px; background: url(../../PropertyEdit/image/out_icon.png)no-repeat center center;
+                          background-size: 17px; cursor: pointer;  }
+.modelDisableNum{ display:inline-block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 60px; text-align:center; color: #57636C; }
+
+.editrackBox{ display:flex; width: 100%; height: 97%; background:#D7D8DA; padding: 20px 17px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
+/* .editrackModelImage{ display: inline-block; width: 40%; background: url('../../Main/image/rackModelClose.png')no-repeat; background-position-x: center; 
+                     background-size: 86%;  } */
+.editrackInfoBox{ display: flex; flex-direction:column; width: 60%; height: 100%; }
+.editrackInfoBox .rackInfomation{ display:flex; /* width: 310px; */ height:14px; flex: 1; align-items: center; border:solid 1px #9C9EA2; margin-bottom: 2px; position: relative; }
+.editrackInfoBox .rackInfomation.droppable{ border:solid 1px #0000ff; }
+.rackInfomation .rackNum{ display:inline-block; width:20px; color: #9C9EA2; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; /* font-size: 12px; */ font-size: 11px; text-align: center; }
+.rackInfomation .rackContent{ }
+
+/* .activeText{ visibility: hidden; } */
+.editrackInfoBox .rackInfomation.hoverText{ display: block; width: 100%; color: #000000; font-size: 12px; border:solid 1px red; z-index: 1; content: '가나다' }
+
+.rackEBox {
+    display: flex;
+    width: 94%; /* height: 15px; */
+    height: 100%;
+    align-items: center; /* margin-bottom: 4px; */
+    background-color: #000B12;
+    position: absolute;
+    top: 0;
+    left: 6%;
+}
+.rackEBox.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox .ebox1{ display: flex; width: 10%;  /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox .ebox2{ display: flex; width: 20%; /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox .ebox3{ display: flex; width: 30%; /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox .ebox4{ display: flex; width: 25%;  /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox .ebox5{ display: flex; width: 10%; /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all;  align-items: center; justify-content: center; }
+.rackEBox .ebox6{ display: flex; width: 5%; /* height: 15px; line-height:12px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                  align-items: center; justify-content: center; }
+
+.rackEBox2{ display: flex; width: 94%; /* height: 27px; */ height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox2.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox2 .ebox1{ display: flex; width: 10%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox2 .ebox2{ display: flex; width: 20%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox2 .ebox3{ display: flex; width: 30%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox2 .ebox4{ display: flex; width: 25%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox2 .ebox5{ display: flex; width: 10%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox2 .ebox6{ display: flex; width: 5%; /* height: 27px; line-height:24px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox3{ display: flex; width: 94%; /* height: 44px; */ height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox3.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox3 .ebox1{ display: flex; width: 10%; /* height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox3 .ebox2{ display: flex; width: 20%; /*  height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox3 .ebox3{ display: flex; width: 30%; /* height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox3 .ebox4{ display: flex; width: 25%; /* height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox3 .ebox5{ display: flex; width: 10%; /* height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox3 .ebox6{ display: flex; width: 5%; /* height: 44px; line-height:41px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                    align-items: center; justify-content: center; }
+ 
+
+.rackEBox4{ display: flex; width: 94%; /* height: 59px; */ height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1; 
+            position:absolute; top:0; left:6%; }
+.rackEBox4.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox4 .ebox1{ display: flex; width: 10%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox4 .ebox2{ display: flex; width: 20%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox4 .ebox3{ display: flex; width: 30%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox4 .ebox4{ display: flex; width: 25%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox4 .ebox5{ display: flex; width: 10%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all;  align-items: center; justify-content: center; }
+.rackEBox4 .ebox6{ display: flex; width: 5%; /* height: 59px; line-height:56px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox5{ display: flex; width: 94%; /* height: 75px; */ height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox5.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox5 .ebox1{ display: flex; width: 10%; /* height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox5 .ebox2{ display: flex; width: 20%; /*height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox5 .ebox3{ display: flex; width: 30%; /* height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox5 .ebox4{ display: flex; width: 25%; /* height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox5 .ebox5{ display: flex; width: 10%; /* height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox5 .ebox6{ display: flex; width: 5%; /* height: 75px; line-height:72px; */ height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox6{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox6.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox6 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox6 .ebox2{ display: flex; width: 20%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox6 .ebox3{ display: flex; width: 30%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox6 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox6 .ebox5{ display: flex; width: 10%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox6 .ebox6{ display: flex; width: 5%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox7{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox7.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox7 .ebox1{ display: flex; width: 10%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox7 .ebox2{ display: flex; width: 20%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox7 .ebox3{ display: flex; width: 30%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox7 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox7 .ebox5{ display: flex; width: 10%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox7 .ebox6{ display: flex; width: 5%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox8{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1; 
+             position:absolute; top:0; left:6%; }
+.rackEBox8.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox8 .ebox1{ display: flex; width: 10%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox8 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox8 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox8 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox8 .ebox5{ display: flex; width: 10%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox8 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox9{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+            position:absolute; top:0; left:6%; }
+.rackEBox9.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox9 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox9 .ebox2{ display: flex; width: 20%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox9 .ebox3{ display: flex; width: 30%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox9 .ebox4{ display: flex; width: 25%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox9 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox9 .ebox6{ display: flex; width: 5%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox10{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox10.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox10 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox10 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox10 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox10 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox10 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox10 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox11{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox11.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox11 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox11 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox11 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox11 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox11 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox11 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox12{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox12.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox12 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox12 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox12 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox12 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox12 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox12 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox13{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox13.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox13 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox13 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox13 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox13 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox13 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox13 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox14{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox14.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox14 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox14 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox14 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox14 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox14 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox14 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox15{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox15.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox15 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox15 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox15 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox15 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox15 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox15 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox16{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox16.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox16 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox16 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox16 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox16 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox16 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox16 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox17{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox17.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox17 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox17 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox17 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox17 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox17 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox17 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox18{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox18.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox18 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox18 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox18 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox18 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox18 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox18 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox19{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox19.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox19 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox19 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox19 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox19 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox19 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox19 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox20{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox20.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox20 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox20 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox20 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox20 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox20 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox20 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox21{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox21.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox21 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox21 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox21 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox21 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox21 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox21 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox22{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox22.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox22 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox22 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox22 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox22 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox22 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox22 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox23{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox23.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox23 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox23 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox23 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox23 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox23 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox23 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox24{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox24.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox24 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox24 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox24 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox24 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox24 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox24 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+
+.rackEBox25{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox25.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox25 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox25 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox25 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox25 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox25 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox25 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox26{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox26.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox26 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox26 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox26 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox26 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox26 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox26 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox27{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox27.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox27 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox27 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox27 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox27 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox27 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox27 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox28{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox28.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox28 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox28 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox28 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox28 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox28 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox28 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox29{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox29.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox29 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox29 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox29 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox29 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox29 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox29 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox30{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox30.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox30 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox30 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox30 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox30 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox30 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox30 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox31{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox31.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox31 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox31 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox31 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox31 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox31 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox31 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox32{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox32.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox32 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox32 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox32 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox32 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox32 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox32 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox33{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox33.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox33 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox33 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox33 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox33 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox33 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox33 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox34{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox34.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox34 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox34 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox34 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox34 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox34 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox34 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox35{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox35.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox35 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox35 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox35 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox35 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox35 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox35 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox36{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox36.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox36 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox36 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox36 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox36 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox36 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox36 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox37{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox37.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox37 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox37 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox37 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox37 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox37 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox37 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox38{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox38.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox38 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox38 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox38 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox38 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox38 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox38 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox39{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox39.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox39 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox39 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox39 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox39 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox39 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox39 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox40{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox40.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox40 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox40 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox40 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox40 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox40 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox40 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox41{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox41.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox41 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox41 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox41 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox41 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox41 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox41 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox42{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox42.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox42 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox42 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox42 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox42 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox42 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox42 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox43{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox43.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox43 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox43 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox43 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox43 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox43 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox43 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+.rackEBox44{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox44.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox44 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox44 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox44 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox44 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox44 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox44 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.rackEBox45{ display: flex; width: 94%; height: 100%; align-items: center; /* margin-bottom: 4px; */ background-color: #000B12; z-index: 1;
+             position:absolute; top:0; left:6%; }
+.rackEBox45.selectLine{ border:solid 2px #E71B6A; }
+.rackEBox45 .ebox1{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox45 .ebox2{ display: flex; width: 20%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox45 .ebox3{ display: flex; width: 30%;  height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7; 
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox45 .ebox4{ display: flex; width: 25%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox45 .ebox5{ display: flex; width: 10%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; border-right: solid 0.5px #d7d7d7;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; align-items: center; justify-content: center; }
+.rackEBox45 .ebox6{ display: flex; width: 5%; height: 100%; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                   align-items: center; justify-content: center; } 
+
+
+.ebox3 input[type="text"]{ display: inline-block; height: 20px; line-height: 20px; background: #000000; border:none; color: #fff;
+                           font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; text-align: center; }
+.ebox3 input[type="text"]::placeholder{ color: #fff; }
+
+
+
+/* edit mode바 */
+.modeBar {}
+
+#vdsEditModebar { position: fixed; z-index: 99; left: 52%; bottom: 20px; width:503px; height: 47px; margin-left: -250px; border-radius: 30px;
+                 background-image: linear-gradient(#292A2E, #000000);}
+#vdsEditModebar button.edit { width: 70%; position:absolute; left:50%; top:-20px; transform: translateX(-50%);}
+#vdsEditModebar ul { position: absolute; left: 14px; bottom: 0; top: 0; margin-bottom: 10px; height: 40px; line-height: 40px; } 
+#vdsEditModebar ul.edit { left: 114px;}
+#vdsEditModebar ul:after { content: ''; display: table; clear: both;}
+#vdsEditModebar ul li { float: left; padding: 0 2px; position: relative; margin-right: 6px; }
+#vdsEditModebar ul li a { display: table; width: 47px; height: 47px; }
+
+#vdsEditModebar ul li:nth-child(1) a { background: url('../../Main/image/monitoring_icon_disable.png') no-repeat center center; position:relative; }
+#vdsEditModebar ul li:nth-child(2) a { background: url('../../Main/image/invent_Icon_disable.png')no-repeat center center; position: relative; }
+#vdsEditModebar ul li:nth-child(3) a { background: url('../../Main/image/tools_Icon_disable.png')no-repeat center center; position: relative; }
+#vdsEditModebar ul li:nth-child(5) a { background: url('../../Main/image/split_icon_disable.png')no-repeat center center; position: relative; }
+#vdsEditModebar ul li:nth-child(6) a { background: url('../../Main/image/map_Icon_disable.png')no-repeat center center; position: relative;  }
+#vdsEditModebar ul li:nth-child(7) a { background: url('../../Main/image/marquee_icon_disable.png')no-repeat center center; position: relative; }
+
+#vdsEditModebar ul li:nth-child(1) a:hover { background: url('../../Main/image/monitoring_icon_disable.png') no-repeat center center; position:relative;  }
+#vdsEditModebar ul li:nth-child(2) a:hover { display: inline-block;  background: url('../../Main/image/invent_Icon_disable.png')no-repeat; position: relative; background-size: 50%;
+                                             background-position-x: 11px; background-position-y: 11px; }
+#vdsEditModebar ul li:nth-child(3) a:hover { display: inline-block; background: url('../../Main/image/tools_Icon_disable.png')no-repeat center center; position: relative; background-size: 50%; 
+                                              background-position-x: 11px; background-position-y: 11px; }
+#vdsEditModebar ul li:nth-child(5) a:hover { background: url('../../Main/image/split_icon_disable.png')no-repeat center center; position: relative;  }
+#vdsEditModebar ul li:nth-child(6) a:hover { display: inline-block; background: url('../../Main/image/map_Icon_disable.png')no-repeat center center; position: relative; background-size: 50%; 
+                                              background-position-x: 11px; background-position-y: 12px; }
+#vdsEditModebar ul li:nth-child(7) a:hover { background: url('../../Main/image/marquee_icon_disable.png')no-repeat center center; position: relative;  }
+
+#vdsEditModebar ul li:nth-child(1) a.on { background: url('../../Main/image/monitoring_icon_active.png') no-repeat center center; position:relative; }
+#vdsEditModebar ul li:nth-child(2) a.on { display: inline-block; background: url('../../Main/image/invent_Icon_active.png')no-repeat center center; position: relative; background-size: 50%;
+                                           background-position-x: 11px; background-position-y: 11px; }
+#vdsEditModebar ul li:nth-child(3) a.on { display: inline-block; background: url('../../Main/image/tools_Icon_active.png')no-repeat center center; position: relative; background-size: 50%; 
+                                          background-position-x: 11px; background-position-y: 11px; }
+#vdsEditModebar ul li:nth-child(5) a.on { background: url('../../Main/image/split_icon_active.png')no-repeat center center; position: relative; } 
+#vdsEditModebar ul li:nth-child(6) a.on { display: inline-block; background: url('../../Main/image/map_Icon_active.png')no-repeat center center; position: relative; background-size: 50%;
+                                          background-position-x: 11px; background-position-y: 12px; } 
+#vdsEditModebar ul li:nth-child(7) a.on { display: inline-block; background: url('../../PropertyEdit/image/marquee_icon.png')no-repeat center center; position: relative; background-size: 50%; 
+                                          background-position-x: 11px; background-position-y: 14px; }
+
+
+.modeChangeEdit{ display: inline-block; width: 124px; height: 47px; line-height: 47px; border-radius:30px; background-image: linear-gradient(#FE2076, #8E1342);
+			     color: #FFFFFF; text-align: center; font-size: 16px; cursor: pointer; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 500; font-size: 16px; } 
+
+
+
+/* 자산편집 */
+
+.propertyEditArea{ height: 100%; }
+.propertyListBox{ display: block; background:#292A2E; /* width: 400px; */ /* height: 860px; */ height: calc(100% - 40px); border-radius: 10px; padding: 17px 20px; border: 1px solid #E71B6A4D; position:relative; }
+.propertyTitleE{ display: flex; width: 100%; }
+.propertyTitleE p{ width: 100%; color: #E71B6A; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+.propertyIcon{ display: inline-block; width: 14px; height: 14px; background: url('../../PropertyEdit/image/invent_icon.png')no-repeat; margin-right: 6px; }
+.underLine{ display: block; width: 100%; height: 1px; border-bottom:dashed 1px #d7d7d770; margin: 15px 0px; }
+
+.propertyListBoxS{ display:flex;  margin: 23px 0px 21px 0px; line-height: 20px; height: 20px; }
+.propertyListBoxS .propertyListTitle{ display:block; width: 100%; height: 20px; color: #ffffff; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; border-left: solid 2px #ffffff;
+                                     padding-left: 8px; }
+.propertySelectBox{ display:block; width: 80px; height: 22px; background: #1E1E21 url(../../PropertyEdit/image/selectDown.png)no-repeat 90% 50%; border-radius: 10px; color: #fff; text-align: center;
+                    background-size: 7px; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; cursor: pointer; border: none; }
+.propertySelectBox option{ color: #ffffff; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+.propertySearch{ display: flex; position:relative; }
+.propertySearch input[type="text"]{ display: block; background: #292A2E url('../../Main/image/glass_Icon.png')no-repeat; background-position-x: 10px; background-position-y: 11px; 
+                                  width: 100%; height: 36px; border: 1px solid #61636C; margin: 10px 0px; border-radius: 6px !important; color: #B8BBBE; padding-left: 28px;
+                                  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; }
+.propertySearch input::placeholder{ color: #B8BBBE !important; }
+.filterIcon{ display:inline-block; width: 36px; height: 24px; background: url(../../PropertyEdit/image/filter_icon.png)no-repeat center center;
+             background-position-x: 16px; position: absolute; right: 18px; top: 16px; border-left: solid 1px #707070; cursor: pointer; }
+
+.propertyTable {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    height: calc(100% - 150px);
+    padding-right: 15px;
+}
+.appliancesText{ display:block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #EF6D9F; padding: 7px 0px; }
+.propertyTable thead{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #9C9EA2; }
+.propertyTable thead tr{ height: 40px; line-height: 40px; border-bottom: solid 0.5px #7E8088; }
+.propertyTable thead tr th{ text-align:center;  }
+.propertyTable tbody{ font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #9C9EA2; }
+.propertyTable tbody tr{ height: 40px; line-height: 40px;  border-bottom: solid 0.5px #7E8088; }
+.propertyTable tbody tr td{ text-align:center; /* overflow: hidden; text-overflow: ellipsis; white-space: nowrap; */ }
+
+.propertyTrSpan{ display: contents; border: dashed 1px yellow; }
+    .propertyTrSpan.selected tr td { color:#E71B6A; }
+
+.propertyRackImage { display: block; width: 17.2vw; height: 260px; background: url(../../PropertyEdit/image/itPropertyBack.png)no-repeat center center;
+                     position: relative; background-size: 180%; }
+.propertyRackImage2 { display: block; width: 17.2vw; height: 260px; background: url(../../PropertyEdit/image/itPropertyBack.png)no-repeat center center;
+                      position: relative; background-size: 180%; }
+.propertyImage{ display: inline-block; width: 100%; height: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+/* .rackImage{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width:calc(100% - 340px);  } */
+.property3DIcon{ display: inline-block; width: 24px; height: 24px; background:url(../../PropertyEdit/image/3d_icon.png)no-repeat center center; 
+                 position:absolute; right: 20px; bottom: 15px; cursor: pointer; }
+
+.editPropertyScroll { height: calc(100% - 190px); overflow-x: hidden; overflow-y: scroll; }
+.editPropertyScroll::-webkit-scrollbar { width: 5px; background: #1E1E21; border-radius: 10px; }
+.editPropertyScroll::-webkit-scrollbar-thumb { background: #E71B6A; border-radius: 10px; opacity: .4 }
+.editPropertyScroll::-webkit-scrollbar-track { background: none}
+
+
+/* 랙장비종류 popup */
+
+.rackKindBox{ position:absolute; right: 70px; top: 200px; display:block; width: 231px; height: 125px; background: #1E1E21; border-radius: 6px; padding: 8px 14px; }
+.rackKindTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #B8BBBE; margin-bottom: 8px; }
+.rackKindBox .rackKindBox1{ display: flex; margin-bottom: 10px; }
+.rackKindBox .rackKindBox1 .intireBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                       font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.rackKindBox .rackKindBox1 .serverBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                       font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; }
+
+.rackKindBox .rackKindBox2{ display: flex; margin-bottom: 10px; }
+.rackKindBox .rackKindBox2 .networkBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                        font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.rackKindBox .rackKindBox2 .etcBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                    font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; }
+.selectBox{ background: #E71B6A !important; }
+
+
+
+/* IT장비종류 팝업 */
+
+.itKindBox{ position:absolute; right: 70px; top: 200px; display:block; width: 231px; height: 230px; background: #1E1E21; border-radius: 6px; padding: 8px 14px; }
+.itKindBoxTitle{  display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #B8BBBE; margin-bottom: 8px; }
+.itKindBox .itKindBox1{ display: flex; margin-bottom: 10px; }
+.itKindBox .itKindBox1 .intireBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox1 .networkBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                    font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox2{ display: flex; margin-bottom: 10px; }
+.itKindBox .itKindBox2 .backupBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox2 .securityBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                     font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox3{ display: flex; margin-bottom: 10px; }
+.itKindBox .itKindBox3 .serverBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                   font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox3 .storageBox{ display:block; width: 96px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                    font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox4{ display: flex; margin-bottom: 10px; }
+.itKindBox .itKindBox4 .applicationBox{ display:block; width: 92px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                        font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; margin-right: 10px; }
+.itKindBox .itKindBox4 .sanBox{ display:block; width: 92px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; }
+.itKindBox .itKindBox5{ display: flex; margin-bottom: 10px; }
+.itKindBox .itKindBox5 .etcBox{ display:block; width: 92px; height: 30px; line-height: 30px; border-radius: 3px; background: #353945; cursor: pointer; 
+                                font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; text-align: center; }
+
+
+/* 인벤토리 목록 popup */
+
+#ITpropertyPop2 {position: fixed; z-index: 101; top: 0; left: 0; right: 0; bottom: 0;}
+#ITpropertyPop {position: fixed; z-index: 101; background: rgba(0,0,0,0.7); top: 0; left: 0; right: 0; bottom: 0;}
+#ITpropertyPop > div {display: table; width: 100%; height: 100%;}
+#ITpropertyPop > div > div {display: table-cell; width: 100%; vertical-align: middle;}
+
+.inventListPopup{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);  z-index: 1;
+                  display:flex; width: 1386px; height: 832px; background: #292A2E; border-radius: 11px; }
+.inventMenu{ display: block; width: 200px; background: #80808038; border-radius: 11px; }
+.inventMenu .inventMenuBox{ display: flex; padding: 33px 21px; width: 200px; } 
+.inventMenuBox .inventMenuIcon{ display:inline-block; width: 20px; height: 20px; background:url('../../PropertyEdit/image/invent_icon.png')no-repeat; margin-right: 15px; }
+.inventMenuBox .inventMenuTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; color: #E71B6A; }
+
+.inventUnderLine{ display: block; height: 1px; border: dashed 1px #808080; margin-bottom: 9px; }
+.rackTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 16px; color: #B3B3B3; padding: 9px 29px; cursor: pointer; }
+.rackTitle:hover{ background: url(../../PropertyEdit/image/backIcon.png)no-repeat 90% 50%; color: #E71B6A; }
+.propertyTitle{  display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 16px; color: #B3B3B3; padding: 9px 29px; cursor: pointer; }
+.propertyTitle:hover{ background: url(../../PropertyEdit/image/backIcon.png)no-repeat 90% 50%; color: #E71B6A; }
+.facilitiesTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 16px; color: #B3B3B3; padding: 9px 29px; cursor: pointer; }
+.facilitiesTitle:hover{ background: url(../../PropertyEdit/image/backIcon.png)no-repeat 90% 50%; color: #E71B6A; }
+.etcTitle{ display:block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 16px; color: #B3B3B3; padding: 9px 29px; cursor:pointer; }
+.etcTitle:hover{ background: url(../../PropertyEdit/image/backIcon.png)no-repeat 90% 50%; color: #E71B6A; }
+
+.inventContents{ display:block; width: 100%; padding: 30px 46px; }
+.inventContentsTitle{ display:block; width: 100%; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; color: #ffffff; border-left: solid 2px #ffffff; padding-left: 12px; margin-bottom: 18px; }
+.inventContentClose{ display: inline-block; width: 20px; height: 20px; background: url(../../Main/image/close_Icon.png)no-repeat center center; cursor: pointer; }
+.zoneSelectBox{ display: flex; width: 184px; height: 34px; background: #1E1E21; margin-bottom: 12px; cursor: pointer; }
+.zoneSelectBox .zoneTitle{ display: block; width: 43px; height: 34px; line-height: 34px; background: #707070; text-align: center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; }
+.zoneSelectBox select{ display: block; width: 141px; height: 34px; border-radius: 0; background: #000000 url(../../PropertyEdit/image/selectDown.png)no-repeat 95% 50%; color: #fff; 
+                       font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; text-align:center; }
+.zoneSelect{ }
+
+.searchBox{ display:flex; margin-bottom: 12px; }
+.searchArea{ display:flex; width: 833px; position:relative; }
+.searchArea .searchIcon{ display: inline-block; width: 43px; height: 34px; background: #707070 url('../../PropertyEdit/image/magnifyingGlass_icon.png')no-repeat center center; }
+.searchArea input{ display:block; width: 790px; height: 34px; line-height: 34px; background: #1E1E21; border: none; }
+.searchArea .searchBtn{ display: inline-block; width: 44px; height: 21px; line-height: 21px; background-image: linear-gradient(#E71B6A, #740E35);
+                        font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; border-radius: 5px; color: #ffffff; text-align: center;
+                        position:absolute; right: 7px; top: 6px; cursor: pointer; }
+
+.downArea{ display: flex; margin-left: 11px; }
+.selectDown{ display: flex; height: 34px; line-height: 34px; margin-right: 11px; }
+.selectDown p{ display:block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #707070; margin-right: 10px; }
+.selectDown .downIcon{ display: inline-block; width: 20px; background:url(../../PropertyEdit/image/down_icon.png)no-repeat center center; cursor:pointer; }
+.dashedLine{ display: block; width: 1px; height: 20px; border:dashed 1px #707070; margin-top: 6px; }
+
+.entireDown{ display: flex; height: 34px; line-height: 34px; margin-left: 11px; }
+.entireDown p{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight:400; font-size: 12px; color: #707070; margin-right: 10px; }
+.entireDown .downIcon{ display: inline-block; width: 20px; background:url(../../PropertyEdit/image/down_icon.png)no-repeat center center; cursor:pointer; }
+
+
+.inventTable{  }
+.inventTable table{ display:table;  }
+.inventTable table thead{ height: 32px; line-height: 32px; color: #ffffff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; text-align:center; background: #707070; }
+.inventTable table thead tr th{ text-align: center; }
+.inventTable table tbody{ height: 40px; line-height: 40px; color: #ffffff; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; text-align: center; }
+.inventTable table tbody tr{ text-align: center; border-bottom: solid 1px #707070; }
+.inventTable table tbody tr th{ text-align: center; }
+
+.inventTable input[type=checkbox] { display:inline-block; width: 14px; height: 14px; }
+
+
+.pageArea{ display: flex; width: 100%; text-align: center; justify-content: center; margin-top: 26px; }
+.leftArrowIcon{ display: inline-block; width: 10px; height: 17px; background: url('../../PropertyEdit/image/arrowLeft_disable_icon.png')no-repeat; margin-right:13px; }
+.rightArrowIcon{ display: inline-block; width: 10px; height: 17px; background: url('../../PropertyEdit/image/arrowLeft_disable_icon.png')no-repeat; margin-left: 13px; transform: rotate(180deg); }
+.pageNumBox{ display: inline-block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; }
+
+.pageAreaIT{ display: flex; width: 100%; text-align: center; justify-content: center; margin-top: 26px; position: absolute; bottom: 14px;  }
+.leftArrowIconIT{ display: inline-block; width: 10px; height: 17px; background: url('../../PropertyEdit/image/arrowLeft_disable_icon.png')no-repeat; margin-right:13px; cursor: pointer; }
+.leftArrowIconIT.active{ background: url('../../PropertyEdit/image/arrowLeft_active_icon.png')no-repeat; cursor: pointer; }
+.rightArrowIconIT{ display: inline-block; width: 10px; height: 17px; background: url('../../PropertyEdit/image/arrowRight_disable_icon.png')no-repeat; margin-left: 13px; cursor: pointer; }
+.rightArrowIconIT.active{ background: url('../../PropertyEdit/image/arrowRight_active_icon.png')no-repeat; cursor: pointer; }
+.pageNumBoxIT{ display: inline-block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #ffffff; }
+
+
+/* 3d viewer popup */
+.viewerBox{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);  z-index: 1;
+            display: block; width: 888px; height: 444px; border-radius: 13px; background: #292A2E; }
+.viewerTitle{ display: block; height: 79px; padding: 21px 41px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 26px; color: #FFFFFF;
+              border-bottom: solid 1px #424650; }
+.viewerContents{ display: block; /* padding: 26px 41px; */ height: calc(100% - 80px); overflow: hidden;
+                 border-bottom-left-radius: 13px; border-bottom-right-radius: 13px; position: relative; }
+.viewerContents .viewerRackTitle{ display:block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 16px; color:#B8BBBE; margin-bottom: 24px;
+                                  position: absolute; left: 40px; top: 30px;  }
+.viewerContents .viewerRackImage{ display:inline-block; width: 765px; height: 237px; background: url(../../PropertyEdit/image/rackImage.png)no-repeat center center; }
+.viewerContents .viewerBack{ display: flex; width: 100%; margin-top: 22px; justify-content: flex-end; cursor: pointer; 
+                             position: absolute; right: 30px; bottom: 20px; }
+.viewerContents .viewerBack p{ display: block; color: #E71B6A; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; margin-right: 6px; }
+.viewerContents .viewerBack .viewerFastIcon{ display:inline-block; width: 10px; /* height: 10px; */ background: url(../../PropertyEdit/image/backIcon.png)no-repeat center center;  }
+
+.viewerContents > canvas { width: calc(100% - 0px) !important; height: 364px !important; overflow: hidden;
+                           border-bottom-left-radius: 13px; border-bottom-right-radius: 13px; } 
+/* .viewer3DArea{ display: block; width: 255px; height: 100px; border:dashed 1px yellow; } */
+
+
+/* IT자산 리스트_ 인벤토리 popup */
+
+/* .itPropertyBoxPosition{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; } */
+.itPropertyBox{ position:absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; 
+                display:block; width: 427px; /* height: 908px; */ background: #292A2E; border-radius: 10px;  }
+.itPropertyTitleBox{ display:flex; line-height: 20px; padding: 20px 26px; border-bottom: solid 1px #424650; }
+.itPropertyTitleBox .itPropertyTitle{ display:block; width: 100%; height: 20px; color: #ffffff; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; border-left: solid 2px #ffffff;
+                                      padding-left: 8px; }
+.itPropertyTitleBox .closeIcon{ display: inline-block; width:20px; height: 20px; background: url(../../Main/image/close_Icon.png)no-repeat center center; cursor: pointer; }
+
+.itPropertyContents{ display: block; padding: 23.5px 21px; }
+.itPropertySearch input[type="text"]{ display: block; background: #292A2E url('../../Main/image/glass_Icon.png')no-repeat; background-position-x: 10px; background-position-y: 11px; 
+                                      width: 100%; height: 36px; border: 1px solid #61636C; margin-bottom:14.5px; border-radius: 6px !important; color: #B8BBBE; padding-left: 28px;
+                                      font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; }
+.itPropertySearch input::placeholder{ color: #B8BBBE !important; }
+
+
+/* treeView */
+.itPropertyTreeBox{  }
+
+.itPropertyScroll { height: calc(100vh - 560px); overflow-x: hidden; overflow-y: scroll; }
+.itPropertyScroll::-webkit-scrollbar { width: 5px; background: #1E1E21; border-radius: 10px; }
+.itPropertyScroll::-webkit-scrollbar-thumb { background: #E71B6A; border-radius: 10px; opacity: .4 }
+.itPropertyScroll::-webkit-scrollbar-track { background: none}
+
+
+.itPropertyTree{  }
+
+.itPropertyTree { font-size: 13px; color: #fff; font-family: 'NanumSquare', sans-serif; padding-right: 10px;  }
+.itPropertyTree h5 { display: flex; font-size: 13px; font-weight: 400;  padding: 12px 0px; padding-left: 14px; } 
+.itPropertyTree h5:after {content: ''; display: table; clear: both; }
+.itPropertyTree li{ display: block; text-align: left; }
+/* .itPropertyTree h5 { } */ 
+/* .itPropertyTree h5 div{ padding: 2px; cursor: pointer; display: inline-flex;
+                         flex-direction: row; align-items: center; align-content: center; width: 100%;  }
+.itPropertyTree h5 div.on{}  */
+.itPropertyTree h5 span.on{}
+.itPropertyTree span {  }
+.itPropertyTree span{ /* width: 228px; */ /* width: calc(100% - 50px); */ cursor: pointer; display: inline-flex; flex-direction: row;
+                      align-items: center; align-content: center; font-size: 11px; color: #fff; cursor:pointer;  } 
+.itPropertyTree span.on {}
+.itPropertyTreespan:before { margin-right: 5px; }
+
+.itPropertyTree p{ }
+.itPropertyTree p.on{}
+.itPropertyTree a {margin-left: 10px;}
+.itPropertyTree ul { display: none; text-align: left; color: #fff; }
+.itPropertyTree a{ display: inline-block; width: 100%; height: 16px; line-height: 16px; color: #fff; cursor: pointer; text-align: left; }
+.itPropertyTree .dsiTreeCheck {  }
+
+.itPropertyTree input[type=checkbox]{ display: inline-block; vertical-align: middle; width: 12px; height: 12px; cursor: pointer; border-radius: 3px; background: #ffffff;
+                                      margin-right: 14px; }
+.itPropertyTree input[type=checkbox]:checked{ width:12px; height:12px; background:url('../../PropertyEdit/image/itPropertyCheck_icon.png') no-repeat center center !important;
+                                              background-position: center; border:none; }
+
+
+.LNameIT{ display: inline-block; flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; cursor: pointer; }
+.LNameIT::after{ content: '▶'; margin-left: 8px; }
+.LNameIT.selected { color: #E71B6A }
+.LNameIT.selected::after { content: '▼'; margin-left: 8px; color: #E71B6A; }
+.RNameIT{ display: inline-block; flex-grow: 1; text-align: left; color: #BCBCBC; font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; cursor: pointer; }
+.RNameIT::after{ content: '▶'; margin-left: 8px; }
+.RNameIT.selected { color: #E71B6A }
+.RNameIT.selected::after { content: '▼'; margin-left: 8px; color: #E71B6A; }
+
+
+.LNumBoxIT{ display:inline-flex;  align-items: center;  align-content: center; vertical-align: middle; font-size:12px; }
+.LFontIT{ display: inline-block; width: 42px; height: 22px; line-height: 22px; color:#fff; margin-left: 4px; background: #d7d7d738; border-radius: 11px; 
+          text-align: center; font-size: 9px; }
+
+.greenCircle{ display:inline-block; width: 10px; height: 10px; background: #00FF66; border-radius: 50%; }
+.redCircle{ display:inline-block; width: 10px; height: 10px; background: #FF0000; border-radius: 50%; }
+
+
+.rackAreaIT{ display: flex; width: 100%; flex-direction:column; margin-left: 30px;  }
+.rackAreaIT .rackBoxITL{ display: flex; width: 100%; margin-bottom: 4px; background-color: #000B12;  }
+.rackAreaIT .rackBoxITL .boxIT1{ display: block; width: 5%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                                  border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaIT .rackBoxITL .boxIT2{ display: block; width: 25%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                                  border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaIT .rackBoxITL .boxIT3{ display: block; width: 25%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                                 border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaIT .rackBoxITL .boxIT4{ display: block; width: 30%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; 
+                                  border-right: solid 1px #d7d7d757; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackAreaIT .rackBoxITL .boxIT5{ display: block; width: 10%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff;
+                                 border-right: solid 1px #d7d7d757; }
+.rackAreaIT .rackBoxITL .boxIT6{ display: block; width: 5%; height: 21px; line-height:21px; text-align:center; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; }
+
+.confirmBtn{ display: inline-block; width: 72px; height: 25px; line-height: 25px; border-radius: 13px; background-image:linear-gradient( #E71B6A, #740E35 ); cursor: pointer;
+             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #fff; text-align: center; position: absolute; right: 13px; bottom: 14px; }
+
+.selectLineBox{ border:solid 2px #E71B6A; }
+
+.movingItem {
+    display: none;
+}
+.editrackInfoBox .rackInfomation.droppable .movingItem {
+    text-align: center;
+    display: block;
+    color: #000000;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-weight: 400;
+    font-size: 12px;
+    width: 94%;
+}
+
+.fmsOnIcon{ display: inline-block; width: 41px; height: 51px; background: url('../../PropertyEdit/image/fmsOn.png')no-repeat center center;
+            position: absolute; top: 40px; right: 4px; cursor: pointer; }
+.fmsOffIcon{ display: inline-block; width: 41px; height: 51px; background: url('../../PropertyEdit/image/fmsOff.png')no-repeat center center;
+             position: absolute; top: 40px; right: 4px; cursor: pointer; }

@@ -1,0 +1,101 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\SDMS\ui\3D\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\SDMS\ui\3D\**" />
+    <EmbeddedResource Remove="ClientApp\src\SDMS\ui\3D\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\SDMS\ui\3D\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\Account\services\" />
+    <Folder Include="ClientApp\src\Common\js\" />
+    <Folder Include="ClientApp\src\History\" />
+    <Folder Include="ClientApp\src\SOPManager\" />
+    <Folder Include="ClientApp\src\Root\resource\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.BLL\Common.BLL.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.DAL\Common.DAL.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.IDAL\Common.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Model\Common.Model.csproj" />
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.BLL\Dashboard.BLL.csproj" />
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.DAL\Dashboard.DAL.csproj" />
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.IDAL\Dashboard.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.Model\Dashboard.Model.csproj" />
+    <ProjectReference Include="..\..\..\History\History.BLL\History.BLL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.BLL\SDMS.BLL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.DAL\SDMS.DAL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.Model\SDMS.Model.csproj" />
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.BLL\SOPManager.BLL.csproj" />
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.DAL\SOPManager.DAL.csproj" />
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.IDAL\SOPManager.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.Model\SOPManager.Model.csproj" />
+    <ProjectReference Include="..\..\..\SOPSimulator\SOPSimulator.BLL\SOPSimulator.BLL.csproj" />
+    <ProjectReference Include="..\..\..\SOPSimulator\SOPSimulator.DAL\SOPSimulator.DAL.csproj" />
+    <ProjectReference Include="..\..\..\SOPSimulator\SOPSimulator.IDAL\SOPSimulator.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.BLL\TeamEditor.BLL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.DAL\TeamEditor.DAL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.IDAL\TeamEditor.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.Model\TeamEditor.Model.csproj" />
+    <ProjectReference Include="..\..\..\Weather\Weather.BLL\Weather.BLL.csproj" />
+    <ProjectReference Include="..\..\..\Weather\Weather.DAL\Weather.DAL.csproj" />
+    <ProjectReference Include="..\..\..\Weather\Weather.IDAL\Weather.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\Weather\Weather.Model\Weather.Model.csproj" />
+    <ProjectReference Include="..\..\Industrial\Industrial.BLL\Industrial.BLL.csproj" />
+    <ProjectReference Include="..\..\YeosuSensorServer\SenserServer.IDAL\SensorServer.IDAL.csproj" />
+    <ProjectReference Include="..\..\YeosuSensorServer\SensorServer.DAL\SensorServer.DAL.csproj" />
+    <ProjectReference Include="..\..\YeosuSensorServer\SensorServer.Model\SensorServer.Model.csproj" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

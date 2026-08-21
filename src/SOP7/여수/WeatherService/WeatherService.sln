@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Model", "..\..\Weather\Weather.Model\Weather.Model.csproj", "{9022621A-1178-4540-9232-C1FEB50A56E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.IDAL", "..\..\Weather\Weather.IDAL\Weather.IDAL.csproj", "{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.DAL", "..\..\Weather\Weather.DAL\Weather.DAL.csproj", "{7E358849-2845-41A6-BA72-8CFEA0E65BE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A79DDAFF-AFA8-4C65-9207-8E21B67F9477}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{DA1C9330-9DA6-4027-B02E-B034F8A85CF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService2", "WeatherService2\WeatherService2.csproj", "{264EDC34-7590-41FE-83E2-F115622AB01F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DNS", "DNS", "{6854756D-9365-4568-B987-A35DE10DC48B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDBUtil", "..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj", "{98E2F344-1928-4470-BA98-F423897E0767}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release_Kakaowork|Any CPU = Release_Kakaowork|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9022621A-1178-4540-9232-C1FEB50A56E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264EDC34-7590-41FE-83E2-F115622AB01F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E2F344-1928-4470-BA98-F423897E0767}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9022621A-1178-4540-9232-C1FEB50A56E3} = {A79DDAFF-AFA8-4C65-9207-8E21B67F9477}
+		{A9F0EDAD-365B-4ED8-897F-DD3ABF58F4C5} = {DA1C9330-9DA6-4027-B02E-B034F8A85CF6}
+		{7E358849-2845-41A6-BA72-8CFEA0E65BE2} = {DA1C9330-9DA6-4027-B02E-B034F8A85CF6}
+		{98E2F344-1928-4470-BA98-F423897E0767} = {6854756D-9365-4568-B987-A35DE10DC48B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {116F0A17-8EB1-4FC5-97AC-1C01D3F5F2F5}
+	EndGlobalSection
+EndGlobal

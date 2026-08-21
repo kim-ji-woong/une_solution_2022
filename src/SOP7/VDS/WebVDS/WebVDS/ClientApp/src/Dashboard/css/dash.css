@@ -1,0 +1,533 @@
+﻿
+select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+option { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+
+#checkboxes { overflow-y: scroll; }
+#checkboxes::-webkit-scrollbar { width: 4px; border-radius:2px; background-color: #3B4954; }
+#checkboxes::-webkit-scrollbar-thumb { width: 4px; border-radius: 2px; background: #19A5FF; }
+#checkboxes::-webkit-scrollbar-button{ width: 0px; height: 0px; }
+
+#checkboxes2{ overflow-y: scroll; }
+#checkboxes2::-webkit-scrollbar { width: 4px; border-radius:2px; background-color: #3B4954; }
+#checkboxes2::-webkit-scrollbar-thumb { width: 4px; border-radius: 2px; background: #19A5FF; }
+#checkboxes2::-webkit-scrollbar-button{ width: 0px; height: 0px; }
+
+
+.multiselect { width: 253px; }
+.selectBox { position: relative; }
+.selectBox select { width: 100%; font-weight: bold; }
+.overSelect { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+
+
+.selectDownBox{ display: none; display: flex; flex-direction: column; height: 309px; position:absolute; z-index: 1; }
+#checkboxes { /* display: none; */ display: block; background: #57636C; color: #ffffff; width: 252px; height: 260px;
+              overflow-y:scroll; }
+#checkboxes label { /* display: block; */ display: flex; align-items: center; padding-left: 21px; }
+
+.checkBox1{ /* display:block; */ display: flex; height: 52px; line-height: 52px; }
+.checkBox1:hover{ background: #CFCFCF; color: #000000; }
+.checkBox1.selected{ background: #CFCFCF; color: #000000; }
+.checkBox1 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 22.5px; border-radius: 4px; }
+.checkBox1 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox1 p{ display:block; width: 155px; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold;
+              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: left; }
+
+.checkBox2{ display:block; height: 52px; line-height: 52px; }
+.checkBox2.selected{ background: #CFCFCF; color: #000000; }
+.checkBox2 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 22.5px; }
+.checkBox2 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox2 p{ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+
+.checkBox3 { display:block; height: 52px; line-height: 52px; }
+.checkBox3.selected{ background: #CFCFCF; color: #000000; }
+.checkBox3 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 22.5px; }
+.checkBox3 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox3 p{ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+
+.checkBox4 { display:block; height: 52px; line-height: 52px; }
+.checkBox4.selected{ background: #CFCFCF; color: #000000; }
+.checkBox4 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 22.5px; }
+.checkBox4 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox4 p{ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+
+.checkBox5 { display:block; height: 52px; line-height: 52px; }
+.checkBox5.selected{ background: #CFCFCF; color: #000000; }
+.checkBox5 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 22.5px; }
+.checkBox5 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox5 p{ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; }
+
+
+.confirmBox{ display: flex; background: #57636C; width: 252px; height: 40px; padding-top: 8px; padding-left: 140px; border-top:solid 1px #525252; }
+/* .confirmBox div:nth-child(1){ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #43CDFF; }
+.confirmBox div:nth-child(1):before{ content: '▶'; margin-left: 8px; margin-right: 10px; }
+
+.confirmBox div:nth-child(2){ display:block; width: 46px; height: 22px; line-height: 22px; border-radius: 5px; background-image: linear-gradient(#00B5F7, #005B7C);
+                              font-size: 12px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold;
+                              cursor: pointer; color: #ffffff; text-align:center; position: absolute; right: 12px; bottom: 17px; }  */ 
+
+.multiselectVDC { width: 140px; }
+.multiselectVDC .selectBoxVDC { position: relative; }
+.multiselectVDC .selectBoxVDC select { width: 100%; font-weight: bold; background: #2C3D49 url(../../Dashboard/image/selectArrow_icon.png)no-repeat 92% 50%; border: solid 1px #D4D4D4; border-radius: 4px;
+                                       height: 26px; background-size: 8px; }
+.multiselectVDC .selectBoxVDC select option{ display: none; }
+.multiselectVDC .overSelectVDC { position: absolute; left: 0; right: 0; top: 0; bottom: 0; width: 110px; padding-left: 10px;
+                                 overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+
+.selectDownBoxVDC{ display: none; display: flex; flex-direction: column; /* width: 149px; */ /* height: 309px; */ position:absolute; z-index: 2; }
+#checkboxes2 { /* display: none; */ display: block; background: #57636C; color: #ffffff; width: 140px; height: 120px; overflow-y:auto; overflow-x: hidden; }
+#checkboxes2 label { /* display: block; */ display: flex; align-items: center; padding-left: 14px; }
+
+.checkBox6{ display:block; height: 40px; line-height: 40px; background: #57636C; /* position:relative; */ }
+.checkBox6.selected{ background: #CFCFCF; color: #000000; }
+.checkBox6 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 16px; border-radius: 4px; }
+.checkBox6 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox6 p{ display:block; /* width: 100px; */ font-size: 15px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400;
+              /* overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: left; */ }
+
+
+.checkBox7{ display:block; height: 40px; line-height: 40px; }
+.checkBox7.selected{ background: #CFCFCF; color: #000000; }
+.checkBox7 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 16px; }
+.checkBox7 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox7 p{ display:block; font-size: 15px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+.checkBox8 { display:block; height: 40px; line-height: 40px; }
+.checkBox8.selected{ background: #CFCFCF; color: #000000; }
+.checkBox8 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 16px; }
+.checkBox8 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox8 p{ display:block; font-size: 15px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+.checkBox9 { display:block; height: 40px; line-height: 40px; }
+.checkBox9.selected{ background: #CFCFCF; color: #000000; }
+.checkBox9 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 16px; }
+.checkBox9 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox9 p{ display:block; font-size: 15px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+.checkBox10 { display:block; height: 40px; line-height: 40px; }
+.checkBox10.selected{ background: #CFCFCF; color: #000000; }
+.checkBox10 input[type=checkbox] { display:inline-block; width: 14px; height: 14px; margin-right: 16px; }
+.checkBox10 input[type=checkbox]:checked{ width:14px; height:14px; background:url('../../Dashboard/image/manageCheck_icon.png') no-repeat center center !important;
+                                         background-position: center; border:none; }
+.checkBox10 p{ display:block; font-size: 15px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; }
+
+.confirmBoxVDC{ display: flex; background: #57636C; width: 140px; height: 40px; padding-top: 10px; padding-left: 38px; border-top:solid 1px #525252; }
+/* .confirmBoxVDC div:nth-child(1){ display:block; font-size: 16px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; color: #43CDFF; }
+.confirmBoxVDC div:nth-child(1):before{ content: '▶'; margin-left: 8px; margin-right: 10px; } */
+
+.rightConfirmBtn{ display: inline-block; width: 46px; height: 22px; line-height: 22px; border-radius: 5px;  background-image: linear-gradient(#00B5F7, #005B7C); cursor: pointer;
+                 font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; text-align: center; margin-right: 6px; margin-left: 8px; } 
+.rightCancelBtn{ display: inline-block; width: 46px; height: 22px; line-height: 22px; border-radius: 5px; background-image: linear-gradient(#00B5F7, #005B7C); cursor: pointer;
+                 font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 12px; color: #fff; text-align: center;  }
+
+.systemTitleBox{ display: block; }
+.systemTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; color: #ffffff; padding:30px 29px; cursor: pointer; }
+
+.systemContentsBox{ /* display: block; */ margin-bottom: 33px; }
+.userManage{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+.userManage.active {color: #00B5F7;}
+.userManage:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } 
+.codeManage{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+/* .codeManage:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } */
+.multiManage{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+/* .multiManage:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } */
+.meterManage{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+/* .meterManage:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } */
+.interFaceManage{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+/* .interFaceManage:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } */
+
+.propertyTitleBox{ display: block; }
+.property3DTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; color: #ffffff; padding: 30px 29px; cursor: pointer; }
+.property3Dcontents{ /* display: none; display: block; */ margin-bottom: 33px; }
+.property3DList{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+.property3DListActive{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #00B5F7; padding: 0px 29px; cursor: pointer; }
+.property3DList:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; }
+.propertyNewRegi{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+/* .propertyNewRegiActive{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #00B5F7; padding: 0px 29px; cursor: pointer; }
+.propertyNewRegi:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; } */
+
+.vdcManageTitleBox{ display: block; }
+.vdsManageTitle{ display: block; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 20px; color: #ffffff; padding: 30px 29px; cursor: pointer; }
+.vdcManageContents{ /* display: block; */ margin-bottom: 33px; }
+.vdcList{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+.vdcListActive{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #00B5F7; padding: 0px 29px; cursor: pointer; }
+.vdcList:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; }
+.vdcNewRegi{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #B3B3B3; padding: 0px 29px; cursor: pointer; }
+.vdcNewRegiActive{ display: block; height: 40px; line-height: 40px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 14px; color: #00B5F7; padding: 0px 29px; cursor: pointer; }
+.vdcNewRegi:hover{  background: url(../../Dashboard/image/fastIcon_blue.png)no-repeat 90% 50%; color: #00B5F7; }
+
+.play{ display: block; }
+.hide{ display: none; }
+
+.tooltipArea{ position: absolute; top: 216px; right: 70px; }
+.tooltip { position: relative; display: block; background: url(../../Dashboard/image/tooltip_Icon.png)no-repeat center center;
+           width: 22px; height: 22px; }
+.tooltip .tooltiptext { visibility: hidden;  width: 320px; /* height: 26px; */ line-height: 26px; color: #000000;
+                        background: #fff; font-size: 14px; text-align: center; border-radius: 6px; position: absolute;
+                        top: 30px; right: -220px; z-index: 1; }
+.tooltip:hover .tooltiptext { visibility: visible; }
+
+
+/* 사용자 권한관리 tooltip */
+
+.tooltipSite { display: block; height: 40px; padding: 0px 10px; }
+.tooltipSite:hover .tooltipSiteConts { visibility: visible; }
+.tooltipSiteTitle{ display: block; }
+.tooltipSiteTitle p{  }
+.tooltipSiteConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                   font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipUserLevel { display: block; height: 40px; padding: 0px 10px; }
+.tooltipUserLevel:hover .tooltipUserLevelConts { visibility: visible; }
+.tooltipUserLevelTitle{ display: block; }
+.tooltipUserLevelConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                        font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipNickName { display: block; height: 40px; padding: 0px 10px; }
+.tooltipNickName:hover .tooltipNickNameConts { visibility: visible; }
+.tooltipNickNameTitle{ display: block; }
+.tooltipNickNameConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                        font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipUserID { display: block; height: 40px; padding: 0px 10px; }
+.tooltipUserID:hover .tooltipUserIDConts { visibility: visible; }
+.tooltipUserIDTitle{ display: block; }
+.tooltipUserIDConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                        font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 20px; z-index: 1; }
+
+.tooltipCompanyName { display: block; height: 40px; padding: 0px 10px; }
+.tooltipCompanyName:hover .tooltipCompanyNameConts { visibility: visible; }
+.tooltipCompanyNameTitle{ display: block; }
+.tooltipCompanyNameConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 30px; z-index: 1; }
+
+.tooltipList { display: block; height: 40px; padding: 0px 10px; }
+.tooltipList:hover .tooltipListConts { visibility: visible; }
+.tooltipListTitle{ display: block; }
+.tooltipListConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                   font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 30px; z-index: 1; }
+
+.tooltipCenter { display: flex; height: 40px; align-items: center; padding: 0px 10px; }
+.tooltipCenter:hover .tooltipCenterConts { visibility: visible; }
+.tooltipCenterTitle{ display: block; padding-right: 20px; }
+.tooltipCenterConts { visibility: hidden; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                   font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; left: 30px; z-index: 2; }
+
+.tooltipSelectBox { display: flex;  height: 40px; align-items: center; cursor:pointer; }
+.tooltipSelectBox:hover .tooltipSelectBoxConts { visibility: visible; }
+.tooltipSelectBoxTitle{ display: block; }
+.tooltipSelectBoxConts { visibility: hidden; width: 150px;  line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute;  z-index: 3; }
+
+
+
+/* vdc 목록 tooltip */
+
+.tooltipNationName { display: block;  height: 40px; padding: 0px 10px; }
+.tooltipNationName:hover .tooltipNationNameConts { visibility: visible; }
+.tooltipNationNameTitle{ display: block; }
+.tooltipNationNameConts { visibility: hidden; width: 141px;  line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                          font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.controlCIcon{ display: inline-block; width: 17px; height: 17px; background: url(../../Dashboard/image/controlC_icon.png)no-repeat center center; 
+               margin-right: 6px; vertical-align: middle; }
+
+.tooltipData { display: flex; height: 40px; align-items: center; margin-right: 4px; padding: 0px 20px; }
+.tooltipData input[type=text]{ display: block; height: 29px; line-height: 29px; border-radius: 7px; border:solid 1px #C8C8C8; background: none; }
+.tooltipData:hover .tooltipDataConts { visibility: visible; }
+.tooltipDataTitle{ display: block; width: 100%; text-align:center; }
+.tooltipDataConts { visibility: hidden; min-width: 170px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                   font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 30px; z-index: 1; }
+
+.tooltipSiteName { display: block;  height: 40px; padding: 0px 10px; }
+.tooltipSiteName:hover .tooltipSiteNameConts { visibility: visible; }
+.tooltipSiteNameTitle{ display: block; }
+.tooltipSiteNameConts { visibility: hidden; width: 141px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                        font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.centerNameHidden{ width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.textHidden{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+#checkBtn { display: none; }
+.vdcIDList input[type=checkbox] + label{ display: block; width: 144px !important; height: 40px; 
+                                         overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; } 
+#checkBtn:checked ~ .vdcListArea { display: block; } 
+.vdcListArea{ position: absolute; left: 5px; display: flex; flex-direction: column; /* position: absolute; left: 5px; */ width: 144px; height: auto; background: #57636C; color: #fff; z-index: 1;
+              border-radius: 6px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; }
+.vdcListArea li{ border-bottom: solid 0.5px #ffffff33; }
+.vdcListArea li:last-child{ border-bottom: none; }
+.vdcListArea { /* display: none; */ }
+
+
+#checkBtn2 { display: none; }
+.vdcIDList2 input[type=checkbox] + label{ display: block; width: 141px !important; height: 40px; 
+                                          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+#checkBtn2:checked ~ .vdcListArea2 {  display: block; } 
+.vdcListArea2{ position: absolute; left: 5px; display: flex; flex-direction: column; /* position: absolute; left: 5px; */ width: 141px; height: auto; background: #57636C; color: #fff; z-index: 1;
+               border-radius: 6px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; }
+.vdcListArea2 li{ border-bottom: solid 0.5px #ffffff33; }
+.vdcListArea2 li:last-child{ border-bottom: none; }
+.vdcListArea2 { /* display: none; */ }
+
+
+/* 편집모드 자산편집 tooltip */
+
+.tooltipCategoryName{ display: flex; height: 40px; align-items: center; padding: 0px 10px; }
+.tooltipCategoryName:hover .tooltipCategoryConts { visibility: visible; }
+.tooltipCategoryTitle{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: center; }
+.tooltipCategoryConts{ visibility: hidden; width: 150px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                       font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px;  z-index: 2; }
+
+.tooltipModelName{ display: flex; height: 40px; align-items: center; padding: 0px 12px; }
+.tooltipModelName:hover .tooltipModelNameConts { visibility: visible; }
+.tooltipModelNameTitle{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: center; }
+.tooltipModelNameConts{ visibility: hidden; width: 150px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                       font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; left: 30px; z-index: 2; }
+
+.tooltipITCompanyName{ display: flex; height: 40px; align-items: center; padding: 0px 10px; }
+.tooltipITCompanyName:hover .tooltipITCompanyNameConts { visibility: visible; }
+.tooltipITCompanyNameTitle{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: center; }
+.tooltipITCompanyNameConts { visibility: hidden; width: 150px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; z-index: 2; }
+
+.tooltipFacilityL{ display: flex; height: 40px; align-items: center; }
+.tooltipFacilityL:hover .tooltipFacilityLConts { visibility: visible; }
+.tooltipFacilityLTitle{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: center;  }
+.tooltipFacilityLConts { visibility: hidden; width: 150px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                        font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px;  z-index: 2; }
+
+
+/* 3D자산 Lib tooltip */
+/* rack */
+.tooltipModelNameR{ display: flex; height: 40px; align-items: center; padding: 0px 12px; }
+.tooltipModelNameR:hover .tooltipModelNameRConts { visibility: visible; }
+.tooltipModelNameRTitle{ display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; text-align: center;  }
+.tooltipModelNameRConts{ visibility: hidden; width: 140px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                          font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; left: 0px; z-index: 2; }
+
+.tooltipCompanyNameR { display: block; height: 40px; padding: 0px 10px; }
+.tooltipCompanyNameR:hover .tooltipCompanyNameRConts { visibility: visible; }
+.tooltipCompanyNameRTitle{ display: block; }
+.tooltipCompanyNameRConts { visibility: hidden; width: 130px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+
+/* IT */
+.tooltipEquipment { display: block; height: 40px; padding: 0px 10px; }
+.tooltipEquipment:hover .tooltipEquipmentConts { visibility: visible; }
+.tooltipEquipmentTitle{ display: block; }
+.tooltipEquipmentConts { visibility: hidden; width: 140px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipModelNameIT{ display: flex; height: 40px; align-items: center; padding: 0px 20px; }
+.tooltipModelNameIT:hover .tooltipModelNameITConts { visibility: visible; }
+.tooltipModelNameITTitle{ display: block; width: 129px; height: 47px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tooltipModelNameITConts{ visibility: hidden; min-width: 129px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                          font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; left: 0px; z-index: 2; }
+
+.tooltipCompanyNameIT { display: block; height: 40px; padding: 0px 10px; }
+.tooltipCompanyNameIT:hover .tooltipCompanyNameITConts { visibility: visible; }
+.tooltipCompanyNameITTitle{ display: block; }
+.tooltipCompanyNameITConts { visibility: hidden; width: 140px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                              font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+
+/* Facility */
+.tooltipEquipmentF { display: block; height: 40px; padding: 0px 10px; }
+.tooltipEquipmentF:hover .tooltipEquipmentFConts { visibility: visible; }
+.tooltipEquipmentFTitle{ display: block; }
+.tooltipEquipmentFConts { visibility: hidden; width: 190px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipModelNameF{ display: flex; height: 40px; align-items: center; padding: 0px 12px; }
+.tooltipModelNameF:hover .tooltipModelNameFConts { visibility: visible; }
+.tooltipModelNameFTitle{ display: block; }
+.tooltipModelNameFConts{ visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 44px; left: 0px; z-index: 2; }
+
+.tooltipCompanyNameF { display: block; height: 40px; padding: 0px 10px; }
+.tooltipCompanyNameF:hover .tooltipCompanyNameFConts { visibility: visible; }
+.tooltipCompanyNameFTitle{ display: block; }
+.tooltipCompanyNameFConts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+
+/* 변경/장애관리 tooltip */
+
+.tooltipData1 { display: block; height: 40px; line-height: 36px; }
+.tooltipData1:hover .tooltipData1Conts { visibility: visible; }
+.tooltipData1Title{ display: block; height: 40px; }
+.tooltipData1Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                     font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+.tooltipData2 { display: block; height: 40px; line-height: 36px; }
+.tooltipData2:hover .tooltipData2Conts { visibility: visible; }
+.tooltipData2Title{ display: block; }
+.tooltipData2Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                     font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+.tooltipData3 { display: block; height: 40px; line-height: 36px; }
+.tooltipData3:hover .tooltipData3Conts { visibility: visible; }
+.tooltipData3Title{ display: block; }
+.tooltipData3Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+.tooltipData5 { display: block; height: 40px; line-height: 36px;}
+.tooltipData5:hover .tooltipData5Conts { visibility: visible; }
+.tooltipData5Title{ display: block; height: 20px;}
+/* .tooltipData5Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 10px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; } */
+
+.tooltipData5Conts { visibility: visible; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                                font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1;
+                                text-overflow:ellipsis; white-space:nowrap; overflow:hidden; }
+
+.tooltipData6 { display: block; height: 40px; line-height: 36px; }
+.tooltipData6:hover .tooltipData6Conts { visibility: visible; }
+.tooltipData6Title{ display: block; }
+.tooltipData6Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+#tooltip-area { position: absolute; z-index: 9999;}
+.tooltipDisOrder1 { display: block; height: 40px; line-height: 36px; }
+.tooltipDisOrder1:hover .tooltipDisOrder1Conts { visibility: visible; }
+.tooltipDisOrder1Title{ display: block; height: 20px;}
+.tooltipDisOrder1Conts { visibility: visible; width: 300px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+    font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+/* .tooltipDisOrder1Conts { visibility: hidden; width: 300px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff;  */
+
+.tooltipDisOrder2 { display: block; height: 40px; line-height: 36px; }
+.tooltipDisOrder2:hover .tooltipDisOrder2Conts { visibility: visible; }
+.tooltipDisOrder2Title{ display: block; height: 20px;}
+/* .tooltipDisOrder2Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff;  */
+                        /* font-size: 10px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; } */
+
+.tooltipDisOrder2Conts { visibility: visible; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                            font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+.tooltipDisOrder3 { display: block; height: 40px; line-height: 36px; }
+.tooltipDisOrder3:hover .tooltipDisOrder3Conts { visibility: visible; }
+.tooltipDisOrder3Title{ display: block; }
+.tooltipDisOrder3Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+.tooltipDisOrder5 { display: block; height: 40px; line-height: 36px; }
+.tooltipDisOrder5:hover .tooltipDisOrder5Conts { visibility: visible; }
+.tooltipDisOrder5Title{ display: block; }
+.tooltipDisOrder5Conts { visibility: hidden; width: 160px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                         font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 30px; left: 20px; z-index: 1; }
+
+
+/* 관리페이지 신규등록 tooltip */
+.tooltipVDCcategoryName { display: block;  height: 40px; padding: 0px 10px; }
+.tooltipVDCcategoryName:hover .tooltipVDCcategoryNameConts { visibility: visible; }
+.tooltipVDCcategoryNameTitle{ display: block; }
+.tooltipVDCcategoryNameConts { visibility: hidden; width: 141px; line-height: 26px; padding: 0px 20px; color: #000000; background: #fff; 
+                               font-size: 14px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 20px; z-index: 1; }
+
+
+/* 231130 List */
+.tooltipCenterName { display: block; /* height: 40px; */ padding: 0px 10px; }
+.tooltipCenterName:hover .tooltipCenterNameConts { visibility: visible; }
+.tooltipCenterNameTitle{ display: block; }
+.tooltipCenterNameConts { visibility: visible; min-width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                          font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipControlCenterName { display: block; /* height: 40px; */ padding: 0px 10px; }
+.tooltipControlCenterName:hover .tooltipControlCenterNameConts { visibility: visible; }
+.tooltipControlCenterNameTitle{ display: block; }
+.tooltipControlCenterNameTitle.active{ color: #00B5F7 !important; }
+.tooltipControlCenterNameConts { visibility: visible; width: 200px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                                 font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipUsageName { display: block; }
+.tooltipUsageName:hover .tooltipUsageNameConts { visibility: visible; }
+.tooltipUsageNameTitle{ display: block; }
+.tooltipUsageNameConts { visibility: visible; width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                         font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipPropertyName { display: block; }
+.tooltipPropertyName:hover .tooltipPropertyNameConts { visibility: visible; }
+.tooltipPropertyNameTitle{ display: block; }
+.tooltipPropertyNameConts { visibility: visible; width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                         font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipvdcName { display: block; }
+.tooltipvdcName:hover .tooltipvdcNameConts { visibility: visible; }
+.tooltipvdcNameTitle{ display: block; }
+.tooltipvdcNameConts { visibility: visible; width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                       font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipItemName { display: block; }
+.tooltipItemName:hover .tooltipItemNameConts { visibility: visible; }
+.tooltipItemNameTitle{ display: block; }
+.tooltipItemNameConts { visibility: visible; width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                       font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltiprackItemName { display: block; }
+.tooltiprackItemName:hover .tooltiprackItemNameConts { visibility: visible; }
+.tooltiprackItemNameTitle{ display: block; }
+.tooltiprackItemNameConts { visibility: visible; width: 240px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                          font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipEditRackName { display: block; }
+.tooltipEditRackName:hover .tooltipEditRackNameConts { visibility: visible; }
+.tooltipEditRackNameTitle{ display: block; }
+.tooltipEditRackNameConts { visibility: visible; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipNewRackName { display: block; }
+.tooltipNewRackName:hover .tooltipNewRackNameConts { visibility: visible; }
+.tooltipNewRackNameTitle{ display: block !important; width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tooltipNewRackNameConts { visibility: visible; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipdataCenterName { display: block; }
+.tooltipdataCenterName:hover .tooltipdataCenterNameConts { visibility: visible; }
+.tooltipdataCenterNameTitle{ display: block; }
+.tooltipdataCenterNameConts { visibility: visible; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                              font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipEditGroupName { display: block; }
+.tooltipEditGroupName:hover .tooltipEditGroupNameConts { visibility: visible; }
+.tooltipEditGroupNameTitle{ display: block; }
+.tooltipEditGroupNameConts { visibility: visible; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                              font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipEditConnectName { display: block; }
+.tooltipEditConnectName:hover .tooltipEditConnectNameConts { visibility: visible; }
+.tooltipEditConnectNameTitle{ display: block; }
+.tooltipEditConnectNameConts { visibility: visible; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                              font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 40px; left: 0px; z-index: 1; }
+
+.tooltipUsageDataName { display: block; padding: 0px 10px; }
+.tooltipUsageDataName:hover .tooltipUsageDataNameConts { visibility: visible; cursor: pointer; }
+.tooltipUsageDataNameTitle{ display: block; }
+.tooltipUsageDataNameConts { visibility: hidden; min-width: 130px; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 130px; left: 30px; z-index: 1; }
+
+.tooltipUsageData2Name { display: block; padding: 0px 10px; }
+.tooltipUsageData2Name:hover .tooltipUsageData2NameConts { visibility: visible; cursor: pointer; }
+.tooltipUsageData2NameTitle{ display: block; }
+.tooltipUsageData2NameConts { visibility: hidden; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 130px; left: 30px; z-index: 1; }
+
+.tooltipUsageData3Name { display: block; padding: 0px 10px; }
+.tooltipUsageData3Name:hover .tooltipUsageData3NameConts { visibility: visible; cursor: pointer; }
+.tooltipUsageData3NameTitle{ display: block; }
+.tooltipUsageData3NameConts { visibility: hidden; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 130px; left: 30px; z-index: 1; }
+
+.tooltipUsageData4Name { display: block; padding: 0px 10px; }
+.tooltipUsageData4Name:hover .tooltipUsageData4NameConts { visibility: visible; cursor: pointer; }
+.tooltipUsageData4NameTitle{ display: block; }
+.tooltipUsageData4NameConts { visibility: hidden; width: auto; line-height: 26px; padding: 0px 10px; color: #000000; background: #fff; 
+                            font-size: 12px; text-align: center; border-radius: 6px; position: absolute; top: 130px; left: 30px; z-index: 1; }

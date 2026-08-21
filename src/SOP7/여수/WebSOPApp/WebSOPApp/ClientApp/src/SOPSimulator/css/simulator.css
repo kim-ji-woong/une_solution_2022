@@ -1,0 +1,27 @@
+﻿
+
+.sopTabArea{ display: block; margin-top: 24px; font-size: 14px; }
+.sopTabs{ width: 430px; color: #000000; }
+.sopTabsNav{ display: block; height: 38px; line-height: 38px; /* border-bottom: solid 1px #000000; */ }
+.sopTabsNav li{ float: left; width: 50%; border-bottom: solid 1px #000000; }
+
+.tabsSopStage{ border-top: 0; clear: both; padding: 24px 0px 0px 0px; position: relative; top: -1px; display:flex; }
+.tabTextBox{ display:inline-block; margin-right: 11px; }
+.tabTextBox input[type=text]{ width: 45px; height: 28px; border-radius: 6px; border:solid 1px #000000; margin-right: 8px;
+                              /* background-color: #E6E6E6; */ color: #000000; text-align: center; background: none; }
+.tabTextBox input[type=text]::placeholder{ color: #000000; }
+.tabTextBox input[type=text]:active{ display: inline-block; background: #fff; }
+
+.tabTextBox select{ width: 45px; height: 28px; border-radius: 6px; border:solid 1px #000000; margin-right: 8px;
+                    /* background-color: #E6E6E6; */ color: #000000; text-align: center; background: none; }
+
+.tabBtn{ display:inline-block; width:42px; height:30px; line-height:30px; color:#fff; background:#19A5FF;
+         border-radius: 5px; text-align:center; cursor: pointer; }
+.tabBtn:active{ background:#19A5FF; cursor: pointer; }
+
+.sopTabsli { display: block; font-weight: 400; font-size:14px; /* padding: 10px 0; */ text-align: center; text-decoration: none; /* font-family:  'Pretendard'; */
+             /* border-bottom: solid 2px #fff !important; */ }
+.sopTabsli:hover { /* color: #ff7b29; */ }
+.tabActive{ border-bottom: none !important; }
+.tabActive .sopTabsli { border-top: solid 1px #000000; border-left: solid 1px #000000; border-right: solid 1px #000000;
+                        /* border-bottom: solid 2px #e6e6e6; */ cursor: default; position:relative; z-index: 1; height: 39px; cursor: pointer; }

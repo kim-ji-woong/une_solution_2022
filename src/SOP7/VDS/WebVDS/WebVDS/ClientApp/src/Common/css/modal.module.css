@@ -1,0 +1,156 @@
+﻿.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 102;
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+}
+
+    .modal button {
+        outline: none;
+        cursor: pointer;
+        border: 0;
+        margin-left: 5px;
+    }
+
+    .modal > section {
+        width: 90%;
+        max-width: 450px;
+        margin: 0 auto;
+        border-radius: .3rem;
+        background-color: #fff;
+        /* 팝업이 열릴때 스르륵 열리는 효과 */
+        animation: modal-show .3s;
+        overflow: hidden;
+    }
+
+        .modal > section > header {
+            position: relative;
+            padding-left: 16px;
+            background-color: #f1f1f1;
+            font-weight: 700;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .modal > section > header button {
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                width: 30px;
+                font-size: 21px;
+                font-weight: 700;
+                text-align: center;
+                color: #999;
+                background-color: transparent;
+            }
+
+        .modal > section > main {
+            padding: 16px;
+            border-bottom: 1px solid #dee2e6;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .modal > section > main > p {
+            line-height: 20px;
+        }
+
+        .modal > section > footer {
+            padding-right: 16px;
+            text-align: right;
+            height: 40px;
+            line-height: 36px;
+        }
+
+            .modal > section > footer button {
+                padding: 6px 12px;
+                color: #fff;
+                background-color: #6c757d;
+                border-radius: 5px;
+                font-size: 13px;
+            }
+
+    .modal.openModal {
+        display: flex;
+        align-items: center;
+        /* 팝업이 열릴때 스르륵 열리는 효과 */
+        animation: modal-bg-show .3s;
+        color: #000000;
+    }
+
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        margin-top: -50px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes modal-bg-show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* VDS 팝업창 */
+.modalVDSMove { display: none; position: fixed; top: 50%; right: 0; bottom: 0; left: 50%; z-index: 103;
+                width: 480px; height: 174px; transform: translate(-50%, -50%);  }
+.modalVDSMove button { outline: none; cursor: pointer; border: 0; margin-left: 5px; }
+.modalVDSMove > section { width: 100%; max-width: 500px; margin: 0 auto; border-radius: .3rem; background-color: #fff;
+                  /* 팝업이 열릴때 스르륵 열리는 효과 */ animation: modal-show .3s; overflow: hidden; position:relative; }
+.modalVDSMove > section > header { position: relative; padding-left: 16px; /* background-color: #f1f1f1; */ font-weight: 700; height: 40px; line-height: 40px; }
+.modalVDSMove > section > header button { position: absolute; top: 7px; right: 10px; width: 30px; font-size: 21px; font-weight: 700; text-align: center;
+                                           color: #999; background-color: transparent; }
+.modalVDSMove > section > main { padding: 0px 16px 30px 30px; /* border-bottom: 1px solid #dee2e6; */ /* border-top: 1px solid #dee2e6; */ }
+.modalVDSMove > section > main > p { line-height: 20px; }
+.dangerText{ width: 360px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 500; font-size: 16px; margin-left: 30px; }
+.dangerText.indent{ margin-left: 80px; }
+.modalVDSMove > section > footer { padding-right: 16px; text-align: right; height: 40px; line-height: 36px; background: #ebebeb7a; }
+.modalVDSMove > section > footer button { padding: 6px 18px; color: #fff; /* background-color: #6c757d; */ border-radius: 5px; font-size: 13px; 
+                                          display: inline-block; /* position: absolute; */ right: 0; bottom: -4px; z-index: 2 !important; }
+.modalVDSMove.openModalVDS { display: flex; align-items: center; /* 팝업이 열릴때 스르륵 열리는 효과 */ animation: modal-bg-show .3s;  color: #000000; }
+
+
+.modalVDS { display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 103; }
+.modalVDS button { outline: none; cursor: pointer; border: 0; margin-left: 5px; }
+.modalVDS > section { width: 100%; max-width: 500px; margin: 0 auto; border-radius: .3rem; background-color: #fff;
+                  /* 팝업이 열릴때 스르륵 열리는 효과 */ animation: modal-show .3s; overflow: hidden;  }
+.modalVDS > section > header { position: relative; padding-left: 16px; /* background-color: #f1f1f1; */ font-weight: 700; height: 40px; line-height: 40px; }
+.modalVDS > section > header button { position: absolute; top: 7px; right: 10px; width: 30px; font-size: 21px; font-weight: 700; text-align: center;
+                                   color: #999; background-color: transparent; }
+.modalVDS > section > main { padding: 0px 16px 30px 30px; /* border-bottom: 1px solid #dee2e6; */ /* border-top: 1px solid #dee2e6; */ }
+.modalVDS > section > main > p { line-height: 20px; }
+.modalVDS > section > footer { padding-right: 16px; text-align: right; height: 40px; line-height: 36px; background: #ebebeb7a; }
+.modalVDS > section > footer button { padding: 6px 18px; color: #fff; background-color: #6c757d; border-radius: 5px; font-size: 13px; display: inline-block; 
+                                      display: inline-block; float: right; margin: 10px; }
+.modalVDS.openModalVDS { display: flex; align-items: center; /* 팝업이 열릴때 스르륵 열리는 효과 */ animation: modal-bg-show .3s;  color: #000000; }
+
+.popBack{ display: inline-block; width: 480px; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; }
+
+
+.modalCheckIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/checkIcon.png)no-repeat center center; }
+.modalTrashIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/binIcon.png)no-repeat center center; }
+.modalDiskIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/diskIcon.png)no-repeat center center; }
+.modalMarkIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/markIcon.png)no-repeat center center; }
+.modalPlusIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/plusIcon.png)no-repeat center center; }
+.modalQuestionIcon{ display: inline-block; width: 48px; height: 48px; background: url(../../Common/image/modalIcon/questionIcon.png)no-repeat center center; }
+
+.confirmAgreeBlue{ padding: 6px 18px; color: #fff; background-image:linear-gradient(#00B5F7, #005B7C); border-radius: 5px; font-size: 12px;
+                  display: inline-block; margin: 10px; border:dashed 1px red; }
+.confirmCancel{ padding: 6px 18px; color: #fff; background-image:linear-gradient(#353945, #0B0B0E); border-radius: 5px; font-size: 12px; 
+                display: inline-block; margin: 10px; /* margin-right: 80px; */ z-index: 2; cursor: pointer; border:dashed 1px orange; }
+.confirmAgreeRed{ padding: 6px 18px; color: #fff; background-image:linear-gradient(#FF4040, #B70000); border-radius: 5px; font-size: 12px;
+                  display: inline-block; margin: 10px; z-index: 2; cursor: pointer; border:dashed 1px yellow; }

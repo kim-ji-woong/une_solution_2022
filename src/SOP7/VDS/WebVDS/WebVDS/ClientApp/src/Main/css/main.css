@@ -1,0 +1,1698 @@
+﻿
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+.submenu {
+    display: none;
+    background: #ccc;
+}
+
+#menuBtn:checked ~ .submenu {
+    display: block;
+}
+
+/* nav바 */
+
+#vdsNav {position: fixed; top: 80px; left: 30px; z-index: 98;}
+#vdsNav button {display: block; width: 56px; height: 56px; text-indent: -9999px; position: relative; z-index: 1; background: url('../../Main/image/navBtn_icon.png')no-repeat center center;
+               cursor: pointer; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;}
+#vdsNav button.on { /* background: #2e344d url('../../SDMS/img/pop/navigation_active.png')no-repeat center center; */ }
+#vdsNav > div {display: none; background: #111928; width: 320px; height: 40px; position: absolute; left: 60px; top: 5px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;}
+.vdsMenu { /* padding-top: 25px; padding-bottom: 15px; */ display: flex; animation:slide 12s infinite; }
+.vdsMenu li { display:flex; color: #fff; cursor: pointer; }
+.vdsMenu li a { display: block; width: 40px; height: 40px; /*text-indent: -9999px;*/ cursor: pointer; position: relative; }
+
+.vdsMenu .goHome a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/home_black.png')no-repeat center center; }
+.vdsMenu .saveViewport a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/view.png')no-repeat center center; }
+.vdsMenu .zoomIn a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/zoom_in.png')no-repeat center center; }
+.vdsMenu .zoomOut a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/zoom_out.png')no-repeat center center; }
+.vdsMenu .nameOn a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/nameOn_icon.png')no-repeat center center; }
+.vdsMenu .nameOff a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/nameOff_icon.png')no-repeat center center; }
+.vdsMenu .changeView a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/onePerson_icon.png')no-repeat center center; }
+.vdsMenu .model3DMenuOn a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/modelOn.png')no-repeat center center; background-size: 24px; }
+.vdsMenu .model3DMenuOff a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/modelOff2.png')no-repeat center center; background-size: 24px; }
+.vdsMenu .fmsMenuOn a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/fmsOn.png')no-repeat center center; }
+.vdsMenu .fmsMenuOff a { display:inline-block; width: 40px; height: 40px; background: url('../../Main/image/fmsOff3.png')no-repeat center center; }
+
+
+/* .vdsMenu .nameOn { background: url('../../Main/image/nameOn_icon.png')no-repeat center center; }
+.vdsMenu .nameOff {background: url('../../Main/image/nameOff_icon.png')no-repeat center center; } */ 
+.vdsMenu .oneMode { background: url('../../Main/image/onePerson_icon.png')no-repeat center center; }
+.vdsMenu .threeMode {background: url('../../Main/image/threePerson_icon.png')no-repeat center center; }
+
+
+.vdsMenu li:nth-child(1) a:before { display: block; background: url('../../Main/image/addPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 top: -30%; margin-top: -12px; padding: 0 12px;  width: 50px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(2) a:before { display: block; background: url('../../Main/image/pop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 left: -20%; top: -30%; margin-top: -12px; padding: 0 8px; width: 60px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(3) a:before { display: block; background: url('../../Main/image/addPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 top: -30%; margin-top: -12px; padding: 0 8px; width: 50px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(4) a:before { display: block; background: url('../../Main/image/addPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 top: -30%; margin-top: -12px; padding: 0 8px; width: 50px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(5) a:before { display: block; background: url('../../Main/image/pop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 left: -20%; top: -30%; margin-top: -12px; padding: 0 10px; width: 60px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(6) a:before { display: block; background: url('../../Main/image/pop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 left: -20%; top: -30%; margin-top: -12px; padding: 0 6px; width: 60px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(7) a:before { display: block; background: url('../../Main/image/cameraPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 left: -20%; top: -30%; margin-top: -12px; padding: 0 8px; width: 46px; height: 24px; line-height: 20px; white-space: nowrap; }
+.vdsMenu li:nth-child(8) a:before { display: block; background: url('../../Main/image/addPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; bottom: 0;
+					                 left: -20%; top: -30%; margin-top: -12px; padding: 0 8px; width: 60px; height: 24px; line-height: 20px; white-space: nowrap; margin-left: 10px; }
+.vdsMenu li a:hover:before { margin-bottom: 45px; opacity: 1.0; z-index: 2; } 
+
+
+
+.vdsMenu li:nth-child(1) a:before { content: '홈'; }
+.vdsMenu li:nth-child(2) a:before { content: '초기화면'; }
+.vdsMenu li:nth-child(3) a:before { content: '확대'; }
+.vdsMenu li:nth-child(4) a:before { content: '축소'; }
+.vdsMenu li:nth-child(5) a:before { content: '네임 택'; }
+.vdsMenu li:nth-child(6) a:before { content: '시점 변화'; }
+.vdsMenu li:nth-child(7) a:before { content: 'Camera'; }
+.vdsMenu li:nth-child(8) a:before { content: 'FMS'; }
+
+
+/* 조작키 */
+
+#vdsOperationKey {position: fixed; bottom: 10%; left: 30px; z-index: 98;}
+#vdsOperationKey button {display: block; width: 40px; height: 40px; text-indent: -9999px; position: relative; z-index: 1; background: #19A5FF url('../../Main/image/operationkey_icon.png')no-repeat center center;
+                          cursor: pointer; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%;}
+#vdsOperationKey button.on { /* background: #2e344d url('../../SDMS/img/pop/navigation_active.png')no-repeat center center; */ }
+#vdsOperationKey > div {display: none; background: #111928; width: 594px; height: 40px; position: absolute; left: 50px; top: 0px; border-radius: 20px 20px 20px 20px; -moz-border-radius: 20px 20px 20px 20px; -webkit-border-radius: 20px 20px 20px 20px;}
+.vdsOperationMenu { display: flex; animation:slide 12s infinite; margin-left: 10px; }
+.vdsOperationMenu li { display:flex; border-right: dashed 1px #d7d7d7; color: #fff; padding: 0px 10px 0px 8px; cursor: pointer; }
+.vdsOperationMenu li:last-child{ border-right:none; }
+.vdsOperationMenu li a { display: block; width: 40px; height: 40px; /*text-indent: -9999px;*/ cursor: pointer; position: relative; }
+.vdsOperationMenu li span { display:inline-block; line-height: 40px; font-size: 14px; }
+.vdsOperationMenu li:nth-child(1) a { background: url('../../Main/image/forward_icon.png')no-repeat center center; }
+.vdsOperationMenu li:nth-child(2) a { background: url('../../Main/image/reverse_icon.png')no-repeat center center; }
+.vdsOperationMenu li:nth-child(3) a { background: url('../../Main/image/left_icon.png')no-repeat center center; }
+.vdsOperationMenu li:nth-child(4) a { background: url('../../Main/image/right_icon.png')no-repeat center center; }
+.vdsOperationMenu li:nth-child(5) a { background: url('../../Main/image/seat_icon.png')no-repeat center center; }
+.vdsOperationMenu li:nth-child(6) a { background: url('../../Main/image/stand_icon.png')no-repeat center center; }
+
+
+.vdsOperationMenu li a:before { display: block; background: rgba(17,25,40,0.7); color: #fff; opacity: 0; -webkit-transition: all 1.0s;
+							   transition: all 1.0s; font-size: 11px; font-family: 'dotum', sans-serif; position: absolute; right: 0;
+							   top: 50%; margin-top: -12px; padding: 0 10px; height: 24px; line-height: 24px; white-space: nowrap;
+							   -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; }
+.vdsOperationMenu li a:hover:before { margin-right: 45px; opacity: 1.0; z-index: 2; }
+
+
+/* 우측메뉴바 */
+
+#vdsRightMenu {position: fixed; top: 80px; right: 0; z-index: 98;}
+/* #vdsRightMenu button {display: block; width: 55px; height: 68px; text-indent: -9999px; position: relative; z-index: 1; cursor: pointer; border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+                      background: #292A2E url('../../Main/image/menubar_disable.png')no-repeat center center; }
+#vdsRightMenu button.on { background: #292A2E url('../../Main/image/menubar_active.png')no-repeat center center; background-position-y: 8px; } */
+
+.menuModeIcon { display: block; width: 55px; height: 68px; text-indent: -9999px; position: relative; z-index: 1; cursor: pointer; border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+                background: #292A2E url('../../Main/image/menubar_disable.png')no-repeat center center;   }
+.menuModeIcon.on { background: #292A2E url('../../Main/image/menubar_active.png')no-repeat center center; background-position-y: 8px;  }
+
+.menuModeIconEdit { display: block; width: 55px; height: 68px; text-indent: -9999px; position: relative; z-index: 1; cursor: pointer; border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+                     background: #000000 url('../../Main/image/menubar_disable.png')no-repeat center center;   }
+.menuModeIconEdit.on { background: #000000 url('../../Main/image/menubarEdit_active.png')no-repeat center center; background-position-y: 8px;  }
+
+.menuIcon{ display:block; /* width:21px; */ height: 21px; background: #292A2E url('../../Main/image/menu_icon.png')no-repeat center center; background-position-x: 18px; }
+.menuText{ display:block; width: 100%; height:14px; color: #fff; font-size: 10px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; text-align:center; }
+.menuArrowIcon{ display:inline-block; width: 10px; height:10px; background: url('../../Main/image/menuDown_icon.png')no-repeat center center; }
+.menuArrowTopIcon{ display:inline-block; width: 100%; height: 10px; background:url('../../Main/image/menuUp_icon.png')no-repeat center center; }
+.menuArrowTopIconEdit{ display:inline-block; width: 100%; height: 10px; background:url('../../Main/image/menuUpEdit_icon.png')no-repeat center center; }
+
+
+/* #vdsRightMenu > div {display: none; background: #292A2E; width: 55px; height: 310px; position: absolute; left: 0; top: 66px; border-bottom-left-radius: 5px; } */
+.box3{ display: none; background: #292A2E; width: 55px; height: 310px; position: absolute; left: 0; top: 66px; border-bottom-left-radius: 5px; }
+.box3Edit{ display: none; background: #000000; width: 55px; height: 310px; position: absolute; left: 0; top: 66px; border-bottom-left-radius: 5px;}
+
+/* .vdsRMenu { display: flex; animation:slide 12s infinite; margin-left: 10px; } */ 
+.vdsRMenu{ padding-top: 10px; padding-bottom: 5px; /* position:relative; */ }
+.vdsRMenu li { display:flex; color: #fff; padding: 0px 10px 0px 8px; cursor: pointer; }
+.vdsRMenu li:last-child{ border-right:none; }
+.vdsRMenu li a { display: block; width: 55px; height: 55px; cursor: pointer; position: relative; }
+.vdsRMenu li span { display:inline-block; line-height: 55px; }
+.vdsRMenu li:nth-child(1) a { display:inline-block; width: 55px; height: 55px; background: url('../../Main/image/simulation_icon.png')no-repeat center center; }
+.vdsRMenu li:nth-child(2) a { display:inline-block; width: 55px; height: 55px; background: url('../../Main/image/cfd_icon.png')no-repeat center center; }
+.vdsRMenu li:nth-child(3) a { display:inline-block; width: 55px; height: 55px; background: url('../../Main/image/remote_icon.png')no-repeat center center; }
+.vdsRMenu li:nth-child(4) a { display:inline-block; width: 55px; height: 55px; background: url('../../Main/image/multi_icon.png')no-repeat center center; } 
+.vdsRMenu li:nth-child(5) a { display:inline-block; width: 55px; height: 55px; background: url('../../Main/image/inventory_icon.png')no-repeat center center; } 
+
+
+.vdsRMenu li:nth-child(1) a:before { display: block; background: url('../../Main/image/simulationPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; right: 0;
+					                 top: 50%; margin-top: -12px; padding: 0 5px; width: 70px; height: 24px; line-height: 24px; white-space: nowrap; }
+.vdsRMenu li:nth-child(2) a:before { display: block; background: url('../../Main/image/cfdPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; right: 0;
+					                 top: 50%; margin-top: -12px; padding: 0 5px; width: 40px; height: 24px; line-height: 24px; white-space: nowrap; }
+.vdsRMenu li:nth-child(3) a:before { display: block; background: url('../../Main/image/simulationPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; right: 0;
+					                 top: 50%; margin-top: -12px; padding: 0 7px; width: 70px; height: 24px; line-height: 24px; white-space: nowrap; }
+.vdsRMenu li:nth-child(4) a:before { display: block; background: url('../../Main/image/multiPop.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; right: 0;
+					                 top: 50%; margin-top: -12px; padding: 0 4px; width: 94px; height: 24px; line-height: 24px; white-space: nowrap; }
+.vdsRMenu li:nth-child(5) a:before { display: block; background: url('../../Main/image/inventPop3.png')no-repeat; color: #000000; opacity: 0; -webkit-transition: all 1.0s;
+					                 transition: all 1.0s; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; position: absolute; right: 0;
+					                 top: 50%; margin-top: -12px; padding: 0 10px; width: 120px; height: 24px; line-height: 24px; white-space: nowrap; }
+
+
+.vdsRMenu li a:hover:before { margin-right: 45px; opacity: 1.0; z-index: 2; } 
+
+.vdsRMenu li:nth-child(1) a:before { content: '시뮬레이션'; }
+.vdsRMenu li:nth-child(2) a:before { content: 'CFD'; }
+.vdsRMenu li:nth-child(3) a:before { content: '원격지원'; }
+.vdsRMenu li:nth-child(4) a:before { content: '다자간멀티소통'; }
+.vdsRMenu li:nth-child(5) a:before { content: '인벤토리 상세정보 관리'; }
+
+
+#check-btn { display: none; }
+#check-btn:checked ~ .rackDetailBox { display: block; } 
+/*.rackDetailBox { display: none; }*/
+
+.rackDetailBox{ /* width: 364px; */ /* height: 279px; */ background:#BCBCBC; }
+
+.rackDetailImage{ display:flex; /* width: 341px; */  height: 88px; background: #FFFFFF; border-radius: 5px; margin: 10px; position: relative; }
+.rackDetailImage .rackFrontBox{ display: flex; flex-direction: column;  width: 100%; justify-content: center; align-items: center; padding-top: 20px; }
+.rackDetailImage .rackFrontTitle{ font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #001625; margin-bottom: 10px;
+                                  position: absolute; left: 70px; top: 8px; }
+.rackDetailImage .rackFrontImage{ display:inline-block; width: 128px; height:22px; /*background:url('../../Main/image/rackDetail.png')no-repeat;*/ }
+.rackDetailImage .rackBackBox{ display: flex; flex-direction: column; width: 100%; justify-content: center; align-items: center; padding-top: 20px; }
+.rackDetailImage .rackBackTitle{ font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #001625; margin-bottom: 10px;
+                                 position:absolute; right: 70px; top: 8px; }
+.rackDetailImage .rackBackImage{ display:inline-block; width: 128px; height:22px; /*background:url('../../Main/image/rackDetail.png')no-repeat;*/ }
+
+
+@media screen and (min-width:1921px) {
+
+.rackDetailImage .rackFrontTitle{ font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #001625; margin-bottom: 10px;
+                                  position: absolute; left: 136px; top: 8px; }
+.rackDetailImage .rackBackTitle{ font-size: 14px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; color: #001625; margin-bottom: 10px;
+                                 position:absolute; right: 140px; top: 8px; }
+}
+
+.rackDetailContents{ display:flex; }
+.rackDetailContents .rackDetailLeft{ display:block; width: 100%; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; padding-left: 10px; }
+.rackDetailLeft .equipmentName{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .equipmentName span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                                  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .equipmentName span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .equipmentName span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px;
+                                                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailLeft .fcName{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .fcName span:nth-child(1){ display: inline-block; width: 160px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                                  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .fcName span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .fcName span:nth-child(3){ display: inline-block; width: 160px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px;
+                                                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+
+.rackDetailLeft .otherName{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .otherName span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .otherName span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .otherName span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailLeft .purpose{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .purpose span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .purpose span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .purpose span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailLeft .state{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .state span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .state span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .state span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailLeft .modelName{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .modelName span:nth-child(1){ display: inline-block; width:120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .modelName span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailLeft .modelName span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailLeft .manufacturer{  display: flex; margin-bottom: 3px; }
+.rackDetailLeft .manufacturer span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                                 font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailLeft .manufacturer span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color:#000000; padding: 0px 8px; }
+.rackDetailLeft .manufacturer span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                                 overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+
+
+ .rackDetailContents .rackDetailRight{ display:block; width: 100%; font-size: 11px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; padding-left: 10px; }
+.rackDetailRight .diskSize{  display: flex; margin-bottom: 4px; }
+.rackDetailRight .diskSize span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                              font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailRight .diskSize span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailRight .diskSize span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                              overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailRight .day{  display: flex; margin-bottom: 4px; }
+.rackDetailRight .day span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                         font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailRight .day span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailRight .day span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px;  
+                                         overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailRight .size{  display: flex; margin-bottom: 4px; }
+.rackDetailRight .size span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                             font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailRight .size span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailRight .size span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailRight .shelf{  display: flex; margin-bottom: 4px; }
+.rackDetailRight .shelf span:nth-child(1){ display: inline-block; width: 120px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                           font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailRight .shelf span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailRight .shelf span:nth-child(3){ display: inline-block; width: 120px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px;  
+                                           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+.rackDetailRight .sanDiskSize{  display: flex; margin-bottom: 4px; }
+.rackDetailRight .sanDiskSize span:nth-child(1){ display: inline-block; width: 160px; height: 21px; line-height: 21px; background: #7070706b; border-radius: 3px; color:#000000;  text-align: center;
+                                              font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; }
+.rackDetailRight .sanDiskSize span:nth-child(2){ display: inline-block; height: 25px; line-height: 22px; color: #000000; padding: 0px 8px; }
+.rackDetailRight .sanDiskSize span:nth-child(3){ display: inline-block; width: 160px; line-height: 21px; color: #000000; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 12px; 
+                                                overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: break-all; }
+
+
+
+.generalTable{ display: table; width: auto; height: auto; }
+.maintenanceTable{ display: table; width: auto; height: auto; }
+.hardwareTable{ display: table; width: auto; height: auto; }
+.networkTable{ display: table; width: auto; height: auto; }
+.addTable{ display: table; width: auto; height: auto; }
+.connectTable{ display: table; width: auto; height: auto; }
+.managementTable{ display: table; width: auto; height: auto; }
+.redundancyTable{ display: table; width: auto; height: auto; }
+.softwareTable{ display: table; width: auto; height: auto; }
+.backupTable{ display: table; width: auto; height: auto; }
+
+.noneTest{  }
+
+
+/* 인벤토리 UI 수정 */
+
+.inventTabArea { width: 100%; display: flex; height: calc(100% - 160px); flex-direction: row; flex-wrap: wrap; position:relative;
+                 min-width: 800px !important; min-height: 40px !important; }
+.inventTabArea input { display: none; }  
+.inventTabArea label { width: 152px; height: 42px; line-height: 42px; text-align: center; background: #D1D1D1; border-top-left-radius: 5px;
+                       border-top-right-radius: 5px; color: #707070; margin: 0px !important; border-right: solid 1px #bbbbbb; }
+.inventTabArea label:hover { cursor: pointer; }
+.inventTabArea input:checked + label { width: 152px; height: 42px; line-height: 42px; text-align: center; background: #00B5F7; border-top-left-radius: 5px;  border-top-right-radius: 5px;
+								       color: #fff; font-weight: bold; margin: 0px !important; }
+
+@media screen and (min-width:0px) and (max-width:1919px) {
+  .inventTabContent { width: 100%; height: calc(100% - 50px); left: 0px; top: 90px; }
+}
+
+@media screen and (min-width:1920px) {
+  .inventTabContent { width: 100%; height: calc(100% - 10px); left: 0px; top: 90px; }
+}
+
+.inventCheckBox{ display: inline-flex; width: 50%; vertical-align: middle; }
+
+#tabNetwork:checked ~ #content1,
+#tabSecurity:checked ~ #content2,
+#tabBackUp:checked ~ #content3,
+#tabServer:checked ~ #content4,
+#tabAppli:checked ~ #content5,
+#tabBox:checked ~ #content6,
+#tabSan:checked ~ #content7,
+#tabEtc:checked ~ #content8 { display: flex; }
+
+
+
+/* cfd image */
+
+.slider-2 { width: 98vw; height: calc(100% - 120px); position:relative; border-radius:8px; }
+.slider-2 .slides > div { position:absolute; left: 50%; top: 50%; transform:translate(-50%, -50%); width: 100%; height: 100%; opacity:0; transition: opacity 0.5s; }
+.slider-2 .slides > div.active { opacity:1; }
+.cfdImage{ display: inline-block; /* width: 80vw !important; */  max-width: calc(100% - 20vw); /* aspect-ratio: 16 / 9; */
+		   background-position:center; background-size:contain; background-repeat:no-repeat;
+		   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.cfdLeftArrow{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdLeftGray.png')no-repeat center center; cursor: pointer; }
+.cfdLeftArrow:hover{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdLeftArrow_active.png')no-repeat center center; cursor: pointer; }
+.cfdLeftArrowDisabled{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdLeftGray.png')no-repeat center center; cursor: default; }
+.cfdRightArrow{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdRightGray.png')no-repeat center center; cursor: pointer; }
+.cfdRightArrow:hover{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdRightArrow_active.png')no-repeat center center; cursor: pointer; }
+.cfdRightArrowDisabled{ display: inline-block; width: 43px; height: 74px; background: url('../../Main/image/cfdRightGray.png')no-repeat center center; cursor: default; }
+
+
+.slider-2 .page-nav { display: flex; justify-content: center; /* vertical-align: middle; */ position:absolute; width:100%; height: 26px; line-height: 26px; text-align:center; bottom:-44px; z-index: 11; }
+.slider-2 .page-nav > div { display:inline-block; width:15px; height:15px; cursor:pointer;  font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: bold; font-size: 18px;
+                            margin: 0px 20px; }
+.slider-2 .page-nav > div.active { width: 26px; height: 26px; line-height: 26px; border-radius: 5px; background-color:#00B5F7; }
+.slider-2 > .side-btns > div{ position:absolute; top:0; left:0; width:30%; height:100%; z-index:10; }
+
+.pageLeft{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageLeft.png')no-repeat center center; }
+.pageLeft:hover{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageLeft_active.png')no-repeat center center; cursor: pointer;}
+.pageLeftDisabled{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageLeft.png')no-repeat center center; }
+.pageRight{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageRight.png')no-repeat center center; }
+.pageRight:hover{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageRight_active.png')no-repeat center center; cursor: pointer;}
+.pageRightDisabled{ display: inline-block; width: 26px; height: 26px; background: url('../../Main/image/cfdPageRight.png')no-repeat center center; }
+
+.slider-2 > .side-btns > div > span:active{ /* transform:translatey(-40%); */ }
+.slider-2 > .side-btns > div:last-child{ left:auto; right:0; }
+.slider-2 > .side-btns > div > span{ position:absolute; top:50%; transform:translatey(-50%); left:inherit; right:inherit; margin:0 20px; }
+
+/* .image2{ display: block; width: 80vw; height: calc(80vw * 0.75); background: url('../../Main/image/LGD_베트남H3전산실_전체.png')no-repeat center center; }
+.image3{ display: block; width: 80vw; height: calc(80vw * 0.75); background: url('../../Main/image/LGD_베트남H3전산실_평면단면.png')no-repeat center center; }
+.image4{ display: block; width: 80vw; height: calc(80vw * 0.75); background: url('../../Main/image/TestRoom_와류.png')no-repeat center center; }
+.image5{ display: block; width: 80vw; height: calc(80vw * 0.75); background: url('../../Main/image/TestRoom_장스팬단점.png')no-repeat center center; }
+.image6{ display: block; width: 80vw; height: calc(80vw * 0.75); background: url('../../Main/image/평면이미지지만입체같은.png')no-repeat center center; } */
+
+.cfdDate{ display: block; width: calc(100vw - 50px); height: 20px; line-height: 20px; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; font-weight: 400; font-size: 14px; color: #9c9c9c;
+		  text-align:right; }
+
+.jbText {
+  padding: 15px 20px;
+  background-color: #444444;
+  border-radius: 5px;
+  color: #ffffff;
+  display: none;
+}
+
+#jbTitle:hover + .jbText {
+  display: block;
+}
+
+/* .hoverText{ display: block; width: 100%; color: #000000; position: absolute; text-align: center; font-size: 12px; 
+            border:solid 1px #1BE73D; } */
+
+
+/* items imageSize */
+
+/* appliance ********************************************************************/	
+
+.appADR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }								
+.appADR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }								
+.appADR02-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }								
+.appADR02 { display: inline-block; width:150px;  height:15px;  background-size:150px; }								
+.appADR03-back { display: inline-block; width:150px;  height:43px;  background-size:150px; }								
+.appADR03 { display: inline-block; width:150px;  height:43px;  background-size:150px; }								
+.appADR04-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }								
+.appADR04 { display: inline-block; width:150px;  height:49px;  background-size:150px; }								
+.appADR05-back { display: inline-block; width:120px;  height:49px;  background-size:120px; }								
+.appADR05 { display: inline-block; width:120px;  height:49px;  background-size:120px; }								
+.appADR06-back { display: inline-block; width:110px;  height:49px;  background-size:110px; }								
+.appADR06 { display: inline-block; width:110px;  height:49px;  background-size:110px; }								
+.appADR07-back { display: inline-block; width:90px;  height:49px;  background-size:90px; }								
+.appADR07 { display: inline-block; width:90px;  height:49px;  background-size:90px; }								
+.appADR08-back { display: inline-block; width:80px;  height:49px;  background-size:80px; }								
+.appADR08 { display: inline-block; width:80px;  height:49px;  background-size:80px; }								
+.appADR09-back { display: inline-block; width:70px;  height:49px;  background-size:70px; }								
+.appADR09 { display: inline-block; width:70px;  height:49px;  background-size:70px; }								
+.appADR10-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR10 { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR11-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR11 { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR12-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR12 { display: inline-block; width:60px;  height:49px;  background-size:60px; }								
+.appADR13-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR13 { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR14-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR14 { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR15-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR15 { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR16-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR16 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADS01-back { display: inline-block; width:120px;  height:40px;  background-size:120px; }								
+.appADS01 { display: inline-block; width:120px;  height:40px;  background-size:120px; }								
+.appADS02-back { display: inline-block; width:90px;  height:49px;  background-size:60px; }								
+.appADS02 { display: inline-block; width:90px;  height:49px;  background-size:60px; }								
+.appADS03-back { display: inline-block; width:50px;  height:49px;  background-size:38px; }								
+.appADS03 { display: inline-block; width:50px;  height:49px;  background-size:38px; }								
+.appADS04-back { display: inline-block; width:50px;  height:49px;  background-size:30px; }								
+.appADS04 { display: inline-block; width:50px;  height:49px;  background-size:30px; }								
+.appADS05-back { display: inline-block; width:50px;  height:49px;  background-size:30px; }								
+.appADS05 { display: inline-block; width:50px;  height:49px;  background-size:30px; }								
+.appDefault { display: inline-block; width:150px;  height:15px;  background-size:150px; } 							
+
+
+/* 추가 */
+.appADR17-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR17 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR18-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR18 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR19-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR19 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR20-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR20 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR21-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR21 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR22-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR22 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR23-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR23 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR24-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR24 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR25-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR25 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR26-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR26 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR27-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR27 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR28-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR28 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR29-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR29 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR30-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR30 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR31-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR31 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR32-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR32 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR33-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR33 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR34-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR34 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR35-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR35 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR36-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR36 { display: inline-block; width:50px;  height:49px;  background-size:50px; }		
+.appADR37-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR37 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR38-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR38 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR39-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR39 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR40-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR40 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR41-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR41 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR42-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR42 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR43-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR43 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR44-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR44 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.appADR45-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }								
+.appADR45 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+
+
+
+
+/* backup ********************************************************************/
+										
+.backupDefault { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupDELL_AVAMA_ADS_Gen3-back { display: inline-block; width:150px;  height:49px;  background-size:100px; }											
+.backupDELL_AVAMA_ADS_Gen3.png { display: inline-block; width:150px;  height:49px;  background-size:100px; }											
+.backupDELL_Datadomain_ES30-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupDELL_Datadomain_ES30 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupQuantum_Dxi4800-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupQuantum_Dxi4800 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupVeritas_5250-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupVeritas_5250 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupVeritas_Netbackup_5230-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupVeritas_Netbackup_5230 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+											
+.backupBDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.backupBDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.backupBDR02-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.backupBDR02 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.backupBDR03-back { display: inline-block; width:150px;  height:45px;  background-size:150px; }											
+.backupBDR03 { display: inline-block; width:150px;  height:45px;  background-size:150px; }											
+.backupBDR04-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.backupBDR04 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.backupBDR05-back { display: inline-block; width:120px;  height:49px;  background-size:120px; }											
+.backupBDR05 { display: inline-block; width:120px;  height:49px;  background-size:120px; }											
+.backupBDR06-back { display: inline-block; width:110px;  height:49px;  background-size:110px; }											
+.backupBDR06 { display: inline-block; width:110px;  height:49px;  background-size:110px; }											
+.backupBDR07-back { display: inline-block; width:100px;  height:49px;  background-size:100px; }											
+.backupBDR07 { display: inline-block; width:100px;  height:49px;  background-size:100px; }											
+.backupBDR08-back { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.backupBDR08 { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.backupBDR09-back { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.backupBDR09 { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.backupBDR10-back { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR10 { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR11-back { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR11 { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR12-back { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR12 { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.backupBDR13-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.backupBDR13 { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.backupBDR14-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.backupBDR14 { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.backupBDR15-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR15 { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDS01-back { display: inline-block; width:100px;  height:45px;  background-size:100px; }											
+.backupBDS01 { display: inline-block; width:100px;  height:45px;  background-size:100px; }											
+.backupBDS02-back { display: inline-block; width:90px;  height:49px;  background-size:60px; }											
+.backupBDS02 { display: inline-block; width:90px;  height:49px;  background-size:60px; }											
+.backupBDS03-back { display: inline-block; width:60px;  height:49px;  background-size:40px; }											
+.backupBDS03 { display: inline-block; width:60px;  height:49px;  background-size:40px; }											
+.backupBDS04-back { display: inline-block; width:50px;  height:49px;  background-size:30px; }											
+.backupBDS04 { display: inline-block; width:50px;  height:49px;  background-size:30px; }											
+.backupBDS05-back { display: inline-block; width:40px;  height:49px;  background-size:30px; }											
+.backupBDS05 { display: inline-block; width:120px;  height:49px;  background-size:120px; }
+
+
+/* 추가 */
+.backupBDR16-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR16 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR17-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR17 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR18-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR18 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR19-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR19 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR20-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR20 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR21-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR21 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR22-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR22 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR23-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR23 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR24-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR24 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR25-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR25 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR26-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR26 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR27-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR27 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR28-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR28 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR29-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR29 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR30-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR30 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR31-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR31 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR32-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR32 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR33-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR33 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR34-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR34 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR35-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR35 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR36-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR36 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR37-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR37 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR38-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR38 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR39-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR39 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR40-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR40 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR41-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR41 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR42-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR42 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR43-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR43 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR44-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR44 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.backupBDR45-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.backupBDR45 { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+
+
+
+
+/* box ********************************************************************/
+										
+											
+.boxSDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxSDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxSDR02-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxSDR02 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxSDR03-back { display: inline-block; width:150px;  height:40px;  background-size:150px; }											
+.boxSDR03 { display: inline-block; width:150px;  height:40px;  background-size:150px; }											
+.boxSDR04-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxSDR04 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxSDR05-back { display: inline-block; width:120px;  height:49px;  background-size:120px; }											
+.boxSDR05 { display: inline-block; width:120px;  height:49px;  background-size:120px; }											
+.boxSDR06-back { display: inline-block; width:100px;  height:49px;  background-size:100px; }											
+.boxSDR06 { display: inline-block; width:100px;  height:49px;  background-size:100px; }											
+.boxSDR07-back { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.boxSDR07 { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.boxSDR08-back { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.boxSDR08 { display: inline-block; width:80px;  height:49px;  background-size:80px; }											
+.boxSDR09-back { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.boxSDR09 { display: inline-block; width:70px;  height:49px;  background-size:70px; }											
+.boxSDR10-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.boxSDR10 { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.boxSDR11-back { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.boxSDR11 { display: inline-block; width:60px;  height:49px;  background-size:60px; }											
+.boxSDR12-back { display: inline-block; width:60px;  height:49px;  background-size:50px; }											
+.boxSDR12 { display: inline-block; width:60px;  height:49px;  background-size:50px; }											
+.boxSDR13-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR13 { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR14-back  { display: inline-block; width:50px;  height:49px;  background-size:40px; }											
+.boxSDR14  { display: inline-block; width:50px;  height:49px;  background-size:40px; }											
+.boxSDR15-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR15  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+
+/* 추가 */
+.boxSDR16-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR16  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR17-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR17  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR18-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR18  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR19-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR19  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR20-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR20  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR21-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR21  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR22-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR22  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR23-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR23  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR24-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR24  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR25-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR25  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR26-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR26  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR27-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR27  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR28-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR28  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR29-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR29  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR30-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR30  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR31-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR31  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR32-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR32  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR33-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR33  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR34-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR34  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR35-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR35  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR36-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR36  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR37-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR37  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR38-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR38  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR39-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR39  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR40-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR40  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR41-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR41  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR42-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR42  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR43-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR43  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR44-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR44  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+.boxSDR45-back  { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxSDR45  { display: inline-block; width:50px;  height:49px;  background-size:50px; }	
+
+
+.boxSDS01-back  { display: inline-block; width:100px;  height:45px;  background-size:100px; }											
+.boxSDS01 { display: inline-block; width:100px;  height:45px;  background-size:100px; }											
+.boxSDS02-back  { display: inline-block; width:100px;  height:55px;  background-size:55px; }											
+.boxSDS02  { display: inline-block; width:100px;  height:55px;  background-size:55px; }											
+.boxDS03-back  { display: inline-block; width:70px;  height:49px;  background-size:40px; }											
+.boxSDS03  { display: inline-block; width:70px;  height:49px;  background-size:40px; }											
+.boxSDS04-back { display: inline-block; width:50px;  height:49px;  background-size:30px; }											
+.boxSDS04  { display: inline-block; width:50px;  height:49px;  background-size:30px; }											
+.boxSDS05-back { display: inline-block; width:40px;  height:49px;  background-size:30px; }											
+.boxSDS05  { display: inline-block; width:40px;  height:49px;  background-size:30px; }											
+											
+.boxDell_EMC_R440-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDell_EMC_R440 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDELL_PowerEdge_2950-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDELL_PowerEdge_2950 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDELL_PowerEdge_R910-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDELL_PowerEdge_R910 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxDell_R220-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R220 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R320-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R320 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R350-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R350 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R420-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R420  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R430-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R430 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R440-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R440 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R610-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R610 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R620-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R620 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R630-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R630 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R640-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R640 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R650-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R650 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R710-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R710 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R720-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R720  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R730-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R730 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R730XD-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R730XD  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R740-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R740 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R740XD-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R740XD { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R750-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R750 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R750XS-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxDell_R750XS { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_9000_RP7420-back { display: inline-block; width:50px;  height:52px;  background-size:50px; }											
+.boxHPE_9000_RP7420 { display: inline-block; width:50px;  height:52px;  background-size:50px; }											
+.boxHPE_Apollo_K6000-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxHPE_Apollo_K6000 { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxHPE_BL860-back { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxHPE_BL860 { display: inline-block; width:50px;  height:49px;  background-size:50px; }											
+.boxHPE_BladeSystem_C7000-back { display: inline-block; width:60px;  height:46px;  background-size:60px; }											
+.boxHPE_BladeSystem_C7000 { display: inline-block; width:60px;  height:46px;  background-size:60px; }											
+.boxHPE_C7000-back { display: inline-block; width:60px;  height:48px;  background-size:60px; }											
+.boxHPE_C7000 { display: inline-block; width:60px;  height:48px;  background-size:60px; }											
+.boxHPE_DL120_G9-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL120_G9 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL180_G6-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL180_G6 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL320_G6-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL320_G6 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL320_G8-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxHPE_DL320_G8 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL320e_G8-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxHPE_DL320e_G8 { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.boxHPE_DL350_G5-back { display: inline-block; width:30px;  height:49px;  background-size:30px; }											
+.boxHPE_DL350_G5 { display: inline-block; width:30px;  height:49px;  background-size:30px; }											
+.boxHPE_DL350_G6-back { display: inline-block; width:120px;  height:50px;  background-size:120px; }											
+.boxHPE_DL350_G6 { display: inline-block; width:120px;  height:50px;  background-size:120px; }											
+.boxHPE_DL360_G5-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G5 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G6-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G6 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G7-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G7 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G8-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G8 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G9-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360_G9 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360e_G8-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360e_G8 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360p_G8-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL360p_G8  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G10-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G10  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G10Plus  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G10Plus_back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G5-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G5  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxHPE_DL380_G6-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G6  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G7-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G7 { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G8-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G8  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G9-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_DL380_G9  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxHPE_ML350_G6-back  { display: inline-block; width:150px;  height:50px;  background-size:100px; }											
+.boxHPE_ML350_G6-01  { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.boxHPE_ML350_G6  { display: inline-block; width:30px;  height:50px;  background-size:30px; }											
+.boxHPE_ML370-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxHPE_ML370  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxHPE_ML370_G5-back  { display: inline-block; width:30px;  height:50px;  background-size:26px; }											
+.boxHPE_ML370_G5  { display: inline-block; width:30px;  height:50px;  background-size:26px; }											
+.boxHPE_ML570_G3-back  { display: inline-block; width:50px;  height:50px;  background-size:55px; }											
+.boxHPE_ML570_G3  { display: inline-block; width:50px;  height:50px;  background-size:55px; }											
+.boxHPE_Z240-back  { display: inline-block; width:20px;  height:50px;  background-size:20px; }											
+.boxHPE_Z240  { display: inline-block; width:20px;  height:50px;  background-size:20px; }											
+.boxHPE_Z840-back  { display: inline-block; width:20px;  height:50px;  background-size:20px; }											
+.boxHPE_Z840  { display: inline-block; width:20px;  height:50px;  background-size:20px; }											
+.boxIBM_6792_LPU-back  { display: inline-block; width:90px;  height:70px;  background-size:90px; }											
+.boxIBM_6792_LPU { display: inline-block; width:80px;  height:70px;  background-size:80px; }											
+.boxIBM_7042-CR5-back  { display: inline-block; width:100px;  height:85px;  background-size:100px; }											
+.boxIBM_7042-CR5  { display: inline-block; width:100px;  height:85px;  background-size:100px; }											
+.boxIBM_7310-CR3-back  { display: inline-block; width:110px;  height:90px;  background-size:110px; }											
+.boxIBM_7310-CR3  { display: inline-block; width:90px;  height:85px;  background-size:90px; }											
+.boxIBM_7311_D20-back  { display: inline-block; width:90px;  height:75px;  background-size:90px; }											
+.boxIBM_7311_D20  { display: inline-block; width:100px;  height:66px;  background-size:100px; }											
+.boxIBM_P5_55A-back  { display: inline-block; width:90px;  height:68px;  background-size:90px; }											
+.boxIBM_P5_55A  { display: inline-block; width:95px;  height:60px;  background-size:95px; }											
+.boxIBM_P550-back  { display: inline-block; width:90px;  height:68px;  background-size:90px; }											
+.boxIBM_P550  { display: inline-block; width:90px;  height:64px;  background-size:90px; }											
+.boxIBM_P570-back { display: inline-block; width:90px;  height:75px;  background-size:80px; }											
+.boxIBM_P570 { display: inline-block; width:90px;  height:75px;  background-size:80px; }											
+.boxIBM_P6_520-back  { display: inline-block; width:95px;  height:73px;  background-size:95px; }											
+.boxIBM_P6_520  { display: inline-block; width:95px;  height:73px;  background-size:95px; }											
+.boxIBM_P630-back  { display: inline-block; width:90px;  height:70px;  background-size:90px; }											
+.boxIBM_P630  { display: inline-block; width:90px;  height:70px;  background-size:90px; }											
+.boxIBM_P660-back  { display: inline-block; width:90px;  height:65px;  background-size:90px; }											
+.boxIBM_P660  { display: inline-block; width:90px;  height:54px;  background-size:90px; }											
+.boxIBM_P740-back { display: inline-block; width:95px;  height:68px;  background-size:95px; }											
+.boxIBM_P740  { display: inline-block; width:90px;  height:68px;  background-size:90px; }											
+.boxIBM_X235-back  { display: inline-block; width:50px;  height:51px;  background-size:50px; }											
+.boxIBM_X235  { display: inline-block; width:45px;  height:50px;  background-size:45px; }											
+.boxIBM_X240-back  { display: inline-block; width:80px;  height:70px;  background-size:80px; }											
+.boxIBM_X240  { display: inline-block; width:85px;  height:75px;  background-size:85px; }											
+.boxIBM_X260-back  { display: inline-block; width:75px;  height:50px;  background-size:75px; }											
+.boxIBM_X260  { display: inline-block; width:75px;  height:50px;  background-size:75px; }											
+.boxIBM_X3250_M5-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3250_M5  { display: inline-block; width:130px;  height:15px;  background-size:130px; }											
+.boxIBM_X336-back { display: inline-block; width:110px;  height:80px;  background-size:110px; }											
+.boxIBM_X336  { display: inline-block; width:100px;  height:87px;  background-size:100px; }											
+.boxIBM_X345-back  { display: inline-block; width:100px;  height:84px;  background-size:100px; }											
+.boxIBM_X345  { display: inline-block; width:90px;  height:80px;  background-size:90px; }											
+.boxIBM_X346-back  { display: inline-block; width:100px;  height:83px;  background-size:100px; }											
+.boxIBM_X346 { display: inline-block; width:90px;  height:83px;  background-size:90px; }											
+.boxIBM_X3550_M3-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3550_M3  { display: inline-block; width:130px;  height:15px;  background-size:130px; }											
+.boxIBM_X3550_M4-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxIBM_X3550_M4  { display: inline-block; width:110px;  height:10px;  background-size:110px; }											
+.boxIBM_X3550-back  { display: inline-block; width:130px;  height:15px;  background-size:130px; }											
+.boxIBM_X3550  { display: inline-block; width:110px;  height:10px;  background-size:110px; }											
+.boxIBM_X365-back  { display: inline-block; width:100px;  height:80px;  background-size:100px; }											
+.boxIBM_X365  { display: inline-block; width:100px;  height:80px;  background-size:100px; }											
+.boxIBM_X3650_M2-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M2  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M3-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M3  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M4-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M4  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_X3650_M5-back  { display: inline-block; width:110px;  height:12px;  background-size:110px; }											
+.boxIBM_X3650_M5  { display: inline-block; width:100px;  height:13px;  background-size:100px; }											
+.boxIBM_x3650-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxIBM_x3650  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+											
+											
+.boxLenovo_P6_520-back { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_P6_520  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_SR650-back { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_SR650  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_X3250_M5-back  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxLenovo_X3250_M5  { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.boxLenovo_X336-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_X336  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxLenovo_X3650_M3-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_X3650_M3  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_X3650_M4-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_X3650_M4 { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_X3650_M5-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_X3650_M5  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_x3650-back  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxLenovo_x3650  { display: inline-block; width:100px;  height:15px;  background-size:100px; }											
+.boxORACLE_DE3-24C-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxORACLE_DE3-24C  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxORACLE_X8-2L-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxORACLE_X8-2L  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxORACLE_ZS5-2-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxORACLE_ZS5-2  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxQuest_DL4300-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxQuest_DL4300  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSUN_Enterprise_3500-back  { display: inline-block; width:100px;  height:50px;  background-size:60px; }											
+.boxSUN_Enterprise_3500  { display: inline-block; width:100px;  height:50px;  background-size:60px; }											
+.boxSUN_Enterprise_4500-back { display: inline-block; width:100px;  height:50px;  background-size:66px; }											
+.boxSUN_Enterprise_4500  { display: inline-block; width:100px;  height:50px;  background-size:66px; }											
+.boxSUN_Fire_V215-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSUN_Fire_V215  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSun_Fire_v890-back { display: inline-block; width:100px;  height:50px;  background-size:50px; }											
+.boxSun_Fire_v890  { display: inline-block; width:100px;  height:50px;  background-size:50px; }											
+.boxSun_T4_1-back { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSun_T4_1  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSUN_T5220-back  { display: inline-block; width:100px;  height:50px;  background-size:100px; }											
+.boxSUN_T5220  { display: inline-block; width:100px;  height:50px;  background-size:100px; } 											
+
+
+
+
+/* etc ********************************************************************/
+
+										
+.etcEDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }										
+.etcEDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }										
+.etcEDR02-back { display: inline-block; width:150px;  height:30px;  background-size:150px; }										
+.etcEDR02 { display: inline-block; width:150px;  height:30px;  background-size:150px; }										
+.etcEDR03-back { display: inline-block; width:150px;  height:40px;  background-size:150px; }										
+.etcEDR03 { display: inline-block; width:150px;  height:40px;  background-size:150px; }										
+.etcEDR04-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }										
+.etcEDR04 { display: inline-block; width:150px;  height:49px;  background-size:150px; }										
+.etcEDR05-back { display: inline-block; width:120px;  height:49px;  background-size:120px; }										
+.etcEDR05 { display: inline-block; width:120px;  height:49px;  background-size:120px; }										
+.etcEDR06-back { display: inline-block; width:110px;  height:49px;  background-size:110px; }										
+.etcEDR06 { display: inline-block; width:110px;  height:49px;  background-size:110px; }										
+.etcEDR07-back { display: inline-block; width:110px;  height:49px;  background-size:90px; }										
+.etcEDR07 { display: inline-block; width:110px;  height:49px;  background-size:90px; }										
+.etcEDR08-back { display: inline-block; width:110px;  height:49px;  background-size:90px; }										
+.etcEDR08 { display: inline-block; width:110px;  height:49px;  background-size:90px; }										
+.etcEDR09-back { display: inline-block; width:110px;  height:49px;  background-size:60px; }										
+.etcEDR09 { display: inline-block; width:110px;  height:49px;  background-size:60px; }										
+.etcEDR10-back { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR10- { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR11-back { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR11- { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR12-back { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR12 { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR13-back { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR13 { display: inline-block; width:100px;  height:49px;  background-size:50px; }										
+.etcEDR14-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR14 { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR15-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR15 { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDS01-back { display: inline-block; width:100px;  height:45px;  background-size:100px; }										
+.etcEDS01 { display: inline-block; width:100px;  height:45px;  background-size:100px; }										
+.etcEDS02-back { display: inline-block; width:100px;  height:50px;  background-size:60px; }										
+.etcEDS02 { display: inline-block; width:100px;  height:50px;  background-size:60px; }										
+.etcEDS03-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDS03 { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDS04-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDS04 { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDS05-back { display: inline-block; width:100px;  height:49px;  background-size:30px; }										
+.etcEDS05 { display: inline-block; width:100px;  height:49px;  background-size:30px; }										
+										
+.etcCL5708M-back { display: inline-block; width:150px;  height:49px;  background-size:60px; }										
+.etcCL5708M { display: inline-block; width:150px;  height:49px;  background-size:60px; }										
+.etcDefault { display: inline-block; width:150px;  height:49px;  background-size:90px; }										
+.etcAvocent_LRA_185-back { display: inline-block; width:150px;  height:49px;  background-size:150px; }										
+.etcVeritas_Avocent_LRA_185 { display: inline-block; width:150px;  height:49px;  background-size:150px; } 								
+
+
+/* 추가 */
+.etcEDR16-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR16 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR17-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR17 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR18-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR18 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR19-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR19 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR20-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR20 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR21-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR21 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR22-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR22 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR23-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR23 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR24-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR24 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR25-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR25 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR26-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR26 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR27-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR27 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR28-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR28 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR29-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR29 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR30-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR30 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR31-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR31 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR32-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR32 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR33-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR33 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR34-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR34 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR35-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR35 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR36-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR36 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR37-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR37 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR38-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR38 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR39-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR39 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR40-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR40 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR41-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR41 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR42-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR42 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR43-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR43 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR44-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR44 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+.etcEDR45-back { display: inline-block; width:100px;  height:49px;  background-size:40px; }										
+.etcEDR45 { display: inline-block; width:100px;  height:49px;  background-size:40px; }
+
+
+
+
+
+/* network ********************************************************************/
+											
+											
+.netNDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.netNDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.netNDR02-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.netNDR02 { display: inline-block; width:150px;  height:15px;  background-size:150px; }											
+.netNDR03-back { display: inline-block; width:150px;  height:45px;  background-size:150px; }											
+.netNDR03 { display: inline-block; width:150px;  height:45px;  background-size:150px; }											
+.netNDR04-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netNDR04- { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netNDR05-back { display: inline-block; width:150px;  height:50px;  background-size:100px; }											
+.netNDR05 { display: inline-block; width:150px;  height:50px;  background-size:100px; }											
+.netNDR06-back { display: inline-block; width:150px;  height:50px;  background-size:80px; }											
+.netNDR06 { display: inline-block; width:150px;  height:50px;  background-size:80px; }											
+.netNDR07-back { display: inline-block; width:150px;  height:50px;  background-size:70px; }											
+.netNDR07 { display: inline-block; width:150px;  height:50px;  background-size:70px; }											
+.netNDR08-back { display: inline-block; width:150px;  height:50px;  background-size:70px; }											
+.netNDR08 { display: inline-block; width:150px;  height:50px;  background-size:70px; }											
+.netNDR09-back { display: inline-block; width:150px;  height:50px;  background-size:60px; }											
+.netNDR09 { display: inline-block; width:150px;  height:50px;  background-size:60px; }											
+.netNDR010-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR010 { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR011-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR011 { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR012-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR012 { display: inline-block; width:50px;  height:50px;  background-size:50px; }											
+.netNDR013-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR013 { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR014-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR014 { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR015-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR015 { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+											
+.netArista_7150-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netArista_7150 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netAruba_6000-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netAruba_6000 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netAruba_7030-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netAruba_7030 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netARUBA_7210-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netARUBA_7210 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBlueCoat_SG510-20-M5-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBlueCoat_SG510-20-M5 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBrocade_BR300-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBrocade_BR300 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBrocade_EMC_DS-5300B-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netBrocade_EMC_DS-5300B { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_1700-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_1700 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_3825-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_3825 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_3945-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_3945 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_ASA5512X-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_ASA5512X { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2950-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2950 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2950T-24-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2950T-24 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2960-24TT-L-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C2960-24TT-L { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C3650-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C3650 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C3850-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C3850 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_C6509E-back { display: inline-block; width:40px;  height:50px;  background-size:60px; }											
+.netCISCO_C6509E { display: inline-block; width:40px;  height:50px;  background-size:60px; }											
+.netCISCO_WS_6506-back { display: inline-block; width:45px;  height:50px;  background-size:56px; }											
+.netCISCO_WS_6506-e-back { display: inline-block; width:50px;  height:50px;  background-size:56px; }											
+.netCISCO_WS_6506-e { display: inline-block; width:45px;  height:50px;  background-size:54px; }											
+.netCISCO_WS_6506 { display: inline-block; width:48px;  height:50px;  background-size:60px; }											
+.netCISCO_WS_C2960-24PS_L-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_WS_C2960-24PS_L { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_WS_C2960-48TS_L-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_WS_C2960-48TS_L { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_WS_C4500X-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netCISCO_WS_C4500X { display: inline-block; width:150px;  height:49px;  background-size:150px; }											
+.netNetwork_Default { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netDELL_DS6600-back { display: inline-block; width:110px;  height:50px;  background-size:110px; }											
+.netDELL_DS6600 { display: inline-block; width:110px;  height:50px;  background-size:110px; }											
+.netFortigate_200D-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netFortigate_200D { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netFortigate_300D-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netFortigate_300D { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netHPE_LCD8500-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }											
+.netHPE_LCD8500 { display: inline-block; width:60px;  height:50px;  background-size:60px; }											
+.netHPE_SN6000B-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netHPE_SN6000B { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX2200-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX2200 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX2300-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX2300 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX3300-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX3300 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX3400-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX3400 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4200-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4200 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4550-32F-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4550-32F { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4550-32T-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4550-32T { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4600-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX4600 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX9204-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netJuniper_EX9204 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netMellanox_MSX_1012X-2B-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netMellanox_MSX_1012X-2B { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netMellanox_SN2010-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netMellanox_SN2010 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netNetMan_VPA100-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netNetMan_VPA100 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_alteon_4416-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_alteon_4416 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_5208-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_5208 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_5224-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_5224 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_6024-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netRadware_Alteon_6024 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netSOLTECH_SFC4000-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+.netSOLTECH_SFC4000 { display: inline-block; width:150px;  height:50px;  background-size:150px; }											
+
+
+/* 추가 */
+.netNDR016-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR016 { display: inline-block; width:40px;  height:50px;  background-size:40px; }		
+.netNDR017-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR017 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR018-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR018 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR019-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR019 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR020-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR020 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR021-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR021 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR022-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR022 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR023-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR023 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR024-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR024 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR025-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR025 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR026-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR026 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR027-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR027 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR028-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR028 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR029-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR029 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR030-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR030 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR031-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR031 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR032-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR032 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR033-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR033 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR034-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR034 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR035-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR035 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR036-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR036{ display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR037-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR037 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR038-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR038 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR039-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR039 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR040-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR040 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR041-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR041 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR042-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR042 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR043-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR043 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR044-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR044 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.netNDR045-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }											
+.netNDR045 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+
+
+
+
+/* rack ********************************************************************/
+									
+										
+.rackRKAB20 { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKAB20_back { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKAB25 { display: inline-block; width:27px;  height:55px; background-size:27px; }										
+.rackRKAB25_back { display: inline-block; width:27px;  height:55px; background-size:27px; }										
+.rackRKAB30 { display: inline-block; width:27px;  height:55px; background-size:27px; }										
+.rackRKAB30_back { display: inline-block; width:27px;  height:55px; background-size:27px; }										
+.rackRKAB31 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB31_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB32 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB32_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB33 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB33_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB34 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB34_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB35 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB35_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB36 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB36_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB37 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB37_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB38 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB38_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB39 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB39_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB40 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB40_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB41 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB41_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB42 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB42_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB43 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB43_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB44 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB44_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB45 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB45_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB46 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB46_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB47 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAB47_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB20 { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKBB20_back { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKBB25 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB25_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB30 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB30_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB31 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB31_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB32 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB32_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB33 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB33_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKBB34 { display: inline-block; width:25px;  height:54px; background-size:25px; }										
+.rackRKBB34_back { display: inline-block; width:25px;  height:54px; background-size:25px; }										
+.rackRKBB35 { display: inline-block; width:25px;  height:54px; background-size:25px; }										
+.rackRKBB35_back { display: inline-block; width:25px;  height:54px; background-size:25px; }										
+.rackRKBB36 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB36_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB37 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB37_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB38 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB38_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB39 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB39_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB40 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB40_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB41 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB41_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB42 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB42_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB43 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB43_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB44 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB44_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB45 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB45_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB46 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB46_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB47 { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKBB47_back { display: inline-block; width:25px;  height:55px; background-size:25px; }										
+.rackRKAG20 { display: inline-block; width:23px;  height:45px; background-size:23px; }										
+.rackRKAG20_back { display: inline-block; width:23px;  height:45px; background-size:23px; }										
+.rackRKAG25 { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKAG25_back { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKAG30 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG30_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG31 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG31_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG32 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG32_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG33 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG33_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG34 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG34_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG35 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG35_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG36 { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG36_back { display: inline-block; width:25px;  height:51px; background-size:25px; }										
+.rackRKAG37 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG37_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG38 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG38_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG39 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG39_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG40 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG40_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG41 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG41_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG42 { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG42_back { display: inline-block; width:25px;  height:52px; background-size:25px; }										
+.rackRKAG43 { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG43_back { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG44 { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG44_back { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG45 { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG45_back { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG46 { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG46_back { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG47 { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKAG47_back { display: inline-block; width:24px;  height:53px; background-size:24px; }										
+.rackRKBG20 { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKBG20_back { display: inline-block; width:25px;  height:50px; background-size:25px; }										
+.rackRKBG25 { display: inline-block; width:24px;  height:46px; background-size:24px; }										
+.rackRKBG25_back { display: inline-block; width:24px;  height:46px; background-size:24px; }										
+.rackRKBG30 { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG30_back { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG31 { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG31_back { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG32 { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG32_back { display: inline-block; width:23px;  height:50px; background-size:23px; }										
+.rackRKBG33 { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG33_back { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG34 { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG34_back { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG35 { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG35_back { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG36 { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG36_back { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG37 { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG37_back { display: inline-block; width:22px;  height:50px; background-size:22px; }										
+.rackRKBG38 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG38_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG39 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG39_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG40 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG40_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG41 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG41_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG42 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG42_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG43 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG43_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG44 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG44_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG45 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG45_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG46 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG46_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG47 { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKBG47_back { display: inline-block; width:21px;  height:51px; background-size:21px; }										
+.rackRKAB45 { display: inline-block; width:50px;  height:50px; background-size:50px; }										
+.rackRKAG45 { display: inline-block; width:47px;  height:50px; background-size:47px; }										
+.rackRKBB45 { display: inline-block; width:47px;  height:50px; background-size:47px; }										
+.rackRKBG45 { display: inline-block; width:47px;  height:50px; background-size:47px; }									
+
+
+
+/* sanSwitch ********************************************************************/
+								
+									
+.sanDefault { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.sanWDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }									
+.sanWDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }									
+.sanWDR02-back { display: inline-block; width:150px;  height:30px;  background-size:150px; }									
+.sanWDR02 { display: inline-block; width:150px;  height:30px;  background-size:150px; }									
+.sanWDR03-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.sanWDR03 { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.sanWDR04-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.sanWDR04 { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.sanWDR05-back { display: inline-block; width:100px;  height:50px;  background-size:100px; }									
+.sanWDR05 { display: inline-block; width:100px;  height:50px;  background-size:100px; }									
+.sanWDR06-back { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR06 { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR07-back { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR07 { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR08-back { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR08 { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR09-back { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR09 { display: inline-block; width:80px;  height:50px;  background-size:80px; }									
+.sanWDR10-back { display: inline-block; width:70px;  height:50px;  background-size:70px; }									
+.sanWDR10 { display: inline-block; width:70px;  height:50px;  background-size:70px; }									
+.sanWDR11-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }									
+.sanWDR11 { display: inline-block; width:60px;  height:50px;  background-size:60px; }									
+.sanWDR12-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }									
+.sanWDR12 { display: inline-block; width:50px;  height:50px;  background-size:50px; }									
+.sanWDR13-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }									
+.sanWDR13 { display: inline-block; width:50px;  height:50px;  background-size:50px; }									
+.sanWDR14-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR14 { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR15-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR15 { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDS01-back { display: inline-block; width:100px;  height:40px;  background-size:100px; }									
+.sanWDS01 { display: inline-block; width:100px;  height:40px;  background-size:100px; }									
+.sanWDS02-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }									
+.sanWDS02 { display: inline-block; width:60px;  height:50px;  background-size:60px; }									
+.sanWDS03-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDS03 { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDS04-back { display: inline-block; width:30px;  height:50px;  background-size:30px; }									
+.sanWDS04 { display: inline-block; width:30px;  height:50px;  background-size:30px; }									
+.sanWDS05-back { display: inline-block; width:30px;  height:50px;  background-size:34px; }									
+.sanWDS05 { display: inline-block; width:30px;  height:50px;  background-size:34px; }									
+
+
+/* 추가 */
+.sanWDR16-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR16 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR17-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR17 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR18-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR18 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR19-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR19 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR20-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR20 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR21-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR21 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR22-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR22 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR23-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR23 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR24-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR24 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR25-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR25 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR26-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR26 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR27-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR27 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR28-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR28 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR29-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR29 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR30-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR30 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR31-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR31 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR32-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR32 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR33-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR33 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR34-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR34 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR35-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR35 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR36-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR36 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR37-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR37 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR38-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR38 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR39-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR39 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR40-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR40 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR41-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR41 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR42-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR42 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR43-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR43 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR44-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR44 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+.sanWDR45-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }									
+.sanWDR45 { display: inline-block; width:40px;  height:50px;  background-size:40px; }	
+
+
+
+
+/* server ********************************************************************/
+									
+										
+.serverDefault { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL120_G9 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL320_G6 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL320_G8 { display: inline-block; width:150px;  height:44px;  background-size:150px; }										
+.serverDL320e_G8 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL350_G5 { display: inline-block; width:90px;  height:50px;  background-size:90px; }										
+.serverDL350_G6 { display: inline-block; width:88px;  height:50px;  background-size:88px; }										
+.serverDL360_G10 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL360_G5 { display: inline-block; width:140px;  height:50px;  background-size:140px; }										
+.serverDL360_G6 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL360_G7 { display: inline-block; width:145px;  height:44px;  background-size:145px; }										
+.serverDL360_G8 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL360_G9 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL380_G5 { display: inline-block; width:140px;  height:46px;  background-size:140px; }										
+.serverDL380_G6 { display: inline-block; width:130px;  height:42px;  background-size:130px; }										
+.serverDL380_G7 { display: inline-block; width:150px;  height:46px;  background-size:150px; }										
+.serverDL380_G8 { display: inline-block; width:115px;  height:46px;  background-size:115px; }										
+.serverDL380_G9 { display: inline-block; width:140px;  height:46px;  background-size:140px; } 		 								
+	
+
+
+/* shelf ********************************************************************/
+									
+									
+.shelfSHDB-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDB { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDB_2-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDB_2 { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDG-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDG { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDG_2-back { display: inline-block; width:150px;  height:50px;  background-size:150px; }									
+.shelfSHDG_2 { display: inline-block; width:150px;  height:50px;  background-size:150px; } 						
+
+
+
+/* storage ********************************************************************/
+										
+														
+.storageTDR01-back { display: inline-block; width:150px;  height:15px;  background-size:150px; }														
+.storageTDR01 { display: inline-block; width:150px;  height:15px;  background-size:150px; }														
+.storageTDR02-back { display: inline-block; width:150px;  height:25px;  background-size:150px; }														
+.storageTDR02 { display: inline-block; width:150px;  height:30px;  background-size:150px; }														
+.storageTDR03-back { display: inline-block; width:150px;  height:40px;  background-size:150px; }														
+.storageTDR03 { display: inline-block; width:150px;  height:40px;  background-size:150px; }														
+.storageTDR04-back { display: inline-block; width:130px;  height:50px;  background-size:130px; }														
+.storageTDR04 { display: inline-block; width:130px;  height:50px;  background-size:130px; }														
+.storageTDR05-back { display: inline-block; width:100px;  height:50px;  background-size:100px; }														
+.storageTDR05 { display: inline-block; width:100px;  height:50px;  background-size:100px; }														
+.storageTDR06-back { display: inline-block; width:90px;  height:50px;  background-size:90px; }														
+.storageTDR06 { display: inline-block; width:90px;  height:50px;  background-size:90px; }														
+.storageTDR07-back { display: inline-block; width:70px;  height:50px;  background-size:70px; }														
+.storageTDR07 { display: inline-block; width:70px;  height:50px;  background-size:70px; }														
+.storageTDR08-back { display: inline-block; width:70px;  height:50px;  background-size:70px; }														
+.storageTDR08 { display: inline-block; width:70px;  height:50px;  background-size:70px; }														
+.storageTDR09-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR09 { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR10-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR10 { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR11-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR11 { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDR12-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }														
+.storageTDR12 { display: inline-block; width:50px;  height:50px;  background-size:50px; }														
+.storageTDR13-back { display: inline-block; width:50px;  height:50px;  background-size:50px; }														
+.storageTDR13 { display: inline-block; width:50px;  height:50px;  background-size:50px; }														
+.storageTDR14-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR14 { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR15-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR15 { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDS01-back { display: inline-block; width:100px;  height:40px;  background-size:100px; }														
+.storageTDS01 { display: inline-block; width:100px;  height:40px;  background-size:100px; }														
+.storageTDS02-back { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDS02 { display: inline-block; width:60px;  height:50px;  background-size:60px; }														
+.storageTDS03-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDS03 { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDS04-back { display: inline-block; width:30px;  height:50px;  background-size:30px; }														
+.storageTDS04 { display: inline-block; width:30px;  height:50px;  background-size:30px; }														
+.storageTDS05-back { display: inline-block; width:24px;  height:50px;  background-size:24px; }														
+.storageTDS05 { display: inline-block; width:24px;  height:50px;  background-size:24px; }														
+.storageDefault { display: inline-block; width:130px;  height:50px;  background-size:130px; }														
+.storageDELL_DL4300-back { display: inline-block; width:130px;  height:46px;  background-size:130px; }														
+.storageDELL_DL4300 { display: inline-block; width:150px;  height:46px;  background-size:150px; }														
+.storageDELL_SC5020-back { display: inline-block; width:100px;  height:44px;  background-size:100px; }														
+.storageDELL_SC5020 { display: inline-block; width:140px;  height:44px;  background-size:140px; }														
+.storageDELL_SC7020-back { display: inline-block; width:100px;  height:42px;  background-size:100px; }														
+.storageDELL_SC7020 { display: inline-block; width:150px;  height:42px;  background-size:150px; }														
+.storageDELL_SC9000-back { display: inline-block; width:150px;  height:36px;  background-size:150px; }														
+.storageDELL_SC9000 { display: inline-block; width:140px;  height:36px;  background-size:140px; }														
+.storageDELL_Unity_XT_300F-back { display: inline-block; width:150px;  height:46px;  background-size:150px; }														
+.storageDELL_Unity_XT_300F { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageDELL_Unity_XT_480F-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageDELL_Unity_XT_480F { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageDELL_Unity_XT_680F-back { display: inline-block; width:100px;  height:48px;  background-size:100px; }														
+.storageDELL_Unity_XT_680F { display: inline-block; width:110px;  height:48px;  background-size:110px; }														
+.storageHitachi_HUS150-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageHitachi_HUS150 { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageHPE_3PAR_8000-back { display: inline-block; width:100px;  height:48px;  background-size:100px; }														
+.storageHPE_3PAR_8000 { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageHPE_3PAR_8450-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageHPE_3PAR_8450 { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageHPE_D2600-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageHPE_D2600 { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageHPE_P2000-back { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageHPE_P2000 { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageNETAPP_A250-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageNETAPP_A250 { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageNETAPP_A400-back { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageNETAPP_A400 { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageNETAPP_FAS2650-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageNETAPP_FAS2650 { display: inline-block; width:95px;  height:46px;  background-size:95px; }														
+.storageNETAPP_FAS2750-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageNETAPP_FAS2750 { display: inline-block; width:95px;  height:46px;  background-size:95px; }														
+.storageSynology_RS810Plus { display: inline-block; width:110px;  height:46px;  background-size:110px; }														
+.storageSynology_RS810Plus { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageSynology_RS815-back { display: inline-block; width:100px;  height:46px;  background-size:100px; }														
+.storageSynology_RS815 { display: inline-block; width:100px;  height:46px;  background-size:100px; } 													
+													
+	
+/* 추가 */
+.storageTDR16-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR16 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR17-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR17 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR18-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR18 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR19-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR19 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR20-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR20 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR21-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR21 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR22-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR22 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR23-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR23 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR24-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR24 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR25-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR25 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR26-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR26 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR27-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR27 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR28-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR28 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR29-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR29 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR30-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR30 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR31-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR31 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR32-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR32 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR33-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR33 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR34-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR34 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR35-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR35 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR36-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR36 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR37-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR37 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR38-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR38 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR39-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR39 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR40-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR40 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR41-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR41 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR42-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR42 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR43-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR43 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR44-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR44 { display: inline-block; width:40px;  height:50px;  background-size:40px; }
+.storageTDR45-back { display: inline-block; width:40px;  height:50px;  background-size:40px; }														
+.storageTDR45 { display: inline-block; width:40px;  height:50px;  background-size:40px; }

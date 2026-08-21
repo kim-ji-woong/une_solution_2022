@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34407.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAMServer", "BAMServer\BAMServer.csproj", "{1228346D-9283-48B2-9EC6-1A8A2736D669}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAMService", "BAMService\BAMService.csproj", "{A662E522-F2FD-4B9D-BDF9-25DE08FC9AA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DNS", "DNS", "{C54F29FD-1EDC-4BBE-B060-DB45F15405FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDapperDBUtil", "..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj", "{9C54DC59-2AD3-400B-A9BA-69A70A075432}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsTcpLib2", "..\..\..\..\esdk\workspace\dnsTcpLib2\dnsTcpLib2\dnsTcpLib2.csproj", "{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1228346D-9283-48B2-9EC6-1A8A2736D669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1228346D-9283-48B2-9EC6-1A8A2736D669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1228346D-9283-48B2-9EC6-1A8A2736D669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1228346D-9283-48B2-9EC6-1A8A2736D669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A662E522-F2FD-4B9D-BDF9-25DE08FC9AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A662E522-F2FD-4B9D-BDF9-25DE08FC9AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A662E522-F2FD-4B9D-BDF9-25DE08FC9AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A662E522-F2FD-4B9D-BDF9-25DE08FC9AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C54DC59-2AD3-400B-A9BA-69A70A075432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C54DC59-2AD3-400B-A9BA-69A70A075432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C54DC59-2AD3-400B-A9BA-69A70A075432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C54DC59-2AD3-400B-A9BA-69A70A075432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C54DC59-2AD3-400B-A9BA-69A70A075432} = {C54F29FD-1EDC-4BBE-B060-DB45F15405FB}
+		{5C6523A2-6741-4EC6-B026-F4A52BE0DF6E} = {C54F29FD-1EDC-4BBE-B060-DB45F15405FB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {194191C0-83C2-4B61-8BC2-3962437FB285}
+	EndGlobalSection
+EndGlobal
