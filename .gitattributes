@@ -1,0 +1,5 @@
+# 3D 모델은 바이너리로 고정한다.
+# core.autocrlf=true 환경에서 줄바꿈 변환으로 파일이 깨지는 것을 방지한다.
+*.glb binary
+*.gltf -text
+*.fbx binary

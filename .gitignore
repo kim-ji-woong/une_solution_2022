@@ -80,3 +80,10 @@ node_modules/
 # 대형 대시보드 이미지
 **/Dashboard/css/image/GC_topview_*.png
 중대재해법/
+# --- 예외: 웹앱이 실제로 서빙하는 3D 모델은 추적한다 ---
+!src/SOP7/WebSOPApp/ClientApp/public/resource/gltf/**/*.glb
+!src/SOP7/WebSOPApp/ClientApp/public/resource/gltf_light/**/*.glb
+# 단, GitHub 파일당 100MB 한도를 넘는 파일은 푸시가 거부되므로 계속 제외한다.
+# (필요해지면 Git LFS 로 옮길 것)
+src/SOP7/WebSOPApp/ClientApp/public/resource/gltf/GGHT/gg_ggc.glb
+src/SOP7/WebSOPApp/ClientApp/public/resource/gltf/magog/Magog.glb
