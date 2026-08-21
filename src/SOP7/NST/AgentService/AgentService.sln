@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentService", "AgentService\AgentService.csproj", "{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.Model", "..\..\SDMS\SDMS.Model\SDMS.Model.csproj", "{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.IDAL", "..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj", "{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.DAL", "..\..\SDMS\SDMS.DAL\SDMS.DAL.csproj", "{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Model", "..\..\Common\Common.Model\Common.Model.csproj", "{9BA7C8DD-8277-4CAC-8455-8087E82872B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.IDAL", "..\..\Common\Common.IDAL\Common.IDAL.csproj", "{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.DAL", "..\..\Common\Common.DAL\Common.DAL.csproj", "{77D731D5-CE33-49CE-A1C9-72D82D9B275B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamEditor.Model", "..\..\TeamEditor\TeamEditor.Model\TeamEditor.Model.csproj", "{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamEditor.IDAL", "..\..\TeamEditor\TeamEditor.IDAL\TeamEditor.IDAL.csproj", "{0B0C826A-960D-44D1-AD37-18397537E0A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamEditor.DAL", "..\..\TeamEditor\TeamEditor.DAL\TeamEditor.DAL.csproj", "{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release_Kakaowork|Any CPU = Release_Kakaowork|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB57EE4-368F-41A6-BF2A-851AE1DE7486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DE5402-5F87-4FFB-915A-DEBA5FBFD36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C62375D-8900-4DAD-A08E-A45BC0D72F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB4AC19-9877-4DFD-837D-F9D67A753CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA7C8DD-8277-4CAC-8455-8087E82872B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5F7AFB-92C1-4A65-9A66-CD37DF989A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D731D5-CE33-49CE-A1C9-72D82D9B275B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA3B3A9-254C-4F9B-83B4-573DA1803DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0C826A-960D-44D1-AD37-18397537E0A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49E9C7B-F4A1-478C-BB1E-0895B6943FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0950E2DC-5F89-42C5-A736-1F95C37CBB0D}
+	EndGlobalSection
+EndGlobal

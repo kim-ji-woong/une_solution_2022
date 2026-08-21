@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiostarDoorTester", "BiostarDoorTester\BiostarDoorTester.csproj", "{52AF3471-4CE4-4863-8AC4-7B7693F6D5DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52AF3471-4CE4-4863-8AC4-7B7693F6D5DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AF3471-4CE4-4863-8AC4-7B7693F6D5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AF3471-4CE4-4863-8AC4-7B7693F6D5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AF3471-4CE4-4863-8AC4-7B7693F6D5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3B691EC-E498-4DB4-A670-0610F09A2631}
+	EndGlobalSection
+EndGlobal

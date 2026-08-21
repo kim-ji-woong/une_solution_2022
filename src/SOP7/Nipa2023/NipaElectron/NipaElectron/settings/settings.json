@@ -1,0 +1,19 @@
+{
+  "dev": true,
+  "websocket": {
+    "unity": 65534,
+    "web": 1236,
+    "tod": 65533
+  },
+  "project": {
+    "preload": "preload.js",
+    "color": "#293239"
+  },
+  "webfront": {
+    "url": "http://221.147.100.162:8888/"
+  },
+  "unity": {
+    "filename": "NIPA00",
+    "dir": "/exe/unity"
+  }
+}

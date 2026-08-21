@@ -1,0 +1,1060 @@
+﻿
+
+/* mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+@media all and (max-width:767px) {
+
+/* about */
+.contentBox{ display:block; /* margin-top:100px; */ } 
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+#csection1{ width:100%; height:980px !important; display: block; }
+#csection2{ width:100%; height:980px !important; display: block; }
+#csection3{ width:100%; height:980px !important; display: block; }
+#csection4{ width:100%; height:980px !important; display: block; }
+
+.comIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat; /* background-size:cover; */
+                background-size: 120% 60%; }
+.comIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 24px; font-weight: 600; padding-top:56px; padding-bottom: 6px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.comIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:12px; color: #f9f9f9; 
+                                    height: 28px; line-height: 28px; }
+
+/* 인사말 */
+.comGreeting{ display:block; width:100%; text-align:center; background-color:#fff; position:relative; /* margin-bottom:180px; */  }
+.comGreeting > span:nth-child(1){display:block; text-align:center; width:100%; font-family: 'SUIT-SemiBold'; font-size:20px; margin-bottom:72px;
+                                 font-weight: 600; /* padding-top: 140px; */ }
+
+.ceoBox{ display:flex; flex-direction:column; width:100%; /* height:540px; */ background-color:#eceef4; justify-content:center; position:relative; }
+
+.ceoPicture{ display:inline-block; width:150px; height:300px; background:url(../../CompanyIntro/image/대표_여욱현.png)no-repeat; 
+            background-size: 100%; background-position: center; position:absolute; left: 120px; top: -30px; } 
+.ceoBoxText{ display:inline-block; position:absolute; top: 240px; right: 10px; font-size: 10px; font-weight: 600; }
+.ceoBoxTextE{ display:inline-block; position:absolute; top: 240px; right: 10px; font-size: 8px; font-weight: 600; }
+.ceoBoldText{ font-family: 'SUIT-Medium'; font-size:14px; color:#333333; padding-left:10px; }
+.ceoBoldTextE{ font-family: 'SUIT-Medium'; font-size:12px; color:#333333; padding-left:10px; }
+
+.ceoTextBoxS{  padding: 10px 30px; line-height:22px; padding-top: 300px; }
+.ceoTextBoxS > span:nth-child(1){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; margin-bottom:26px; }
+.ceoTextBoxS > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; margin-bottom:26px; }
+.ceoTextBoxS > span:nth-child(5){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(6){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; margin-bottom:26px;  }
+.ceoTextBoxS > span:nth-child(7){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(8){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:13px; color:#092348; text-align:right; }
+
+
+
+/* 비전 */
+.comVision{ display:block; position:relative; width: 100%; text-align:center; /* margin-bottom:180px; */ }
+.comVision .comVTitle1{ font-family: 'SUIT-SemiBold'; font-size:20px; display:block; margin-bottom:72px; padding-top: 200px; }
+.comVision .comVTitle2{ font-family: 'SUIT-Light'; font-size:14px; display:block;  }
+.comVTextBox{ font-size: 14px; line-height: 20px; display: block; margin-bottom: 50px; }
+
+
+
+/* .comVFlex{ display:flex; width:100%; height:30px; justify-content:center; margin-bottom:80px; } */
+.comVFlex .comVTitle11{ display:block; font-family:'SUIT-Regular'; font-weight:400; font-size:16px; color:#333333; margin: 10px; }
+.comVFlex .comVShape{}
+.comVFlex .comVShape .comVCircle1{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVCircle1{ display:inline-block; width:10px; height:10px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVFlex .comVShape .comVLine{ display:inline-block; width:160px; height:2px; background:#D8DBE8; }
+.comVFlex .comVShape .comVCircle2{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; margin-right:32px; }
+
+
+.visionFlexBox{ display: flex; width:100%; justify-content:center; padding: 10px; }
+.visionFlexBox2{ display: flex; width:100%; justify-content:center; padding: 10px; }
+
+.visionFlexBox .vFlex1{ width: 320px; color: #134A97; margin-right:14px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+.visionFlexBox .vFlex2{ width: 320px; color: #134A97; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox2 .vFlex3{ width: 320px; color: #134A97; margin-right:14px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox2 .vFlex4{ width: 320px; color: #134A97; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+
+.visionFlexBox .vBox1{ display:block; width: 130px; height:32px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 0px 0px 40px; margin-top:40px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8; text-align:left; padding-left: 26px; }
+
+.visionFlexBox .vBox2{ background-color:#fff; text-align:left;  padding: 30px 30px 30px 26px; }
+.visionFlexBox .vBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:24px; }
+.visionFlexBox .vBox2 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px;  font-weight: 800; }
+.visionFlexBox .vBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox .vBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox .vBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; }
+
+.visionFlexBox .vBox3{ display:block; width: 130px; height:32px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 0px 0px 40px; margin-top:40px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8; text-align:left; padding-left: 26px; }
+
+.visionFlexBox .vBox4{ background-color:#fff; text-align:left;  padding: 30px 30px 30px 26px; }
+.visionFlexBox .vBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:24px; }
+.visionFlexBox .vBox4 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px; font-weight: 800;  }
+.visionFlexBox .vBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox .vBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox .vBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; }
+
+.visionFlexBox2 .vBox5{ display:block; width: 130px; height:32px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 0px 0px 40px; margin-top:40px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8; text-align:left; padding-left: 26px; }
+
+.visionFlexBox2 .vBox6{ background-color:#fff;  text-align:left;  padding: 30px 30px 30px 26px;  }
+.visionFlexBox2 .vBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:24px; }
+.visionFlexBox2 .vBox6 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px; font-weight: 800;  }
+.visionFlexBox2 .vBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox2 .vBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox2 .vBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666;}
+
+.visionFlexBox2 .vBox7{ display:block; width: 130px; height:32px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 0px 0px 40px; margin-top:40px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8;  text-align:left; padding-left: 26px; }
+
+.visionFlexBox2 .vBox8{ background-color: #fff; text-align:left;  padding: 30px 30px 30px 26px;  }
+.visionFlexBox2 .vBox8 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:24px;}
+.visionFlexBox2 .vBox8 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px;  font-weight: 800; }
+.visionFlexBox2 .vBox8 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox2 .vBox8 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:6px; }
+.visionFlexBox2 .vBox8 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; }
+
+.blueFont{ font-family:'SUIT-Regular'; font-weight: 500; color:#4D8DE8; margin-left: 8px; font-size:14px; display:block; }
+
+
+
+/* 연혁 */
+.comHisBox{ display:block; width:100%; height:480px; text-align:center; padding:50px; background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+            margin-bottom:186px; background-size:cover; }
+.comHisTitle2{ display: block; width: 100%; text-align: center; font-family: 'SUIT-SemiBold'; font-size: 20px; margin-bottom: 72px;  padding-top: 200px; }
+.comHisContent{ display:flex; /* margin-bottom:180px; */ }
+.comHisTable{ margin:0 auto; display:block; padding: 0px 20px; }
+
+.com2022Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2022BoxFlex{ display:flex; }
+.com2021Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2021BoxFlex{ display:flex; }
+.com2020Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2020BoxFlex{ display:flex; }
+.com2019Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px;}
+.com2019BoxFlex{ display:flex; }
+.com2018Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px; }
+.com2018BoxFlex{ display:flex; }
+.com2017Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px;}
+.com2017BoxFlex{ display:flex; }
+.com2016Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2016BoxFlex{ display:flex; }
+.com2015Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2015BoxFlex{ display:flex; }
+.com2014Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2014BoxFlex{ display:flex; }
+.com2013Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2013BoxFlex{ display:flex; }
+.com2012Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2012BoxFlex{ display:flex; }
+.com2011Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2011BoxFlex{ display:flex; }
+
+.yearNum{  display:block; width: 200px; height:33px; font-family:'SUIT-Medium'; font-size:16px; color: #555555; text-align:left;}
+.monthNum{ display:block; width: 40px; font-family:'SUIT-Regular'; font-size:12px; font-weight:400; color: #555555; line-height:16px;  }
+.monthNumB{ display:block; font-family:'SUIT-Regular'; font-size:12px; font-weight:400; color: #FFFFFF; margin-right:16px; line-height: 16px; }
+
+.historyText{ display:block; font-family:'SUIT-Light'; font-weight:300; font-size:12px; color: #888888; line-height:16px; }
+
+
+/* CI */
+
+.comLogoContent{ display:block; width:100%; }
+.comLogoContent a{ text-decoration:none; }
+.comLogoContent .comLTitle{ font-family: 'SUIT-SemiBold'; font-size:20px; display:block; width: 100%; text-align: center; margin-bottom:72px; padding-top: 200px; }
+.comLSubTitle{ display:block; font-family:'SUIT-Regular'; font-size:20px; color:#888888; font-weight:400; text-align:center; margin-bottom:72px; }
+
+.ClDownArea{ display:block; width:160px; height:36px; border: 1px solid #dddddd; border-radius: 24px; font-size:14px; line-height: 16px; font-family: 'SUIT-Medium'; 
+             background:url(../../CompanyIntro/image/CI_download.png)no-repeat; background-position: right; color: #666666; margin:0 auto;
+             padding:10px 30px; background-position-x:116px; margin-bottom:120px; background-size: 16px; }
+.ClDownArea:hover{ display:block; width:160px; height:36px; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #F5F5F5;  background-position-x: 116px; text-decoration:none; 
+                   padding:10px 30px; font-size:14px; line-height: 16px; /* background-position-y:13px; */  border: 1px solid #aaaaaa; background-size: 16px; }
+.ClDownArea:active{ display:block; width:160px; height:36px;  background:url(../../CompanyIntro/image/CI_download.png)no-repeat #dddddd;  background-position-x: 116px; text-decoration:none; 
+                    padding:10px 30px; font-size:14px; line-height: 16px; /* background-position-y:13px; */  border: 1px solid #666666; background-size: 16px; }
+
+
+/* .ClDownArea a{ text-decoration:none; }
+.ClDownArea a:hover{ text-decoration:none; } */
+
+.comLogoContent .DownBox{ display: flex; flex-direction:column; /* width: 100%; */ justify-content:center; margin-bottom:30px; padding: 0px 20px; }
+.DownBox .CIDownBox{ display:block; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom: 20px; }
+.DownBox .CIDownBox span:nth-child(1){ display: block; height:200px; background:url('../../CompanyIntro/image/logoNew_kor.png')no-repeat; background-position: center; background-size: 50%;  }
+.DownBox .CIDownBox span:nth-child(2){ display: block; height:34px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:14px; color:#fff;
+                                       border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+.DownBox .CIDownBox2{ display:block; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox2 span:nth-child(1){ display: block; height:200px; background:url('../../CompanyIntro/image/logoNew_eng.png')no-repeat; background-position: center;  background-size: 50%;  }
+.DownBox .CIDownBox2 span:nth-child(2){ display: block; height:34px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:14px; color:#fff;
+                                        border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+
+.comCIContent2{ display:block; width: 100%; text-align:center; }
+.comCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; }
+.comCSubTitle{ display:block; font-family:'SUIT-Medium'; font-size:20px; color: #333333; margin-bottom:60px; }
+.comCFlexBox{ display:flex; flex-direction: column;  margin:0 auto; justify-content:center; }
+.comSimbolBox{ display:block; margin-bottom: 20px; }
+.comSimbolBox .simbol{ display:inline-block; width: 280px; height:180px; background:url(../../CompanyIntro/image/simbolImg2.png)no-repeat;  margin-bottom:28px;
+                       background-size: 60%; background-position: bottom;  }
+.comSimbolBox .comSimbolText{ text-align:center; }
+.comSimbolBox .comSimbolText p{ font-family:'SUIT-Regular'; font-size:12px; line-height:18px; color: #555555; }
+
+.comColorBox{ display:block; /* width:420px; */ height:398px; }
+.comColorBox .colorBox{ display:inline-block; padding:50px; /* margin-bottom:28px; */ }
+.cCircleFlex1{ display:flex; margin-bottom:14px; }
+.cCircleFlex2{ display:flex; }
+.colorBCircle{ display:block; width:70px; height:70px; border-radius:50%; background-color:#000000; margin-right:14px; }
+.colorRCircle{ display:block; width:70px; height:70px; border-radius:50%; background-color:#dd3c25; }
+.colorGCircle{ display:block; width:70px; height:70px; border-radius:50%; background-color:#eaeaea; margin-right:14px; }
+.colorDGCircle{ display:block; width:70px; height:70px; border-radius:50%; background-color:#ababab; }
+.comColorBox .comColorText{ text-align: center; /* width:303px; */ }
+.comColorBox .comColorText p{ font-family:'SUIT-Regular'; font-size:12px; line-height:18px; color: #555555; }
+
+
+}
+
+/* 가로 mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 640px) and (max-width: 959px) {
+
+/* about */
+.contentBox{ display:block; padding-top:80px; } 
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+#csection1{ width:100%; height:980px !important; display: block; }
+#csection2{ width:100%; height:980px !important; display: block; }
+#csection3{ width:100%; height:980px !important; display: block; }
+#csection4{ width:100%; height:980px !important; display: block; }
+
+.comIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat; background-size:120% 60%; }
+.comIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 24px; font-weight: 600; padding-top:50px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.comIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:14px; color: #f9f9f9; 
+                                    height: 28px; line-height: 28px; }
+
+/* 인사말 */
+.comGreeting{ display:block; width:100%; text-align:center; background-color:#fff; position:relative; /* margin-bottom:180px; */  }
+.comGreeting > span:nth-child(1){display:block; text-align:center; width:100%; font-family: 'SUIT-SemiBold'; font-size:22px; margin-bottom:72px;
+                                 font-weight: 600; padding-top: 140px;  }
+
+.ceoBox{ display:flex; flex-direction:column; width:100%; /* height:540px; */ background-color:#eceef4; justify-content:center; position:relative; }
+
+.ceoPicture{ display:inline-block; width:150px; height:300px; background:url(../../CompanyIntro/image/대표_여욱현.png)no-repeat; 
+            background-size: 100%; background-position: center; position:absolute; left: 80px; top: -30px; } 
+.ceoBoxText{ display:inline-block; position:absolute; top: 470px; right: 30px; font-size: 10px; }
+.ceoBoxTextE{ display:inline-block; position:absolute; top: 500px; right: 30px; font-size: 18px; }
+.ceoBoldText{ font-family: 'SUIT-Medium'; font-size:18px; color:#333333; padding-left:10px; }
+.ceoBoldTextE{ font-family: 'SUIT-Medium'; font-size:12px; color:#333333; padding-left:10px; }
+
+.ceoTextBoxS{  padding: 10px 10px 10px 360px; line-height:16px; /* padding-top: 300px; */ }
+.ceoTextBoxS > span:nth-child(1){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(5){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(6){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; margin-bottom:34px;  }
+.ceoTextBoxS > span:nth-child(7){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(8){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:14px; color:#092348; text-align:right; }
+
+
+
+/* 비전 */
+.comVision{ display:block; position:relative; width: 100%; text-align:center; /* margin-bottom:180px; */ }
+.comVision .comVTitle1{ font-family: 'SUIT-SemiBold'; font-size:22px; display:block; margin-bottom:72px; padding-top: 200px; }
+.comVision .comVTitle2{ font-family: 'SUIT-Light'; font-size:16px; display:block;  }
+.comVTextBox{ font-size: 24px; line-height: 26px; display: block; margin-bottom: 50px; font-family: 'SUIT-Light'; }
+
+
+
+/* .comVFlex{ display:flex; width:100%; height:30px; justify-content:center; margin-bottom:80px; } */
+.comVFlex .comVTitle11{ display:block; font-family:'SUIT-Regular'; font-weight:400; font-size:20px; color:#333333; margin: 10px; }
+.comVFlex .comVShape{}
+.comVFlex .comVShape .comVCircle1{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVCircle1{ display:inline-block; width:10px; height:10px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVFlex .comVShape .comVLine{ display:inline-block; width:160px; height:2px; background:#D8DBE8; }
+.comVFlex .comVShape .comVCircle2{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; margin-right:32px; }
+
+
+.visionFlexBox{ display: flex; width:100%; justify-content:center; padding: 10px; }
+.visionFlexBox2{ display: flex; width:100%; justify-content:center; padding: 10px; }
+
+.visionFlexBox .vFlex1{ width: 320px; color: #134A97; margin-right:14px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+.visionFlexBox .vFlex2{ width: 320px; color: #134A97; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox2 .vFlex3{ width: 320px; color: #134A97; margin-right:14px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox2 .vFlex4{ width: 320px; color: #134A97; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+
+.visionFlexBox .vBox1{ display:block; width: 160px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:40px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:16px; color: #4D8DE8; text-align:left; padding-left: 30px; }
+
+.visionFlexBox .vBox2{ background-color:#fff; text-align:left;  padding: 30px 30px 30px 30px; }
+.visionFlexBox .vBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:28px; }
+.visionFlexBox .vBox2 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; }
+
+.visionFlexBox .vBox3{ display:block; width: 160px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:40px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:16px; color: #4D8DE8; text-align:left; padding-left: 30px; }
+
+.visionFlexBox .vBox4{ background-color:#fff; text-align:left;  padding: 30px 30px 30px 30px; }
+.visionFlexBox .vBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:28px; }
+.visionFlexBox .vBox4 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; }
+
+.visionFlexBox2 .vBox5{ display:block; width: 160px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:40px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; text-align:left; padding-left: 30px; }
+
+.visionFlexBox2 .vBox6{ background-color:#fff;  text-align:left;  padding: 30px 30px 30px 30px;  }
+.visionFlexBox2 .vBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox2 .vBox6 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox2 .vBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox2 .vBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox2 .vBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666;}
+
+.visionFlexBox2 .vBox7{ display:block; width: 160px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:40px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8;  text-align:left; padding-left: 30px; }
+
+.visionFlexBox2 .vBox8{ background-color: #fff; text-align:left;  padding: 30px 30px 30px 30px;  }
+.visionFlexBox2 .vBox8 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px;}
+.visionFlexBox2 .vBox8 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox2 .vBox8 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox2 .vBox8 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox2 .vBox8 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; }
+
+.blueFont{ font-family:'SUIT-Regular'; font-weight: 500; color:#4D8DE8; margin-left: 8px; }
+
+
+
+/* 연혁 */
+.comHisBox{ display:block; width:100%; height:480px; text-align:center; padding:50px; background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+            margin-bottom:186px; background-size:cover; }
+.comHisTitle2{ display: block; width: 100%; text-align: center; font-family: 'SUIT-SemiBold'; font-size: 22px; margin-bottom: 72px;  padding-top: 200px; }
+.comHisContent{ display:flex; /* margin-bottom:180px; */ }
+.comHisTable{ margin:0 auto; display:block; padding: 0px 20px; }
+
+.com2022Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2022BoxFlex{ display:flex; }
+.com2021Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2021BoxFlex{ display:flex; }
+.com2020Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2020BoxFlex{ display:flex; }
+.com2019Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px;}
+.com2019BoxFlex{ display:flex; }
+.com2018Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px; }
+.com2018BoxFlex{ display:flex; }
+.com2017Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px;}
+.com2017BoxFlex{ display:flex; }
+.com2016Box{  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2016BoxFlex{ display:flex; }
+.com2015Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2015BoxFlex{ display:flex; }
+.com2014Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2014BoxFlex{ display:flex; }
+.com2013Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;  padding:20px 30px;}
+.com2013BoxFlex{ display:flex; }
+.com2012Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2012BoxFlex{ display:flex; }
+.com2011Box{ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; padding:20px 30px; }
+.com2011BoxFlex{ display:flex; }
+
+.yearNum{  display:block; width: 200px; height:33px; font-family:'SUIT-Medium'; font-size:16px; color: #555555; text-align:left;}
+.monthNum{ display:block; width: 40px; font-family:'SUIT-Regular'; font-size:14px; font-weight:400; color: #555555; line-height:20px;  }
+.monthNumB{ display:block; font-family:'SUIT-Regular'; font-size:14px; font-weight:400; color: #FFFFFF; margin-right:28px; line-height: 20px; }
+
+.historyText{ display:block; font-family:'SUIT-Light'; font-weight:400; font-size:14px; color: #888888; line-height:20px; }
+
+
+/* CI */
+
+.comLogoContent{ display:block; width:100%; }
+.comLogoContent a{ text-decoration:none; }
+.comLogoContent .comLTitle{ font-family: 'SUIT-SemiBold'; font-size:22px; display:block; width: 100%; text-align: center; margin-bottom:72px; padding-top: 200px; }
+.comLSubTitle{ display:block; font-family:'SUIT-Regular'; font-size:20px; color:#888888; font-weight:400; text-align:center; margin-bottom:72px; }
+
+.ClDownArea{ display:block; width:180px; height:40px; border: 1px solid #dddddd; border-radius: 24px; font-size:16px; line-height: 22px; font-family: 'SUIT-Medium'; 
+             background:url(../../CompanyIntro/image/CI_download.png)no-repeat; background-position: right; color: #666666; margin:0 auto;
+             padding:10px 36px; background-position-x:130px; margin-bottom:120px; background-size: 16px; }
+.ClDownArea:hover{ display:block; width:180px; height:40px; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #F5F5F5;  background-position-x: 130px; text-decoration:none; 
+                   padding:10px 36px; font-size:16px; line-height: 22px; background-position-y:13px; border: 1px solid #aaaaaa; background-size: 16px; }
+.ClDownArea:active{ display:block; width:180px; height:40px;  background:url(../../CompanyIntro/image/CI_download.png)no-repeat #dddddd;  background-position-x: 130px; text-decoration:none; 
+                    padding:10px 36px; font-size:16px; line-height: 22px; background-position-y:13px; border: 1px solid #666666; background-size: 16px; }
+
+
+/* .ClDownArea a{ text-decoration:none; }
+.ClDownArea a:hover{ text-decoration:none; } */
+
+.comLogoContent .DownBox{ display: flex; flex-direction:column; /* width: 100%; */ justify-content:center; margin-bottom:48px; padding: 0px 150px; }
+.DownBox .CIDownBox{ display:block; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom: 20px; }
+.DownBox .CIDownBox span:nth-child(1){ display: block; height:200px; background:url('../../CompanyIntro/image/logoNew_kor.png')no-repeat; background-position: center; 
+                                       background-size: 50%;  }
+.DownBox .CIDownBox span:nth-child(2){ display: block; height:34px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:14px; color:#fff;
+                                       border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+.DownBox .CIDownBox2{ display:block; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox2 span:nth-child(1){ display: block; height:200px; background:url('../../CompanyIntro/image/logoNew_eng.png')no-repeat; background-position: center; 
+                                        background-size: 50%;  }
+.DownBox .CIDownBox2 span:nth-child(2){ display: block; height:34px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:14px; color:#fff;
+                                        border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+
+.comCIContent2{ display:block; width: 100%; text-align:center; margin-bottom:240px; }
+.comCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; }
+.comCSubTitle{ display:block; font-family:'SUIT-Medium'; font-size:22px; color: #333333; margin-bottom:80px; }
+.comCFlexBox{ display:flex; flex-direction: column;  margin:0 auto; justify-content:center; }
+.comSimbolBox{ display:block; /* width:420px; */ height:398px; /* margin-right:134px; */ }
+.comSimbolBox .simbol{ display:inline-block; width: 280px; height:280px; background:url(../../CompanyIntro/image/simbolImg2.png)no-repeat; /* margin-bottom:28px; */
+                       background-size: 80%; background-position: center;  }
+.comSimbolBox .comSimbolText{ text-align:center; }
+.comSimbolBox .comSimbolText p{ font-family:'SUIT-Regular'; font-size:14px; line-height:22px; color: #555555; }
+
+.comColorBox{ display:block; /* width:420px; */ height:398px; }
+.comColorBox .colorBox{ display:inline-block; width:270px; height:270px; padding:50px; /* margin-bottom:28px; */ }
+.cCircleFlex1{ display:flex; margin-bottom:14px; }
+.cCircleFlex2{ display:flex; }
+.colorBCircle{ display:block; width:80px; height:80px; border-radius:50%; background-color:#000000; margin-right:14px; }
+.colorRCircle{ display:block; width:80px; height:80px; border-radius:50%; background-color:#dd3c25; }
+.colorGCircle{ display:block; width:80px; height:80px; border-radius:50%; background-color:#eaeaea; margin-right:14px; }
+.colorDGCircle{ display:block; width:80px; height:80px; border-radius:50%; background-color:#ababab; }
+.comColorBox .comColorText{ text-align: center; /* width:303px; */ }
+.comColorBox .comColorText p{ font-family:'SUIT-Regular'; font-size:14px; line-height:22px; color: #555555; }
+
+}
+
+
+
+
+/* tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+/* about */
+.contentBox{ display:block;  /* margin-top:100px; */  padding-top: 80px; } 
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+#csection1{ width:100%; height:980px !important; display: block; }
+#csection2{ width:100%; height:980px !important; display: block; }
+#csection3{ width:100%; height:980px !important; display: block; }
+#csection4{ width:100%; height:980px !important; display: block; }
+
+.comIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+                background-size:120% 80%; }
+.comIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 40px; font-weight: 600; padding-top:70px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.comIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:18px; color: #f9f9f9; 
+                                    height: 28px; line-height: 28px; }
+
+/* 인사말 */
+.comGreeting{ display:block; width:100%; text-align:center; background-color:#fff; position:relative; margin-bottom:180px; }
+.comGreeting > span:nth-child(1){display:block; text-align:center; width:100%; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:72px;
+                                 font-weight: 600; padding-top: 240px;  }
+
+.ceoBox{ display:flex; width:100%; height:540px; background-color:#eceef4; justify-content:center; }
+.ceoPicture{ display:inline-block; width:300px; height:580px; background:url(../../CompanyIntro/image/대표_여욱현.png)no-repeat; margin-right:160px; transform: translateY(160px);
+             /* transform:translateY(-40px); */ background-size: 70%; } 
+.ceoTextBoxS{  /* padding-top: 86px; */ line-height:26px; }
+.ceoTextBoxS > span:nth-child(1){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(5){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(6){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; margin-bottom:34px;  }
+.ceoTextBoxS > span:nth-child(7){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(8){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:20px; color:#092348; text-align:right; }
+.ceoBoldText{ font-family: 'SUIT-Medium'; font-size:30px; color:#333333; padding-left:10px; }
+
+
+
+/* 비전 */
+.comVision{ display:block; position:relative; width: 100%; text-align:center; margin-bottom:180px; }
+.comVision .comVTitle1{ font-family: 'SUIT-SemiBold'; font-size:34px; display:block; margin-bottom:72px; padding-top: 200px; }
+.comVision .comVTitle2{ font-family: 'SUIT-Light'; font-size:24px; display:block;  }
+
+.comVFlex{ /* display:flex; */ width:100%; height:30px; justify-content:center; margin-bottom:80px; }
+.comVFlex .comVTitle11{ display:block; font-family:'SUIT-Regular'; font-weight:400; font-size:24px; color:#333333; /* margin-right: 32px; */ }
+.comVFlex .comVShape{}
+.comVFlex .comVShape .comVCircle1{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVFlex .comVShape .comVLine{ display:inline-block; width:160px; height:2px; background:#D8DBE8; }
+.comVFlex .comVShape .comVCircle2{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; margin-right:32px; }
+
+
+.visionFlexBox{ display: flex; width:100%; justify-content:center; }
+
+.visionFlexBox .vFlex1{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+.visionFlexBox .vFlex2{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex3{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex4{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+
+.visionFlexBox .vBox1{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox2{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox2 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; }
+
+.visionFlexBox .vBox3{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox4{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox4 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; }
+
+.visionFlexBox .vBox5{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox6 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666;}
+
+.visionFlexBox .vBox7{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox8{ background-color: #fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox8 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px;}
+.visionFlexBox .vBox8 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox8 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox8 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; margin-bottom:8px; }
+.visionFlexBox .vBox8 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:20px; color: #666666; }
+
+.blueFont{ display:block; font-family:'SUIT-Regular'; font-weight: 500; color:#4D8DE8; margin-left: 8px; }
+
+
+
+/* 연혁 */
+.comHisBox{ display:block; width:100%; height:480px; text-align:center; padding:50px; background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+            margin-bottom:186px; background-size:cover; }
+.comHisTitle2{ display: block; width: 100%; text-align: center; font-family: 'SUIT-SemiBold'; font-size: 34px; margin-bottom: 72px;  padding-top: 200px; }
+.comHisContent{ display:flex; margin-bottom:180px; }
+.comHisTable{ margin:0 auto; display:block; }
+
+.com2022Box{ display:flex; /* width: 1360px; height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2021Box{ display:flex; /* width: 1360px; height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2020Box{ display:flex; /* width: 1360px; height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2019Box{ display:flex; /* width: 1360px; height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2018Box{ display:flex; /* width: 1360px; height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+              padding:20px 60px; }
+.com2017Box{ display:flex; /* width: 1360px; height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2016Box{ display:flex; /* width: 1360px; height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2015Box{ display:flex; /* width: 1360px; height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2014Box{ display:flex; /* width: 1360px; height: 92px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2013Box{ display:flex; /* width: 1360px; height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2012Box{ display:flex; /* width: 1360px; height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2011Box{ display:flex; /* width: 1360px; height: 92px; */  box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+
+.yearNum{  display:block; width: 200px; height:33px; font-family:'SUIT-Medium'; font-size:26px; color: #555555; text-align:left;}
+.monthNum{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #555555; margin-right:28px; line-height:26px; text-align:end; }
+.monthNumB{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #FFFFFF; margin-right:28px; line-height:26px; text-align:end; }
+
+.historyText{ display:block; font-family:'SUIT-Light'; font-weight:300; font-size:18px; color: #888888; line-height:26px; }
+
+
+/* CI */
+
+.comLogoContent{ display:block; width:100%; }
+.comLogoContent a{ text-decoration:none; }
+.comLogoContent .comLTitle{ font-family: 'SUIT-SemiBold'; font-size:44px; display:block; width: 100%; text-align: center; margin-bottom:72px; padding-top: 200px; }
+.comLSubTitle{ display:block; font-family:'SUIT-Regular'; font-size:20px; color:#888888; font-weight:400; text-align:center; margin-bottom:72px; }
+
+.ClDownArea{ display:block; width:220px; height:48px; border: 1px solid #dddddd; border-radius: 24px; font-size:18px; line-height: 22px; font-family: 'SUIT-Medium'; 
+             background:url(../../CompanyIntro/image/CI_download.png)no-repeat; background-position: right; color: #666666; margin:0 auto;
+             padding:12.5px 50px; background-position-x:160px; margin-bottom:120px; }
+.ClDownArea:hover{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #F5F5F5;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #aaaaaa; }
+
+.ClDownArea:active{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #dddddd;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #666666; }
+
+
+/* .ClDownArea a{ text-decoration:none; }
+.ClDownArea a:hover{ text-decoration:none; } */
+
+.comLogoContent .DownBox{ display: flex; width: 100%; justify-content:center; margin-bottom:48px; }
+.DownBox .CIDownBox{ width: 500px; height:400px; display:block; /* margin-right: 24px; */ margin:0 auto; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_kor.png')no-repeat; 
+                                       background-size: 50%; background-position: center; }
+.DownBox .CIDownBox span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                       border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+.DownBox .CIDownBox2{ display:block; width: 500px; height:400px; margin:0 auto; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox2 span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_eng.png')no-repeat; 
+                                        background-size: 50%; background-position: center; }
+.DownBox .CIDownBox2 span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                        border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+
+.comCIContent2{ display:block; width: 100%; text-align:center; margin-bottom:240px; }
+.comCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; }
+.comCSubTitle{ display:block; font-family:'SUIT-Medium'; font-size:24px; color: #333333; margin-bottom:80px; }
+.comCFlexBox{ display:flex; /* width:736px; */ height:398px; margin:0 auto; justify-content:center; }
+.comSimbolBox{ display:block; /* width:420px; */ height:398px; /* margin-right:134px; */ margin-bottom: 60px; }
+.comSimbolBox .simbol{ display:inline-block; width: 280px; height:280px; background:url(../../CompanyIntro/image/simbolImg2.png)no-repeat; margin-bottom:28px; }
+.comSimbolBox .comSimbolText{ text-align:center; }
+.comSimbolBox .comSimbolText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+.comColorBox{ display:block; /* width:420px; */ height:398px; }
+.comColorBox .colorBox{ display:inline-block; width:280px; height:280px; padding:20px; margin-bottom:28px; }
+.cCircleFlex1{ display:flex; margin-bottom:24px; }
+.cCircleFlex2{ display:flex; }
+.colorBCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#000000; margin-right:24px; }
+.colorRCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#dd3c25; }
+.colorGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#eaeaea; margin-right:24px; }
+.colorDGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#ababab; }
+.comColorBox .comColorText{ text-align: center; /* width:303px; */ }
+.comColorBox .comColorText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+
+}
+
+
+/* 가로 tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 960px) and (max-width: 1280px) {
+
+/* about */
+.contentBox{ display:block; margin-top:100px; } 
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+#csection1{ width:100%; height:980px !important; display: block; }
+#csection2{ width:100%; height:980px !important; display: block; }
+#csection3{ width:100%; height:980px !important; display: block; }
+#csection4{ width:100%; height:980px !important; display: block; }
+
+.comIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat; background-size:cover; }
+.comIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 52px; font-weight: 600; padding-top:85.5px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.comIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:22px; color: #f9f9f9; 
+                                    height: 28px; line-height: 28px; }
+
+/* 인사말 */
+.comGreeting{ display:block; width:100%; text-align:center; background-color:#fff; position:relative; margin-bottom:180px; }
+.comGreeting > span:nth-child(1){display:block; text-align:center; width:100%; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:72px;
+                                 font-weight: 600; padding-top: 240px;  }
+
+.ceoBox{ display:flex; width:100%; height:540px; background-color:#eceef4; justify-content:center; }
+.ceoPicture{ display:inline-block; width:300px; height:580px; background:url(../../CompanyIntro/image/대표_여욱현.png)no-repeat; margin-right:30px; transform: translateY(-40px); } 
+.ceoTextBoxS{  padding-top: 86px; line-height:34px; }
+.ceoTextBoxS > span:nth-child(1){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(5){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(6){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px;  }
+.ceoTextBoxS > span:nth-child(7){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(8){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#092348; text-align:right; }
+.ceoBoldText{ font-family: 'SUIT-Medium'; font-size:30px; color:#333333; padding-left:10px; }
+
+
+
+/* 비전 */
+.comVision{ display:block; position:relative; width: 100%; text-align:center; margin-bottom:180px; }
+.comVision .comVTitle1{ font-family: 'SUIT-SemiBold'; font-size:34px; display:block; margin-bottom:72px; padding-top: 200px; }
+.comVision .comVTitle2{ font-family: 'SUIT-Light'; font-size:24px; display:block;  }
+
+.comVFlex{ display:flex; width:100%; height:30px; justify-content:center; margin-bottom:80px; }
+.comVFlex .comVTitle11{ display:block; font-family:'SUIT-Regular'; font-weight:400; font-size:24px; color:#333333; margin-right: 32px; }
+.comVFlex .comVShape{}
+.comVFlex .comVShape .comVCircle1{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVFlex .comVShape .comVLine{ display:inline-block; width:160px; height:2px; background:#D8DBE8; }
+.comVFlex .comVShape .comVCircle2{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; margin-right:32px; }
+
+
+.visionFlexBox{ display: flex; width:100%; justify-content:center; }
+
+.visionFlexBox .vFlex1{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+.visionFlexBox .vFlex2{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex3{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex4{ width: 320px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+
+.visionFlexBox .vBox1{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox2{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox2 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.visionFlexBox .vBox3{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox4{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox4 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.visionFlexBox .vBox5{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox6 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666;}
+
+.visionFlexBox .vBox7{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox8{ background-color: #fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox8 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px;}
+.visionFlexBox .vBox8 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox8 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox8 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox8 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.blueFont{ font-family:'SUIT-Regular'; font-weight: 500; color:#4D8DE8; margin-left: 8px; }
+
+/* 연혁 */
+.comHisBox{ display:block; width:100%; height:480px; text-align:center; padding:50px; background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+            margin-bottom:186px; background-size:cover; }
+.comHisTitle2{ display: block; width: 100%; text-align: center; font-family: 'SUIT-SemiBold'; font-size: 34px; margin-bottom: 72px;  padding-top: 200px; }
+.comHisContent{ display:flex; margin-bottom:180px; }
+.comHisTable{ margin:0 auto; display:block; }
+
+.com2022Box{ display:flex; width: 1360px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2021Box{ display:flex; width: 1360px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2020Box{ display:flex; width: 1360px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2019Box{ display:flex; width: 1360px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2018Box{ display:flex; width: 1360px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+              padding:20px 60px; }
+.com2017Box{ display:flex; width: 1360px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2016Box{ display:flex; width: 1360px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2015Box{ display:flex; width: 1360px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2014Box{ display:flex; width: 1360px; /* height: 92px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2013Box{ display:flex; width: 1360px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2012Box{ display:flex; width: 1360px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2011Box{ display:flex; width: 1360px; /* height: 92px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+
+.yearNum{  display:block; width: 200px; height:33px; font-family:'SUIT-Medium'; font-size:26px; color: #555555; text-align:left;}
+.monthNum{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #555555; margin-right:28px; line-height:26px; text-align:end; }
+.monthNumB{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #FFFFFF; margin-right:28px; line-height:26px; text-align:end; }
+
+.historyText{ display:block; font-family:'SUIT-Light'; font-weight:300; font-size:18px; color: #888888; line-height:26px; }
+
+
+/* CI */
+
+.comLogoContent{ display:block; width:100%; }
+.comLogoContent a{ text-decoration:none; }
+.comLogoContent .comLTitle{ font-family: 'SUIT-SemiBold'; font-size:44px; display:block; width: 100%; text-align: center; margin-bottom:72px; padding-top: 200px; }
+.comLSubTitle{ display:block; font-family:'SUIT-Regular'; font-size:20px; color:#888888; font-weight:400; text-align:center; margin-bottom:72px; }
+
+.ClDownArea{ display:block; width:220px; height:48px; border: 1px solid #dddddd; border-radius: 24px; font-size:18px; line-height: 22px; font-family: 'SUIT-Medium'; 
+             background:url(../../CompanyIntro/image/CI_download.png)no-repeat; background-position: right; color: #666666; margin:0 auto;
+             padding:12.5px 50px; background-position-x:160px; margin-bottom:120px; }
+.ClDownArea:hover{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #F5F5F5;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #aaaaaa; }
+
+.ClDownArea:active{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #dddddd;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #666666; }
+
+
+/* .ClDownArea a{ text-decoration:none; }
+.ClDownArea a:hover{ text-decoration:none; } */
+
+.comLogoContent .DownBox{ display: flex; width: 100%; justify-content:center; margin-bottom:48px; }
+.DownBox .CIDownBox{ width: 668px; height:400px; display:block; margin-right: 24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_kor.png')no-repeat; 
+                                       background-size: 50%; background-position: center; }
+.DownBox .CIDownBox span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                       border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+.DownBox .CIDownBox2{ display:block; width: 668px; height:400px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox2 span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_eng.png')no-repeat; 
+                                        background-size: 50%; background-position: center; }
+.DownBox .CIDownBox2 span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                        border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+
+.comCIContent2{ display:block; width: 100%; text-align:center; margin-bottom:240px; }
+.comCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; }
+.comCSubTitle{ display:block; font-family:'SUIT-Medium'; font-size:24px; color: #333333; margin-bottom:80px; }
+.comCFlexBox{ display:flex; /* width:736px; */ height:398px; margin:0 auto; justify-content:center; }
+.comSimbolBox{ display:block; width:420px; height:398px; /* margin-right:134px; */ }
+.comSimbolBox .simbol{ display:inline-block; width: 280px; height:280px; background:url(../../CompanyIntro/image/simbolImg2.png)no-repeat; margin-bottom:28px; }
+.comSimbolBox .comSimbolText{ text-align:center; }
+.comSimbolBox .comSimbolText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+.comColorBox{ display:block; width:420px; height:398px; }
+.comColorBox .colorBox{ display:inline-block; width:280px; height:280px; padding:20px; margin-bottom:28px; }
+.cCircleFlex1{ display:flex; margin-bottom:24px; }
+.cCircleFlex2{ display:flex; }
+.colorBCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#000000; margin-right:24px; }
+.colorRCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#dd3c25; }
+.colorGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#eaeaea; margin-right:24px; }
+.colorDGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#ababab; }
+.comColorBox .comColorText{ text-align: center; /* width:303px; */ }
+.comColorBox .comColorText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+
+}
+
+
+
+/* FHD */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+
+@media all and (min-width:1024px) {
+
+/* about */
+.contentBox{ display:block; margin-top:100px; } 
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+#csection1{ width:100%; height:980px !important; display: block; }
+#csection2{ width:100%; height:980px !important; display: block; }
+#csection3{ width:100%; height:980px !important; display: block; }
+#csection4{ width:100%; height:980px !important; display: block; }
+
+.comIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat; background-size:cover; }
+.comIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 52px; font-weight: 600; padding-top:85.5px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.comIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:22px; color: #f9f9f9; 
+                                    height: 28px; line-height: 28px; }
+
+/* 인사말 */
+.comGreeting{ display:block; width:100%; text-align:center; background-color:#fff; position:relative; margin-bottom:180px; }
+.comGreeting > span:nth-child(1){display:block; text-align:center; width:100%; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:72px;
+                                 font-weight: 600; padding-top: 240px;  }
+
+.ceoBox{ display:flex; width:100%; height:540px; background-color:#eceef4; justify-content:center; }
+.ceoPicture{ display:inline-block; width:320px; height:580px; background:url(../../CompanyIntro/image/대표_여욱현.png)no-repeat; margin-right:30px; transform: translateY(-40px);
+             background-size:100%; } 
+.ceoTextBoxS{  padding-top: 58px; line-height:32px; }
+.ceoTextBoxS > span:nth-child(1){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px; }
+.ceoTextBoxS > span:nth-child(5){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(6){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; margin-bottom:34px;  }
+.ceoTextBoxS > span:nth-child(7){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#333333; text-align:left; }
+.ceoTextBoxS > span:nth-child(8){ display:block; width:100%; font-family: 'SUIT-Regular'; font-weight: 400; font-size:22px; color:#092348; text-align:right; }
+.ceoBoldText{ font-family: 'SUIT-Medium'; font-size:30px; color:#333333; padding-left:10px; }
+
+
+
+/* 비전 */
+.comVision{ display:block; position:relative; width: 100%; text-align:center; margin-bottom:180px; }
+.comVision .comVTitle1{ font-family: 'SUIT-SemiBold'; font-size:34px; display:block; margin-bottom:72px; padding-top: 200px; }
+.comVision .comVTitle2{ font-family: 'SUIT-Light'; font-size:24px; display:block;  }
+
+.comVFlex{ display:flex; width:100%; height:30px; justify-content:center; margin-bottom:80px; }
+.comVFlex .comVTitle11{ display:block; font-family:'SUIT-Regular'; font-weight:400; font-size:24px; color:#333333; margin-right: 32px; }
+.comVFlex .comVShape{}
+.comVFlex .comVShape .comVCircle1{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; }
+.comVFlex .comVShape .comVLine{ display:inline-block; width:160px; height:2px; background:#D8DBE8; }
+.comVFlex .comVShape .comVCircle2{ display:inline-block; width:12px; height:12px; background:#D8DBE8; border-radius:50%; vertical-align: sub; margin-right:32px; }
+
+
+.visionFlexBox{ display: flex; width:100%; justify-content:center; }
+
+.visionFlexBox .vFlex1{ width: 300px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+.visionFlexBox .vFlex2{ width: 300px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex3{ width: 300px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; } 
+.visionFlexBox .vFlex4{ width: 300px; height:364px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgb(2 26 79 / 6%); border-radius: 8px; }
+
+.visionFlexBox .vBox1{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox2{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox2 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.visionFlexBox .vBox3{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox4{ background-color:#fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox4 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.visionFlexBox .vBox5{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.visionFlexBox .vBox6 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800;  }
+.visionFlexBox .vBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666;}
+
+.visionFlexBox .vBox7{ display:block; width: 161px; height:40px; background: #F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px, 48px, 0px, 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; }
+
+.visionFlexBox .vBox8{ background-color: #fff; text-align:left; padding: 52px 40px; }
+.visionFlexBox .vBox8 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px;}
+.visionFlexBox .vBox8 .vBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px;  font-weight: 800; }
+.visionFlexBox .vBox8 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox8 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.visionFlexBox .vBox8 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; }
+
+.blueFont{ font-family:'SUIT-Regular'; font-weight: 500; color:#4D8DE8; margin-left: 8px; }
+
+/* 연혁 */
+.comHisBox{ display:block; width:100%; height:480px; text-align:center; padding:50px; background:url(../../CompanyIntro/image/menu_1_image.png)no-repeat;
+            margin-bottom:186px; background-size:cover; }
+.comHisTitle2{ display: block; width: 100%; text-align: center; font-family: 'SUIT-SemiBold'; font-size: 34px; margin-bottom: 72px;  padding-top: 200px; }
+.comHisContent{ display:flex; margin-bottom:180px; }
+.comHisTable{ margin:0 auto; display:block; }
+
+.com2022Box{ display:flex; width: 1100px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2021Box{ display:flex; width: 1100px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2020Box{ display:flex; width: 1100px; /* height: 144px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2019Box{ display:flex; width: 1100px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2018Box{ display:flex; width: 1100px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+              padding:20px 60px; }
+.com2017Box{ display:flex; width: 1100px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2016Box{ display:flex; width: 1100px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2015Box{ display:flex; width: 1100px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2014Box{ display:flex; width: 1100px; /* height: 92px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px; 
+             padding:20px 60px;}
+.com2013Box{ display:flex; width: 1100px; /* height: 73px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px;}
+.com2012Box{ display:flex; width: 1100px; /* height: 118px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+.com2011Box{ display:flex; width: 1100px; /* height: 92px; */ box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; margin-bottom:16px;
+             padding:20px 60px; }
+
+.yearNum{  display:block; width: 200px; height:33px; font-family:'SUIT-Medium'; font-size:26px; color: #555555; text-align:left;}
+.monthNum{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #555555; margin-right:28px; line-height:26px; text-align:end; }
+.monthNumB{ display:block; font-family:'SUIT-Regular'; font-size:18px; font-weight:400; color: #FFFFFF; margin-right:28px; line-height:26px; text-align:end; }
+
+.historyText{ display:block; font-family:'SUIT-Light'; font-weight:300; font-size:18px; color: #888888; line-height:26px; }
+
+
+/* CI */
+
+.comLogoContent{ display:block; width:100%; }
+.comLogoContent a{ text-decoration:none; }
+.comLogoContent .comLTitle{ font-family: 'SUIT-SemiBold'; font-size:44px; display:block; width: 100%; text-align: center; margin-bottom:72px; padding-top: 200px; }
+.comLSubTitle{ display:block; font-family:'SUIT-Regular'; font-size:20px; color:#888888; font-weight:400; text-align:center; margin-bottom:72px; }
+
+.ClDownArea{ display:block; width:220px; height:48px; border: 1px solid #dddddd; border-radius: 24px; font-size:18px; line-height: 22px; font-family: 'SUIT-Medium'; 
+             background:url(../../CompanyIntro/image/CI_download.png)no-repeat; background-position: right; color: #666666; margin:0 auto;
+             padding:12.5px 50px; background-position-x:160px; margin-bottom:120px; }
+.ClDownArea:hover{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #F5F5F5;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #aaaaaa; }
+
+.ClDownArea:active{ display:block; background:url(../../CompanyIntro/image/CI_download.png)no-repeat #dddddd;  background-position-x: 160px; text-decoration:none; padding:12.5px 50px;
+                   line-height: 22px; background-position-y:13px; border: 1px solid #666666; }
+
+
+/* .ClDownArea a{ text-decoration:none; }
+.ClDownArea a:hover{ text-decoration:none; } */
+
+.comLogoContent .DownBox{ display: flex; width: 100%; justify-content:center; margin-bottom:48px; }
+.DownBox .CIDownBox{ width: 580px; height:400px; display:block; margin-right: 24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_kor.png')no-repeat; 
+                                       background-size: 50%; background-position: center; }
+.DownBox .CIDownBox span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                       border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+.DownBox .CIDownBox2{ display:block; width: 580px; height:400px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; }
+.DownBox .CIDownBox2 span:nth-child(1){ display: block; height:352px; background:url('../../CompanyIntro/image/logoNew_eng.png')no-repeat;
+                                        background-size: 50%; background-position: center; }
+.DownBox .CIDownBox2 span:nth-child(2){ display: block; height:48px; background-color:#aaaaaa; text-align:center; font-family: 'SUIT-Regular'; font-size:22px; color:#fff;
+                                        border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding:10px; }
+
+
+.comCIContent2{ display:block; width: 100%; text-align:center; margin-bottom:240px; }
+.comCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; }
+.comCSubTitle{ display:block; font-family:'SUIT-Medium'; font-size:24px; color: #333333; margin-bottom:80px; }
+.comCFlexBox{ display:flex; /* width:736px; */ height:398px; margin:0 auto; justify-content:center; }
+.comSimbolBox{ display:block; width:420px; height:398px; /* margin-right:134px; */ }
+.comSimbolBox .simbol{ display:inline-block; width: 280px; height:280px; background:url(../../CompanyIntro/image/simbolImg2.png)no-repeat; margin-bottom:28px; }
+.comSimbolBox .comSimbolText{ text-align:center; }
+.comSimbolBox .comSimbolText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+.comColorBox{ display:block; width:420px; height:398px; }
+.comColorBox .colorBox{ display:inline-block; width:280px; height:280px; padding:20px; margin-bottom:28px; }
+.cCircleFlex1{ display:flex; margin-bottom:24px; }
+.cCircleFlex2{ display:flex; }
+.colorBCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#000000; margin-right:24px; }
+.colorRCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#dd3c25; }
+.colorGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#eaeaea; margin-right:24px; }
+.colorDGCircle{ display:block; width:108px; height:108px; border-radius:50%; background-color:#ababab; }
+.comColorBox .comColorText{ text-align: center; /* width:303px; */ }
+.comColorBox .comColorText p{ font-family:'SUIT-Regular'; font-size:20px; line-height:30px; color: #555555; }
+
+}

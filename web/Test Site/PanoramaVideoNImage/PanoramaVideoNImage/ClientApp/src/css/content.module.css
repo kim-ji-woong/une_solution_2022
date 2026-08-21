@@ -1,0 +1,64 @@
+﻿.liDot {
+    color: #fff;
+    font-size: 12px;
+    display:flex;
+}
+
+    .liDot::before {
+        content: '○';
+        color: #fff;
+        font-size: 9px;
+        left: 0;
+        top: 6px;
+        padding-right:5px;
+    }
+
+.liNoDot {
+    color: #fff;
+    font-size: 12px;
+}
+
+.viewDashboardBoxD {
+    border-radius: 5px;
+    background: rgba(10,12,27,0.8);
+    position: absolute;
+    left: 10px;
+    top: 720px;
+    width: 320px;
+    height: 210px;
+    overflow: hidden;
+}
+
+.dslTop {
+    padding: 8px 10px;
+    position: relative;
+    -webkit-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+    background-color: rgba(29,41,48,1);
+}
+
+.dslTitle {
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+    color: #00dd8b;
+    font-weight: 500;
+}
+
+.viewConts {
+    clear: both;
+    overflow-y: hidden;
+    /*overflow-y:auto;*/
+    height: calc(100% - 32px);
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.viewTitle {
+    border-bottom: 1px dashed #3b3f5c;
+    color: #fff000;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}

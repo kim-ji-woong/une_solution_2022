@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SOPWebServer2\AgentFactory.BLL\Facility.cs" Link="External\Facility.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.IDAL\Common.IDAL.csproj" />
+    <ProjectReference Include="..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj" />
+    <ProjectReference Include="..\..\History\History.BLL\History.BLL.csproj" />
+    <ProjectReference Include="..\..\SDMS\SDMS.BLL\SDMS.BLL.csproj" />
+    <ProjectReference Include="..\Hynix.IDAL\Hynix.IDAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="External\" />
+  </ItemGroup>
+
+</Project>

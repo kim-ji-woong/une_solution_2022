@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Common.BLL\Common.BLL.csproj" />
+      <ProjectReference Include="..\..\Common\Common.Model\Common.Model.csproj" />
+      <ProjectReference Include="..\..\SDMS\SDMS.BLL\SDMS.BLL.csproj" />
+      <ProjectReference Include="..\..\SDMS\SDMS.Model\SDMS.Model.csproj" />
+      <ProjectReference Include="..\..\SOPSimulator\SOPSimulator.BLL\SOPSimulator.BLL.csproj" />
+      <ProjectReference Include="..\..\SOPSimulator\SOPSimulator.DAL\SOPSimulator.DAL.csproj" />
+      <ProjectReference Include="..\..\SOPSimulator\SOPSimulator.IDAL\SOPSimulator.IDAL.csproj" />
+      <ProjectReference Include="..\BusanTP.DAL\BusanTP.DAL.csproj" />
+      <ProjectReference Include="..\BusanTP.IDAL\BusanTP.IDAL.csproj" />
+      <ProjectReference Include="..\BusanTP.Model\BusanTP.Model.csproj" />
+    </ItemGroup>
+
+</Project>

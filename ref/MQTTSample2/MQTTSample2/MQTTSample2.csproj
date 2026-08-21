@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\Datas\ID.cs" Link="Datas\ID.cs" />
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\Datas\ServerData.cs" Link="Datas\ServerData.cs" />
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\Logger.cs" Link="Logger.cs" />
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\Servers\IServer.cs" Link="IServer.cs" />
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\Servers\MQTT\Corners\MqttManager.cs" Link="MqttManager.cs" />
+    <Compile Include="..\..\..\src\SOP7\IntegrationServer\IntegrationServer\ViewModels\MQTT\Corners\Evacuation.cs" Link="ViewModels\MQTT\Corners\Evacuation.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\src\SOP7\DNS\dnsSopID\dnsSopID.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Datas\" />
+    <Folder Include="ViewModels\MQTT\Corners\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MQTTnet" Version="4.3.3.952" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.3.3.952" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

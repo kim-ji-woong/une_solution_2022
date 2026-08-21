@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\bin\common12</OutputPath>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\Safety.IDAL\Safety.IDAL.csproj" />
+  </ItemGroup>
+
+</Project>

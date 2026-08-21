@@ -1,0 +1,32 @@
+{
+  "ko": {
+    "detectLoc": "{0}에서 {1}가 탐지되었습니다.",
+    "detect": "{0}가 탐지되었습니다.",
+    "detectRecoveryLoc": "{0}에서 탐지된 {1} 신호가 복구되었습니다.",
+    "detectRecovery": "{1} 신호가 복구되었습니다.",
+    "detectMalfunctionLoc": "{0}에서 탐지된 {1} 신호가 오작동으로 신고되었습니다.",
+    "detectMalfunction": "탐지된 {0} 신호가 오작동으로 신고되었습니다.",
+    "reportLoc": "{0}에서 {1}가 신고되었습니다.",
+    "report": "{0}가 신고되었습니다.",
+    "reportOverLoc": "{0}에서 신고된 {1} 상황에 종료되었습니다.",
+    "reportOver": "신고된 {0} 상황이 종료되었습니다.",
+    "changeAlarmLevelLoc": "{0}에서 탐지된 {1} 신호의 알람 단계가 {2}단계에서 {3}단계로 변경되었습니다.",
+    "changeAlarmLevel": "탐지된 {0} 신호의 알람 단계가 {1}단계에서 {2}단계로 변경되었습니다."
+  },
+
+  "en": {
+    "detectLoc": "{1} detected at {0}.",
+    "detect": "{0} detected.",
+    "detectRecoveryLoc": "{1} signal detected at {0} is recovered.",
+    "detectRecovery": "{0} signal is recovered.",
+    "detectMalfunctionLoc": "{1} signal detected at {0} is reported false alarm.",
+    "detectMalfunction": "{0} signal detected is reported false alarm.",
+    "reportLoc": "{1} reported at {0}.",
+    "report": "{0} reported.",
+    "reportOverLoc": "Reported {1} situation at {0} is over.",
+    "reportOver": "Reported {0} situation is over.",
+    "changeAlarmLevelLoc": "The alarm level of {1} signal detected at {0} changed from {2} to {3}.",
+    "changeAlarmLevel": "The alarm level of {0} signal detected changed from {1} to {2}."
+  }
+
+}

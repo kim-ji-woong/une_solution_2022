@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DNS\dnsSopID\dnsSopID.csproj" />
+    <ProjectReference Include="..\..\..\SOPWebServer2\AgentFactory.BLL\Site\11\AgentFactory.BLL\AgentFactory.BLL.csproj" />
+    <ProjectReference Include="..\..\Safety\Safety.DAL\Safety.DAL.csproj" />
+    <ProjectReference Include="..\..\Safety\Safety.IDAL\Safety.IDAL.csproj" />
+    <ProjectReference Include="..\..\Safety\Safety.Model\Safety.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Common.IDAL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\Common.IDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Model">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\Common.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsData">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsData.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsGeometry">
+      <HintPath>..\..\..\..\..\bin\common12\dnsGeometry.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsSMS">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsSMS.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsTeamEditor.BLL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsTeamEditor.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsTeamEditor.IDAL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsTeamEditor.IDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsTeamEditor.Model">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsTeamEditor.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.BLL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\SDMS.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.IDAL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\SDMS.IDAL.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

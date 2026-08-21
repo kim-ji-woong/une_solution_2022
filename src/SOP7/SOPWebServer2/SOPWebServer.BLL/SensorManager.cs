@@ -1,0 +1,790 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using SDMS.Model.Spatial;
+using SDMS.Model.Sensor;
+using dnsData.Sensor;
+using dnsSopID;
+using SDMS.IDAL;
+using AgentFactory.BLL;
+
+namespace SOPWebServer.BLL
+{
+    using Response;
+    using Models;
+
+    public class SensorManager
+    {
+        private MainManager m_mainManager = null;
+        private Server.FireSensor m_fireSensorServer = null;
+        private Server.PSMSensor m_psmSensorServer = null;
+        private Server.SecuritySensor m_securitySensorServer = null;
+        private Server.EtcSensor m_etcSensorServer = null;
+        private Server.EarthquakeSensor m_earthquakeSensorServer = null;
+        private Server.StrongWindSensor m_strongWindSensorServer = null;
+        private Server.BlackOutSensor m_blackOutSensorServer = null;
+        private Server.BeaconSensor m_beaconSensorSever = null;
+        private Server.EnvironmentSensor m_environmentSensorSever = null;
+        private Server.ManufactureSensor m_manufactureSensorSever = null;
+        private Server.DoorSensor m_doorSensorSever = null;
+        private Server.LaserSensor m_laserSensorSever = null;
+        private Server.BatterySensor m_batterySensorServer = null;
+        private Server.HighTempSensor m_highTempSensorServer = null;
+        private Server.TiltSensor m_tiltSensorServer = null;
+        private Server.H2Sensor m_h2SensorServer = null;
+        private Server.TempSensor m_tempSensorServer = null;
+        private Server.FlowSensor m_flowSensorServer = null;
+        private Server.ConductivitySensor m_conductSensorServer = null;
+        private Server.PressureSensor m_pressureSensorServer = null;
+        private Server.GasSensor m_gasSensorServer = null;
+        private Server.AnomalySensor m_anomalySensorServer = null;
+        private Server.H2LowSensor m_h2LowSensorServer = null;
+        private Server.O2Sensor m_o2SensorServer = null;
+        private Server.H2JAGSensor m_h2JAGSensorServer = null;
+        private Server.O2JAGSensor m_o2JAGSensorServer = null;
+
+        private Server.SubmergeSensor m_submergeSensorServer = null;
+
+        // Key : BuildingGroup ID
+        private Dictionary<int, BuildingGroup> m_dicBuildingGroups = new Dictionary<int, BuildingGroup>();
+        // Key : Building ID
+        private Dictionary<int, Building> m_dicBuildings = new Dictionary<int, Building>();
+        // 전체 Zone
+        // Key : Zone ID
+        private Dictionary<int, Zone> m_dicZones = new Dictionary<int, Zone>();
+        // 건물내에 있는 Zone
+        // Key : Building ID
+        private Dictionary<int, List<Zone>> m_dicBuildingZones = new Dictionary<int, List<Zone>>();
+        // 건물외부에 있는 Zone
+        // Key : Zone ID
+        private Dictionary<int, Zone> m_dicOutdoorZones = new Dictionary<int, Zone>();
+
+        // Key : EquipmentZone ID
+        private Dictionary<int, EquipmentZone> m_dicEquipZones = new Dictionary<int, EquipmentZone>();
+        // Zone에 속해있는 EquipmentZone List
+        private Dictionary<Zone, List<EquipmentZone>> m_dicZoneEquipZones = new Dictionary<Zone, List<EquipmentZone>>();
+
+        // Key : SensorZone ID
+        private Dictionary<int, SensorZone> m_dicSensorZones = new Dictionary<int, SensorZone>();
+        //EquipmentZone에 속해있는 SensorZone List(EquipmentZone, SensorZone List)
+        private Dictionary<EquipmentZone, List<SensorZone>> m_dicEquipZoneSensors = new Dictionary<EquipmentZone, List<SensorZone>>();
+        // 같은 설비영역을 공유하며, Type이 같은 Sensor들을 하나의 그룹으로 묶어 관리한다.
+        // Key : SensorZoneGroup의 ID인데 EquipZone ID와 SensorType의 조합이다.
+        //       상위 4바이트 : EquipZone ID
+        //       하위 4바이트 : SensorType(Facility.FacilityType)
+        private Dictionary<long, SensorZoneGroup> m_dicSensorZoneGroup = new Dictionary<long, SensorZoneGroup>();
+        // Key : SensorZone ID
+        private Dictionary<int, SensorZoneGroup> m_dicSensorZoneGroup2 = new Dictionary<int, SensorZoneGroup>();
+
+        // Key : SensorTagInfo ID
+        // Value : 해당 센서가 활성화 상태인가?(false이면 이 센서의 신호는 무시함)
+        private Dictionary<int, bool> m_dicSensorTagActivation = new Dictionary<int, bool>();
+
+        private Dictionary<int, Material> m_dicMaterials = new Dictionary<int, Material>();
+
+        // Key : Sensor ID
+        // Value : Sensor
+        private Dictionary<int, object> m_dicPSMSensors = new Dictionary<int, object>();
+
+
+        public SensorManager(MainManager mainManager, Factory factory)
+        {
+            m_mainManager = mainManager;
+            m_fireSensorServer = new Server.FireSensor(mainManager, factory);
+            m_psmSensorServer = new Server.PSMSensor(m_mainManager, factory);
+            m_securitySensorServer = new Server.SecuritySensor(m_mainManager, factory);
+            m_etcSensorServer = new Server.EtcSensor(m_mainManager, factory);
+            m_earthquakeSensorServer = new Server.EarthquakeSensor(m_mainManager, factory);
+            m_strongWindSensorServer = new Server.StrongWindSensor(m_mainManager, factory);
+            m_blackOutSensorServer = new Server.BlackOutSensor(m_mainManager, factory);
+            m_beaconSensorSever = new Server.BeaconSensor(m_mainManager, factory);
+            m_environmentSensorSever = new Server.EnvironmentSensor(m_mainManager, factory);
+            m_manufactureSensorSever = new Server.ManufactureSensor(m_mainManager, factory);
+            m_doorSensorSever = new Server.DoorSensor(m_mainManager, factory);
+            m_laserSensorSever = new Server.LaserSensor(m_mainManager, factory);
+            m_batterySensorServer = new Server.BatterySensor(m_mainManager, factory);
+            m_highTempSensorServer = new Server.HighTempSensor(m_mainManager, factory);
+            m_tiltSensorServer = new Server.TiltSensor(m_mainManager, factory);
+            m_h2SensorServer = new Server.H2Sensor(m_mainManager, factory);
+            m_tempSensorServer = new Server.TempSensor(m_mainManager, factory);
+            m_flowSensorServer = new Server.FlowSensor(m_mainManager, factory);
+            m_conductSensorServer = new Server.ConductivitySensor(m_mainManager, factory);
+            m_pressureSensorServer = new Server.PressureSensor(m_mainManager, factory);
+            m_gasSensorServer = new Server.GasSensor(m_mainManager, factory);
+            m_anomalySensorServer = new Server.AnomalySensor(m_mainManager, factory);
+            m_h2LowSensorServer = new Server.H2LowSensor(m_mainManager, factory);
+            m_o2SensorServer = new Server.O2Sensor(m_mainManager, factory);
+            m_h2JAGSensorServer = new Server.H2JAGSensor(m_mainManager, factory);
+            m_o2JAGSensorServer = new Server.O2JAGSensor(m_mainManager, factory);
+            m_submergeSensorServer = new Server.SubmergeSensor(m_mainManager, factory);
+        }
+
+        public void Initialize()
+        {
+            if (LoadBuildingData())
+            {
+                if (LoadZones())
+                {
+                    if (LoadEquipmentZones())
+                    {
+                        if (LoadSensorZones())
+                        {
+                            LoadSensorTagInfo();
+                        }
+                    }
+                }
+            }
+
+            LoadMaterial();
+        }
+
+        public void OnLoad()
+        {
+            m_fireSensorServer.OnLoad(m_mainManager.SDMSDataManager);
+            m_psmSensorServer.OnLoad(m_mainManager.SDMSDataManager);
+            m_securitySensorServer.OnLoad(m_mainManager.SDMSDataManager);
+            m_etcSensorServer.OnLoad(m_mainManager.SDMSDataManager);
+        }
+
+        public Result OnReceive(Facility.FacilityType sensorType, int header, string strClientInfo, ArrayList arrDatas)
+        {
+            if (Facility.IsFireSensorType(sensorType))
+                return m_fireSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsPSMSensorType(sensorType))
+                return m_psmSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsSecurityType(sensorType))
+                return m_securitySensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (sensorType == Facility.FacilityType.SUBMERGENCY)
+                return m_submergeSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsETCSensorType(sensorType))
+                return m_etcSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsEarthquakeSensorType(sensorType))
+                return m_earthquakeSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsStrongWindSensorType(sensorType))
+                return m_strongWindSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsBlackOutSensorType(sensorType))
+                return m_blackOutSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsBeaconSensorType(sensorType))
+                return m_beaconSensorSever.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsEnvironmentSensorType(sensorType))
+                return m_environmentSensorSever.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsManufactureSensorType(sensorType))
+                return m_manufactureSensorSever.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsDoorSensorType(sensorType))
+                return m_doorSensorSever.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsLaserSensorType(sensorType))
+                return m_laserSensorSever.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsLowBatterySensorType(sensorType))
+                return m_batterySensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsHighTempSensorType(sensorType))
+                return m_highTempSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsTiltSensorType(sensorType))
+                return m_tiltSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsH2SensorType(sensorType))
+                return m_h2SensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsTempSensorType(sensorType))
+                return m_tempSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsFlowSensorType(sensorType))
+                return m_flowSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsConductivitySensorType(sensorType))
+                return m_conductSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsPressureSensorType(sensorType))
+                return m_pressureSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsGasSensorType(sensorType))
+                return m_gasSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsAnomalySensorType(sensorType))
+                return m_anomalySensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsH2LowSensorType(sensorType))
+                return m_h2LowSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsO2SensorType(sensorType))
+                return m_o2SensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsH2JAGSensorType(sensorType))
+                return m_h2JAGSensorServer.OnReceive(header, strClientInfo, arrDatas);
+            else if (Facility.IsO2JAGSensorType(sensorType))
+                return m_o2JAGSensorServer.OnReceive(header, strClientInfo, arrDatas);
+
+
+
+            return new MessageResult(false, ErrorMessageType.ToMessage(ErrorMessageType.UNKNOWN_COMMAND));
+        }
+
+        private bool LoadBuildingData()
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return false;
+
+            string strErrorMessage;
+            ISelect selectManager = m_mainManager.SDMSDataManager.GetSelectManager();
+
+            List<BuildingGroup> buildingGroups = selectManager.SelectBuildingGroups(null, null, out strErrorMessage);
+
+            if (buildingGroups == null)
+                return false;
+
+            m_dicBuildingGroups.Clear();
+            string strBuildingGroupIDs = "";
+
+            foreach (BuildingGroup buildingGroup in buildingGroups)
+            {
+                if (strBuildingGroupIDs.Length == 0)
+                    strBuildingGroupIDs = buildingGroup.ID.ToString();
+                else
+                    strBuildingGroupIDs += ", " + buildingGroup.ID.ToString();
+
+                m_dicBuildingGroups[buildingGroup.ID] = buildingGroup;
+            }
+
+            if (strBuildingGroupIDs.Length == 0)
+                return true;
+
+            bool isNullable;
+            string strCondition = string.Format("{0} in ({1})", Building.GetFieldName(Building.Fields.BuildingGroupID, out isNullable), strBuildingGroupIDs);
+
+            List<Building> buildings = selectManager.SelectBuildings(null, strCondition, out strErrorMessage);
+
+            if (buildings == null)
+                return false;
+
+            m_dicBuildings.Clear();
+
+            foreach (Building building in buildings)
+            {
+                m_dicBuildings[building.ID] = building;
+            }
+
+            return true;
+        }
+
+        private bool LoadZones()
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return false;
+
+            string strErrorMessage;
+            ISelect selectManager = m_mainManager.SDMSDataManager.GetSelectManager();
+
+            List<Zone> zones = selectManager.SelectZones(null, null, out strErrorMessage);
+
+            if (zones == null)
+                return false;
+
+            m_dicZones.Clear();
+            m_dicBuildingZones.Clear();
+            m_dicOutdoorZones.Clear();
+
+            List<Zone> buildingZones;
+
+            foreach (Zone zone in zones)
+            {
+                m_dicZones[zone.ID] = zone;
+
+                if (zone.BuildingID == null)
+                    m_dicOutdoorZones[zone.ID] = zone;
+                else
+                {
+                    if (m_dicBuildingZones.TryGetValue((int)zone.BuildingID, out buildingZones) == false)
+                    {
+                        buildingZones = new List<Zone>();
+                        m_dicBuildingZones[(int)zone.BuildingID] = buildingZones;
+                    }
+
+                    buildingZones.Add(zone);
+                }
+            }
+
+            return true;
+        }
+
+        private bool LoadEquipmentZones()
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return false;
+
+            string strErrorMessage;
+            ISelect selectManager = m_mainManager.SDMSDataManager.GetSelectManager();
+
+            List<EquipmentZone> equipZones = selectManager.SelectEquipmentZones(null, null, out strErrorMessage);
+
+            if (equipZones == null)
+                return false;
+
+            m_dicEquipZones.Clear();
+            m_dicZoneEquipZones.Clear();
+
+            Zone zone;
+            List<EquipmentZone> zoneEquipZones;
+
+            foreach (EquipmentZone equipZone in equipZones)
+            {
+                m_dicEquipZones[equipZone.ID] = equipZone;
+
+                foreach (int zoneID in equipZone.LinkedZoneIDs)
+                {
+                    if (m_dicZones.TryGetValue(zoneID, out zone) == false)
+                        continue;
+
+                    if (m_dicZoneEquipZones.TryGetValue(zone, out zoneEquipZones) == false)
+                    {
+                        zoneEquipZones = new List<EquipmentZone>();
+                        m_dicZoneEquipZones[zone] = zoneEquipZones;
+                    }
+
+                    zoneEquipZones.Add(equipZone);
+                }
+            }
+
+            return true;
+        }
+
+        private bool LoadPSMSensors(out string strErrorMessage)
+        {
+            List<PSM> psmSensors = m_mainManager.SDMSDataManager.GetSelectManager().SelectPSMSensors(null, null, out strErrorMessage);
+
+            if (psmSensors == null)
+            {
+                System.Diagnostics.Trace.WriteLine("LoadPSMSensors Fail : " + strErrorMessage);
+                return false;
+            }
+
+            foreach (PSM sensor in psmSensors)
+            {
+                m_dicPSMSensors[sensor.ID] = sensor;
+            }
+
+            return true;
+        }
+
+        private bool LoadSensorZones()
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return false;
+
+            string strErrorMessage;
+            ISelect selectManager = m_mainManager.SDMSDataManager.GetSelectManager();
+
+            List<SensorZone> sensorZones = selectManager.SelectSensorZones(null, null, out strErrorMessage);
+
+            if (sensorZones == null)
+                return false;
+
+            m_dicSensorZones.Clear();
+            m_dicEquipZoneSensors.Clear();
+            m_dicSensorZoneGroup.Clear();
+            m_dicSensorZoneGroup2.Clear();
+            m_dicPSMSensors.Clear();
+
+            if (LoadPSMSensors(out strErrorMessage) == false)
+                return false;
+
+            EquipmentZone equipZone;
+            List<SensorZone> equipZoneSensors;
+
+            foreach (SensorZone sensorZone in sensorZones)
+            {
+                m_dicSensorZones[sensorZone.ID] = sensorZone;
+
+                if (m_dicEquipZones.TryGetValue(sensorZone.EquipZoneID, out equipZone) == false)
+                    continue;
+
+                if (m_dicEquipZoneSensors.TryGetValue(equipZone, out equipZoneSensors) == false)
+                {
+                    equipZoneSensors = new List<SensorZone>();
+                    m_dicEquipZoneSensors[equipZone] = equipZoneSensors;
+                }
+
+                equipZoneSensors.Add(sensorZone);
+                Facility.FacilityType sensorType = Facility.FacilityType.NONE;
+
+                if (GetSensorZoneSensorType(sensorZone, out sensorType) == false)
+                    continue;
+
+                SensorZoneGroup group = GetSensorZoneGroup(sensorZone.EquipZoneID, sensorType);
+
+                if (group != null)
+                {
+                    m_dicSensorZoneGroup2[sensorZone.ID] = group;
+                    // DB에서 알람 상태를 다시 읽을 때 대상이 되는 그룹 소속 센서 목록
+                    group.AddMember(sensorZone);
+                }
+                else
+                    System.Diagnostics.Trace.WriteLine("Unknown SensorZone : " + sensorZone.ID.ToString());
+            }
+
+            return true;
+        }
+
+        private bool GetSensorZoneSensorType(SensorZone sensorZone, out Facility.FacilityType sensorType)
+        {
+            sensorType = Facility.FacilityType.NONE;
+
+            // 누출센서의 경우 SensorType 대신 MaterialType을 이용한다.
+            if (sensorZone.SensorType == (int)Facility.FacilityType.PSM_SENSOR)
+            {
+                if (sensorZone.OrgSensorID == null)
+                    return false;
+
+                object psmSensor;
+
+                if (m_dicPSMSensors.TryGetValue((int)sensorZone.OrgSensorID, out psmSensor) == false)
+                    return false;
+                else
+                {
+                    if (((PSM)psmSensor).MaterialType.HasValue)
+                        sensorType = (Facility.FacilityType)((PSM)psmSensor).MaterialType;
+                }
+                    
+            }
+            else
+                sensorType = (Facility.FacilityType)sensorZone.SensorType;
+
+            return true;
+        }
+
+        private bool LoadSensorTagInfo()
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return false;
+
+            string strErrorMessage;
+            ISelect selectManager = m_mainManager.SDMSDataManager.GetSelectManager();
+
+            List<TagInfo> sensors = selectManager.SelectSensorTagInfo(null, null, out strErrorMessage);
+
+            if (sensors == null)
+                return false;
+
+            m_dicSensorTagActivation.Clear();
+
+            foreach (TagInfo sensor in sensors)
+            {
+                m_dicSensorTagActivation[sensor.ID] = sensor.IsActivate;
+            }
+
+            return true;
+        }
+
+        private bool LoadMaterial()
+        {
+            string strErrorMessage;
+            m_dicMaterials.Clear();
+
+            Dictionary<Material.Fields, object> dicConditions = new Dictionary<Material.Fields, object>();
+            string strAdditionalConditions = "";
+            List<Material> materials = m_mainManager.SDMSDataManager.GetSelectManager().SelectMaterials(dicConditions, strAdditionalConditions, out strErrorMessage);
+
+            if (materials == null)
+            {
+                System.Diagnostics.Trace.WriteLine("LoadMaterial Error : " + strErrorMessage);
+                return false;
+            }
+            else if (materials.Count == 0)
+                return false;
+
+            foreach (Material material in materials)
+            {
+                m_dicMaterials[material.ID] = material;
+            }
+
+            return true;
+        }
+
+        public SensorZoneGroup GetSensorZoneGroup(EquipmentZone equipZone, Facility.FacilityType sensorType)
+        {
+            long nID = SensorZoneGroup.ToID(equipZone, sensorType);
+            return GetSensorZoneGroup(nID, -1, equipZone, sensorType);
+        }
+
+        public SensorZoneGroup GetSensorZoneGroup(int nEquipZoneID, Facility.FacilityType sensorType)
+        {
+            long nID = SensorZoneGroup.ToID(nEquipZoneID, sensorType);
+            return GetSensorZoneGroup(nID, nEquipZoneID, null, sensorType);
+        }
+
+        private SensorZoneGroup GetSensorZoneGroup(long nSensorZoneGroupID, int nEquipZoneID, EquipmentZone equipZone, Facility.FacilityType sensorType)
+        {
+            SensorZoneGroup group = null;
+
+            if (m_dicSensorZoneGroup.TryGetValue(nSensorZoneGroupID, out group))
+                return group;
+
+            if (equipZone == null && nEquipZoneID >= 0)
+                m_dicEquipZones.TryGetValue(nEquipZoneID, out equipZone);
+
+            group = new SensorZoneGroup();
+            group.EquipmentZone = equipZone;
+            group.SensorType = sensorType;
+
+            m_dicSensorZoneGroup[group.ID] = group;
+            return group;
+        }
+
+        // nSensorZoneID가 포함된 SensorZoneGroup을 리턴한다.
+        public SensorZoneGroup GetSensorZoneGroup(int nSensorZoneID)
+        {
+            SensorZoneGroup group = null;
+            m_dicSensorZoneGroup2.TryGetValue(nSensorZoneID, out group);
+
+            // 그룹의 알람 상태를 DB 기준으로 맞춘 뒤 돌려준다.
+            // 모든 센서 서버가 이 메서드로 그룹을 얻으므로 여기 한 곳에서 갱신하면 전 센서에 적용된다.
+            if (group != null)
+                ReloadGroupFromDB(group);
+
+            return group;
+        }
+
+        /// <summary>
+        /// SensorZoneGroup이 들고 있는 알람 상태(CurrentAlarm / 탐지중 SensorZone)를 DB에서 다시 읽는다.
+        ///
+        /// 이 두 값은 원래 프로세스 메모리에만 존재해서, 장시간 구동 중 DB와 어긋나면
+        /// 신규 알람 신호가 "이미 알람 발생중"으로 잘못 판정되어 이력도 로그도 없이 사라졌다.
+        /// 신호를 처리하기 직전에 DB를 기준으로 되맞춘다.
+        /// </summary>
+        private void ReloadGroupFromDB(SensorZoneGroup group)
+        {
+            if (m_mainManager == null || m_mainManager.SDMSDataManager == null)
+                return;
+
+            // ① 탐지중인 SensorZone 목록 : SdmsSensorZone.IsAlarmStatus / Data
+            group.ReloadSensorDatas(m_mainManager.SDMSDataManager);
+
+            // ② 진행중인 알람 : SdmsAlarmCurrent
+            Process.AlarmManager alarmManager = m_mainManager.AlarmManager as Process.AlarmManager;
+
+            if (alarmManager == null)
+                return;
+
+            group.CurrentAlarm = alarmManager.FindAlarm(group.GetMemberIDs(), group.SensorType, m_mainManager.SDMSDataManager);
+        }
+
+        public void AddSensorZone(SensorZone sensorZone)
+        {
+            m_dicSensorZones[sensorZone.ID] = sensorZone;
+
+            Facility.FacilityType sensorType;
+
+            if (GetSensorZoneSensorType(sensorZone, out sensorType) == false)
+                return;
+
+            SensorZoneGroup group = GetSensorZoneGroup(sensorZone.EquipZoneID, sensorType);
+
+            if (group != null)
+            {
+                m_dicSensorZoneGroup2[sensorZone.ID] = group;
+                group.AddMember(sensorZone);
+            }
+        }
+
+        public SensorZone GetSensorZone(int nSensorID)
+        {
+            SensorZone sensorZone;
+
+            if (m_dicSensorZones.TryGetValue(nSensorID, out sensorZone))
+                return sensorZone;
+
+            return null;
+        }
+
+        public SensorZone GetSensorZone(int nOrgSensorID, Facility.FacilityType sensorType, EquipmentZone equipZone, out SensorZoneGroup group)
+        {
+            group = null;
+
+            if (equipZone != null)
+            {
+                group = GetSensorZoneGroup(equipZone, sensorType);
+
+                if (group != null)
+                {
+                    foreach (KeyValuePair<SensorZone, int> pair in group.GetSensors())
+                    {
+                        SensorZone sensorZone = pair.Key;
+
+                        if (sensorZone.OrgSensorID == nOrgSensorID)
+                            return sensorZone;
+                    }
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<int, SensorZone> pair in m_dicSensorZones)
+                {
+                    if (pair.Value.SensorType == (int)sensorType && pair.Value.OrgSensorID == nOrgSensorID)
+                    {
+                        return pair.Value;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // 실시간 조회
+        public bool IsActiveSensor(int nSensorTagInfoID)
+        {
+            string strErrorMessage;
+            TagInfo tagInfo = m_mainManager.SDMSDataManager.GetSelectManager().SelectSensorTagInfo(nSensorTagInfoID, out strErrorMessage);
+
+            if (tagInfo == null || tagInfo.IsActivate == false)
+                return false;
+            /*bool isActive;
+
+            if (m_dicSensorTagActivation.TryGetValue(nSensorTagInfoID, out isActive))
+                return isActive;*/
+
+            return true;
+        }
+
+        public void SetSensorActivation(int nSensorTagInfoID, bool isActive)
+        {
+            m_dicSensorTagActivation[nSensorTagInfoID] = isActive;
+        }
+
+        public Zone GetZone(int nZoneID)
+        {
+            Zone zone = null;
+            m_dicZones.TryGetValue(nZoneID, out zone);
+            return zone;
+        }
+
+        public EquipmentZone GetEquipmentZone(int nEquipZoneID)
+        {
+            EquipmentZone zone = null;
+            m_dicEquipZones.TryGetValue(nEquipZoneID, out zone);
+            return zone;
+        }
+
+        public List<SensorZone> GetEquipZoneSensorZones(EquipmentZone equipZone)
+        {
+            List<SensorZone> sensorZones;
+
+            if (m_dicEquipZoneSensors.TryGetValue(equipZone, out sensorZones))
+                return sensorZones;
+
+            return null;
+        }
+
+        public void SetEquipZoneSensorZones(EquipmentZone equipZone, List<SensorZone> sensorZones)
+        {
+            m_dicEquipZoneSensors[equipZone] = sensorZones;
+        }
+
+        public BuildingGroup GetBuildingGroup(int nBuildingGroupID)
+        {
+            BuildingGroup group;
+
+            if (m_dicBuildingGroups.TryGetValue(nBuildingGroupID, out group) == false)
+                group = null;
+
+            return group;
+        }
+
+        public Building GetBuilding(int nBuildingID)
+        {
+            Building building;
+
+            if (m_dicBuildings.TryGetValue(nBuildingID, out building) == false)
+                building = null;
+
+            return building;
+        }
+
+        public PSM GetPSMSensor(int nSensorID, out string strErrorMessage)
+        {
+            return m_mainManager.SDMSDataManager.GetSelectManager().SelectPSMSensor(nSensorID, out strErrorMessage);
+        }
+
+        public Material GetMaterial(int? nMaterial)
+        {
+            Material material = null;
+
+            if (nMaterial != null && m_dicMaterials.ContainsKey((int)nMaterial))
+            {
+                material = m_dicMaterials[(int)nMaterial];
+            }
+
+            return material;
+        }
+
+        /// <summary>
+        /// 알람 신호 수신 여부
+        /// </summary>
+        /// <returns></returns>
+        public bool GetUseReceive(int nSensorType, int nSiteID)
+        {
+            string strPropertyName = "UseReceive";
+            if (Facility.IsFireSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Fire";
+            else if ((int)Facility.FacilityType.EmergencyBell == nSensorType)
+                strPropertyName += "EmergencyBell";
+            else if ((int)Facility.FacilityType.SUBMERGENCY == nSensorType)
+                strPropertyName += "Submerge";
+            else if (Facility.IsPSMSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "PSM";
+            else if (Facility.IsETCSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "ETC";
+            else if (Facility.IsSecurityType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "SVMS";
+            else if (Facility.IsStrongWindSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "StrongWind";
+            else if (Facility.IsBlackOutSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "BlackOut";
+            else if (Facility.IsEarthquakeSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Earthquake";
+            else if (Facility.IsBeaconSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Beacon";
+            else if (Facility.IsEnvironmentSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Environment";
+            else if (Facility.IsManufactureSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Manufacture";
+            else if (Facility.IsH2SensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "H2";
+            else if (Facility.IsFlowSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Flow";
+            else if (Facility.IsConductivitySensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Conductivity";
+            else if (Facility.IsTempSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Temp";
+            else if (Facility.IsPressureSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Pressure";
+            else if (Facility.IsGasSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "GAS";
+            else if (Facility.IsH2LowSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "H2Low";
+            else if (Facility.IsO2SensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "O2";
+            else if (Facility.IsH2JAGSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "H2JAG";
+            else if (Facility.IsO2JAGSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "O2JAG";
+            else if (Facility.IsDoorSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Door";
+            else if (Facility.IsLaserSensorType(Facility.ToFacilityType(nSensorType)))
+                strPropertyName += "Laser";
+
+            string strErrorMessage = null;
+            List<Common.Model.Option.Options> options = m_mainManager.CommonDataManager.GetSelectManager().SelectOption(Common.Model.Option.Options.OptionTarget.SDMS, strPropertyName, nSiteID, out strErrorMessage);
+            if (options != null && options.Count > 0)
+            {
+                bool result;
+                if (bool.TryParse(options[0].PropertyValue, out result))
+                {
+                    if (Facility.IsSecurityType(Facility.ToFacilityType(nSensorType)))
+                        Logger.Instance.Write("GetUseReceive 수신여부 체크(SensorType: " + nSensorType.ToString() + ", PropertyValue: " + options[0].PropertyValue.ToString() + ")");
+
+                    if (!result)
+                    {
+                        // 수신 옵션이 꺼져 있어 알람 신호를 폐기한다. 센서 종류와 무관하게 기록한다.
+                        Logger.Instance.Write("GetUseReceive 수신 거부 - 알람 신호 폐기(SensorType: " + nSensorType.ToString() + ", Option: " + strPropertyName + ", SiteID: " + nSiteID.ToString() + ", PropertyValue: " + options[0].PropertyValue.ToString() + ")");
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                if (Facility.IsSecurityType(Facility.ToFacilityType(nSensorType)))
+                    Logger.Instance.Write("GetUseReceive 수신여부 체크(SensorType: " + nSensorType.ToString() + ", strErrorMessage: " + strErrorMessage + ", Return: true)");
+            }
+                
+
+            return true;
+        }
+    }
+}

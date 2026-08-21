@@ -1,0 +1,94 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using dnsDapperDBUtil.DataAccessLayer.DAL;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using SDMS.IBLL;
+using SDMS.BLL;
+
+namespace WebSOPAppSample
+{
+    public class Startup
+    {
+        private static Config.ConfigManager m_configManager = new Config.ConfigManager();
+
+        public static Config.ConfigManager ConfigManager
+        {
+            get { return m_configManager; }
+        }
+
+        public Startup(IConfiguration configuration)
+        {
+            m_configManager.ReadConfig(configuration);
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+
+            services.AddControllersWithViews();
+
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
+
+            if (m_configManager.Site.DBType != null)
+            {
+                string strDBName = m_configManager.Site.DBName;
+                int nDBType = (int)m_configManager.Site.DBType;
+                string strDbID = m_configManager.Site.DbID;
+                string strDbHost = m_configManager.Site.DbHost;
+                string strDbPW = m_configManager.Site.DbPw;
+
+                DataManager dataManager = new DataManager(nDBType, strDbHost, strDBName, strDbID, strDbPW);
+                SOP.BLL.ProcessManager sopProcessManager = new SOP.BLL.ProcessManager(dataManager);
+
+                services.AddTransient<IProcessManager>(service => new ProcessManager(dataManager, sopProcessManager.SopManager));
+            }
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
+        }
+    }
+}

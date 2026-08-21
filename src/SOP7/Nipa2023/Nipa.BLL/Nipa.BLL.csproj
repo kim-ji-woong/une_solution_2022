@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\..\Common\Common.DAL\Common.DAL.csproj" />
+    <ProjectReference Include="..\..\Common\Common.IDAL\Common.IDAL.csproj" />
+    <ProjectReference Include="..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj" />
+    <ProjectReference Include="..\..\DNS\dnsData\dnsData.csproj" />
+    <ProjectReference Include="..\..\DNS\dnsSMS\dnsSMS\dnsSMS.csproj" />
+    <ProjectReference Include="..\..\DNS\dnsSopID\dnsSopID.csproj" />
+    <ProjectReference Include="..\..\SDMS\SDMS.DAL\SDMS.DAL.csproj" />
+    <ProjectReference Include="..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\SOPManager.BLL\SOPManager.BLL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\SOPManager.DAL\SOPManager.DAL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\SOPManager.IDAL\SOPManager.IDAL.csproj" />
+    <ProjectReference Include="..\..\TeamEditor\TeamEditor.DAL\TeamEditor.DAL.csproj" />
+    <ProjectReference Include="..\..\TeamEditor\TeamEditor.IDAL\TeamEditor.IDAL.csproj" />
+    <ProjectReference Include="..\Nipa.DAL\Nipa.DAL.csproj" />
+    <ProjectReference Include="..\Nipa.Model\Nipa.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,493 @@
+﻿import React, { Component } from 'react';
+import styles from '../../../Common/css/style.module.css';
+import bodyStyles from '../../css/body.module.css';
+import SopManagerResource from '../../resource/id';
+import SopController from '../../services/sopController';
+import SopManager from '../sopManager';
+import $ from 'jquery';
+import '../../../Common/js/treeview.js';
+import '../../../TeamEditor/ui/utility/css/style.css'; /* 사용중인것, 지우지마세요 */
+import { i18n, withTranslation, i18nUtil } from '../../../language/i18n';
+import hoistStatics from 'hoist-non-react-statics';
+import ProjectResource from '../../../Root/resource/id';
+
+class DeleteSOPOptions extends Component {
+	static cssStyles = styles;
+
+	constructor(props) {
+		super(props);
+		this.props = props;
+
+		this.state = {
+			disasterCategories: [],
+			isNormal: true,
+			selectedDisaster: null,
+			selectedVersion: null,
+			loading: true,
+			loadingMessage: i18n.t('데이터를 불러오고 있습니다'),
+			showSites: false,
+			siteName: '종합방재실',
+		};
+
+		this.refCheckBoxHeader = React.createRef();
+		this.refTBody = React.createRef();
+
+		this.deleteVersionIDs = [];
+	}
+
+	componentDidMount() {
+		this.onChangeSopMode(this.state.isNormal);
+		$(document).ready(function () {
+			$('.treeview').hummingbird();
+		})
+
+		this.checkSiteID();
+    }
+
+	componentDidUpdate(prevProps) {
+		if (ProjectResource.SiteID === ProjectResource.Site.GG_A && prevProps.selectedSiteID !== this.props.selectedSiteID) {
+			this.onChangeSopMode(this.state.isNormal);
+		}
+	}
+
+	checkSiteID = () => {
+		const selectedSiteID = this.props.selectedSiteID;
+		const userInfo = ProjectResource?.getUserInfo();
+		if (userInfo?.siteID !== ProjectResource.Site.GG_A) {
+			return;
+		}
+
+		if (selectedSiteID >= ProjectResource.Site.GG_B && selectedSiteID <= ProjectResource.Site.GG_H) {
+			this.props.updateSelectedSiteID(ProjectResource.Site.GG_A);
+		}
+	}
+
+	onChangeSopMode(isNormal) {
+		this.getDisasterCategories(isNormal);
+		//this.setState({ isNormal: isNormal });
+	}
+
+	async getDisasterCategories(isNormal) {
+		const [disasterCategories, message] = await SopController.disasterCategories(isNormal, this.props.selectedSiteID);
+
+		if (disasterCategories) {
+			if (isNormal) {
+				this.setState({ loading: false, isNormal: isNormal, selectedDisaster: null, disasterCategories: disasterCategories });
+			}
+			else {
+				this.setState({ loading: false, isNormal: isNormal, selectedDisaster: null, disasterCategories: disasterCategories });
+			}
+		}
+		else {
+			this.setState({ loading: true, loadingMessage: message, isNormal: isNormal, selectedDisaster: null });
+		}
+	}
+
+	onClickClose() {
+		// 원래 상태 그대로 돌려준다.
+		this.props.content(SopManagerResource.menu.SOP_편집, this.props.sopData);
+	}
+
+	onClickTreeNode = (event) => {
+		//if (event.target.classList.contains("fa-minus")) {
+		//	event.target.classList.remove("fa-minus");
+		//	event.target.classList.add("fa-plus");
+		//}
+		//else if (event.target.classList.contains("fa-plus")) {
+		//	event.target.classList.remove("fa-plus");
+		//	event.target.classList.add("fa-minus");
+		//}
+
+		//this.setState({ loading: false });
+	}
+
+	onClickDisaster(disasterData) {
+		if (this.state.selectedDisaster !== disasterData) {
+			if (this.refCheckBoxHeader.current) {
+				this.refCheckBoxHeader.current.checked = false;
+				this.onChangeCheckHeader(this.refCheckBoxHeader.current);
+			}
+
+			this.setState({ selectedDisaster: disasterData });
+		}
+	}
+
+	getCheckedVersions() {
+		const children = this.refTBody.current.children;
+		const childCount = children.length;
+
+		const versionIDs = [];
+
+		for (let i = 0; i < childCount; i++) {
+			const tr = children[i];
+
+			if (tr.tagName === "TR") {
+				if (tr.children.length > 0) {
+					const td = tr.children[0];
+
+					if (td.tagName !== "TD") {
+						continue;
+					}
+
+					if (td.children.length > 0) {
+						const input = td.children[0];
+
+						if (input.tagName !== "INPUT") {
+							continue;
+						}
+
+						if (input.checked) {
+							const versionID = parseInt(tr.dataset.versionid);
+
+							if (isNaN(versionID) === false && versionID !== undefined && versionID !== null) {
+								versionIDs.push(versionID);
+							}
+                        }
+					}
+				}
+			}
+		}
+
+		return versionIDs;
+    }
+
+	onClickDelete = (event) => {
+		const versionIDs = this.getCheckedVersions();
+		if (versionIDs.length === 0) {
+			this.props.showConfirmDialog(i18n.t('common.오류'), [i18n.t('sopManager.formText.삭제할 버전을 선택하세요')], [i18n.t('common.확인')], null, null);
+			return;
+		}
+
+		if (versionIDs.length > 0) {
+			if (this.checkCurrentVersion(versionIDs)) {
+				this.props.content(SopManagerResource.menu.삭제, [versionIDs, this, this.state.isNormal]);
+			}
+        }
+	}
+
+	checkCurrentVersion(versionIDs) {
+		const sopData = this.props.sopData;
+
+		if (sopData?.disaster) {
+			const disaster = { ...sopData.disaster };
+
+			for (const versionID of versionIDs) {
+				if (versionID === disaster.versionID) {
+					this.deleteVersionIDs = versionIDs;
+					this.props.showConfirmDialog(i18n.t('common.확인'), ["현재 화면에서 편집중인 버전을 삭제하려고 합니다.", "계속 진행할까요? 이 작업은 돌이킬수 없습니다."], ["예", "아니오"], this.onConfirmDelete);
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	onConfirmDelete = (index) => {
+		if (index === 0) {
+			this.props.content(SopManagerResource.menu.삭제, [this.deleteVersionIDs, this, this.state.isNormal]);
+		}
+
+		this.props.onCloseConfirmDialog();
+	}
+
+	static postDeleteMethod(obj, isNormal) {
+		obj.onChangeSopMode(isNormal);
+    }
+
+	tbRdo(event, version) {
+		const tr = event.target.parentElement;
+
+		for (let i = 0; i < tr.parentElement.children.length; i++)
+		{
+			const row = tr.parentElement.children[i];
+
+			if (row === tr) {
+				if (row.children.length > 0) {
+					const td = row.children[0];
+
+					if (td.tagName === "TD" && td.children.length > 0) {
+						const input = td.children[0];
+
+						if (input.tagName === "INPUT") {
+							input.checked = input.checked ? false : true;
+						}
+					}
+				}
+
+				continue;
+			}
+			else {
+				row.classList.remove(DeleteSOPOptions.cssStyles.on);
+			}
+        }
+
+		tr.classList.add(DeleteSOPOptions.cssStyles.on);
+		this.setState({ selectedVersion: version });
+	};
+
+	getDisasterVersion(disaster) {
+		if (disaster?.version) {
+			this.versionCount = this.versionCount + 1;
+
+			return (
+				<tr key={"version_" + this.versionCount} data-versionid={disaster.version.id} onClick={(event) => this.tbRdo(event, disaster.version)}>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>{disaster.version.versionName}</td>
+					<td>{disaster.owner}</td>
+					<td>{disaster.version.createTime.toString().replace('T', ' ')}</td>
+					<td>{disaster.version.lastAccessTime.toString().replace('T', ' ')}</td>
+					<td className={DeleteSOPOptions.cssStyles.tal}>{disaster.version.description}</td>
+				</tr>
+				);
+		}
+
+		return <></>
+    }
+
+	getDisasterVersions(disasterData) {
+		this.versionCount = 0;
+
+		if (disasterData) {
+			return (
+				<table className={DeleteSOPOptions.cssStyles.scTb}>
+					<caption>버전명, 작성자, 생성일자, 수정일자, 부가설명으로 구성된 표</caption>
+					<colgroup>
+						<col className={bodyStyles.col5Pro} />
+						<col className={bodyStyles.col12Pro} />
+						<col className={bodyStyles.col12Pro} />
+						<col className={bodyStyles.col25Pro} />
+						<col className={bodyStyles.col25Pro} />
+						<col className={bodyStyles.col40Pro} />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<input ref={this.refCheckBoxHeader} type="checkbox" onChange={(e) => this.onChangeCheckHeader(e.target)} />
+							</th>
+							<th>{i18n.t('sopManager.formText.버전명')}</th>
+							<th>{i18n.t('sopManager.formText.작성자')}</th>
+							<th>{i18n.t('sopManager.formText.생성일자')}</th>
+							<th>{i18n.t('sopManager.formText.수정일자')}</th>
+							<th>{i18n.t('sopManager.formText.부가설명')}</th>
+						</tr>
+					</thead>
+					<tbody ref={this.refTBody}>
+						{
+							disasterData.disasterDatas && (
+								disasterData.disasterDatas.map(disaster => (this.getDisasterVersion(disaster)))
+							)
+						}
+					</tbody>
+				</table>
+			);
+		}
+
+		return <></>
+	}
+
+	onChangeCheckHeader = (target) => {
+		if (!this.refTBody.current) {
+			return;
+		}
+
+		const children = this.refTBody.current.children;
+		const childCount = children.length;
+		const checked = target.checked;
+
+		for (let i = 0; i < childCount; i++) {
+			const child = children[i];
+
+			if (child.tagName === "TR") {
+				if (child.children.length > 0) {
+					const td = child.children[0];
+
+					if (td.tagName !== "TD") {
+						continue;
+					}
+
+					if (td.children.length > 0) {
+						const input = td.children[0];
+
+						if (input.tagName !== "INPUT") {
+							continue;
+						}
+
+						input.checked = checked;
+                    }
+                }
+            }
+        }
+	}
+
+	getDisasterContents(disasterData) {
+		this.disasterCount = this.disasterCount + 1;
+		const className = disasterData === this.state.selectedDisaster ? "treeviewLastItem " + DeleteSOPOptions.cssStyles.selectedTreeNode + " " + DeleteSOPOptions.cssStyles.clickable : "treeviewLastItem " + DeleteSOPOptions.cssStyles.clickable;
+
+		return (
+			<li key={"disaster_" + this.disasterCount} className={className} onClick={() => this.onClickDisaster(disasterData)}>{i18nUtil.convertText(disasterData.disasterName)}</li>
+		);
+	}
+
+	getSubDisasterCategoryContents(subDisasterCategoryData) {
+		if (!subDisasterCategoryData.subDisasterCategory) {
+			return <></>
+		}
+
+		this.sdcCount = this.sdcCount + 1;
+
+		if (subDisasterCategoryData.disasterDatas && subDisasterCategoryData.disasterDatas.length > 0) {
+			return (
+				<li key={"sdc_" + this.sdcCount}>
+					<i className="fa-minus" onClick={this.onClickTreeNode}>더보기</i><h5>{i18nUtil.convertText(subDisasterCategoryData.subDisasterCategory.subCategoryName)}</h5>
+					{
+						subDisasterCategoryData.disasterDatas && (
+							<ul>
+								{
+									subDisasterCategoryData.disasterDatas.map(disasterData => this.getDisasterContents(disasterData))
+								}
+							</ul>
+						)
+					}
+				</li>
+			);
+        }
+
+		return (
+			<li key={"sdc_" + this.sdcCount} className={"treeviewLastItem " + DeleteSOPOptions.cssStyles.grayText}>{i18nUtil.convertText(subDisasterCategoryData.subDisasterCategory.subCategoryName)}</li>
+		);
+	}
+
+	getDisasterCategoryContents(disasterCategoryData) {
+		if (!disasterCategoryData.disasterCategory) {
+			return <></>
+		}
+
+		this.dcCount = this.dcCount + 1;
+
+		return (
+			<li key={"dc_" + this.dcCount}>
+				<i className="fa-minus" onClick={this.onClickTreeNode}>더보기</i><h5>{i18nUtil.convertText(disasterCategoryData.disasterCategory.categoryName)}</h5>
+				{
+					disasterCategoryData.subDisasterCategories && (
+						<ul>
+							{
+								disasterCategoryData.subDisasterCategories.map(subDisasterCategoryData => this.getSubDisasterCategoryContents(subDisasterCategoryData))
+							}
+						</ul>
+					)
+				}
+			</li>
+		);
+    }
+
+	onClickSite = (siteID) => {
+		const sites = ProjectResource?.sites;
+
+		if(sites.length > 1){
+			for(let i = 0; i < sites?.length; i++){
+				const siteData = sites[i];
+
+				if(siteID === siteData.id){
+					this.setState({ 
+						siteName: siteData.siteName,
+						showSites: false
+					});
+					this.props.onChangeSite(siteID);
+				}
+			}
+		}
+	}
+
+	displaySite = () => {
+		const sites = ProjectResource?.sites;
+		let selectSiteUI_GG_SOP = [];
+
+		if(sites.length > 1){
+			for(let i = 0; i < sites?.length; i++){
+				const siteData = sites[i];
+
+				selectSiteUI_GG_SOP.push(<li key={"selectSiteUI" + siteData.id} onClick={() => this.onClickSite(Number(siteData.id))}>{siteData.siteName}</li>);
+			}
+		}
+		return [selectSiteUI_GG_SOP];
+	}
+
+	render() {
+		this.dcCount = 0;
+		this.sdcCount = 0;
+		this.disasterCount = 0;
+
+		const userInfo = ProjectResource.getUserInfo();
+		const [selectSiteUI_GG_SOP] = this.displaySite();
+		const siteName = this.state.siteName;
+
+		return (
+			<div id={DeleteSOPOptions.cssStyles.sopPop}>
+				<div>
+					<div>
+						<div className={DeleteSOPOptions.cssStyles.spPop + " " + DeleteSOPOptions.cssStyles.sopOpen}>
+							<div className={DeleteSOPOptions.cssStyles.sppTop}>
+								<h4>{i18n.t('sopManager.formText.SOP 삭제')}</h4>
+								<a className={DeleteSOPOptions.cssStyles.clickable} onClick={() => this.onClickClose()}>{i18n.t('common.닫기')}</a>
+							</div>
+							<div className={DeleteSOPOptions.cssStyles.sppSel}>
+								<h5>{i18n.t('sopManager.formText.전체 SOP')}</h5>
+								<label className={DeleteSOPOptions.cssStyles.clickable}>
+									<input type="radio" name="sppSel" className={bodyStyles.labelInput} checked={this.state.isNormal} onChange={() => this.onChangeSopMode(true)} />
+									{i18n.t('sopManager.formText.평일모드')}
+								</label>
+								<label className={DeleteSOPOptions.cssStyles.clickable}>
+									<input type="radio" name="sppSel" className={bodyStyles.labelInput} checked={!this.state.isNormal} onChange={() => this.onChangeSopMode(false)} />
+									{i18n.t('sopManager.formText.야간 및 휴일모드')}
+								</label>
+							</div>
+							<div className={DeleteSOPOptions.cssStyles.sppCont}>
+								<div className={DeleteSOPOptions.cssStyles.sppLft}>
+									{
+										userInfo?.siteID === ProjectResource.Site.GG_A ?
+											<div className={DeleteSOPOptions.cssStyles.selectBoxSOP}>
+												<button className={this.state.showSites ? DeleteSOPOptions.cssStyles.on : null} onClick={() => this.setState({ showSites: !this.state.showSites })}>
+													<div>{siteName}</div>
+													<span className={this.state.showSites ? DeleteSOPOptions.cssStyles.on : null}></span>
+												</button>
+												<ul className={this.state.showSites ? DeleteSOPOptions.cssStyles.on : null}>
+													{selectSiteUI_GG_SOP}
+												</ul>
+											</div>
+											: <></>
+									}
+									<div className={DeleteSOPOptions.cssStyles.scrollbarOuter}>
+										<ul className={styles.sarTree + ' treeview'}>
+										{
+											this.state.disasterCategories && (
+												this.state.disasterCategories.map(disasterCategoryData => (this.getDisasterCategoryContents(disasterCategoryData)))
+											)
+										}
+										</ul>
+									</div>
+								</div>
+								<div className={DeleteSOPOptions.cssStyles.sppRht}>
+									<div className={DeleteSOPOptions.cssStyles.scrollbarOuter}>
+										<div className={DeleteSOPOptions.cssStyles.spprCont}>
+										{
+											this.getDisasterVersions(this.state.selectedDisaster)
+                                        }
+										</div>
+									</div>
+									<div className={DeleteSOPOptions.cssStyles.spprBot}>
+										<a className={DeleteSOPOptions.cssStyles.blu} onClick={this.onClickDelete}>{i18n.t('sopManager.formText.SOP 삭제')}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
+}
+
+export default hoistStatics(withTranslation()(DeleteSOPOptions), DeleteSOPOptions);

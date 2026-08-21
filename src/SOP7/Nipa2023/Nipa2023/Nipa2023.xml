@@ -1,0 +1,776 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nipa2023</name>
+    </assembly>
+    <members>
+        <member name="T:Nipa2023.Areas.api.Controllers.AccountController">
+            <summary>
+            계정관리를 위한 API
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.AesHelper.Encrypt(System.String,System.String)">
+            <summary>  
+            AES encryption algorithm  
+            </summary>  
+            <param name="input">plain string</param>  
+            <param name="key">key (32 bit)</param>  
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.AesHelper.Decrypt(System.String,System.String)">
+            <summary>  
+            AES decryption  
+            </summary>  
+            <param name="input"> ciphertext byte array</param>  
+            <param name="key">key (32 bit)</param>  
+            <returns> returns the decrypted string</returns>  
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.AesHelper.HexStringToByteArray(System.String)">
+            <summary>
+            Convert the specified hex string to a byte array
+            </summary>
+            <param name="s">hexadecimal string (eg "7F 2C 4A" or "7F2C4A")</param>
+            <returns>byte array corresponding to hexadecimal string</returns>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.AesHelper.ByteArrayToHexString(System.Byte[])">
+            <summary>
+            Convert a byte array into a formatted hex string
+            </summary>
+            <param name="data">byte array</param>
+            <returns> formatted hexadecimal string</returns>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.GetLoginKey(System.Int64)">
+            <summary>
+            로그인을 위한 임시키 발급 요청
+            </summary>
+            <param name="num">임의의 난수값</param>
+            <returns></returns>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestLoginKey(Nipa.BLL.Models.Request.RequestLoginKey)">
+            <summary>
+            암호화를 위한 랜덤키 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userID": "jamesdean"   // 로그인할 사용자 아이디
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.Login(Nipa.BLL.Models.Request.LoginData)">
+            <summary>
+            로그인
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "key": "asdfefda",              // 암호화시 사용된 랜덤키
+                "value": "adf;aliksdfjadf"      // 암호화된 계정 정보
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.Logout">
+            <summary>
+            로그아웃
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.CheckLoginSession(Nipa.BLL.Models.Request.CheckLoginSession)">
+            <summary>
+            세션의 유효성 검증
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userID": 2,                        // 로그인한 사용자의 ID
+                "sessionKey": "adf;aliksdfjadf"     // 로그인시 전달받은 세션키
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.UseAutoLogin">
+            <summary>
+            자동로그인 사용여부 확인
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestSaveOption(Nipa.BLL.Models.Request.RequestSaveAccountOption)">
+            <summary>
+            사용자 계정별 옵션정보 DB에 업데이트
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "saveOptions":
+                {
+                    "id": 1,
+                    "userID": "aaa",
+                    "category": "popup",
+                    "subCategory": "cctv",
+                    "propertyValue1": "1.0",
+                    "propertyValue2": "2.5",
+                    "propertyValue3": "34px",
+                    "propertyValue4": "100px"
+                }
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestUserList(Nipa.BLL.Models.Request.RequestUserList)">
+            <summary>
+            사용자 계정목록 얻어오기
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "siteID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestUserLevelList">
+            <summary>
+            사용자 계정등급 목록 얻어오기
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Nipa2023.Areas.api.Controllers.AccountController.UpdateUsers(Nipa.BLL.Models.Request.UpdateUser)" -->
+        <!-- Badly formed XML comment ignored for member "M:Nipa2023.Areas.api.Controllers.AccountController.RequestGetOption(Nipa.BLL.Models.Request.RequestOption)" -->
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestRegularMemberList(Nipa.BLL.Models.Request.RequestRegularMemberList)">
+            <summary>
+            정규조직원 정보 얻어오기
+            </summary>
+            <param name="data"></param>
+            <returns></returns>++9
+            <remarks>
+            Sample request:
+            {
+                "siteID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestCreateUser(Nipa.BLL.Models.Request.RequestCreateUser)">
+            <summary>
+            신규 사용자 계정 생성
+            </summary>
+            <param name="data"></param>
+            <returns></returns>++9
+            <remarks>
+            Sample request:
+            {
+                "regularMemberID": 1,   // 정규조직원 ID
+                "userID": "jamesdean",  // 사용자 계정
+                "accountLevelID": 2,    // 계정등급
+                "siteID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestChangePassword(Nipa.BLL.Models.Request.RequestChangePassword)">
+            <summary>
+            비밀번호 변경
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "key": "asdfefda",              // 암호화시 사용된 랜덤키
+                "oldValue": "adf;aliksdfjadf"   // 암호화된 이전 계정 정보
+                "newValue": "adf;aliksdfjadf"   // 암호화된 새로운 계정 정보
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestWebSocketPort">
+            <summary>
+            WebSocketPort 요청
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.api.Controllers.AccountController.RequestFindPassword(Nipa.BLL.Models.Request.RequestFindPassword)">
+            <summary>
+            비밀번호 찾기
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userName": "홍길동",          // 사용자 이름
+                "phoneNumber": "01012345678"   // 휴대폰 번호
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.HistoryController.RequestSensorDetectHistories(Nipa.BLL.Models.Request.RequestSensorDetectHistories)">
+            <summary>
+            센서 탐지이력 조회
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "beginTime": "2023-10-16 00:00:00", // 이력조회 시작시간
+                "endTime": "2023-10-16 18:00:00",   // 이력조회 종료시간
+                "facilityType": -1,                 // 조회할 센서타입(dnsData.Sensor.Facility.FacilityType). 이 값이 0보다 작으면 전체 센서타입을 조회한다.
+                "buildingGroupID": -1,              // 조회할 대상 건물그룹의 ID(0보다 작으면 전체 건물그룹)
+                "buildingID": -1,                   // 조회할 대상 건물의 ID(0보다 작으면 전체 건물)
+                "zoneID": -1,                       // 조회할 대상 Zone의 ID(0보다 작으면 전체 Zone)
+                "lastSensorZoneHistoryID": 1,       // 마지막에 조회한 SensorZoneHistoryID(이 값 이후로 검색한다. 검색 효율을 높이기 위해서다.)
+                "rowCount": 1,                      // 한페이지에 표시될 행의 갯수
+                "isDesc": true,
+                "campusID": 1                       // 몇 공장동의 데이터를 요청하는가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.HistoryController.UpdateSensorDetectHistoryMemo(Nipa.BLL.Models.Request.UpdateSensorDetectHistoryMemo)">
+            <summary>
+            센서 탐지이력의 메모(조치사항) 업데이트
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "sensorZoneHistoryID": 1,           // 알람 고유키
+                "memo": "업데이트 할 내용"
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.HistoryController.RequestSensorDetectAnalysis(Nipa.BLL.Models.Request.RequestSensorDetectAnalysis)">
+            <summary>
+            센서 탐지분석 조회
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "beginTime": "2023-10-16 00:00:00", // 이력조회 시작시간
+                "endTime": "2023-10-16 18:00:00",   // 이력조회 종료시간
+                "facilityType": -1,                 // 조회할 센서타입(dnsData.Sensor.Facility.FacilityType). 이 값이 0보다 작으면 전체 센서타입을 조회한다.
+                "buildingGroupID": -1,              // 조회할 대상 건물그룹의 ID(0보다 작으면 전체 건물그룹)
+                "buildingID": -1,                   // 조회할 대상 건물의 ID(0보다 작으면 전체 건물)
+                "zoneID": -1,                       // 조회할 대상 Zone의 ID(0보다 작으면 전체 Zone)
+                "campusID": 1                       // 몇 공장동의 데이터를 요청하는가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestSensorList(Nipa.BLL.Models.Request.RequestSensorList)">
+            <summary>
+            센서목록 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "requestFireSensors": true,         // 화재센서 목록이 필요한가?
+                "requestGasSensors": true,          // 가스센서 목록이 필요한가?
+                "requestAtmosphereSensors": false,  // 대기센서 목록이 필요한가?
+                "requestEmergencyBells": true,      // 비상벨 목록이 필요한가?
+                "requestWorkerTags": true,          // 작업자 Tag 목록이 필요한가?
+                "requestThermalCCTVs": false,       // 열화상 CCTV 목록이 필요한가?
+                "requestCCTVs": false,              // CCTV 목록이 필요한가?
+                "campusID": 1                       // 몇 공장동의 데이터를 요청하는가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestAtmosphereSensorInfo(Nipa.BLL.Models.Request.RequestPSMSensorInfo)">
+            <summary>
+            대기센서 상세정보 요청.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "sensorID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestGasSensorInfo(Nipa.BLL.Models.Request.RequestPSMSensorInfo)">
+            <summary>
+            가스센서 상세정보 요청.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "sensorID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestBuildingGroupList(Nipa.BLL.Models.Request.RequestBuildingGroupList)">
+            <summary>
+            건물목록 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1      // 건물목록을 요청하는 공장동의 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestZoneList(Nipa.BLL.Models.Request.RequestZoneList)">
+            <summary>
+            Zone 목록 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1      // Zone 목록을 요청하는 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestZoneData(Nipa.BLL.Models.Request.RequestZoneData)">
+            <summary>
+            Zone Data 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "zoneID": 1      // 0보다 작으면 Outdoor를 의미한다.
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestSaveViewport(Nipa.BLL.Models.Request.RequestSaveViewport)">
+            <summary>
+            Viewport 저장
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "zoneID": 1,
+                "cameraPositionX": 10.4,
+                "cameraPositionY": 20.2,
+                "cameraPositionZ": 0,
+                "cameraRotationX": 0,
+                "cameraRotationY": 10.3,
+                "cameraRotationZ": 0
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestTodayAlarmData">
+            <summary>
+            오늘 발생한 알람정보 얻어오기
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestPeriodAlarmData(Nipa.BLL.Models.Request.RequestAlarmPeriod)">
+            <summary>
+            특정 기간동안 발생한 알람정보 얻어오기
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "beginDate": 20230816,
+                "endDate": 20230817
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestCampusList">
+            <summary>
+            전체 공장동 리스트 얻어오기
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestFacilityList(Nipa.BLL.Models.Request.RequestFacilityList)">
+            <summary>
+            설비정보 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1      // 설비정보를 요청할 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestFacilityData(Nipa.BLL.Models.Request.RequestFacilityData)">
+            <summary>
+            설비 상세정보 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "facilityID": 1      // 설비 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestMESData(Nipa.BLL.Models.Request.RequestMESData)">
+            <summary>
+            MES 데이터 요청
+            </summary>
+            <param name="data"></param>
+            <returns>
+                run : 생산현황 통계
+                performances : 생산현황 상세
+                ngs : 공정별 불량현황
+                ngs.불량수량 : 당월 불량현황
+                ngCategories : 항목별 불량현황
+                buyDashboards : 구매현황
+                sellDashboards : 매출현황
+            </returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1,      // MES Data 목록을 요청할 공장동 ID
+                "type": 0           // 0(생산현황), 1(품질현황), 2(구매현황), 3(매출현황)
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestMESEquipmentData(Nipa.BLL.Models.Request.RequestMESEquipmentData)">
+            <summary>
+            MES 설비 상세 데이터 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "equipmentIDs: [14, 22]"   // 설비 ID 목록
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestClearAlarm(Nipa.BLL.Models.Request.RequestClearAlarm)">
+            <summary>
+            사용자에 의한 알람 수동복구
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "sensorZoneID": 0,
+                "sensorZoneHistoryID": 1,
+                "accessedUserID": 1,         // 알람을 복구하는 사용자의 ID
+                "memo": "아무거나",
+                "isMalfunction": false       // 알람을 오작동 처리할 것인가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestCampusData(Nipa.BLL.Models.Request.RequestCampusData)">
+            <summary>
+            공장동별 요약정보를 얻어오는 API
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1       // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestAPStatistics(Nipa.BLL.Models.Request.RequestAPStatistics)">
+            <summary>
+            AP 요약정보를 얻어오는 API
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1       // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestWorkerStatistics(Nipa.BLL.Models.Request.RequestWorkerStatistics)">
+            <summary>
+            작업자 요약정보를 얻어오는 API
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1       // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestAPList(Nipa.BLL.Models.Request.RequestAPList)">
+            <summary>
+            AP 목록을 얻어오는 API
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1       // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestWorkerList(Nipa.BLL.Models.Request.RequestWorkerList)">
+            <summary>
+            작업자 목록을 얻어오는 API
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1       // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestStreamServerURL">
+            <summary>
+            CCTV Stream Server URL 얻어오기
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.SDMSController.RequestSituationNotice(Nipa.BLL.Models.Request.RequestSituationNotice)">
+            <summary>
+            상황전파
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.WeatherController.RequestCurrentData(Nipa.BLL.Models.Request.RequestCurrentWeatherDatas)">
+            <summary>
+            현재날씨 얻어오기
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "siteIDs": [1, 2]      // 날씨정보를 요청하는 지역들의 ID(WeatherSite Table의 ID)
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SDMS.Controllers.WeatherController.RequestWeeklyInfo">
+            <summary>
+            주간날씨 정보 얻어오기
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.RequestResetPopup(Nipa.BLL.Models.Request.RequestResetPopup)">
+            <summary>
+            로그인 한 사용자의 팝업창 위치 및 크기 옵션을 모두 초기화한다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userID": 1                       // 누구의 데이터를 초기화할 것인가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.RequestOptions(Nipa.BLL.Models.Request.RequestOptions)">
+            <summary>
+            전체 환경설정 옵션들을 얻어온다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userID": 1,                      // 로그인한 사용자의 ID
+                "campusID": 1                     // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.UpdateOptions(Nipa.BLL.Models.Request.UpdateOptions)">
+            <summary>
+            환경설정 옵션을 갱신한다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "userID": 1,                        // 로그인한 사용자의 ID
+                "campusID": 1,                      // 공장동 ID
+                "option3DNormal":
+                {
+                    "autoRotationIdleMinutes": 10,  // 자동회전 대기시간(분)
+                    "useAutoRotation": true,        // 자동회전을 사용할 것인가?
+                },
+                "option3DSensor":
+                {
+                    "receiveGasAlarm": true,           // 가스알람을 수신할 것인가?
+                    "receiveAtmosphereAlarm": true,    // 대기오염 알람을 수신할 것인가?
+                    "receiveEmergencyBellAlarm": true, // 비상벨 알람을 수신할 것인가?
+                    "receiveThermalCameraAlarm": true, // 열화상 카메라 알람을 수신할 것인가?
+                    "receiveWorkerAlarm": true,        // 작업자알람을 수신할 것인가?
+                    "receiveFireAlarm": true,          // 화재알람을 수신할 것인가?
+                    "receiveFacilityError": true,      // 불량감지를 수신할 것인가?
+                    "moveDisplayAlarm": 3,             // 알람 발생시 화면이동 옵션(0: 이동안함, 2: 첫번째  알람 화면으로 이동, 3: 마지막 알람 화면으로 이동)
+                },
+                "optionSopNormal":
+                {
+                    "useAutoMoveSOPScreen": true,   // 실행중인 컴포넌트로 자동 화면이동
+                    "useSms": true,                 // 문자 사용여부
+                    "workingBeginHour": 9,          // 평일주간 시간대 : 시작시간
+                    "workingBeginMinute": 0,        // 평일주간 시간대 : 시작분
+                    "workingEndHour": 18,           // 평일주간 시간대 : 종료시간
+                    "workingEndMinute": 0,          // 평일주간 시간대 : 종료분
+                    "useSopAutoClose": false,       // SOP 자동종료 사용여부
+                    "autoCloseTime": 10,            // SOP 자동종료 대기시간
+                    "autoCloseTimeUnit": 0,         // SOP 자동종료 대기시간(단위) : 0(초), 1(분), 2(시)
+                    "useSopResultSummary": 0,       // SOP 결과 요약창 사용여부
+                }
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.RequestLinkedSOPList(Nipa.BLL.Models.Request.RequestLinkedSOPList)">
+            <summary>
+            센서타입 및 공간정보와 연결된 전체 SOP 목록을 얻어온다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1                      // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.RequestSOPList(Nipa.BLL.Models.Request.RequestSOPList)">
+            <summary>
+            전체 SOP 목록을 얻어온다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1                      // 공장동 ID
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.UpdateSettings(Nipa.BLL.Models.Request.UpdateSettings)">
+            <summary>
+            SOP 연결정보를 포함한 환경설정 옵션을 갱신한다.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "updateOptions"
+                {
+                     "userID": 1,                        // 로그인한 사용자의 ID
+                     "campusID": 1,                      // 공장동 ID
+                     "option3DNormal":
+                     {
+                         "autoRotationIdleMinutes": 10,  // 자동회전 대기시간(분)
+                         "useAutoRotation": true,        // 자동회전을 사용할 것인가?
+                     },
+                     "option3DSensor":
+                     {
+                         "receiveGasAlarm": true,           // 가스알람을 수신할 것인가?
+                         "receiveAtmosphereAlarm": true,    // 대기오염 알람을 수신할 것인가?
+                         "receiveEmergencyBellAlarm": true, // 비상벨 알람을 수신할 것인가?
+                         "receiveThermalCameraAlarm": true, // 열화상 카메라 알람을 수신할 것인가?
+                         "receiveWorkerAlarm": true,        // 작업자알람을 수신할 것인가?
+                         "receiveFireAlarm": true,          // 화재알람을 수신할 것인가?
+                         "receiveFacilityError": true,      // 불량감지를 수신할 것인가?
+                         "moveDisplayAlarm": 3,             // 알람 발생시 화면이동 옵션(0: 이동안함, 2: 첫번째  알람 화면으로 이동, 3: 마지막 알람 화면으로 이동)
+                     },
+                     "optionSopNormal":
+                     {
+                         "useAutoMoveSOPScreen": true,   // 실행중인 컴포넌트로 자동 화면이동
+                         "useSms": true,                 // 문자 사용여부
+                         "workingBeginHour": 9,          // 평일주간 시간대 : 시작시간
+                         "workingBeginMinute": 0,        // 평일주간 시간대 : 시작분
+                         "workingEndHour": 18,           // 평일주간 시간대 : 종료시간
+                         "workingEndMinute": 0,          // 평일주간 시간대 : 종료분
+                         "useSopAutoClose": false,       // SOP 자동종료 사용여부
+                         "autoCloseTime": 10,            // SOP 자동종료 대기시간
+                         "autoCloseTimeUnit": 0,         // SOP 자동종료 대기시간(단위) : 0(초), 1(분), 2(시)
+                         "useSopResultSummary": 0,       // SOP 결과 요약창 사용여부
+                     }
+                },
+                "updateLinkedSOPList":
+                [
+                    "campusID": 1,                      // 공장동 ID
+                    "facilityTypeID": 0,                // 센서타입
+                    "disasterCategoryID": 1,            // SOP 재난분야
+                    "subDisasterCategoryID": 1,         // SOP 재난종류
+                    "disasterName": "화재_일반",        // SOP 이름
+                    "linkedBuildingID": null,           // 건물 ID(linkedBuildingID와 linkedZoneID 모두 null이면 센서타입에 대하여 오직 하나의 SOP만 사용된다.)
+                    "linkedZoneID": null                // Zone ID(linkedBuildingID와 linkedZoneID 모두 null이면 센서타입에 대하여 오직 하나의 SOP만 사용된다.)
+                ]
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.Settings.Controllers.SettingsController.RequestAlarmOptions">
+            <summary>
+            알람수신과 관련된 옵션들을 얻어온다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nipa2023.Areas.SOP.Controllers.HistoryController.RequestSopDisasterCategoryList(Nipa.BLL.Models.Request.RequestSopDisasterCategoryList)">
+            <summary>
+            SOP 유형 목록 조회
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "campusID": 1                       // 몇 공장동의 데이터를 요청하는가?
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.SOP.Controllers.HistoryController.RequestStandardActionStepNameList">
+            <summary>
+            SOP 단계 목록 조회
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SOP.Controllers.HistoryController.RequestSopHistories(Nipa.BLL.Models.Request.RequestSOPHistories)">
+            <summary>
+            SOP 실행이력 조회
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.SOP.Controllers.HistoryController.RequestSopComponentHistories(Nipa.BLL.Models.Request.RequestSOPComponentHistories)">
+            <summary>
+            SOP 상세 실행이력 조회
+            </summary>
+        </member>
+        <member name="M:Nipa2023.Areas.TeamEditor.Controllers.TeamEditorController.RequestTeamList(Nipa.BLL.Models.Request.RequestTeamList)">
+            <summary>
+            팀목록 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "siteID": 1
+            }
+            </remarks>
+        </member>
+        <member name="M:Nipa2023.Areas.TeamEditor.Controllers.TeamEditorController.RequestTeamMemberList(Nipa.BLL.Models.Request.RequestTeamMemberList)">
+            <summary>
+            팀원목록 요청
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+            <remarks>
+            Sample request:
+            {
+                "teamID": 1
+            }
+            </remarks>
+        </member>
+    </members>
+</doc>

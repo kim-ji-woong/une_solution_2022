@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Configurations>Debug;Release;Release_Kakaowork</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Kakaowork|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Language\language.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Language\language.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.IDAL\Common.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\Common\Common.Model\Common.Model.csproj" />
+    <ProjectReference Include="..\..\..\DNS\dnsData\dnsData.csproj" />
+    <ProjectReference Include="..\..\..\DNS\dnsEmail\dnsEmail\dnsEmail.csproj" />
+    <ProjectReference Include="..\..\..\DNS\dnsSMS\dnsSMS\dnsSMS.csproj" />
+    <ProjectReference Include="..\..\..\DNS\dnsSopID\dnsSopID.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.Model\SDMS.Model.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.BLL\TeamEditor.BLL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.IDAL\TeamEditor.IDAL.csproj" />
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.Model\TeamEditor.Model.csproj" />
+    <ProjectReference Include="..\..\dnsAlarmScript\dnsAlarmScript.csproj" />
+    <ProjectReference Include="..\..\Hynix.IDAL\Hynix.IDAL.csproj" />
+    <ProjectReference Include="..\..\Hynix.Model\Hynix.Model.csproj" />
+    <ProjectReference Include="..\AgentFactory.BLL\Site\10\AgentFactory.BLL\AgentFactory.BLL\AgentFactory.BLL.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\SOPManager\SOPManager.Model\SOPManager.Model.csproj" />
+      <ProjectReference Include="..\BusanTP.Model\BusanTP.Model.csproj" />
+    </ItemGroup>
+
+</Project>

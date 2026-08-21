@@ -1,0 +1,24 @@
+{
+  "dev": true,
+  "executionTypes": [ "main", "no connection", "seperate" ],
+  "executionType": "main",
+  "logTypes": [ "main", "event", "all" ],
+  "logType": "main",
+  "websocket": {
+    "unity": 65533,
+    "web": 1237
+  },
+  "project": {
+    "preload": "preload.js",
+    "color": "#293239"
+  },
+  "webfront": {
+    "url2": "http://192.168.0.241:12000",
+    "url": "http://192.168.0.241:12002/",
+    "zoomFactor": 1.0
+  },
+  "unity": {
+    "filename": "ICProject",
+    "dir": "/exe/unity"
+  }
+}

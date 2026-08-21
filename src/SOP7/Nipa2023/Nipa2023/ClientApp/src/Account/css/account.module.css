@@ -1,0 +1,163 @@
+﻿/*  팝업 */
+#popupConts {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 810px;
+}
+
+.indexLoginBox {
+    width: 780px;
+    height: 350px;
+    background: #162235;
+    border: 1px solid #3b3f5c;
+}
+
+    .indexLoginBox ul {
+        width: 460px;
+        margin: 60px auto 0;
+    }
+
+        .indexLoginBox ul li {
+            position: relative;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            margin-top: 25px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+input.indexLoginId {
+    background: none;
+    border: none !important;
+    padding-left: 30px !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    color: #fff;
+}
+    /*0802 수정*/
+    input.indexLoginId::-ms-input-placeholder {
+        color: #fff;
+    }
+
+    input.indexLoginId::-webkit-input-placeholder {
+        color: #fff;
+    }
+
+    input.indexLoginId::-moz-placeholder {
+        color: #fff;
+    }
+
+input.indexLoginPw {
+    background: none;
+    border: none !important;
+    padding-left: 30px !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    color: #fff;
+}
+    /*0802 수정*/
+    input.indexLoginPw::-ms-input-placeholder {
+        color: #fff;
+    }
+
+    input.indexLoginPw::-webkit-input-placeholder {
+        color: #fff;
+    }
+
+    input.indexLoginPw::-moz-placeholder {
+        color: #fff;
+    }
+
+.indexLoginBox ul li:nth-child(1):before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 18px;
+    height: 22px;
+}
+
+.indexLoginBox ul li:nth-child(2):before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 18px;
+    height: 22px;
+}
+
+a.btnLogin {
+    margin: 15px auto 0;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #0581ba;
+    border-radius: 10px;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+    a.btnLogin:hover {
+        background: #3389b6;
+        cursor: pointer;
+    }
+
+/* 로그인 팝업 */
+.loginPopup {
+    height: auto !important;
+}
+
+.loginCheck {
+    width: 460px;
+    height: 20px;
+    margin: 10px auto 0;
+}
+
+    .loginCheck li {
+        display: inline-block;
+        color: #fff;
+        margin-right: 30px;
+    }
+
+        .loginCheck li label {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+.btnSetPwd {
+    margin: 15px auto 0;
+    width: 120px;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.verText {
+    display: flex;
+    padding: 20px 10px;
+}
+
+.verText1 {
+    display: block;
+    color: #aca9a9;
+    font-size: 5px;
+    margin-right: 50px;
+}
+
+.verText2 {
+    display: block;
+    color: #aca9a9;
+    font-size: 5px;
+    margin-left: 217px;
+}

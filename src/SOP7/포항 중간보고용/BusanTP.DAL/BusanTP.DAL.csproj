@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+      <ProjectReference Include="..\BusanTP.IDAL\BusanTP.IDAL.csproj" />
+      <ProjectReference Include="..\BusanTP.Model\BusanTP.Model.csproj" />
+    </ItemGroup>
+
+</Project>

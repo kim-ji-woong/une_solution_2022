@@ -1,0 +1,1251 @@
+﻿
+.arrowTopIcon{ display:inline-block; width:40px; height:38px; background:url('../../components/image/arrow_icon.png')no-repeat; padding:5px; }
+
+/* mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (max-width:767px) {
+
+.conIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CustomerSupport/image/contactBG2.png)no-repeat;
+                background-size: 100% 60%;  padding:0px 40px; }
+.conIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 24px; font-weight: 600; padding-top:56px; padding-bottom:6px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.conIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:12px; color: #F9F9F9;
+                                    height: 28px; line-height: 18px; }
+
+/* 채용정보  */
+.recruitBox{ display:block; width:100%; height:480px; text-align:center; background:url(../../Recruitment/image/menu_5_image.png)no-repeat;
+            margin-bottom:180px; background-size:cover;  }
+.recruitTitle{ display:block; }
+.recruitTitle span:nth-child(1){ display:block; width:100%; font-size: 74px; padding-top:165px; padding-bottom: 28px; font-family: 'SUIT-SemiBold'; color:#fff;  }
+.recruitTitle span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Light'; font-size:24px; color: rgba(255,255,255,0.8); }
+
+/* 인재상 */
+.recruitArea{ display:block; width:100%; text-align:center; }
+.talentedBox{}
+.talentedBox .talentedTitle{ display:block; font-family: 'SUIT-SemiBold'; font-size:20px; margin-bottom:24px; }
+.talentedBox .talentedConts{ display:block; font-family: 'SUIT-Regular'; font-size:12px; margin-bottom:88px; color: #888888; padding: 0px 40px;
+                             line-height:18px; }
+
+.talentedFlex{ display:flex; justify-content:center; }
+.talentedFlex .InnoBox{ display:block; width: 432px; height: 484px; margin-right:32px; }
+.talentedFlex .InnoBox .InnoTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .InnoBox .InnoConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .proBox{ display:block; width: 432px; height: 484px;  margin-right:32px; }
+.talentedFlex .proBox .proTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .proBox .proConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .proBox .proConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .proBox .proConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .comBox{ display:block; width: 432px; height: 484px;  }
+.talentedFlex .comBox .comTitle{ display:block; width: 432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .comBox .comConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .comBox .comConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .comBox .comConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 142px; }
+
+
+.talentedFlexBox{ display: flex; flex-direction: column; padding:0px 16px; }
+
+.talentedFlexBox .tFlex1{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;  }
+.talentedFlexBox .tFlex2{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;   } 
+.talentedFlexBox .tFlex3{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px;  position:relative;  } 
+
+.talentedFlexBox .tBox1{ display:inline-block; height:32px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px !important; margin-top:36px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:12px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox2{ background-color:#fff; text-align:left; padding: 24px 30px; margin-top:72px; font-size:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:20px; }
+.talentedFlexBox .tBox2 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px; font-weight: 800; }
+.talentedFlexBox .tBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+
+.talentedFlexBox .tBox3{ display:inline-block; height:32px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px; margin-top:36px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:12px; color: #4D8DE8;  position:absolute; left:0;  }
+
+.talentedFlexBox .tBox4{ background-color:#fff; text-align:left; padding: 24px 30px; margin-top:72px; font-size:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:20px; }
+.talentedFlexBox .tBox4 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px; font-weight: 800; }
+.talentedFlexBox .tBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+
+.talentedFlexBox .tBox5{ display:inline-block;  height:32px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px; margin-top:36px; line-height:32px; 
+                       font-family:'SUIT-Regular'; font-size:12px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox6{ background-color:#fff;  text-align:left; padding: 24px 30px; margin-top:72px; font-size:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:20px; }
+.talentedFlexBox .tBox6 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:20px; font-weight: 800; }
+.talentedFlexBox .tBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:12px; color: #666666; margin-bottom:8px; }
+
+
+/* 채용절차 */
+.recruitSubBoxS{ display:block; width:100%; text-align:center; /* padding-bottom:380px; */ margin-bottom:180px; }
+.reCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; margin-top:120px; }
+.recruitSubBoxS .recruitSubTitle{ display: block; font-family: 'SUIT-Medium'; font-size: 16px; margin-bottom: 16px; font-weight:500; }
+.recruitSubBoxS .recruitSubConts{ display:block; font-family: 'SUIT-Regular'; font-size:12px; font-weight:300; line-height:16px; color: #555555; padding: 0px 40px; }
+.recruitSubBoxS .recruitSubConts span{ display:inline-block; font-family: 'SUIT-Regular'; font-size:12px; font-weight:400; line-height:18px; color:#4D8DE8; }
+.recruitSubBoxS .recruitSubConts2{ display:block; font-family: 'SUIT-Regular'; font-size:12px; font-weight:300;  line-height:16px;  margin-bottom:50px; color:#555555; padding: 0px 40px; }
+
+.recruitSubBoxS .shortcut{ width:160px; height:36px; border-radius:24px; color:#CFE0F8; margin:0 auto;
+                          text-decoration:none; border: 1px solid #CFE0F8; padding:8px 30px 8px 30px; margin-bottom:80px; }
+.recruitSubBoxS .shortcut:hover{ width:160px; height:36px; background:#F4F8FD; border-radius:24px; color:#4D8DE8; margin:0 auto; padding:8px 30px 8px 30px;
+                                 margin-bottom:80px; }
+.recruitSubBoxS .shortcut:active{ background: #E5EEFB; border-radius:24px; color: #185BBC; margin:0 auto; padding:8px 30px 8px 30px;
+                                 margin-bottom:80px; border: 1px solid #4D8DE8;  }
+
+.recruitSubBoxS .shortcut a{ color:#4D8DE8; text-decoration:none; font-family: 'SUIT-Medium'; font-size:14px;  }
+.recruitSubBoxS .shortcut a:hover{ color:#4D8DE8; text-decoration:none; }
+.recruitSubBoxS .shortcut a:active{ color: #185BBC; text-decoration:none; }
+
+
+.recruitSubBoxS .recruitShape{ display:block; /* height:280px; */ margin-bottom:72px; }
+.recruitSubBoxS .recruitShape2{ display:block; width: 44%; height:64px; /* border: Dashed 1px red; */ }
+.recruitSubBoxS .recruitShape .document{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius:50%; border:solid 2px #ECEEF4; font-family: 'SUIT-Medium'; font-size:13px;  color: #666666; } 
+/* .recruitSubBoxS .recruitShape .document p{ display:inline-block; height:160px; line-height: 160px; } */
+
+.recruitSubBoxS .recruitShape .firstMeet{ display:inline-block; width:140px; height:140px; line-height: 140px; border-radius:50%; background:#ECEEF4; font-family: 'SUIT-Medium'; font-size:13px; color: #666666;  }
+.recruitSubBoxS .recruitShape .lastMeet{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius:50%; border:solid 2px #D8DBE8; font-family: 'SUIT-Medium'; font-size:13px; color: #666666;  }
+.recruitSubBoxS .recruitShape .accept{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius: 50%; background:#BEC4D9; font-family: 'SUIT-Medium'; font-size:13px; color:#ffffff;  }
+/* .recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:1px; border: 4px dashed #BEC4D9; } */
+.recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height: 5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .dashedLine2{ display:inline-block; width:60px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:rotate(90deg); background-position-x: 15px; }
+.recruitSubBoxS .recruitShape .dashedLine3{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform: translateY(0px); }
+
+.recruitSubBoxS .recruitShape .dashedLineE{ display:inline-block; width:70px; height: 5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .dashedLine2E{ display:inline-block; width:60px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:rotate(90deg); background-position-x: 15px; }
+.recruitSubBoxS .recruitShape .dashedLine3E{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:translate(0px 70px); }
+.recruitSubBoxS .recruitShape .recruitCircle{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 66px); }
+.recruitSubBoxS .recruitShape .recruitCircle2{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-40px, 50px); }
+.recruitSubBoxS .recruitShape .recruitCircle3{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 66px); }
+.recruitSubBoxS .explanation{ display:block; font-family: 'SUIT-Light'; font-size:18px; color:#505050; margin-top:27px; }
+
+
+/* 복리후생 */
+.benefitsBoxS{ display:block; width:100%; margin:0 auto; /* margin-bottom:180px; */ }
+.benefitsBoxS .benefitsTitle{ display: block; width: 100%; font-family: 'SUIT-SemiBold'; font-size: 22px; text-align: center; margin-bottom:24px; /* padding-top: 200px; */ }
+.benefitsBoxS .benefitsTitle2{ display: block; width: 100%; font-family: 'SUIT-Regular'; font-size: 12px; text-align: center; color: #888888; padding: 0px 30px;  }
+
+.benefitsArea{ display:flex;  flex-direction: column; /* width:1360px; */ text-align:center; margin:0 auto; padding-top:88px;justify-content:center; }
+
+/* payBox */
+.payBoxS{ display:block; /* height: 347px; */ /* margin-right:56px; */ }
+.payBoxS .payIconBox{ display:block; width: 286px; height:286px; margin:0 auto; }
+.payBoxS .payIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/payBoxIcon.png)no-repeat; background-position:center; 
+                         margin-bottom:30px; background-size: 90%; }
+.payBoxS .payIconFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:18px; color:#0D346C; font-weight:600; }
+.payBoxS .payTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:18px; margin-top:16px; }
+.payBoxS .payTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#666666; }
+
+/* environmentBox */
+.environmentBoxS { display:block; /* height: 347px; */  /* margin-right:56px; */ }
+.environmentBoxS .environmentIconBox{ display:block; width: 286px; height:286px; margin:0 auto; } 
+.environmentBoxS .environmentIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/environmentIcon.png)no-repeat; background-position:center; 
+                                         margin-bottom:30px; background-size: 90%; }
+.environmentBoxS .environmentIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:18px; color:#0D346C; font-weight:600;  }
+.environmentTextBox{ display:block; /* width:396px; */ height:156px;  text-align: center;  line-height:18px; margin-top:16px; }
+.environmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#666666; }
+
+/* developmentBox */
+.developmentBoxS{ display:block; /* height: 347px; */  padding-top: 20px; }
+.developmentBoxS .developIconBox{ display:block; width:286px; height:286px; margin:0 auto; }
+.developmentBoxS .developIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/developmentIcon.png)no-repeat; background-position:center; 
+                                     margin-bottom: 30px; background-size: 90%; }
+.developmentBoxS .developIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:18px; color:#0D346C; font-weight:600; }
+.developmentTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:18px; margin-top:16px; }
+.developmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#666666; }
+
+
+
+/* 문의하기 */
+.InquiryBoxS{ display:block; width:100%;  margin:0 auto; padding: 0px 20px; margin-bottom: 100px;  } 
+.InquiryArea{ display:block; /* width:1360px; */ text-align:center; padding-top:200px; margin:0 auto; position: relative; justify-content: center; }
+
+.contactTitle{  height:67px; text-align:center; margin-top:150px;  margin-bottom: 50px; font-family: 'SUIT-SemiBold'; font-size:20px; }
+.contactSideTitle{ display: block; width:100%; justify-content: center; margin-top:24px; 
+                   font-family:'SUIT-Regular'; font-size: 12px; color: #888888; font-weight: 400; line-height: 18px; }
+.contactSideTitle2{ display:block; text-align:center; margin:0 auto; justify-content: center;
+                    font-family:'SUIT-Regular'; font-size: 14px; color: #888888; font-weight: 400; line-height: 25px; }
+
+.conFirstBoxM{ justify-content:left; margin-top: 88px; display: grid; margin-bottom: 12px; }
+.conFirstBoxM .conKindNameM{ font-family: 'SUIT-Medium'; font-size: 14px; line-height:22.5px; display: block; text-align: left; margin-bottom: 12px; color: #555555; }
+
+.conSecondBoxM{ display:flex; flex-direction:column; justify-content:center; }
+.conLeftBoxM{ display:block; /* width:440px; */  margin-right:20px; margin-bottom: 12px; }
+.conLeftBoxM .conLeftTBox{ display:flex; /* width: 92px; */ height:23px; flex-direction:row; align-items: flex-end; margin-bottom:12px; }
+.conLeftBoxM .companyNameM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left;  margin-right:8px; color: #555555; }
+.conLeftBoxM .companyNameSelect{ display:block; font-family:'SUIT-Regular'; font-weight: 400; font-size:14px; color: #4D8DE8; }
+.conLeftBoxM input::placeholder{ color: #C0C0C0; }
+.conLeftBoxM .contactCompanyBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000; line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+.conMiddleBoxM{ display:block; /* width: 440px; */ margin-right:20px; margin-bottom: 12px; }
+.conMiddleBoxM .conPeopleNameM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px; color: #555555; }
+.conMiddleBoxM input::placeholder{ color: #C0C0C0; }
+.conMiddleBoxM .contactNameBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000; line-height:30px;
+                                text-align:left; padding-left:20px; border-radius:4px; }
+
+.conRightBoxM{ display:block; /* width: 440px; */ margin-bottom: 12px; }
+.conRightBoxM .contactEmailM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px;  color: #555555; }
+.conRightBoxM input::placeholder{ color: #C0C0C0; }
+.conRightBoxM .contactEmailBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000;  line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+
+.conThirdBoxM{ display:flex; justify-content:center; margin-bottom: 10px; flex-direction:column; }
+.InquiryContentsM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px; color: #555555;  }
+.contactTextBoxMemoM{ display:inline-block; width: 340px; height: 168px; border: 1px solid #dddddd; font-family: 'SUIT-Regular'; font-size:14px; color: #000000; 
+                     text-align:left; padding:9px 20px 9px 20px; line-height:30px; border-radius: 4px; }
+.contactTextBoxMemoM::placeholder{ color: #C0C0C0; }
+
+.contactTextBoxMemoM::-webkit-scrollbar { width: 8px; border-radius: 4px; cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-track { cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-thumb { border-radius:4px; background-color:#f0f0f0; cursor:pointer;}
+
+
+.conFourthBoxM{ display:flex; margin-bottom: 16px; align-items: end; }
+.conInputArea{ /* display:flex; */ }
+.conFourthBoxM input{ display: inline-block; margin-right: 16px; display:none; }
+.conFourthBoxM label{ margin-right: 16px; width: 269px; }
+.conFourthBoxM label p{ font-family: 'SUIT-Light'; font-size: 18px; display: inline-block; }
+.conFourthBoxM .personalInforM{ font-family: 'SUIT-Light'; font-size: 11px; font-weight:500; color: #999999; text-decoration: underline; position:relative; cursor:pointer; display:block; 
+                                /* width: 144px; */ height:20px; line-height:20px; }
+
+.conFourthBoxM .personalInforM:hover{ color: #4D8DE8; }
+.contactSendM{ display:block; width: 100px; height:32px; background:#4D8DE8; border-radius: 24px; 
+               font-family: 'SUIT-Medium'; font-size:14px; color: #fff; /* padding: 0px 40px 0px 40px; */ float: right; }  
+
+.contactSendM:hover{ background:#185BBC; }
+.contactSendM:active{ background:#0D346C; }
+
+
+.shadow{ position: fixed; left: 0; top: 0; background: rgba(0, 0, 0, 0.52); width: 100%; height: 100vh; z-index:99;}
+.contactSendBox{ display:inline-block; width: 360px; height:260px; background:#fff; border:solid 2px #f0f0f0; /* left: 50%; top: 50%; */ transform: translate(-38%, -160%);
+                 border-radius:8px; position:absolute; z-index:99; padding: 30px 50px; }
+.contactPopClose{ width:40px; height:40px; color: #999999; text-decoration:underline; }
+.checkIcon{ display:inline-block;  width:40px; height:40px; background:url('../../CustomerSupport/image/checkIconBlue.png')no-repeat; background-position:center;
+            background-size: 80%; }
+.sendCompletion{ display:block; margin-top:20px; height:38px; font-family: 'SUIT-SemiBold'; font-size:20px; text-align:center; color: #4D8DE8; }
+.contactText1{ display:block; font-family: 'SUIT-Regular'; font-size: 12px; color:#888888; text-align:center;  }
+.contactText2{ display:block;  font-family: 'SUIT-Regular'; font-size: 12px; color:#888888; text-align:center; margin-bottom:24px; }
+.contactCheck{ display:block; width:200px; height:44px; line-height:44px; border:solid 1px #000000; border-radius:30px; background:#fff;
+               font-family: 'SUIT-Medium'; font-size:22px; margin:0 auto; margin-bottom:60px; }
+
+
+/* 개인정보 처리방침 */
+.personalInfoBox{ display:inline-block; width: 320px; /* height:350px; */  background:#ffffff; box-shadow: 0px 4px 12px rgba(2, 26, 79, 0.08); border-radius: 8px;
+                  position:absolute; z-index:99; left: 0px; top: 30px; padding:28px 30px; text-align:left; }
+.personalTitle1{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; margin-bottom: 30px; }
+.personalTitle2{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; }
+.personalTitle3{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; margin-bottom: 36px; }
+.personalText1{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px;  }
+.personalText2{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 24px; }
+.personalText3{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px;  }
+.personalText4{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 24px; }
+.personalText5{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px; }
+.personalText6{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 20px; }
+.personalClose{ display:block; text-decoration:underline; text-align:center; }
+
+}
+
+/* 가로 mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 640px) and (max-width: 959px) {
+
+.conIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CustomerSupport/image/contactBG2.png)no-repeat; /* background-size:cover; */
+                background-size: 120% 60%; }
+.conIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 24px; font-weight: 600; padding-top:50px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.conIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:14px; color: #F9F9F9;
+                                    height: 28px; line-height: 28px; }
+
+/* 채용정보  */
+.recruitBox{ display:block; width:100%; height:480px; text-align:center; background:url(../../Recruitment/image/menu_5_image.png)no-repeat;
+            margin-bottom:180px; background-size:cover;  }
+.recruitTitle{ display:block; }
+.recruitTitle span:nth-child(1){ display:block; width:100%; font-size: 74px; padding-top:165px; padding-bottom: 28px; font-family: 'SUIT-SemiBold'; color:#fff;  }
+.recruitTitle span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Light'; font-size:24px; color: rgba(255,255,255,0.8); }
+
+/* 인재상 */
+.recruitArea{ display:block; width:100%; text-align:center; }
+.talentedBox{}
+.talentedBox .talentedTitle{ display:block; font-family: 'SUIT-SemiBold'; font-size:22px; margin-bottom:24px; }
+.talentedBox .talentedConts{ display:block; font-family: 'SUIT-Regular'; /* font-size:14px; */ margin-bottom:88px; color: #888888; }
+
+.talentedFlex{ display:flex; justify-content:center; }
+.talentedFlex .InnoBox{ display:block; width: 432px; height: 484px; margin-right:32px; }
+.talentedFlex .InnoBox .InnoTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .InnoBox .InnoConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .proBox{ display:block; width: 432px; height: 484px;  margin-right:32px; }
+.talentedFlex .proBox .proTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .proBox .proConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .proBox .proConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .proBox .proConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .comBox{ display:block; width: 432px; height: 484px;  }
+.talentedFlex .comBox .comTitle{ display:block; width: 432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .comBox .comConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .comBox .comConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .comBox .comConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 142px; }
+
+
+.talentedFlexBox{ display: flex; flex-direction: column; padding:0px 50px; }  /* 1028 */
+
+.talentedFlexBox .tFlex1{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;  }
+.talentedFlexBox .tFlex2{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;   } 
+.talentedFlexBox .tFlex3{ display:block; color: #134A97; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px;  position:relative;  } 
+
+.talentedFlexBox .tBox1{ display:inline-block; height:36px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px !important; margin-top:36px; line-height:36px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox2{ background-color:#fff; text-align:left; padding: 24px 40px; margin-top:72px; font-size:14px; }
+.talentedFlexBox .tBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:28px; }
+.talentedFlexBox .tBox2 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:24px; font-weight: 800; }
+.talentedFlexBox .tBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+
+.talentedFlexBox .tBox3{ display:inline-block; height:36px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px; margin-top:36px; line-height:36px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8;  position:absolute; left:0;  }
+
+.talentedFlexBox .tBox4{ background-color:#fff; text-align:left; padding: 24px 40px; margin-top:72px; font-size:14px; }
+.talentedFlexBox .tBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:28px; }
+.talentedFlexBox .tBox4 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:24px; font-weight: 800; }
+.talentedFlexBox .tBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+
+.talentedFlexBox .tBox5{ display:inline-block;  height:36px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 30px; margin-top:36px; line-height:36px; 
+                       font-family:'SUIT-Regular'; font-size:14px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox6{ background-color:#fff;  text-align:left; padding: 24px 40px; margin-top:72px; font-size:14px; }
+.talentedFlexBox .tBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:20px; margin-bottom:28px; }
+.talentedFlexBox .tBox6 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:24px; font-weight: 800; }
+.talentedFlexBox .tBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+.talentedFlexBox .tBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:14px; color: #666666; margin-bottom:8px; }
+
+
+/* 채용절차 */
+.recruitSubBoxS{ display:block; width:100%; text-align:center; /* padding-bottom:380px; */ margin-bottom:180px; }
+.reCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; margin-top:120px; }
+.recruitSubBoxS .recruitSubTitle{ display: block; font-family: 'SUIT-Medium'; font-size: 20px; margin-bottom: 16px; font-weight:500; }
+.recruitSubBoxS .recruitSubConts{ display:block; font-family: 'SUIT-Regular'; font-size:14px; font-weight:300; line-height:16px; color: #555555; }
+.recruitSubBoxS .recruitSubConts span{ display:inline-block; font-family: 'SUIT-Regular'; font-size:14px; font-weight:400; line-height:30px; color:#4D8DE8; }
+.recruitSubBoxS .recruitSubConts2{ display:block; font-family: 'SUIT-Regular'; font-size:14px; font-weight:300;  line-height:16px;  margin-bottom:80px; color:#555555; }
+
+.recruitSubBoxS .shortcut{ width:211px; height:48px; border-radius:24px; color:#CFE0F8; margin:0 auto;
+                          text-decoration:none; border: 1px solid #CFE0F8; padding:12.5px 40px 12.5px 40px; margin-bottom:80px; }
+.recruitSubBoxS .shortcut:hover{ width:211px; height:48px; background:#F4F8FD; border-radius:24px; color:#4D8DE8; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; }
+.recruitSubBoxS .shortcut:active{ background: #E5EEFB; border-radius:24px; color: #185BBC; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; border: 1px solid #4D8DE8;  }
+
+.recruitSubBoxS .shortcut a{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; font-family: 'SUIT-Medium'; font-size:18px;  }
+.recruitSubBoxS .shortcut a:hover{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; }
+.recruitSubBoxS .shortcut a:active{ /* display:block; */ width:131px; height:23px; color: #185BBC; text-decoration:none; }
+
+
+.recruitSubBoxS .recruitShape{ display:block; /* height:280px; */ margin-bottom:72px; }
+.recruitSubBoxS .recruitShape2{ display:block; width: 58%; height:64px; /* border: Dashed 1px red; */ }
+.recruitSubBoxS .recruitShape .document{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius:50%; border:solid 4px #ECEEF4; font-family: 'SUIT-Medium'; font-size:13px;  color: #666666; } 
+/* .recruitSubBoxS .recruitShape .document p{ display:inline-block; height:160px; line-height: 160px; } */
+
+.recruitSubBoxS .recruitShape .firstMeet{ display:inline-block; width:140px; height:140px; line-height: 140px; border-radius:50%; background:#ECEEF4; font-family: 'SUIT-Medium'; font-size:13px; color: #666666;  }
+.recruitSubBoxS .recruitShape .lastMeet{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius:50%; border:solid 4px #D8DBE8; font-family: 'SUIT-Medium'; font-size:13px; color: #666666;  }
+.recruitSubBoxS .recruitShape .accept{ display:inline-block; width:140px; height:140px; line-height:140px; border-radius: 50%; background:#BEC4D9; font-family: 'SUIT-Medium'; font-size:13px; color:#ffffff;  }
+/* .recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:1px; border: 4px dashed #BEC4D9; } */
+.recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height: 5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .dashedLine2{ display:inline-block; width:60px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:rotate(90deg); background-position-x: 15px; }
+.recruitSubBoxS .recruitShape .dashedLine3{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:translate(0px 70px); }
+
+.recruitSubBoxS .recruitShape .dashedLineE{ display:inline-block; width:70px; height: 5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .dashedLine2E{ display:inline-block; width:60px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:rotate(90deg); background-position-x: 15px; }
+.recruitSubBoxS .recruitShape .dashedLine3E{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; transform:translate(0px 70px); }
+.recruitSubBoxS .recruitShape .recruitCircle{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 70px); }
+.recruitSubBoxS .recruitShape .recruitCircle2{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-40px, 60px); }
+.recruitSubBoxS .recruitShape .recruitCircle3{ display:inline-block; width:18px; height:18px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 142px); }
+.recruitSubBoxS .explanation{ display:block; font-family: 'SUIT-Light'; font-size:18px; color:#505050; margin-top:27px; }
+
+
+/* 복리후생 */
+.benefitsBoxS{ display:block; width:100%; margin:0 auto; /* margin-bottom:180px; */ }
+.benefitsBoxS .benefitsTitle{ display: block; width: 100%; font-family: 'SUIT-SemiBold'; font-size: 22px; text-align: center; margin-bottom:24px; padding-top: 200px; }
+.benefitsBoxS .benefitsTitle2{ display: block; width: 100%; font-family: 'SUIT-Regular'; font-size: 14px; text-align: center; color: #888888;  }
+
+.benefitsArea{ display:flex;  flex-direction: column; /* width:1360px; */ text-align:center; margin:0 auto; padding-top:88px;justify-content:center; }
+
+/* payBox */
+.payBoxS{ display:block; height: 347px; /* margin-right:56px; */ }
+.payBoxS .payIconBox{ display:block; width: 286px; height:286px; margin:0 auto; }
+.payBoxS .payIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/payBoxIcon.png)no-repeat; background-position:center; 
+                         margin-bottom:48px; background-size: 100%; }
+.payBoxS .payIconFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:22px; color:#0D346C; font-weight:600; }
+.payBoxS .payTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:20px; margin-top:16px; }
+.payBoxS .payTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:14px; color:#666666; }
+
+/* environmentBox */
+.environmentBoxS { display:block; height: 347px; /* margin-right:56px; */ }
+.environmentBoxS .environmentIconBox{ display:block; width: 286px; height:286px; margin:0 auto; } 
+.environmentBoxS .environmentIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/environmentIcon.png)no-repeat; background-position:center; 
+                                         margin-bottom:48px; background-size: 100%; }
+.environmentBoxS .environmentIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:22px; color:#0D346C; font-weight:600;  }
+.environmentTextBox{ display:block; /* width:396px; */ height:156px;  text-align: center;  line-height:20px; margin-top:16px; }
+.environmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:14px; color:#666666; }
+
+/* developmentBox */
+.developmentBoxS{ display:block; height: 347px; }
+.developmentBoxS .developIconBox{ display:block; width:286px; height:286px; margin:0 auto; }
+.developmentBoxS .developIconBoxImg{ display:inline-block; width:100px; height:100px; background:url(../../Recruitment/image/developmentIcon.png)no-repeat; background-position:center; 
+                                     margin-bottom: 48px; background-size: 100%; }
+.developmentBoxS .developIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:22px; color:#0D346C; font-weight:600; }
+.developmentTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:20px; margin-top:16px; }
+.developmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:14px; color:#666666; }
+
+
+
+/* 문의하기 */
+.InquiryBoxS{ display:block; width:100%;  margin:0 auto; padding: 0px 20px; } 
+.InquiryArea{ display:block; /* width:1360px; */ text-align:center; padding-top:200px; margin:0 auto; position: relative; justify-content: center; }
+
+.contactTitle{  height:67px; text-align:center; margin-top:150px;  margin-bottom: 50px; font-family: 'SUIT-SemiBold'; font-size:22px; }
+.contactSideTitle{ display: block; width:100%; justify-content: center; margin-top:24px; 
+                   font-family:'SUIT-Regular'; font-size: 14px; color: #888888; font-weight: 400; line-height: 18px; }
+.contactSideTitle2{ display:block; text-align:center; margin:0 auto; justify-content: center;
+                    font-family:'SUIT-Regular'; font-size: 14px; color: #888888; font-weight: 400; line-height: 25px; }
+
+.conFirstBoxM{ justify-content:left; margin-top: 88px; display: grid; margin-bottom: 12px; }
+.conFirstBoxM .conKindNameM{ font-family: 'SUIT-Medium'; font-size: 14px; line-height:22.5px; display: block; text-align: left; margin-bottom: 12px; color: #555555; }
+
+.conSecondBoxM{ display:flex; flex-direction:column; justify-content:center; }
+.conLeftBoxM{ display:block;  margin-bottom: 12px; }
+.conLeftBoxM .conLeftTBox{ display:flex; /* width: 92px; */ height:23px; flex-direction:row; align-items: flex-end; margin-bottom:12px; }
+.conLeftBoxM .companyNameM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left;  margin-right:8px; color: #555555; }
+.conLeftBoxM .companyNameSelect{ display:block; font-family:'SUIT-Regular'; font-weight: 400; font-size:14px; color: #4D8DE8; }
+.conLeftBoxM input::placeholder{ color: #C0C0C0; }
+.conLeftBoxM .contactCompanyBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000; line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+.conMiddleBoxM{ display:block; margin-bottom: 12px; }
+.conMiddleBoxM .conPeopleNameM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px; color: #555555; }
+.conMiddleBoxM input::placeholder{ color: #C0C0C0; }
+.conMiddleBoxM .contactNameBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000; line-height:30px;
+                                text-align:left; padding-left:20px; border-radius:4px; }
+
+.conRightBoxM{ display:block; }
+.conRightBoxM .contactEmailM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px;  color: #555555; }
+.conRightBoxM input::placeholder{ color: #C0C0C0; }
+.conRightBoxM .contactEmailBoxM{ display:block; width:340px; height:40px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:14px; color:#000000;  line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+
+.conThirdBoxM{ display:flex; justify-content:center; margin-bottom: 10px; flex-direction:column; }
+.InquiryContentsM{ font-family: 'SUIT-Medium'; font-size:14px; display: block; text-align: left; margin-bottom:12px; color: #555555;  }
+.contactTextBoxMemoM{ display:inline-block; width: 340px; height: 168px; border: 1px solid #dddddd; font-family: 'SUIT-Regular'; font-size:14px; color: #000000; 
+                     text-align:left; padding:9px 20px 9px 20px; line-height:30px; border-radius: 4px; }
+.contactTextBoxMemoM::placeholder{ color: #C0C0C0; }
+
+.contactTextBoxMemoM::-webkit-scrollbar { width: 8px; border-radius: 4px; cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-track { cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-thumb { border-radius:4px; background-color:#f0f0f0; cursor:pointer;}
+
+
+.conFourthBoxM{ display:flex; margin-bottom: 16px; align-items: end; }
+.conInputArea{ /* display:flex; */ }
+.conFourthBoxM input{ display: inline-block; margin-right: 16px; display:none; }
+.conFourthBoxM label{ margin-right: 16px; width: 269px; }
+.conFourthBoxM label p{ font-family: 'SUIT-Light'; font-size: 18px; display: inline-block; }
+.conFourthBoxM .personalInforM{ font-family: 'SUIT-Light'; font-size: 11px; font-weight:500; color: #999999; text-decoration: underline; position:relative; cursor:pointer; display:block; 
+                                /* width: 144px; */ height:20px; line-height:20px; }
+
+.conFourthBoxM .personalInforM:hover{ color: #4D8DE8; }
+.contactSendM{ display:block; width: 100px; height:32px; background:#4D8DE8; border-radius: 24px; 
+               font-family: 'SUIT-Medium'; font-size:14px; color: #fff; /* padding: 0px 40px 0px 40px; */ float: right; margin-bottom:199px; }  
+
+.contactSendM:hover{ background:#185BBC; }
+.contactSendM:active{ background:#0D346C; }
+
+
+.shadow{ position: fixed; left: 0; top: 0; background: rgba(0, 0, 0, 0.52); width: 100%; height: 100vh; z-index:99;}
+.contactSendBox{ display:inline-block; width: 600px; height:350px; background:#fff; border:solid 2px #f0f0f0; /* left: 50%; top: 50%; */ transform: translate(-35%, -120%);
+                 border-radius:8px; position:absolute; z-index:99; padding: 60px 79px; }
+.contactPopClose{ width:40px; height:40px; color: #999999; text-decoration:underline; }
+.checkIcon{ display:inline-block;  width:40px; height:40px; background:url('../../CustomerSupport/image/checkIconBlue.png')no-repeat; background-position:center; }
+.sendCompletion{ display:block; margin-top:28px; height:38px; font-family: 'SUIT-SemiBold'; font-size:24px; text-align:center; color: #4D8DE8; }
+.contactText1{ display:block;  margin-top:32px;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; line-height: 30px; }
+.contactText2{ display:block;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; margin-bottom:24px; }
+.contactCheck{ display:block; width:200px; height:44px; line-height:44px; border:solid 1px #000000; border-radius:30px; background:#fff;
+               font-family: 'SUIT-Medium'; font-size:22px; margin:0 auto; margin-bottom:60px; }
+
+
+/* 개인정보 처리방침 */
+.personalInfoBox{ display:inline-block; width: 320px; /* height:350px; */  background:#ffffff; box-shadow: 0px 4px 12px rgba(2, 26, 79, 0.08); border-radius: 8px;
+                  position:absolute; z-index:99; left: 0px; top: 30px; padding:28px 30px; text-align:left; }
+.personalTitle1{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; margin-bottom: 30px; }
+.personalTitle2{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; }
+.personalTitle3{ display:block; font-family: 'SUIT-Medium'; font-size:14px; color:#333333; line-height:14px; margin-bottom: 36px; }
+.personalText1{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px;  }
+.personalText2{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 24px; }
+.personalText3{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px;  }
+.personalText4{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 24px; }
+.personalText5{ display:block; font-family: 'SUIT-Medium'; font-size:12px; color:#134A97; line-height:16px; }
+.personalText6{ display:block; font-family: 'SUIT-Regular'; font-size:12px; color:#555555; line-height:16px; margin-bottom: 20px; }
+.personalClose{ display:block; text-decoration:underline; text-align:center; }
+
+}
+
+
+/* tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+.conIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CustomerSupport/image/contactBG2.png)no-repeat; /* background-size:cover; */
+                background-size: 120% 80%; }
+.conIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 40px; font-weight: 600; padding-top:70px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.conIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:18px; color: #F9F9F9;
+                                    height: 28px; line-height: 28px; }
+
+/* 채용정보  */
+.recruitBox{ display:block; width:100%; height:480px; text-align:center; background:url(../../Recruitment/image/menu_5_image.png)no-repeat;
+            margin-bottom:180px; background-size:cover;  }
+.recruitTitle{ display:block; }
+.recruitTitle span:nth-child(1){ display:block; width:100%; font-size: 74px; padding-top:165px; padding-bottom: 28px; font-family: 'SUIT-SemiBold'; color:#fff;  }
+.recruitTitle span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Light'; font-size:24px; color: rgba(255,255,255,0.8); }
+
+/* 인재상 */
+.recruitArea{ display:block; width:100%; text-align:center; }
+.talentedBox{}
+.talentedBox .talentedTitle{ display:block; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:24px; }
+.talentedBox .talentedConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; margin-bottom:88px; color: #888888; padding: 0px 40px;  }
+
+.talentedFlex{ display:flex; justify-content:center; }
+.talentedFlex .InnoBox{ display:block; width: 432px; height: 484px; margin-right:32px; }
+.talentedFlex .InnoBox .InnoTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .InnoBox .InnoConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .proBox{ display:block; width: 432px; height: 484px;  margin-right:32px; }
+.talentedFlex .proBox .proTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .proBox .proConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .proBox .proConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .proBox .proConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .comBox{ display:block; width: 432px; height: 484px;  }
+.talentedFlex .comBox .comTitle{ display:block; width: 432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .comBox .comConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .comBox .comConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .comBox .comConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 142px; }
+
+
+.talentedFlexBox{ display: flex; /* width:100%; justify-content:center; */ }
+
+.talentedFlexBox .tFlex1{ display:block; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;  margin-bottom: 16px; }
+.talentedFlexBox .tFlex2{ display:block; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative; margin-bottom: 16px; } 
+.talentedFlexBox .tFlex3{ display:block; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px;  position:relative; margin-bottom: 16px; } 
+
+.talentedFlexBox .tBox1{ display:inline-block; /* width: 210px; */ height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px !important; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox2{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px; }
+.talentedFlexBox .tBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox2 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox3{ display:inline-block; height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8;  position:absolute; left:0;  }
+
+.talentedFlexBox .tBox4{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox4 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox5{ display:inline-block;  height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox6 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+
+/* 채용절차 */
+.recruitSubBoxS{ display:block; width:100%; text-align:center; /* padding-bottom:380px; */ margin-bottom:180px; padding: 0px 60px;  } /* 1028 */
+.reCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; margin-top:120px; }
+.recruitSubBoxS .recruitSubTitle{ display: block; font-family: 'SUIT-Medium'; font-size: 24px; margin-bottom: 16px; font-weight:500; }
+.recruitSubBoxS .recruitSubConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300; line-height:30px; color: #555555; }
+.recruitSubBoxS .recruitSubConts span{ display:inline-block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:400; line-height:30px; color:#4D8DE8; }
+.recruitSubBoxS .recruitSubConts2{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300;  line-height:30px;  margin-bottom:80px; color:#555555; }
+
+.recruitSubBoxS .shortcut{ width:211px; height:48px; border-radius:24px; color:#CFE0F8; margin:0 auto;
+                          text-decoration:none; border: 1px solid #CFE0F8; padding:12.5px 40px 12.5px 40px; margin-bottom:80px; }
+.recruitSubBoxS .shortcut:hover{ width:211px; height:48px; background:#F4F8FD; border-radius:24px; color:#4D8DE8; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; }
+.recruitSubBoxS .shortcut:active{ background: #E5EEFB; border-radius:24px; color: #185BBC; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; border: 1px solid #4D8DE8;  }
+
+.recruitSubBoxS .shortcut a{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; font-family: 'SUIT-Medium'; font-size:18px;  }
+.recruitSubBoxS .shortcut a:hover{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; }
+.recruitSubBoxS .shortcut a:active{ /* display:block; */ width:131px; height:23px; color: #185BBC; text-decoration:none; }
+
+
+.recruitSubBoxS .recruitShape{ display:block; height:280px; margin-bottom:420px; }
+.recruitSubBoxS .recruitShape .document{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; border:solid 4px #ECEEF4; font-family: 'SUIT-Medium'; font-size:26px;  color: #666666; } 
+.documentFlex{  }
+
+.recruitSubBoxS .recruitShape .firstMeet{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; background:#ECEEF4; font-family: 'SUIT-Medium'; font-size:26px; color: #666666;  }
+.recruitSubBoxS .recruitShape .lastMeet{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; border:solid 4px #D8DBE8; font-family: 'SUIT-Medium'; font-size:26px; color: #666666;  }
+.recruitSubBoxS .recruitShape .accept{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius: 50%; background:#BEC4D9; font-family: 'SUIT-Medium'; font-size:26px; color:#ffffff;  }
+/* .recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:1px; border: 4px dashed #BEC4D9; } */
+.recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .recruitCircle{ display:inline-block; width:20px; height:20px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 140px); }
+.recruitSubBoxS .explanation{ display:block; font-family: 'SUIT-Light'; font-size:18px; color:#505050; margin-top:27px; }
+
+
+/* 복리후생 */
+.benefitsBoxS{ display:block; width:100%; margin:0 auto; margin-bottom:180px; }
+.benefitsBoxS .benefitsTitle{ display: block; width: 100%; font-family: 'SUIT-SemiBold'; font-size: 34px; text-align: center; margin-bottom:24px; padding-top: 200px; }
+.benefitsBoxS .benefitsTitle2{ display: block; width: 100%; font-family: 'SUIT-Regular'; font-size: 20px; text-align: center; color: #888888;  }
+
+.benefitsArea{ display:flex; /* width:1360px; */ text-align:center; margin:0 auto; padding-top:88px;justify-content:center; }
+
+/* payBox */
+.payBoxS{ display:block; /* width: 452px; */ height: 347px; }
+.payBoxS .payIconBox{ display:block; width: 286px; height:286px; margin:0 auto; }
+.payBoxS .payIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/payBoxIcon.png)no-repeat; background-position:center; 
+                         margin-bottom:48px; }
+.payBoxS .payIconFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.payBoxS .payTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.payBoxS .payTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* environmentBox */
+.environmentBoxS { display:block; /* width: 452px; */ height: 347px; margin-top: 50px; }
+.environmentBoxS .environmentIconBox{ display:block; width: 286px; height:286px; margin:0 auto; } 
+.environmentBoxS .environmentIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/environmentIcon.png)no-repeat; background-position:center; 
+                                         margin-bottom:48px; }
+.environmentBoxS .environmentIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600;  }
+.environmentTextBox{ display:block; /* width:396px; */ height:156px;  text-align: center;  line-height:26px; margin-top:16px; }
+.environmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* developmentBox */
+.developmentBoxS{ display:block; /* width: 452px; */ height: 347px; margin-top: 100px;  }
+.developmentBoxS .developIconBox{ display:block; width:286px; height:286px; margin:0 auto; }
+.developmentBoxS .developIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/developmentIcon.png)no-repeat; background-position:center; 
+                                     margin-bottom: 48px; }
+.developmentBoxS .developIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.developmentTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.developmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+
+
+/* 문의하기 */
+.InquiryBoxS{ display:block; width:100%;  margin:0 auto; padding-bottom:270px; } 
+.InquiryArea{ display:block; /* width:1360px; */ width:100%; text-align:center; padding-top:200px; margin:0 auto; position: relative; justify-content: center; padding: 0px 100px;  }
+
+.contactTitle{  height:67px; text-align:center; margin-top:150px;  margin-bottom: 50px; font-family: 'SUIT-SemiBold'; font-size:34px; }
+.contactSideTitle{ display: block; width:100%; justify-content: center; margin-top:24px; 
+                   font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+.contactSideTitle2{ display:block; text-align:center; margin:0 auto; justify-content: center;
+                    font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+
+.conFirstBoxM{ justify-content:center; margin-bottom: 53px; margin-top: 88px; display: grid; }
+.conFirstBoxM .conKindNameM{ font-family: 'SUIT-Medium'; font-size: 18px; line-height:22.5px; display: block; text-align: left; margin-bottom: 12px; color: #555555; }
+
+.conSecondBoxM{ display:flex; /* width:1360px; */ justify-content:center; margin-bottom: 53px; align-items: center; }
+.conLeftBoxM{ display:block; width:580px; }
+.conLeftBoxM .conLeftTBox{ display:flex; /* width: 92px; */ height:23px; flex-direction:row; align-items: flex-end; margin-bottom:12px; }
+.conLeftBoxM .companyNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left;  margin-right:8px; color: #555555; }
+.conLeftBoxM .companyNameSelect{ display:block; font-family:'SUIT-Regular'; font-weight: 400; font-size:14px; color: #4D8DE8; }
+.conLeftBoxM input::placeholder{ color: #C0C0C0; }
+.conLeftBoxM .contactCompanyBoxM{ display:block; width:580px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+.conMiddleBoxM{ display:block; width: 580px; }
+.conMiddleBoxM .conPeopleNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555; }
+.conMiddleBoxM input::placeholder{ color: #C0C0C0; }
+.conMiddleBoxM .contactNameBoxM{ display:block; width:580px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                                text-align:left; padding-left:20px; border-radius:4px; }
+
+.conRightBoxM{ display:block; width: 580px; }
+.conRightBoxM .contactEmailM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px;  color: #555555; }
+.conRightBoxM input::placeholder{ color: #C0C0C0; }
+.conRightBoxM .contactEmailBoxM{ display:block; width:580px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000;  line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+
+.conThirdBoxM{ display:flex; justify-content:center; margin-bottom: 20px; flex-direction:column; /* align-items: center; */ }
+.InquiryContentsM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555;  }
+.contactTextBoxMemoM{ display:inline-block; width: 580px; height: 168px; border: 1px solid #dddddd; font-family: 'SUIT-Regular'; font-size:18px; color: #000000; 
+                     text-align:left; padding:9px 20px 9px 20px; line-height:30px; border-radius: 4px; }
+.contactTextBoxMemoM::placeholder{ color: #C0C0C0; }
+
+.contactTextBoxMemoM::-webkit-scrollbar { width: 8px; border-radius: 4px; cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-track { cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-thumb { border-radius:4px; background-color:#f0f0f0; cursor:pointer;}
+
+
+.conFourthBoxM{ display:flex; margin-bottom: 16px; align-items: end; }
+.conInputArea{ display:flex; }
+.conFourthBoxM input{ display: inline-block; margin-right: 16px; display:none; }
+.conFourthBoxM label{ margin-right: 16px; width: 269px; }
+.conFourthBoxM label p{ font-family: 'SUIT-Light'; font-size: 18px; display: inline-block; }
+.conFourthBoxM .personalInforM{ font-family: 'SUIT-Light'; font-size: 16px; font-weight:500; color: #999999; text-decoration: underline; position:relative; cursor:pointer; display:block; 
+                                /* width: 144px; */ height:20px; line-height:20px; }
+
+.conFourthBoxM .personalInforM:hover{ color: #4D8DE8; }
+.contactSendM{ display:block; width:143px; height:48px; background:#4D8DE8; border-radius: 24px; 
+               font-family: 'SUIT-Medium'; font-size:18px; color: #fff; padding: 0px 40px 0px 40px; float: right; margin-bottom:222px; }  
+
+.contactSendM:hover{ background:#185BBC; }
+.contactSendM:active{ background:#0D346C; }
+
+
+.shadow{ position: fixed; left: 0; top: 0; background: rgba(0, 0, 0, 0.52); width: 100%; height: 100vh; z-index:99;}
+.contactSendBox{ display:inline-block; width: 600px; height:350px; background:#fff; border:solid 2px #f0f0f0; /* left: 50%; top: 50%; */ transform: translate(-35%, -120%);
+                 border-radius:8px; position:absolute; z-index:99; padding: 60px 79px; }
+.contactPopClose{ width:40px; height:40px; color: #999999; text-decoration:underline; }
+.checkIcon{ display:inline-block;  width:40px; height:40px; background:url('../../CustomerSupport/image/checkIconBlue.png')no-repeat; background-position:center; }
+.sendCompletion{ display:block; margin-top:28px; height:38px; font-family: 'SUIT-SemiBold'; font-size:24px; text-align:center; color: #4D8DE8; }
+.contactText1{ display:block;  margin-top:32px;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; line-height: 30px; }
+.contactText2{ display:block;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; margin-bottom:24px; }
+.contactCheck{ display:block; width:200px; height:44px; line-height:44px; border:solid 1px #000000; border-radius:30px; background:#fff;
+               font-family: 'SUIT-Medium'; font-size:22px; margin:0 auto; margin-bottom:60px; }
+
+
+/* 개인정보 처리방침 */
+.personalInfoBox{ display:inline-block; width: 604px; /* height:308px; */ background:#f4f8fd; box-shadow: 0px 4px 12px rgba(2, 26, 79, 0.08); border-radius: 8px;
+                  position:absolute; z-index:99; left: 0px; top: 30px; padding:20px 24px; text-align:left; }
+.personalTitle1{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; }
+.personalTitle2{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; margin-bottom: 36px; }
+.personalText1{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText2{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText3{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText4{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText5{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px; }
+.personalText6{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+
+
+}
+
+/* 가로 tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 960px) and (max-width: 1280px) {
+
+.conIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CustomerSupport/image/contactBG2.png)no-repeat; background-size:cover; }
+.conIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 52px; font-weight: 600; padding-top:85.5px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.conIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:22px; color: #F9F9F9;
+                                    height: 28px; line-height: 28px; }
+
+/* 채용정보  */
+.recruitBox{ display:block; width:100%; height:480px; text-align:center; background:url(../../Recruitment/image/menu_5_image.png)no-repeat;
+            margin-bottom:180px; background-size:cover;  }
+.recruitTitle{ display:block; }
+.recruitTitle span:nth-child(1){ display:block; width:100%; font-size: 74px; padding-top:165px; padding-bottom: 28px; font-family: 'SUIT-SemiBold'; color:#fff;  }
+.recruitTitle span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Light'; font-size:24px; color: rgba(255,255,255,0.8); }
+
+/* 인재상 */
+.recruitArea{ display:block; width:100%; text-align:center; }
+.talentedBox{}
+.talentedBox .talentedTitle{ display:block; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:24px; }
+.talentedBox .talentedConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; margin-bottom:88px; color: #888888; }
+
+.talentedFlex{ display:flex; justify-content:center; }
+.talentedFlex .InnoBox{ display:block; width: 432px; height: 484px; margin-right:32px; }
+.talentedFlex .InnoBox .InnoTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .InnoBox .InnoConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .proBox{ display:block; width: 432px; height: 484px;  margin-right:32px; }
+.talentedFlex .proBox .proTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .proBox .proConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .proBox .proConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .proBox .proConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .comBox{ display:block; width: 432px; height: 484px;  }
+.talentedFlex .comBox .comTitle{ display:block; width: 432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .comBox .comConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .comBox .comConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .comBox .comConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 142px; }
+
+
+.talentedFlexBox{ display: flex; /* width:100%; justify-content:center; */ }
+
+.talentedFlexBox .tFlex1{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;  }
+.talentedFlexBox .tFlex2{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;   } 
+.talentedFlexBox .tFlex3{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px;  position:relative;  } 
+
+.talentedFlexBox .tBox1{ display:inline-block; /* width: 210px; */ height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px !important; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox2{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px; }
+.talentedFlexBox .tBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox2 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox3{ display:inline-block; height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8;  position:absolute; left:0;  }
+
+.talentedFlexBox .tBox4{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox4 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox5{ display:inline-block;  height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox6 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+
+/* 채용절차 */
+.recruitSubBoxS{ display:block; width:100%; text-align:center; /* padding-bottom:380px; */ margin-bottom:180px; }
+.reCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; margin-top:120px; }
+.recruitSubBoxS .recruitSubTitle{ display: block; font-family: 'SUIT-Medium'; font-size: 24px; margin-bottom: 16px; font-weight:500; }
+.recruitSubBoxS .recruitSubConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300; line-height:30px; color: #555555; }
+.recruitSubBoxS .recruitSubConts span{ display:inline-block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:400; line-height:30px; color:#4D8DE8; }
+.recruitSubBoxS .recruitSubConts2{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300;  line-height:30px;  margin-bottom:80px; color:#555555; }
+
+.recruitSubBoxS .shortcut{ width:211px; height:48px; border-radius:24px; color:#CFE0F8; margin:0 auto;
+                          text-decoration:none; border: 1px solid #CFE0F8; padding:12.5px 40px 12.5px 40px; margin-bottom:80px; }
+.recruitSubBoxS .shortcut:hover{ width:211px; height:48px; background:#F4F8FD; border-radius:24px; color:#4D8DE8; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; }
+.recruitSubBoxS .shortcut:active{ background: #E5EEFB; border-radius:24px; color: #185BBC; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; border: 1px solid #4D8DE8;  }
+
+.recruitSubBoxS .shortcut a{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; font-family: 'SUIT-Medium'; font-size:18px;  }
+.recruitSubBoxS .shortcut a:hover{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; }
+.recruitSubBoxS .shortcut a:active{ /* display:block; */ width:131px; height:23px; color: #185BBC; text-decoration:none; }
+
+
+.recruitSubBoxS .recruitShape{ display:block; height:280px; margin-bottom:72px; }
+.recruitSubBoxS .recruitShape .document{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; border:solid 4px #ECEEF4; font-family: 'SUIT-Medium'; font-size:26px;  color: #666666; } 
+.documentFlex{  }
+
+.recruitSubBoxS .recruitShape .firstMeet{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; background:#ECEEF4; font-family: 'SUIT-Medium'; font-size:26px; color: #666666;  }
+.recruitSubBoxS .recruitShape .lastMeet{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius:50%; border:solid 4px #D8DBE8; font-family: 'SUIT-Medium'; font-size:26px; color: #666666;  }
+.recruitSubBoxS .recruitShape .accept{ display:inline-block; width:280px; height:280px; line-height:280px; border-radius: 50%; background:#BEC4D9; font-family: 'SUIT-Medium'; font-size:26px; color:#ffffff;  }
+/* .recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:1px; border: 4px dashed #BEC4D9; } */
+.recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .recruitCircle{ display:inline-block; width:20px; height:20px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 140px); }
+.recruitSubBoxS .explanation{ display:block; font-family: 'SUIT-Light'; font-size:18px; color:#505050; margin-top:27px; }
+
+
+/* 복리후생 */
+.benefitsBoxS{ display:block; width:100%; margin:0 auto; margin-bottom:180px; }
+.benefitsBoxS .benefitsTitle{ display: block; width: 100%; font-family: 'SUIT-SemiBold'; font-size: 34px; text-align: center; margin-bottom:24px; padding-top: 200px; }
+.benefitsBoxS .benefitsTitle2{ display: block; width: 100%; font-family: 'SUIT-Regular'; font-size: 20px; text-align: center; color: #888888;  }
+
+.benefitsArea{ display:flex; /* width:1360px; */ text-align:center; margin:0 auto; padding-top:88px;justify-content:center; }
+
+/* payBox */
+.payBoxS{ display:block; width: 452px; height: 347px; margin-right:56px; }
+.payBoxS .payIconBox{ display:block; width: 286px; height:286px; margin:0 auto; }
+.payBoxS .payIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/payBoxIcon.png)no-repeat; background-position:center; 
+                         margin-bottom:48px; }
+.payBoxS .payIconFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.payBoxS .payTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.payBoxS .payTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* environmentBox */
+.environmentBoxS { display:block; width: 452px; height: 347px; margin-right:56px; }
+.environmentBoxS .environmentIconBox{ display:block; width: 286px; height:286px; margin:0 auto; } 
+.environmentBoxS .environmentIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/environmentIcon.png)no-repeat; background-position:center; 
+                                         margin-bottom:48px; }
+.environmentBoxS .environmentIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600;  }
+.environmentTextBox{ display:block; /* width:396px; */ height:156px;  text-align: center;  line-height:26px; margin-top:16px; }
+.environmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* developmentBox */
+.developmentBoxS{ display:block; width: 452px; height: 347px; }
+.developmentBoxS .developIconBox{ display:block; width:286px; height:286px; margin:0 auto; }
+.developmentBoxS .developIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/developmentIcon.png)no-repeat; background-position:center; 
+                                     margin-bottom: 48px; }
+.developmentBoxS .developIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.developmentTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.developmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+
+
+/* 문의하기 */
+.InquiryBoxS{ display:block; width:100%;  margin:0 auto; padding-bottom:270px; } 
+.InquiryArea{ display:block; width:1360px; text-align:center; padding-top:200px; margin:0 auto; position: relative; justify-content: center; }
+
+.contactTitle{  height:67px; text-align:center; margin-top:150px;  margin-bottom: 50px; font-family: 'SUIT-SemiBold'; font-size:34px; }
+.contactSideTitle{ display: block; width:100%; justify-content: center; margin-top:24px; 
+                   font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+.contactSideTitle2{ display:block; text-align:center; margin:0 auto; justify-content: center;
+                    font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+
+.conFirstBoxM{ justify-content:left; margin-bottom: 53px; margin-top: 88px; display: grid; }
+.conFirstBoxM .conKindNameM{ font-family: 'SUIT-Medium'; font-size: 18px; line-height:22.5px; display: block; text-align: left; margin-bottom: 12px; color: #555555; }
+
+.conSecondBoxM{ display:flex; /* width:1360px; */ justify-content:center; margin-bottom: 53px; align-items: end; }
+.conLeftBoxM{ display:block; width:440px; margin-right:20px; }
+.conLeftBoxM .conLeftTBox{ display:flex; /* width: 92px; */ height:23px; flex-direction:row; align-items: flex-end; margin-bottom:12px; }
+.conLeftBoxM .companyNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left;  margin-right:8px; color: #555555; }
+.conLeftBoxM .companyNameSelect{ display:block; font-family:'SUIT-Regular'; font-weight: 400; font-size:14px; color: #4D8DE8; }
+.conLeftBoxM input::placeholder{ color: #C0C0C0; }
+.conLeftBoxM .contactCompanyBoxM{ display:block; width:440px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+.conMiddleBoxM{ display:block; width: 440px; margin-right:20px; }
+.conMiddleBoxM .conPeopleNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555; }
+.conMiddleBoxM input::placeholder{ color: #C0C0C0; }
+.conMiddleBoxM .contactNameBoxM{ display:block; width:440px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                                text-align:left; padding-left:20px; border-radius:4px; }
+
+.conRightBoxM{ display:block; width: 440px; }
+.conRightBoxM .contactEmailM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px;  color: #555555; }
+.conRightBoxM input::placeholder{ color: #C0C0C0; }
+.conRightBoxM .contactEmailBoxM{ display:block; width:440px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000;  line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+
+.conThirdBoxM{ display:flex; justify-content:center; margin-bottom: 20px; flex-direction:column; }
+.InquiryContentsM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555;  }
+.contactTextBoxMemoM{ display:inline-block; width: 1360px; height: 168px; border: 1px solid #dddddd; font-family: 'SUIT-Regular'; font-size:18px; color: #000000; 
+                     text-align:left; padding:9px 20px 9px 20px; line-height:30px; border-radius: 4px; }
+.contactTextBoxMemoM::placeholder{ color: #C0C0C0; }
+
+.contactTextBoxMemoM::-webkit-scrollbar { width: 8px; border-radius: 4px; cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-track { cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-thumb { border-radius:4px; background-color:#f0f0f0; cursor:pointer;}
+
+
+.conFourthBoxM{ display:flex; margin-bottom: 16px; align-items: end; }
+.conInputArea{ display:flex; }
+.conFourthBoxM input{ display: inline-block; margin-right: 16px; display:none; }
+.conFourthBoxM label{ margin-right: 16px; width: 269px; }
+.conFourthBoxM label p{ font-family: 'SUIT-Light'; font-size: 18px; display: inline-block; }
+.conFourthBoxM .personalInforM{ font-family: 'SUIT-Light'; font-size: 16px; font-weight:500; color: #999999; text-decoration: underline; position:relative; cursor:pointer; display:block; 
+                                /* width: 144px; */ height:20px; line-height:20px; }
+
+.conFourthBoxM .personalInforM:hover{ color: #4D8DE8; }
+.contactSendM{ display:block; /* width:143px; */ height:48px; background:#4D8DE8; border-radius: 24px; 
+               font-family: 'SUIT-Medium'; font-size:18px; color: #fff; padding: 0px 40px 0px 40px; float: right; margin-bottom:222px; }  
+
+.contactSendM:hover{ background:#185BBC; }
+.contactSendM:active{ background:#0D346C; }
+
+
+.shadow{ position: fixed; left: 0; top: 0; background: rgba(0, 0, 0, 0.52); width: 100%; height: 100vh; z-index:99;}
+.contactSendBox{ display:inline-block; width: 600px; height:350px; background:#fff; border:solid 2px #f0f0f0; /* left: 50%; top: 50%; */ transform: translate(-35%, -120%);
+                 border-radius:8px; position:absolute; z-index:99; padding: 60px 79px; }
+.contactPopClose{ width:40px; height:40px; color: #999999; text-decoration:underline; }
+.checkIcon{ display:inline-block;  width:40px; height:40px; background:url('../../CustomerSupport/image/checkIconBlue.png')no-repeat; background-position:center; }
+.sendCompletion{ display:block; margin-top:28px; height:38px; font-family: 'SUIT-SemiBold'; font-size:24px; text-align:center; color: #4D8DE8; }
+.contactText1{ display:block;  margin-top:32px;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; line-height: 30px; }
+.contactText2{ display:block;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; margin-bottom:24px; }
+.contactCheck{ display:block; width:200px; height:44px; line-height:44px; border:solid 1px #000000; border-radius:30px; background:#fff;
+               font-family: 'SUIT-Medium'; font-size:22px; margin:0 auto; margin-bottom:60px; }
+
+
+/* 개인정보 처리방침 */
+.personalInfoBox{ display:inline-block; width: 604px; /* height:308px; */ background:#f4f8fd; box-shadow: 0px 4px 12px rgba(2, 26, 79, 0.08); border-radius: 8px;
+                  position:absolute; z-index:99; left: 0px; top: 30px; padding:20px 24px; text-align:left; }
+.personalTitle1{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; }
+.personalTitle2{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; margin-bottom: 36px; }
+.personalText1{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText2{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText3{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText4{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText5{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px; }
+.personalText6{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+
+
+
+}
+
+/* FHD */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+
+@media all and (min-width:1024px) {
+
+.conIntroTitle{ display:block; width:100%; height:280px; text-align:center;  background:url(../../CustomerSupport/image/contactBG2.png)no-repeat; background-size:cover; }
+.conIntroTitle > span:nth-child(1){ display:block; width:100%; font-size: 52px; font-weight: 600; padding-top:85.5px; padding-bottom: 16px; font-family: 'SUIT-SemiBold';
+                                    font-style: normal; color:#ffffff; }
+.conIntroTitle > span:nth-child(2){ display:block; width:100%; font-weight: 400; font-family: 'SUIT-Regular'; font-size:22px; color: #F9F9F9;
+                                    height: 28px; line-height: 28px; }
+
+/* 채용정보  */
+.recruitBox{ display:block; width:100%; height:480px; text-align:center; background:url(../../Recruitment/image/menu_5_image.png)no-repeat;
+            margin-bottom:180px; background-size:cover;  }
+.recruitTitle{ display:block; }
+.recruitTitle span:nth-child(1){ display:block; width:100%; font-size: 74px; padding-top:165px; padding-bottom: 28px; font-family: 'SUIT-SemiBold'; color:#fff;  }
+.recruitTitle span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Light'; font-size:24px; color: rgba(255,255,255,0.8); }
+
+/* 인재상 */
+.recruitArea{ display:block; width:100%; text-align:center; }
+.talentedBox{}
+.talentedBox .talentedTitle{ display:block; font-family: 'SUIT-SemiBold'; font-size:34px; margin-bottom:24px; }
+.talentedBox .talentedConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; margin-bottom:88px; color: #888888; }
+
+.talentedFlex{ display:flex; justify-content:center; }
+.talentedFlex .InnoBox{ display:block; width: 432px; height: 484px; margin-right:32px; }
+.talentedFlex .InnoBox .InnoTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .InnoBox .InnoConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .InnoBox .InnoConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .proBox{ display:block; width: 432px; height: 484px;  margin-right:32px; }
+.talentedFlex .proBox .proTitle{ display:block; width:432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .proBox .proConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .proBox .proConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .proBox .proConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom:142px; }
+
+.talentedFlex .comBox{ display:block; width: 432px; height: 484px;  }
+.talentedFlex .comBox .comTitle{ display:block; width: 432px; height:130px; line-height:130px; background:#F4F8FD; font-family: 'SUIT-Medium'; font-size:32px; color:#0D346C; }
+.talentedFlex .comBox .comConts{ display:block; border-bottom: solid 4px #F4F8FD; }
+.talentedFlex .comBox .comConts p:nth-child(1){ margin-top:140px; font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 13px; }
+.talentedFlex .comBox .comConts p:nth-child(2){ font-family: 'SUIT-Regular'; font-size:24px; margin-bottom: 142px; }
+
+
+.talentedFlexBox{ display: flex; /* width:100%; */ justify-content:center; }
+
+.talentedFlexBox .tFlex1{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;  }
+.talentedFlexBox .tFlex2{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px; position:relative;   } 
+.talentedFlexBox .tFlex3{ display:block; width: 436px; height:322px; color: #134A97; margin-right:24px; box-shadow: 0px 0px 12px rgba(2, 26, 79, 0.06); border-radius: 8px;  position:relative;  } 
+
+.talentedFlexBox .tBox1{ display:inline-block; /* width: 210px; */ height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px !important; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox2{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px; }
+.talentedFlexBox .tBox2 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox2 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox2 > span:nth-child(2){ display:block; width:100%;  font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox2 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox3{ display:inline-block; height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8;  position:absolute; left:0;  }
+
+.talentedFlexBox .tBox4{ background-color:#fff; text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox4 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox4 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox4 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox4 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+.talentedFlexBox .tBox5{ display:inline-block;  height:40px; background-color:#F4F8FD; border-top-right-radius:20px;
+                       border-bottom-right-radius:20px; padding:0px 48px 0px 40px; margin-top:52px; line-height:40px; 
+                       font-family:'SUIT-Regular'; font-size:18px; color: #4D8DE8; position:absolute; left:0;  }
+
+.talentedFlexBox .tBox6{ background-color:#fff;  text-align:left; padding: 52px 40px; margin-top:92px;  }
+.talentedFlexBox .tBox6 > span:nth-child(1){ width: 100%; display: block; font-family: 'SUIT-Medium'; font-size:30px; margin-bottom:28px; }
+.talentedFlexBox .tBox6 .tBoldText{ font-family: 'SUIT-ExtraBold'; font-size:30px; font-weight: 800; }
+.talentedFlexBox .tBox6 > span:nth-child(2){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(3){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+.talentedFlexBox .tBox6 > span:nth-child(4){ display:block; width:100%; font-family: 'SUIT-Regular'; font-size:22px; color: #666666; margin-bottom:12px; }
+
+
+/* 채용절차 */
+.recruitSubBoxS{ display:block; width:100%; text-align:center; /* padding-bottom:380px; */ margin-bottom:180px; }
+.reCircle{ display:block; width:12px; height:12px; background:#dddddd; border-radius:50%; text-align:center; margin:0 auto; margin-bottom:16px; margin-top:120px; }
+.recruitSubBoxS .recruitSubTitle{ display: block; font-family: 'SUIT-Medium'; font-size: 24px; margin-bottom: 16px; font-weight:500; }
+.recruitSubBoxS .recruitSubConts{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300; line-height:30px; color: #555555; }
+.recruitSubBoxS .recruitSubConts span{ display:inline-block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:400; line-height:30px; color:#4D8DE8; }
+.recruitSubBoxS .recruitSubConts2{ display:block; font-family: 'SUIT-Regular'; font-size:20px; font-weight:300;  line-height:30px;  margin-bottom:80px; color:#555555; }
+
+.recruitSubBoxS .shortcut{ width:211px; height:48px; border-radius:24px; color:#CFE0F8; margin:0 auto;
+                          text-decoration:none; border: 1px solid #CFE0F8; padding:12.5px 40px 12.5px 40px; margin-bottom:80px; }
+.recruitSubBoxS .shortcut:hover{ width:211px; height:48px; background:#F4F8FD; border-radius:24px; color:#4D8DE8; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; }
+.recruitSubBoxS .shortcut:active{ background: #E5EEFB; border-radius:24px; color: #185BBC; margin:0 auto; padding:12.5px 40px 12.5px 40px;
+                                 margin-bottom:80px; border: 1px solid #4D8DE8;  }
+
+.recruitSubBoxS .shortcut a{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; font-family: 'SUIT-Medium'; font-size:18px;  }
+.recruitSubBoxS .shortcut a:hover{ /* display:block; */ width:131px; height:23px; color:#4D8DE8; text-decoration:none; }
+.recruitSubBoxS .shortcut a:active{ /* display:block; */ width:131px; height:23px; color: #185BBC; text-decoration:none; }
+
+
+.recruitSubBoxS .recruitShape{ display:block; height:280px; margin-bottom:72px; }
+.recruitSubBoxS .recruitShape .document{ display:inline-block; width:240px; height:240px; line-height:240px; border-radius:50%; border:solid 4px #ECEEF4; font-family: 'SUIT-Medium'; font-size:22px;  color: #666666; } 
+.documentFlex{  }
+
+.recruitSubBoxS .recruitShape .firstMeet{ display:inline-block; width:240px; height:240px; line-height:240px; border-radius:50%; background:#ECEEF4; font-family: 'SUIT-Medium'; font-size:22px; color: #666666;  }
+.recruitSubBoxS .recruitShape .lastMeet{ display:inline-block; width:240px; height:240px; line-height:240px; border-radius:50%; border:solid 4px #D8DBE8; font-family: 'SUIT-Medium'; font-size:22px; color: #666666;  }
+.recruitSubBoxS .recruitShape .accept{ display:inline-block; width:240px; height:240px; line-height:240px; border-radius: 50%; background:#BEC4D9; font-family: 'SUIT-Medium'; font-size:22px; color:#ffffff;  }
+/* .recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:1px; border: 4px dashed #BEC4D9; } */
+.recruitSubBoxS .recruitShape .dashedLine{ display:inline-block; width:70px; height:5px; background:url(../../Recruitment/image/dashed.png)no-repeat; }
+.recruitSubBoxS .recruitShape .recruitCircle{ display:inline-block; width:20px; height:20px; background:#BEC4D9; border-radius: 50%; position: absolute; border:solid 4px #ffffff; transform:translate(-10px, 120px); }
+.recruitSubBoxS .explanation{ display:block; font-family: 'SUIT-Light'; font-size:18px; color:#505050; margin-top:27px; }
+
+
+/* 복리후생 */
+.benefitsBoxS{ display:block; width:100%; margin:0 auto; margin-bottom:180px; }
+.benefitsBoxS .benefitsTitle{ display: block; width: 100%; font-family: 'SUIT-SemiBold'; font-size: 34px; text-align: center; margin-bottom:24px; padding-top: 200px; }
+.benefitsBoxS .benefitsTitle2{ display: block; width: 100%; font-family: 'SUIT-Regular'; font-size: 20px; text-align: center; color: #888888;  }
+
+.benefitsArea{ display:flex; /* width:1360px; */ text-align:center; margin:0 auto; padding-top:88px;justify-content:center; }
+
+/* payBox */
+.payBoxS{ display:block; width: 452px; height: 347px; margin-right:56px; }
+.payBoxS .payIconBox{ display:block; width: 286px; height:286px; margin:0 auto; }
+.payBoxS .payIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/payBoxIcon.png)no-repeat; background-position:center; 
+                         margin-bottom:48px; }
+.payBoxS .payIconFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.payBoxS .payTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.payBoxS .payTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* environmentBox */
+.environmentBoxS { display:block; width: 452px; height: 347px; margin-right:56px; }
+.environmentBoxS .environmentIconBox{ display:block; width: 286px; height:286px; margin:0 auto; } 
+.environmentBoxS .environmentIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/environmentIcon.png)no-repeat; background-position:center; 
+                                         margin-bottom:48px; }
+.environmentBoxS .environmentIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600;  }
+.environmentTextBox{ display:block; /* width:396px; */ height:156px;  text-align: center;  line-height:26px; margin-top:16px; }
+.environmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+/* developmentBox */
+.developmentBoxS{ display:block; width: 452px; height: 347px; }
+.developmentBoxS .developIconBox{ display:block; width:286px; height:286px; margin:0 auto; }
+.developmentBoxS .developIconBoxImg{ display:inline-block; width:120px; height:120px; background:url(../../Recruitment/image/developmentIcon.png)no-repeat; background-position:center; 
+                                     margin-bottom: 48px; }
+.developmentBoxS .developIconBoxFont{ display:block; font-family: 'SUIT-SemiBold'; font-size:26px; color:#0D346C; font-weight:600; }
+.developmentTextBox{ display:block; /* width:396px; */ height:130px;  text-align: center;  line-height:26px; margin-top:16px; }
+.developmentTextBox span{ display:block; font-family: 'SUIT-Regular'; font-size:18px; color:#666666; }
+
+
+
+/* 문의하기 */
+.InquiryBoxS{ display:block; width:100%;  margin:0 auto; padding-bottom:270px; } 
+.InquiryArea{ display:block; width:1062px; text-align:center; padding-top:200px; margin:0 auto; position: relative; justify-content: center; }
+
+.contactTitle{  height:67px; text-align:center; margin-top:150px;  margin-bottom: 50px; font-family: 'SUIT-SemiBold'; font-size:34px; }
+.contactSideTitle{ display: block; width:100%; justify-content: center; margin-top:24px; 
+                   font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+.contactSideTitle2{ display:block; text-align:center; margin:0 auto; justify-content: center;
+                    font-family:'SUIT-Regular'; font-size: 20px; color: #888888; font-weight: 400; line-height: 25px; }
+
+.conFirstBoxM{ justify-content:left; margin-bottom: 53px; margin-top: 88px; display: grid; }
+.conFirstBoxM .conKindNameM{ font-family: 'SUIT-Medium'; font-size: 18px; line-height:22.5px; display: block; text-align: left; margin-bottom: 12px; color: #555555; }
+
+.conSecondBoxM{ display:flex; /* width:1360px; */ justify-content:center; margin-bottom: 53px; align-items: end; }
+.conLeftBoxM{ display:block; width:340px; margin-right:20px; }
+.conLeftBoxM .conLeftTBox{ display:flex; /* width: 92px; */ height:23px; flex-direction:row; align-items: flex-end; margin-bottom:12px; }
+.conLeftBoxM .companyNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left;  margin-right:8px; color: #555555; }
+.conLeftBoxM .companyNameSelect{ display:block; font-family:'SUIT-Regular'; font-weight: 400; font-size:14px; color: #4D8DE8; }
+.conLeftBoxM input::placeholder{ color: #C0C0C0; }
+.conLeftBoxM .contactCompanyBoxM{ display:block; width:340px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+.conMiddleBoxM{ display:block; width: 340px; margin-right:20px; }
+.conMiddleBoxM .conPeopleNameM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555; }
+.conMiddleBoxM input::placeholder{ color: #C0C0C0; }
+.conMiddleBoxM .contactNameBoxM{ display:block; width:340px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000; line-height:30px;
+                                text-align:left; padding-left:20px; border-radius:4px; }
+
+.conRightBoxM{ display:block; width: 340px; }
+.conRightBoxM .contactEmailM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px;  color: #555555; }
+.conRightBoxM input::placeholder{ color: #C0C0C0; }
+.conRightBoxM .contactEmailBoxM{ display:block; width:340px; height:48px; border: 1px solid #DDDDDD; font-family: 'SUIT-Regular'; font-size:18px; color:#000000;  line-height:30px;
+                               text-align:left; padding-left:20px; border-radius:4px; }
+
+.conThirdBoxM{ display:flex; justify-content:center; margin-bottom: 20px; flex-direction:column; }
+.InquiryContentsM{ font-family: 'SUIT-Medium'; font-size:18px; display: block; text-align: left; margin-bottom:12px; color: #555555;  }
+.contactTextBoxMemoM{ display:inline-block; width: 1062px; height: 168px; border: 1px solid #dddddd; font-family: 'SUIT-Regular'; font-size:18px; color: #000000; 
+                     text-align:left; padding:9px 20px 9px 20px; line-height:30px; border-radius: 4px; }
+.contactTextBoxMemoM::placeholder{ color: #C0C0C0; }
+
+.contactTextBoxMemoM::-webkit-scrollbar { width: 8px; border-radius: 4px; cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-track { cursor: pointer;}
+.contactTextBoxMemoM::-webkit-scrollbar-thumb { border-radius:4px; background-color:#f0f0f0; cursor:pointer;}
+
+
+.conFourthBoxM{ display:flex; margin-bottom: 16px; align-items: end; }
+.conInputArea{ display:flex; }
+.conFourthBoxM input{ display: inline-block; margin-right: 16px; display:none; }
+.conFourthBoxM label{ margin-right: 16px; width: 269px; }
+.conFourthBoxM label p{ font-family: 'SUIT-Light'; font-size: 18px; display: inline-block; }
+.conFourthBoxM .personalInforM{ font-family: 'SUIT-Light'; font-size: 16px; font-weight:500; color: #999999; text-decoration: underline; position:relative; cursor:pointer; display:block; 
+                                /* width: 144px; */ height:20px; line-height:20px; }
+
+.conFourthBoxM .personalInforM:hover{ color: #4D8DE8; }
+.contactSendM{ display:block; /* width:143px; */ height:48px; background:#4D8DE8; border-radius: 24px; 
+               font-family: 'SUIT-Medium'; font-size:18px; color: #fff; padding: 0px 40px 0px 40px; float: right; margin-bottom:222px; }  
+
+.contactSendM:hover{ background:#185BBC; }
+.contactSendM:active{ background:#0D346C; }
+
+
+.shadow{ position: fixed; left: 0; top: 0; background: rgba(0, 0, 0, 0.52); width: 100%; height: 100vh; z-index:99;}
+.contactSendBox{ display:inline-block; width: 600px; height:350px; background:#fff; border:solid 2px #f0f0f0; /* left: 50%; top: 50%; */ transform: translate(-35%, -120%);
+                 border-radius:8px; position:absolute; z-index:99; padding: 60px 79px; }
+.contactPopClose{ width:40px; height:40px; color: #999999; text-decoration:underline; }
+.checkIcon{ display:inline-block;  width:40px; height:40px; background:url('../../CustomerSupport/image/checkIconBlue.png')no-repeat; background-position:center; }
+.sendCompletion{ display:block; margin-top:28px; height:38px; font-family: 'SUIT-SemiBold'; font-size:24px; text-align:center; color: #4D8DE8; }
+.contactText1{ display:block;  margin-top:32px;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; line-height: 30px; }
+.contactText2{ display:block;  font-family: 'SUIT-Regular'; font-size: 16px; color:#888888; text-align:center; margin-bottom:24px; }
+.contactCheck{ display:block; width:200px; height:44px; line-height:44px; border:solid 1px #000000; border-radius:30px; background:#fff;
+               font-family: 'SUIT-Medium'; font-size:22px; margin:0 auto; margin-bottom:60px; }
+
+
+/* 개인정보 처리방침 */
+.personalInfoBox{ display:inline-block; width: 604px; /* height:308px; */ background:#f4f8fd; box-shadow: 0px 4px 12px rgba(2, 26, 79, 0.08); border-radius: 8px;
+                  position:absolute; z-index:99; left: 0px; top: 30px; padding:20px 24px; text-align:left; }
+.personalTitle1{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; }
+.personalTitle2{ display:block; font-family: 'SUIT-Medium'; font-size:18px; color:#333333; line-height:26px; margin-bottom: 36px; }
+.personalText1{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText2{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText3{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px;  }
+.personalText4{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+.personalText5{ display:block; font-family: 'SUIT-Medium'; font-size:16px; color:#134A97; line-height:23px; }
+.personalText6{ display:block; font-family: 'SUIT-Regular'; font-size:16px; color:#555555; line-height:23px; margin-bottom: 24px; }
+
+
+
+}

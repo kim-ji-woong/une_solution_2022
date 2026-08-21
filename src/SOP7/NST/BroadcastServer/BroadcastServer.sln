@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadcastServer", "BroadcastServer\BroadcastServer.csproj", "{862BF555-BB6E-4F0A-8012-B485FCBA4E66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDBUtil", "..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj", "{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsBroadcast", "..\..\DNS\dnsBroadcast\dnsBroadcast\dnsBroadcast.csproj", "{EAC9C56E-E640-4C84-A49F-34A0DA138E82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release_Kakaowork|Any CPU = Release_Kakaowork|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{862BF555-BB6E-4F0A-8012-B485FCBA4E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856AED98-B02C-4E4A-97C3-3E1CEB0186D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC9C56E-E640-4C84-A49F-34A0DA138E82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB5885A8-F6F1-443A-883F-CF2B25C2C712}
+	EndGlobalSection
+EndGlobal

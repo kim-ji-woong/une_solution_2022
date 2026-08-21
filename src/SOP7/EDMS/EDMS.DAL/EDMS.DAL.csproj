@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\EDMS.IDAL\EDMS.IDAL.csproj" />
+    <ProjectReference Include="..\EDMS.Model\EDMS.Model.csproj" />
+  </ItemGroup>
+
+</Project>

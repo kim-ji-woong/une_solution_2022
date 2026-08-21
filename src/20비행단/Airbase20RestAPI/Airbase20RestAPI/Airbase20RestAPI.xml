@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Airbase20RestAPI</name>
+    </assembly>
+    <members>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetRelay(Airbase20.BLL.Models.RequestGetRelay)">
+            <summary>
+            계전기 정보 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "ID": 0       // Relay ID
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetRelayList(Airbase20.BLL.Models.RequestGetRelayList)">
+            <summary>
+            계전기 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetSwitchDetail(Airbase20.BLL.Models.RequestGetSwitchDetail)">
+            <summary>
+            개폐기 정보 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "ID": 0       // SwitchDetail ID
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetSwitchDetailList(Airbase20.BLL.Models.RequestGetSwitchDetailList)">
+            <summary>
+            개폐기 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetPeckPower(Airbase20.BLL.Models.RequestGetPeckPower)">
+            <summary>
+            피크전력 정보 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "ID": 0       // PeckPower ID
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetPeckPowerList(Airbase20.BLL.Models.RequestGetPeckPowerList)">
+            <summary>
+            피크전력 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetAlarmList(Airbase20.BLL.Models.RequestGetAlarmList)">
+            <summary>
+            알람 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:Airbase20RestAPI.Controllers.DataController.RequestGetPowerResult(Airbase20.BLL.Models.RequestGetPowerResult)">
+            <summary>
+            전력량 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+    </members>
+</doc>

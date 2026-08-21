@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="dnsData">
+      <HintPath>..\..\..\..\..\bin\common12\netcoreapp3.1\dnsData.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsGeometry">
+      <HintPath>..\..\..\..\..\bin\common12\netcoreapp3.1\dnsGeometry.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.Model">
+      <HintPath>..\..\..\..\..\bin\common12\netcoreapp3.1\SDMS.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

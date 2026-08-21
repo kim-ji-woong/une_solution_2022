@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED5324E5-614D-430A-89DB-5BF6E422652B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WonikErpNSheServer</RootNamespace>
+    <AssemblyName>WonikErpNSheServer_Backup</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;_SERVICE _ERP _SERVER _GAS BACKUP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBBackup.cs" />
+    <Compile Include="DBDataManager.cs" />
+    <Compile Include="ERPManager.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gas\GasSProvider.cs" />
+    <Compile Include="Gas\GasVProvider.cs" />
+    <Compile Include="Gas\GasCProvider.cs" />
+    <Compile Include="Gas\GasAProvider.cs" />
+    <Compile Include="Gas\GasManager.cs" />
+    <Compile Include="Gas\GasHProvider.cs" />
+    <Compile Include="EnvSManager.cs" />
+    <Compile Include="HMIManager.cs" />
+    <Compile Include="ID.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="ProcessManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EnvironManager.cs" />
+    <Compile Include="SHEManager.cs" />
+    <Compile Include="TrayManager.cs" />
+    <Compile Include="WonikErpNSheService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WonikErpNSheService.Designer.cs">
+      <DependentUpon>WonikErpNSheService.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj">
+      <Project>{8CFC199C-2407-4CA0-9CD9-05F60272AEA5}</Project>
+      <Name>dnsDBUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\TcpLib2\TcpLib2\TcpLib2.csproj">
+      <Project>{71e3f3b2-40dd-4f70-a50c-564b8dea21a3}</Project>
+      <Name>TcpLib2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Common.DAL\Common.DAL.csproj">
+      <Project>{8f72beab-833f-4045-838e-13862bda4445}</Project>
+      <Name>Common.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Common.IDAL\Common.IDAL.csproj">
+      <Project>{fa6d082a-582a-466b-8a66-d4a22da24c29}</Project>
+      <Name>Common.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Common.Model\Common.Model.csproj">
+      <Project>{d054e6b6-695d-4527-8e4f-0a38dec35595}</Project>
+      <Name>Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.DAL\Dashboard.DAL.csproj">
+      <Project>{a39c3d84-5480-422b-b3e1-7ad26cef419e}</Project>
+      <Name>Dashboard.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.IDAL\Dashboard.IDAL.csproj">
+      <Project>{d9135a2a-31a3-4df9-ab49-3b70d909a47e}</Project>
+      <Name>Dashboard.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Dashboard\Dashboard.Model\Dashboard.Model.csproj">
+      <Project>{6ac87251-c475-4e77-9309-fc02c0203211}</Project>
+      <Name>Dashboard.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj">
+      <Project>{3d41358b-7ccc-4491-a2e6-010bc4c8b701}</Project>
+      <Name>dnsCommunicateSopServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\DNS\dnsData\dnsData.csproj">
+      <Project>{57ebdf50-c160-45e6-92d9-2fa369180fad}</Project>
+      <Name>dnsData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDMS\SDMS.DAL\SDMS.DAL.csproj">
+      <Project>{320dabe4-1055-4c40-80e8-61c691cd5291}</Project>
+      <Name>SDMS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj">
+      <Project>{0f7398f5-ceed-4994-8d49-72e6aa8b6979}</Project>
+      <Name>SDMS.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SDMS\SDMS.Model\SDMS.Model.csproj">
+      <Project>{dd716d84-068a-4c46-82fe-95d6e076793c}</Project>
+      <Name>SDMS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.DAL\SOPManager.DAL.csproj">
+      <Project>{141dc941-3bb2-4697-a3f9-2a0095d809ba}</Project>
+      <Name>SOPManager.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.IDAL\SOPManager.IDAL.csproj">
+      <Project>{3e74475b-5fee-4107-b4f7-b40e17ee340e}</Project>
+      <Name>SOPManager.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\SOPManager\SOPManager.Model\SOPManager.Model.csproj">
+      <Project>{12b31c59-2751-4a1d-bdb2-05e490394892}</Project>
+      <Name>SOPManager.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.BLL\TeamEditor.BLL.csproj">
+      <Project>{29EECBD4-51EB-4F19-ADB9-6D1877657631}</Project>
+      <Name>TeamEditor.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.DAL\TeamEditor.DAL.csproj">
+      <Project>{a02314ca-d599-401b-ab05-0ee4936f712c}</Project>
+      <Name>TeamEditor.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.IDAL\TeamEditor.IDAL.csproj">
+      <Project>{d3fad420-df7b-46fd-9369-c829eb5c04db}</Project>
+      <Name>TeamEditor.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\TeamEditor\TeamEditor.Model\TeamEditor.Model.csproj">
+      <Project>{79F0AE99-A9F3-4E4D-BA05-61416D58372A}</Project>
+      <Name>TeamEditor.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDMS_BLUE.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

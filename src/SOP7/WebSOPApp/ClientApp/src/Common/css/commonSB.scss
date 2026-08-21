@@ -1,0 +1,79 @@
+:root {
+    /* Grid */
+    --sizeGridInitWidth: 2100px;    /* [D] Cell 넓이(300) * Coulmn 갯수(7) */
+    --sizeGridInitHeight: 1400px;    /* [D] Cell 높이(200) * Coulmn 갯수(7) */
+    --sizeCellDefaultWidth: 300px;
+    --sizeCellDefaultHeight: 200px;
+
+    /* SectionComponent */
+    --sizeSectionLeftMargin: 50px;
+    --sizeSectionRightMargin: 50px;
+    --sizeSectionTopMargin: 60px;
+    --sizeSectionBottomMargin: 60px;
+    /*--sizeSectionWidth: 200px;
+    --sizeSectionHeight: 80px;*/
+    --sizeLineHeight: 65px;
+    --sizeBorderLine: 5px;
+    --sizeBorderRoundEdge: 12px;
+    --colorSectionBorder: #9cbaf3;
+    --colorSectionFill: #f0f5fd;
+
+    /* Html Tag */
+    --sizeFontSopTitle: 1.2em;
+    --sizeFontStepMemberTitle: 1.1em;
+    --colorSectionPanel: lightgray;
+    --colorTextSopTitle: white;
+    --colorBkSopTitle: #23a9f2;
+    --colorBkStepMemberTitle: #efe4b0;
+
+    /*Status Component*/
+    --colorComponentFont: black;
+
+    /*--colorComponentFont: white;*/
+    --colorSelectedSectionBorder: #FF4E4E;
+    --colorSelectedSectionFill: #FF4E4E;
+    --colorCurrentSectionBorder: #FF9900;
+    --colorCurrentSectionFill: #52ACC4;
+    --colorCurrentSectionFont: #F7F7F7;
+    --colorSectionFill: #f0f5fd;
+
+    /*--colorSectionFill: #39A7DE;*/
+    --colorSectionBorder: #9cbaf3;
+
+    /*--colorSectionBorder: #39A7DE;*/
+    --colorRunComponentFill: #2C5C8B;
+    // --colorRunComponentBorder: #2C5C8B;
+    --colorRunComponentBorder: #2C5C8B;
+    // --colorRunComponentBorder: #ffa500;
+    --colorRunComponentFont: #F7F7F7;
+    --colorDoneComponentFill: #4D5967;
+    --colorDoneComponentBorder: #4D5967;
+    
+    /*--colorDoneComponentFont: #7C8084;*/
+    --colorDoneComponentFont: #D9D9D9;
+    --colorWaitComponentFill: #7C8084;
+    --colorWaitComponentBorder: #7C8084;
+    --colorWaitComponentFont: #EEEEEE;
+
+    /* from ui.module.css */
+    --colorSectionNormal: #7C8084;
+	--colorTextNormal: #EEEEEE;
+	--colorSectionCurrent: #2d5d89; /*현재임무*/
+	--colorTextCurrent: #F7F7F7;
+	--colorSectionRun: #2d5d89; /*대기(실행중)*/
+	--colorTextRun: #F7F7F7;
+	--colorSectionDone: #4D5967; /*완료*/
+	--colorTextDone: #D9D9D9;
+
+    /* 막대기 각도조절  */
+    --circleRadius: 70px;
+	--circleCenterX: 68px;
+	--circleCenterY: 70px;
+	--circleFontColor: #7B8F9A;
+	--circleFontSize: 8pt;
+
+    /* 환경설정 */
+    --settingsMainColor: #FF8400;
+    --settingsColor: #e4ad2b;
+    --settingsTitleColor: #00dd8b;
+}

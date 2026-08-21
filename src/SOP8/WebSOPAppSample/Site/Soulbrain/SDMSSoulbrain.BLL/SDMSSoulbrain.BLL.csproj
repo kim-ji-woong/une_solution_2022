@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SDMS\SDMS.BLL\SDMS.BLL.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.IBLL\SDMS.IBLL.csproj" />
+    <ProjectReference Include="..\..\..\SOP\SOP.IBLL\SOP.IBLL.csproj" />
+    <ProjectReference Include="..\SDMSSoulbrain.DAL\SDMSSoulbrain.DAL.csproj" />
+    <ProjectReference Include="..\SDMSSoulbrain\SDMSSoulbrain.Model.csproj" />
+  </ItemGroup>
+
+</Project>

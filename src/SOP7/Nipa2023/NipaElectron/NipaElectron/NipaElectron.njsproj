@@ -1,0 +1,271 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>NipaElectron</Name>
+    <RootNamespace>NipaElectron</RootNamespace>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+    <NodeExePath>D:\UnESolution2022\src\SOP7\Nipa2023\NipaElectron\NipaElectron\node_modules\electron\dist\electron.exe</NodeExePath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>32cb53fb-a0ff-49dd-8331-f6a80b64c068</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>main\main.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>False</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="main\logger.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="exe\RTSP_Full\RTSP_Full.deps.json" />
+    <Content Include="exe\RTSP_Full\RTSP_Full.dll" />
+    <Content Include="exe\RTSP_Full\RTSP_Full.exe" />
+    <Content Include="exe\RTSP_Full\RTSP_Full.pdb" />
+    <Content Include="exe\RTSP_Full\RTSP_Full.runtimeconfig.json" />
+    <Content Include="exe\RTSP_Full\WebEye.Controls.WinForms.StreamPlayerControl.dll" />
+    <Content Include="exe\unity\MonoBleedingEdge\EmbedRuntime\mono-2.0-bdwgc.dll" />
+    <Content Include="exe\unity\MonoBleedingEdge\EmbedRuntime\MonoPosixHelper.dll" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\Browsers\Compat.browser" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\machine.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\settings.map" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\web.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\Browsers\Compat.browser" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\machine.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\settings.map" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\web.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\Browsers\Compat.browser" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\machine.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\settings.map" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\web.config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\browscap.ini" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\config" />
+    <Content Include="exe\unity\MonoBleedingEdge\etc\mono\mconfig\config.xml" />
+    <Content Include="exe\unity\NIPA00.exe" />
+    <Content Include="exe\unity\NIPA00_BurstDebugInformation_DoNotShip\Data\Plugins\x86_64\lib_burst_generated.txt" />
+    <Content Include="exe\unity\NIPA00_Data\app.info" />
+    <Content Include="exe\unity\NIPA00_Data\boot.config" />
+    <Content Include="exe\unity\NIPA00_Data\globalgamemanagers" />
+    <Content Include="exe\unity\NIPA00_Data\globalgamemanagers.assets" />
+    <Content Include="exe\unity\NIPA00_Data\globalgamemanagers.assets.resS" />
+    <Content Include="exe\unity\NIPA00_Data\level0" />
+    <Content Include="exe\unity\NIPA00_Data\level0.resS" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Accessibility.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Assembly-CSharp-firstpass.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Assembly-CSharp.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\FFmpeg.AutoGen.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\H264RTSPPlayerLib.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\H264RTSPPlayerLib.Utils.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Mono.Data.Sqlite.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Mono.Messaging.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Mono.Posix.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Mono.Security.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Mono.WebBrowser.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\mscorlib.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\netstandard.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\NLog.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Novell.Directory.Ldap.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\OpenCvSharp.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\PimDeWitte.UnityMainThreadDispatcher.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Rtsp.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.ComponentModel.Composition.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.ComponentModel.DataAnnotations.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Configuration.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Configuration.Install.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Core.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Data.DataSetExtensions.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Data.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Design.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.DirectoryServices.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Drawing.Design.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Drawing.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.EnterpriseServices.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.IdentityModel.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.IdentityModel.Selectors.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.IO.Compression.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.IO.Compression.FileSystem.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Memory.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Messaging.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Net.Http.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Numerics.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Runtime.DurableInstancing.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Runtime.Serialization.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Runtime.Serialization.Formatters.Soap.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Security.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.ServiceModel.Activation.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.ServiceModel.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.ServiceModel.Internals.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Transactions.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Web.ApplicationServices.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Web.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Web.Services.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Windows.Forms.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Xaml.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Xml.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\System.Xml.Linq.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.AdaptivePerformance.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.Burst.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.Burst.Unsafe.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.InputSystem.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.InputSystem.ForUI.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.Mathematics.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.Profiling.Core.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.RenderPipelines.HighDefinition.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.TextMeshPro.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.Timeline.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.VisualEffectGraph.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.VisualScripting.Antlr3.Runtime.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.VisualScripting.Core.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.VisualScripting.Flow.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\Unity.VisualScripting.State.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AccessibilityModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AIModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AndroidJNIModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AnimationModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ARModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AssetBundleModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.AudioModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ClothModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ClusterInputModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ClusterRendererModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ContentLoadModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.CoreModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.CrashReportingModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.DirectorModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.DSPGraphModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.GameCenterModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.GIModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.GridModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.HotReloadModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ImageConversionModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.IMGUIModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.InputLegacyModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.InputModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.JSONSerializeModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.LocalizationModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.NVIDIAModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ParticleSystemModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.PerformanceReportingModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.Physics2DModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.PhysicsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ProfilerModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.PropertiesModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.ScreenCaptureModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.SharedInternalsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.SpriteMaskModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.SpriteShapeModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.StreamingModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.SubstanceModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.SubsystemsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TerrainModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TerrainPhysicsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TextRenderingModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TilemapModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.TLSModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UI.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UIElementsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UIModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UmbraModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityAnalyticsModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityConnectModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityCurlModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityTestProtocolModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityWebRequestModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.VehiclesModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.VFXModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.VideoModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.VirtualTexturingModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.VRModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.WindModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\UnityEngine.XRModule.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Managed\websocket-sharp.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Plugins\x86_64\aacdecoder.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Plugins\x86_64\h264decoder.dll" />
+    <Content Include="exe\unity\NIPA00_Data\Plugins\x86_64\lib_burst_generated.dll" />
+    <Content Include="exe\unity\NIPA00_Data\resources.assets" />
+    <Content Include="exe\unity\NIPA00_Data\resources.assets.resS" />
+    <Content Include="exe\unity\NIPA00_Data\Resources\unity default resources" />
+    <Content Include="exe\unity\NIPA00_Data\Resources\unity_builtin_extra" />
+    <Content Include="exe\unity\NIPA00_Data\RuntimeInitializeOnLoads.json" />
+    <Content Include="exe\unity\NIPA00_Data\ScriptingAssemblies.json" />
+    <Content Include="exe\unity\NIPA00_Data\sharedassets0.assets" />
+    <Content Include="exe\unity\NIPA00_Data\sharedassets0.assets.resS" />
+    <Content Include="exe\unity\UnityCrashHandler64.exe" />
+    <Content Include="exe\unity\UnityPlayer.dll" />
+    <Content Include="main\embedding.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="main\main_test.js" />
+    <Content Include="main\main.js" />
+    <Content Include="main\preload.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="settings\settings.json">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="exe\" />
+    <Folder Include="exe\RTSP_Full\" />
+    <Folder Include="exe\unity\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\EmbedRuntime\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\2.0\Browsers\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\4.0\Browsers\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\4.5\Browsers\" />
+    <Folder Include="exe\unity\MonoBleedingEdge\etc\mono\mconfig\" />
+    <Folder Include="exe\unity\NIPA00_BurstDebugInformation_DoNotShip\" />
+    <Folder Include="exe\unity\NIPA00_BurstDebugInformation_DoNotShip\Data\" />
+    <Folder Include="exe\unity\NIPA00_BurstDebugInformation_DoNotShip\Data\Plugins\" />
+    <Folder Include="exe\unity\NIPA00_BurstDebugInformation_DoNotShip\Data\Plugins\x86_64\" />
+    <Folder Include="exe\unity\NIPA00_Data\" />
+    <Folder Include="exe\unity\NIPA00_Data\Managed\" />
+    <Folder Include="exe\unity\NIPA00_Data\Plugins\" />
+    <Folder Include="exe\unity\NIPA00_Data\Plugins\x86_64\" />
+    <Folder Include="exe\unity\NIPA00_Data\Resources\" />
+    <Folder Include="main\" />
+    <Folder Include="settings\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>

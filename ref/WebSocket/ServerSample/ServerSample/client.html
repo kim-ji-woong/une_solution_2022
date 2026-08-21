@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        textarea {
+            vertical-align: bottom;
+        }
+
+        #output {
+            overflow: auto;
+        }
+
+            #output > p {
+                overflow-wrap: break-word;
+            }
+
+            #output span {
+                color: blue;
+            }
+
+                #output span.error {
+                    color: red;
+                }
+    </style>
+</head>
+<body>
+    <h2>WebSocket Test</h2>
+    <textarea cols="60" rows="6"></textarea>
+    <div>
+        <input type="radio" id="no1" name="choiceButton" value="1번 버튼" />
+        <label for="no1">1번 버튼</label>
+
+        <input type="radio" id="no2" name="choiceButton" value="2번 버튼" />
+        <label for="no2">2번 버튼</label>
+
+        <input type="radio" id="no3" name="choiceButton" value="3번 버튼" />
+        <label for="no3">3번 버튼</label>
+    </div>
+    <button>전송</button>
+    <div id="output"></div>
+
+    <script>
+        // http://www.websocket.org/echo.html
+        const button = document.querySelector("button");
+        const output = document.querySelector("#output");
+        const textarea = document.querySelector("textarea");
+        const wsUri = "ws://127.0.0.1:1234/";
+        const websocket = new WebSocket(wsUri);
+
+        button.addEventListener("click", onClickButton);
+
+        websocket.onopen = (e) => {
+            writeToScreen("CONNECTED");
+            doSend("WebSocket rocks");
+        };
+
+        websocket.onclose = (e) => {
+            writeToScreen("DISCONNECTED");
+        };
+
+        websocket.onmessage = (e) => {
+            writeToScreen(`<span>RESPONSE: ${e.data}</span>`);
+        };
+
+        websocket.onerror = (e) => {
+            writeToScreen(`<span class="error">ERROR:</span> ${e.data}`);
+        };
+
+        function doSend(message) {
+            writeToScreen(`SENT: ${message}`);
+            websocket.send(message);
+        }
+
+        function writeToScreen(message) {
+            output.insertAdjacentHTML("afterbegin", `<p>${message}</p>`);
+        }
+
+        function onClickButton() {
+            const text = textarea.value;
+
+            const no1 = document.getElementById("no1");
+
+            if (no1.checked) {
+                if (text) {
+                    doSend("1, " + text);
+                }
+                else {
+                    doSend("1");
+                }
+            }
+            else {
+                const no2 = document.getElementById("no2");
+
+                if (no2.checked) {
+                    if (text) {
+                        doSend("2, " + text);
+                    }
+                    else {
+                        doSend("2");
+                    }
+                }
+                else {
+                    const no3 = document.getElementById("no3");
+
+                    if (no3.checked) {
+                        if (text) {
+                            doSend("3, " + text);
+                        }
+                        else {
+                            doSend("3");
+                        }
+                    }
+                }
+            }
+
+            //text && doSend(text);
+            textarea.value = "";
+            textarea.focus();
+        }
+    </script>
+</body>
+</html>

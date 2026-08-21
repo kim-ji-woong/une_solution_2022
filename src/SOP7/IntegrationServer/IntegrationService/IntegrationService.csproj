@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-IntegrationService-88C0DB73-9BC5-4504-B56F-8A91B5741FC5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IntegrationServer\IntegrationServer.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rem xcopy $(SolutionDir)Binary\Mqtt\Corners $(TargetDir) /y&#xD;&#xA;xcopy $(SolutionDir)Binary\Mqtt\Corners $(TargetDir) /y" />
+  </Target>
+</Project>

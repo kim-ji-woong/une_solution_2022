@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "IntegrationService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

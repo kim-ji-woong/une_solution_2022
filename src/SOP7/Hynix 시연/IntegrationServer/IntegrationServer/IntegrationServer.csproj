@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;SERVICE_</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Buy\Dashboard.cs" Link="ViewModels\MES\Hansol\Buy\Dashboard.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Equipment\Data.cs" Link="ViewModels\MES\Hansol\Data.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Equipment\Equipment.cs" Link="ViewModels\MES\Hansol\Equipment.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Product\Performance.cs" Link="ViewModels\MES\Hansol\Performance.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Product\Run.cs" Link="ViewModels\MES\Hansol\Run.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Quality\NG.cs" Link="ViewModels\MES\Hansol\NG.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Quality\NGCategory.cs" Link="ViewModels\MES\Hansol\NGCategory.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Mes\Sell\Dashboard.cs" Link="ViewModels\MES\Hansol\Sell\Dashboard.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\History\SensorReaction.cs" Link="ViewModels\Sdms\History\SensorReaction.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\History\SensorZone.cs" Link="ViewModels\Sdms\History\SensorZone.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\History\SensorZoneData.cs" Link="ViewModels\Sdms\History\SensorZoneData.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\ETC.cs" Link="ViewModels\Sdms\ETC.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\EtcData.cs" Link="ViewModels\Sdms\EtcData.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\FacilityType.cs" Link="ViewModels\Sdms\FacilityType.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\Material.cs" Link="ViewModels\Sdms\Material.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\PSM.cs" Link="ViewModels\Sdms\PSM.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\SensorZone.cs" Link="ViewModels\Sdms\SensorZone.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Sensor\TagInfo.cs" Link="ViewModels\Sdms\TagInfo.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\SDMS\Spatial\EquipmentZone.cs" Link="ViewModels\Sdms\EquipmentZone.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Weather\Current.cs" Link="ViewModels\Weather\Korea\Current.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Weather\Site.cs" Link="ViewModels\Weather\Korea\Site.cs" />
+    <Compile Include="..\..\..\Nipa2023\Nipa.Model\Weather\Weekly.cs" Link="ViewModels\Weather\Korea\Weekly.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Lextm.SharpSnmpLib" Version="12.5.2" />
+    <PackageReference Include="MQTTnet" Version="4.3.6.1152" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.3.6.1152" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\dnsTcpLib2\dnsTcpLib2\dnsTcpLib2.csproj" />
+    <ProjectReference Include="..\..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj" />
+    <ProjectReference Include="..\..\dnsCommunicateSopServer_Hynix\dnsCommunicateSopServer_Hynix.csproj" />
+    <ProjectReference Include="..\..\SOPWebServer2\AgentFactory.BLL\AgentFactory.BLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\MES\Hansol\Buy\" />
+    <Folder Include="ViewModels\MES\Hansol\Sell\" />
+    <Folder Include="ViewModels\Weather\Korea\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="S1.Frameworks">
+      <HintPath>..\..\..\솔브레인\SVMSServer\SVMSServer\lib\S1.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="S1SVMSSDKv2">
+      <HintPath>..\..\..\솔브레인\SVMSServer\SVMSServer\lib\S1SVMSSDKv2.dll</HintPath>
+    </Reference>
+    <Reference Include="SicCsharp">
+      <HintPath>..\..\..\..\..\bin\library\SicCsharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

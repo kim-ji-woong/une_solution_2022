@@ -1,0 +1,85 @@
+﻿
+
+.container { /* 게시판 뿌려주는 부분 */ width: 100%; float: left; display: flex; margin-left: 280px; }
+
+/* .selectBox1 * { box-sizing: border-box; }
+.selectBox1 { position: relative; width: 140px; height: 44px; border-radius: 24px; border: 0.5px solid #C0C0C0; cursor: pointer; 
+              background:url('../../CompanyNews/image/다각형 2.png')no-repeat; background-position-y: 20px;
+              background-position-x: 110px; margin-right:12px; }
+.selectBox1 .label2 { display: flex; align-items: center; width: inherit; height: inherit; border: 0 none; outline: 0 none;
+                     padding-left: 28px; background: transparent; cursor: pointer; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox1 .optionList2 { position: absolute; top: 43px; left: 0; width: 100%; color: #707070; list-style-type: none;
+                          padding: 0; border-radius: 24px; overflow: hidden; max-height: 0; }
+.selectBox1 .optionList2::-webkit-scrollbar {width: 6px;}
+.selectBox1 .optionList2::-webkit-scrollbar-track {background: transparent; }
+.selectBox1 .optionList2::-webkit-scrollbar-thumb {background: #f0f0f0; border-radius: 45px;}
+.selectBox1 .optionList2::-webkit-scrollbar-thumb:hover {background: #f0f0f0;}
+
+.selectBox1.active .optionList2 { max-height: 500px; border:solid 0.5px #c0c0c0; border-radius:24px; }
+.selectBox1 .optionItem2 { padding: 17px 0 17px 28px; transition: .1s; text-align: left; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox1 .optionItem2:hover { background: #F0F0F0;}
+.selectBox1 .optionItem2:last-child { border-bottom: 0 none;}
+
+
+.selectBox2 * { box-sizing: border-box; }
+.selectBox2 { position: relative; width: 140px; height: 44px; border-radius: 24px; border: 0.5px solid #C0C0C0; cursor: pointer; 
+              background:url('../../CompanyNews/image/다각형 2.png')no-repeat; background-position-y: 20px;
+              background-position-x: 110px; }
+.selectBox2 .label { display: flex; align-items: center; width: inherit; height: inherit; border: 0 none; outline: 0 none;
+                     padding-left: 28px; background: transparent; cursor: pointer; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox2 .optionList { position: absolute; top: 43px; left: 0; width: 100%; color: #707070; list-style-type: none;
+                          padding: 0; border-radius: 24px; overflow: hidden; max-height: 0; }
+.selectBox2 .optionList::-webkit-scrollbar {width: 6px;}
+.selectBox2 .optionList::-webkit-scrollbar-track {background: transparent; }
+.selectBox2 .optionList::-webkit-scrollbar-thumb {background: #f0f0f0; border-radius: 45px;}
+.selectBox2 .optionList::-webkit-scrollbar-thumb:hover {background: #f0f0f0;}
+
+.selectBox2.active .optionList { max-height: 500px; border:solid 0.5px #c0c0c0; border-radius:24px; }
+.selectBox2 .optionItem { padding: 17px 0 17px 28px; transition: .1s; text-align: left; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox2 .optionItem:hover { background: #F0F0F0;}
+.selectBox2 .optionItem:last-child { border-bottom: 0 none;}
+
+
+.selectBox3 * { box-sizing: border-box; }
+.selectBox3 { position: relative; width: 140px; height: 44px; border: 0.5px solid #C0C0C0; cursor: pointer; 
+              background:url('../../CompanyNews/image/다각형 2.png')no-repeat; background-position-y: 20px;
+              background-position-x: 110px; border-radius:24px 24px 0px 0px; border-bottom:none; display:none;  }
+.selectBox3 .label3 { display: flex; align-items: center; width: inherit; height: inherit; border: 0 none; outline: 0 none;
+                     padding-left: 28px; background: transparent; cursor: pointer; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox3 .optionList3 { position: absolute; top: 43px; left: 0; width: 100%; color: #707070; list-style-type: none;
+                          padding: 0; border-radius: 24px; overflow: hidden; max-height: 0; 
+                          border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top: none;}
+.selectBox3 .optionList3::-webkit-scrollbar {width: 6px;}
+.selectBox3 .optionList3::-webkit-scrollbar-track {background: transparent; }
+.selectBox3 .optionList3::-webkit-scrollbar-thumb {background: #f0f0f0; border-radius: 45px;}
+.selectBox3 .optionList3::-webkit-scrollbar-thumb:hover {background: #f0f0f0;}
+
+.selectBox3.active .optionList3 { max-height: 500px; border:solid 0.5px #c0c0c0; border-radius:0px 0px 24px 24px; border-top:none; }
+.selectBox3 .optionItem3 { padding: 12px 0 12px 28px; transition: .1s; text-align: left; font-family: 'SUIT-Light';  font-size:20px;  }
+.selectBox3 .optionItem3:hover { background: #F0F0F0;}
+.selectBox3 .optionItem3:last-child { border-bottom: 0 none;} */
+
+
+.postingSlide{ width: 1378px; height: 1232px; position: relative; overflow: hidden; }
+.postingBoxArea2{ display:block; flex-direction:inherit; width: 1378px; height: 1232px; flex-wrap: nowrap; margin:0 auto; border:dashed 1px red;
+                  position:absolute; overflow:hidden; }
+.postingBox22{ display:inline-block; float:left; width: 328px; height: 434px; margin-right:16px; margin-bottom:32px; box-shadow: 3px 3px 3px #0000001A; 
+               border: 2px solid #F0F0F0; position:absolute; }
+
+
+/* .banner_container { overflow:hidden; position:relative;} */
+.banner_rolling { position: absolute; left: 0; width: 1378px; height: 500px;}
+.banner-rolling.animated { -webkit-transition: left .5s ease-in; transition: left .5s ease-in;}
+.banner_item { position:absolute;}
+.banner_prev, .banner_next { /* position: absolute; transform:translateY(-50%); display:inline-block; width:4rem; height:100%; */}
+.banner_prev { position:absolute; left: 1290px; display: block; width: 40px; height: 40px; background: url('../../components/image/_icon_L.png')no-repeat;
+               background-position: center;}
+.banner_next { position:absolute; right: 0; display: block; width: 40px; height: 40px; background: url('../../components/image/_icon_R.png')no-repeat;
+               background-position: center;}
+#frame_div { width:1360px; height:486px; position:relative; overflow:hidden;}
+#inner_div { width:3280px; height:434px; left:0px; position:absolute; transition: left 0.5s;}
+#block_div { width:344px; height:434px; float:left;}
+#hide{ visibility:hidden; }
+
+/* 보도자료 페이징 활성화 버튼 */
+.activePage{ width: 36px; height:36px; background:#134a97; border-radius:50%; color:#fff; }

@@ -1,0 +1,90 @@
+﻿using System;
+using Vlc.DotNet.Forms;
+using System.Windows.Forms;
+using System.IO;
+
+namespace UnECCTVTest
+{
+    public partial class VlcPanel : UserControl
+    {
+        //private VlcControl vlcControl1 = null;
+        private IVlcPanelOwner m_owner = null;
+        private string m_data = null;
+
+        public IVlcPanelOwner Owner
+        {
+            get { return m_owner; }
+            set { m_owner = value; }
+        }
+
+        public string Title
+        {
+            get { return labelTitle.Text; }
+            set { labelTitle.Text = value; }
+        }
+
+        public string Url
+        {
+            get { return m_data; }
+            set { SetData(value); }
+        }
+
+        public VlcPanel()
+        {
+            InitializeComponent();
+            InitControl();
+        }
+
+        private void InitControl()
+        {
+            /*this.vlcControl1 = new VlcControl();
+
+            this.vlcControl1.BackColor = System.Drawing.Color.Black;
+            this.vlcControl1.Dock = DockStyle.Fill;
+            this.vlcControl1.Location = new System.Drawing.Point(0, 25);
+            this.vlcControl1.Name = "vlcControl1";
+            this.vlcControl1.Size = new System.Drawing.Size(200, 175);
+            this.vlcControl1.Spu = -1;
+            this.vlcControl1.TabIndex = 1;
+            this.vlcControl1.Text = "vlcControl1";
+            this.vlcControl1.VlcLibDirectory = GetVlcDirectory();
+            this.vlcControl1.VlcMediaplayerOptions = null;
+            this.vlcControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseDoubleClick);
+
+            this.Controls.Add(this.vlcControl1);*/
+        }
+
+        private DirectoryInfo GetVlcDirectory()
+        {
+            var vlcLibDirectory = new DirectoryInfo(Path.Combine("./", "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+            return vlcLibDirectory;
+        }
+
+        private void OnMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (m_owner != null)
+                m_owner.OnPanelMouseDoubleClick(this);
+        }
+
+        private void SetData(string url)
+        {
+            if (url == null)
+            {
+                m_data = null;
+                this.Visible = false;
+            }
+            else
+            {
+                this.Visible = true;
+                this.labelTitle.Text = "cctv";
+                this.vlcControl1.Play(new Uri(url));
+                m_data = url;
+            }
+        }
+    }
+
+    public interface IVlcPanelOwner
+    {
+        void OnPanelMouseDoubleClick(VlcPanel panel);
+    }
+}

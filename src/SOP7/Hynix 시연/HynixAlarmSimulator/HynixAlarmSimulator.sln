@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HynixAlarmSimulator", "HynixAlarmSimulator\HynixAlarmSimulator.csproj", "{535DF1BA-A1BC-4FF6-8EFE-015D89BA49D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hynix", "Hynix", "{3227FCF8-9E19-4C7B-A8B0-BF17A2FD9D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsGeometry", "..\..\..\..\esdk\workspace\dnsGeometry\dnsGeometry\dnsGeometry.csproj", "{A6DE4FE9-1851-4875-95A8-EF3CD4013907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentFactory.BLL", "..\SOPWebServer2\AgentFactory.BLL\AgentFactory.BLL.csproj", "{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{E600D528-9882-4434-B508-3902F31F8F9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDMS.Model", "..\..\SDMS\SDMS.Model\SDMS.Model.csproj", "{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DNS", "DNS", "{E5C73B43-ABB8-4072-9B1F-293C7F011845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsData", "..\..\DNS\dnsData\dnsData.csproj", "{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDMS", "SDMS", "{5CE98ACC-47FB-457E-A33B-7FFA93B0E5A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsSopID", "..\..\DNS\dnsSopID\dnsSopID.csproj", "{C6BE0048-AC1E-45F9-A113-85F1132309A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsDapperDBUtil", "..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj", "{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsCommunicateSopServer_Hynix", "..\dnsCommunicateSopServer_Hynix\dnsCommunicateSopServer_Hynix.csproj", "{DC9F8303-7D6A-4444-922F-18224C485489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{535DF1BA-A1BC-4FF6-8EFE-015D89BA49D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535DF1BA-A1BC-4FF6-8EFE-015D89BA49D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535DF1BA-A1BC-4FF6-8EFE-015D89BA49D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535DF1BA-A1BC-4FF6-8EFE-015D89BA49D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6DE4FE9-1851-4875-95A8-EF3CD4013907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6DE4FE9-1851-4875-95A8-EF3CD4013907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6DE4FE9-1851-4875-95A8-EF3CD4013907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6DE4FE9-1851-4875-95A8-EF3CD4013907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BE0048-AC1E-45F9-A113-85F1132309A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BE0048-AC1E-45F9-A113-85F1132309A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BE0048-AC1E-45F9-A113-85F1132309A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BE0048-AC1E-45F9-A113-85F1132309A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC9F8303-7D6A-4444-922F-18224C485489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC9F8303-7D6A-4444-922F-18224C485489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC9F8303-7D6A-4444-922F-18224C485489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC9F8303-7D6A-4444-922F-18224C485489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63BE242C-BF2C-4382-97A9-4B01D1FBD2D9}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C30F9FA2-008D-4F05-AC82-A9600F1D8BC1} = {3227FCF8-9E19-4C7B-A8B0-BF17A2FD9D3F}
+		{A6DE4FE9-1851-4875-95A8-EF3CD4013907} = {E5C73B43-ABB8-4072-9B1F-293C7F011845}
+		{E952EB4C-B71E-4C88-8AC5-B0C4F43CE63B} = {E5C73B43-ABB8-4072-9B1F-293C7F011845}
+		{5CE98ACC-47FB-457E-A33B-7FFA93B0E5A4} = {E600D528-9882-4434-B508-3902F31F8F9D}
+		{FE18ED14-1408-44CB-9D9D-F4A7D3E489DA} = {5CE98ACC-47FB-457E-A33B-7FFA93B0E5A4}
+		{C6BE0048-AC1E-45F9-A113-85F1132309A9} = {E5C73B43-ABB8-4072-9B1F-293C7F011845}
+		{14C3E3EA-67B2-46D1-AC49-C4B2FA882ADE} = {E5C73B43-ABB8-4072-9B1F-293C7F011845}
+		{DC9F8303-7D6A-4444-922F-18224C485489} = {3227FCF8-9E19-4C7B-A8B0-BF17A2FD9D3F}
+	EndGlobalSection
+EndGlobal

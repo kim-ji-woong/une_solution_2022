@@ -1,0 +1,79 @@
+{
+  "name": "nipa-electron",
+  "version": "0.2.3",
+  "description": "NipaElectron",
+  "main": "main/main_test.js",
+  "author": {
+    "name": "UNE"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "electron-builder --win --ia32",
+    "build:win64": "electron-builder --win --x64",
+    "publish": "electron-builder --win --x64 -p always"
+  },
+  "build": {
+    "appId": "electron.NIPA.release",
+    "productName": "NIPA",
+    "copyright": "Copyright © 2023 UNE",
+    "asar": true,
+    "files": [
+      "!settings",
+      "!exe"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "language": 1042
+    },
+    "extraFiles": [
+      {
+        "from": "settings/",
+        "to": "settings"
+      },
+      {
+        "from": "exe/",
+        "to": "exe"
+      },
+      {
+        "from": "error_report/",
+        "to": "error_report"
+      },
+      "app-update.yml",
+      "dev-app-update.yml",
+      "latest.yml"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^13.6.9",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "electron-builder": "^22.14.13"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.7",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.4.8",
+    "ffi-napi": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "node-gyp": "^9.4.0",
+    "nvm": "^0.0.4",
+    "ref-napi": "^3.0.3",
+    "socket.io": "^4.7.2",
+    "utf-8-validate": "^5.0.10"
+  }
+}

@@ -1,0 +1,191 @@
+﻿using Airbase20.IDAL;
+using dnsDBUtil;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Airbase20.DAL
+{
+    public class DataManager : IDataManager
+    {
+        private DirectDBManagerEx m_dbManager = null;
+
+        private CreateManager m_createManager = null;
+        private DeleteManager m_deleteManager = null;
+        private SelectManager m_selectManager = null;
+        private UpdateManager m_updateManager = null;
+
+        public DataManager()
+        {
+            SetDBConnection();
+
+            CreateAllManager();
+        }
+
+        public DataManager(int nDbType, string strDbHost, string strDbName, string strDbID, string strDbPw)
+        {
+            SetDBConnection(nDbType, strDbHost, strDbName, strDbID, strDbPw);
+
+            CreateAllManager();
+        }
+
+        private void CreateAllManager()
+        {
+            if (m_createManager == null)
+            {
+                m_createManager = new CreateManager(this);
+            }
+
+            if (m_selectManager == null)
+            {
+                m_selectManager = new SelectManager(this);
+            }
+
+            if (m_deleteManager == null)
+            {
+                m_deleteManager = new DeleteManager(this);
+            }
+
+            if (m_updateManager == null)
+            {
+                m_updateManager = new UpdateManager(this);
+            }
+        }
+
+        public ICreate GetCreateManager()
+        {
+            if (m_createManager != null)
+            {
+                return m_createManager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public IDelete GetDeleteManager()
+        {
+            if (m_deleteManager != null)
+            {
+                return m_deleteManager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ISelect GetSelectManager()
+        {
+            if (m_selectManager != null)
+            {
+                return m_selectManager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public IUpdate GetUpdateManager()
+        {
+            if (m_updateManager != null)
+            {
+                return m_updateManager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public object GetDBManager()
+        {
+            if (m_dbManager != null)
+            {
+                return m_dbManager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void SetDBConnection()
+        {
+            if (m_dbManager == null)
+            {
+                m_dbManager = new DirectDBManagerEx();
+            }
+        }
+
+        public void SetDBConnection(int nDbType, string strDbHost, string strDbName, string strDbID, string strDbPw)
+        {
+            if (m_dbManager == null)
+            {
+                m_dbManager = new DirectDBManagerEx(nDbType, strDbHost, strDbName, strDbID, strDbPw);
+            }
+        }
+
+        public bool BeginTransaction()
+        {
+            if (m_dbManager != null)
+            {
+                return m_dbManager.BeginBatch();
+            }
+
+            return false;
+        }
+
+        public bool Commit()
+        {
+            if (m_dbManager != null)
+            {
+                return m_dbManager.BatchCommit();
+            }
+
+            return false;
+        }
+
+        public bool Rollback()
+        {
+            if (m_dbManager != null)
+            {
+                return m_dbManager.BatchRollback();
+            }
+
+            return false;
+        }
+    }
+
+    public class DirectDBManagerEx : DirectDBManager
+    {
+        public DirectDBManagerEx()
+            : base()
+        {
+        }
+
+        public DirectDBManagerEx(int nDbType, string strDbHost, string strDbName, string strDbID, string strDbPw)
+            : base(nDbType, strDbHost, strDbName, strDbID, strDbPw)
+        {
+        }
+
+        public override ArrayList GetResultData(string strSQL, int nLimit, string strDBName = null)
+        {
+            if (IsBeginBatch)
+                return GetBatchData(strSQL, nLimit);
+
+            return base.GetResultData(strSQL, nLimit, strDBName);
+        }
+
+        public override ArrayList GetResultData(string strSQL, string strDBName = null)
+        {
+            if (IsBeginBatch)
+                return GetBatchData(strSQL);
+
+            return base.GetResultData(strSQL, strDBName);
+        }
+    }
+}

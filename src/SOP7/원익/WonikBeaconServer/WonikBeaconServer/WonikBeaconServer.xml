@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WonikBeaconServer</name>
+    </assembly>
+    <members>
+        <member name="M:WonikBeaconServer.Controllers.BeaconController.RequestEquipZoneMembers(WonikBeaconServer.Model.RequestEquipZoneMembers)">
+            <summary>
+            구역 입실자 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "EquipZoneID": 0       // EquipZone ID
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.BeaconController.RequestRemainerMembers(WonikBeaconServer.Model.RequestEquipZoneMembers)">
+            <summary>
+            잔류자 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "EquipZoneID": 0       // EquipZone ID (캠퍼스 외곽ID)
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.BeaconController.RequestRemainerSMS(WonikBeaconServer.Model.RequestRemainerSMS)">
+            <summary>
+            잔류자 문자 전송
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            "PhoneNumbers": [string]       // 잔류자 연락처 리스트
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestTodaySpeedDetections">
+            <summary>
+            오늘 하루 차량 과속감지 데이터
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedDetectionHistorys(WonikBeaconServer.Model.RequestSpeedDetectionHistorys)">
+            <summary>
+            차량과속 감지 이력 조회
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedDetectionSensors">
+            <summary>
+            차량과속 센서 리스트 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>    
+            </remarks>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.EquipZoneID">
+            <summary>
+            구역 ID
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.ComNum">
+            <summary>
+            업체 구분 ID (1: 임직원)
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.Name">
+            <summary>
+            체류자 이름
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.TargetId">
+            <summary>
+            체류자 사번
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.Belong">
+            <summary>
+            소속
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.PhoneNumber">
+            <summary>
+            휴대 전화번호
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.StayTime">
+            <summary>
+            체류 시간
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.PersonData.Floor">
+            <summary>
+            층 정보
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.AlarmData.SosOn">
+            <summary>
+            SOS 알람 여부
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.AlarmData.LongStayZoneOn">
+            <summary>
+            체류 알람 여부
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.SpeedDetectionData.SensorName">
+            <summary>
+            센서 이름 >> 위치 이름
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.WebServiceManager.RequestRemnant(System.String,System.String@)">
+            <summary>
+            캠퍼스 잔류자 리스트 구하기
+            </summary>
+            <param name="strCampusID"></param>
+            <param name="strErrorMessage"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

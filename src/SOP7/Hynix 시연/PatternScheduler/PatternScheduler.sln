@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36422.26
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatternScheduler", "PatternScheduler\PatternScheduler.csproj", "{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDBUtil", "..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj", "{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Model", "..\..\Common\Common.Model\Common.Model.csproj", "{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.IDAL", "..\..\Common\Common.IDAL\Common.IDAL.csproj", "{62727E22-9992-4835-B695-ECC630BF5E47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.DAL", "..\..\Common\Common.DAL\Common.DAL.csproj", "{8A939A3E-43AE-4C89-84B5-96E6081B4C06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release_Kakaowork|Any CPU = Release_Kakaowork|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48E34E4-DD17-4989-9EF8-06B0EFB37AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BC65F6-7AC6-42AE-B0AC-E63FBAE0EA48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF92E936-F9BD-45E4-982B-D6A0703BFF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62727E22-9992-4835-B695-ECC630BF5E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A939A3E-43AE-4C89-84B5-96E6081B4C06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDA5E2D9-36B9-46E2-B84F-9EC4BAF893DC}
+	EndGlobalSection
+EndGlobal

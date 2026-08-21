@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="dnsCommunicateSopServer">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsCommunicateSopServer.dll</HintPath>
+    </Reference>
+    <Reference Include="dnsTcpLib2">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\dnsTcpLib2.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.DAL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\SDMS.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.IDAL">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\SDMS.IDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="SDMS.Model">
+      <HintPath>..\..\..\..\..\bin\common12\netstandard2.0\SDMS.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

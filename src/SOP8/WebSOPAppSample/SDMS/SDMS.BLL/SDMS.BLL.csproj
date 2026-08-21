@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\SOP\SOP.IBLL\SOP.IBLL.csproj" />
+    <ProjectReference Include="..\SDMS.DAL\SDMS.DAL.csproj" />
+    <ProjectReference Include="..\SDMS.IBLL\SDMS.IBLL.csproj" />
+    <ProjectReference Include="..\SDMS.Model\SDMS.Model.csproj" />
+  </ItemGroup>
+
+</Project>

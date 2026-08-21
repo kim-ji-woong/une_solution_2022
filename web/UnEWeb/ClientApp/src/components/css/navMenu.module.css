@@ -1,0 +1,226 @@
+﻿
+
+
+/* 웹폰트 */
+
+@font-face {
+    font-family: 'NANUMSQUARE'; /* 이건 임의로 지정해도 됨 */
+    src: url('../font/NANUMSQUARE.woff')format('woff');
+}
+
+
+@font-face {
+    font-family: 'SUIT-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-ExtraLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraLight.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SUIT-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../../components/font/Roboto-Bold.ttf') format('truetype');
+}
+
+
+/* Roboto Bold 웹폰트 700, 900 */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap');
+
+/* font-family: 'Roboto', sans-serif; */
+
+
+
+/* mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+@media all and (max-width:767px) {
+    #menu1{ width:100%; height:100px; position:fixed; top:0; z-index:98; background-color: #fff; text-align:center;  box-shadow: 0px 4px 24px rgb(2 26 79 / 8%); }
+.menuLogo{  width: 114.78px; height:48px; background:url(../../CompanyIntro/image/logoNew_eng.png) no-repeat; background-size:100%; margin: 26px 80px; position:absolute; left:0; z-index:1; }
+.menu li{ float:left; width:180px; height: 120px; line-height:120px; text-align:center; position:relative; font-size: 20px; margin-left: 34px;  }
+.menu li:nth-child(5){ margin-right: 57px; } 
+.menu li a{ width:180px; display:block; color: #000; text-decoration:none; font-weight: 800; position:relative; font-family: 'SUIT-Medium'; font-size:27px; } 
+.menu li a:hover{ border-bottom:solid 3px #0d346c; }
+
+
+/* navBar active 유지 */
+.menuWidth li:nth-child(1).isActive1{ color:red; }
+.menuWidth li:nth-child(2).isActive2{ color:red; }
+.menuWidth li:nth-child(3).isActive3{ color:red; }
+.menuWidth li:nth-child(4).isActive4{ color:red; }
+.menuWidth li:nth-child(5).isActive5{ color:red; }
+
+/* 2차 css */
+.menuContent2 { float:left; display:flex; width:700px; /* height: 192px; */  margin-left:296px; }
+
+}
+
+/* 가로 mobile */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 640px) and (max-width: 959px) {
+
+ #menu1{ width:100%; height:100px; position:fixed; top:0; z-index:98; background-color: #fff; text-align:center;  box-shadow: 0px 4px 24px rgb(2 26 79 / 8%); }
+.menuLogo{  width: 114.78px; height:48px; background:url(../../CompanyIntro/image/logoNew_eng.png) no-repeat; background-size:100%; margin: 26px 80px; position:absolute; left:0; z-index:1; }
+.menu li{ float:left; width:180px; height: 120px; line-height:120px; text-align:center; position:relative; font-size: 20px; margin-left: 34px;  }
+.menu li:nth-child(5){ margin-right: 57px; } 
+.menu li a{ width:180px; display:block; color: #000; text-decoration:none; font-weight: 800; position:relative; font-family: 'SUIT-Medium'; font-size:27px; } 
+.menu li a:hover{ border-bottom:solid 3px #0d346c; }
+
+
+/* navBar active 유지 */
+.menuWidth li:nth-child(1).isActive1{ color:red; }
+.menuWidth li:nth-child(2).isActive2{ color:red; }
+.menuWidth li:nth-child(3).isActive3{ color:red; }
+.menuWidth li:nth-child(4).isActive4{ color:red; }
+.menuWidth li:nth-child(5).isActive5{ color:red; }
+
+/* 2차 css */
+.menuContent2 { float:left; display:flex; width:700px; /* height: 192px; */  margin-left:296px; }
+
+}
+
+/* tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width:768px) and (max-width:1023px) {
+
+#menu1{ width:100%; height:100px; position:fixed; top:0; z-index:98; background-color: #fff; text-align:center;  box-shadow: 0px 4px 24px rgb(2 26 79 / 8%); }
+.menuLogo{  width: 114.78px; height:48px; background:url(../../CompanyIntro/image/logoNew_eng.png) no-repeat; background-size:100%; margin: 26px 80px; position:absolute; left:0; z-index:1; }
+.menu li{ float:left; width:180px; height: 120px; line-height:120px; text-align:center; position:relative; font-size: 20px; margin-left: 34px;  }
+.menu li:nth-child(5){ margin-right: 57px; } 
+.menu li a{ width:180px; display:block; color: #000; text-decoration:none; font-weight: 800; position:relative; font-family: 'SUIT-Medium'; font-size:27px; } 
+.menu li a:hover{ border-bottom:solid 3px #0d346c; }
+
+
+/* navBar active 유지 */
+.menuWidth li:nth-child(1).isActive1{ color:red; }
+.menuWidth li:nth-child(2).isActive2{ color:red; }
+.menuWidth li:nth-child(3).isActive3{ color:red; }
+.menuWidth li:nth-child(4).isActive4{ color:red; }
+.menuWidth li:nth-child(5).isActive5{ color:red; }
+
+/* 2차 css */
+.menuContent2 { float:left; display:flex; width:700px; /* height: 192px; */  margin-left:296px; }
+
+}
+
+/* 가로 tablet */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+@media all and (min-width: 960px) and (max-width: 1280px) {
+
+#menu1{ width:100%; height:100px; position:fixed; top:0; z-index:98; background-color: #fff; text-align:center;  box-shadow: 0px 4px 24px rgb(2 26 79 / 8%); }
+.menuLogo{  width: 114.78px; height:48px; background:url(../../CompanyIntro/image/logoNew_eng.png) no-repeat; background-size:100%; margin: 26px 80px; position:absolute; left:0; z-index:1; }
+.menu li{ float:left; width:180px; height: 120px; line-height:120px; text-align:center; position:relative; font-size: 20px; margin-left: 34px;  }
+.menu li:nth-child(5){ margin-right: 57px; } 
+.menu li a{ width:180px; display:block; color: #000; text-decoration:none; font-weight: 800; position:relative; font-family: 'SUIT-Medium'; font-size:27px; } 
+.menu li a:hover{ border-bottom:solid 3px #0d346c; }
+
+
+/* navBar active 유지 */
+.menuWidth li:nth-child(1).isActive1{ color:red; }
+.menuWidth li:nth-child(2).isActive2{ color:red; }
+.menuWidth li:nth-child(3).isActive3{ color:red; }
+.menuWidth li:nth-child(4).isActive4{ color:red; }
+.menuWidth li:nth-child(5).isActive5{ color:red; }
+
+/* 2차 css */
+.menuContent2 { float:left; display:flex; width:700px; /* height: 192px; */  margin-left:296px; }
+
+
+}
+
+/* FHD */
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+/******************************************************************************************************************************************************************************/
+
+
+@media all and (min-width:1024px) {
+
+#menu1{ width:100%; height:100px; position:fixed; top:0; z-index:98; background-color: #fff; text-align:center;  box-shadow: 0px 4px 24px rgb(2 26 79 / 8%); }
+.menuLogo{  width: 114.78px; height:48px; background:url(../../CompanyIntro/image/logoNew_eng.png) no-repeat; background-size:100%; margin: 26px 40px; position:absolute; left:0; z-index:1; }
+.menu li{ float:left; width:180px; height: 120px; line-height:120px; text-align:center; position:relative; font-size: 20px; margin-left: 34px;  }
+.menu li:nth-child(5){ margin-right: 57px; } 
+.menu li a{ width:180px; display:block; color: #000; text-decoration:none; font-weight: 800; position:relative; font-family: 'SUIT-Medium'; font-size:27px; } 
+.menu li a:hover{ border-bottom:solid 3px #0d346c; }
+
+
+/* navBar active 유지 */
+.menuWidth li:nth-child(1).isActive1{ color:red; }
+.menuWidth li:nth-child(2).isActive2{ color:red; }
+.menuWidth li:nth-child(3).isActive3{ color:red; }
+.menuWidth li:nth-child(4).isActive4{ color:red; }
+.menuWidth li:nth-child(5).isActive5{ color:red; }
+
+/* 2차 css */
+.menuContent2 { float:left; display:flex; width:700px; /* height: 192px; */  margin-left:222px; }
+
+}

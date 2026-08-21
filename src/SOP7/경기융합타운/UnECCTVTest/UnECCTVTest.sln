@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnECCTVTest", "UnECCTVTest\UnECCTVTest.csproj", "{9AF4DB53-5D93-42A9-A612-5AF34FC79A1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AF4DB53-5D93-42A9-A612-5AF34FC79A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF4DB53-5D93-42A9-A612-5AF34FC79A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF4DB53-5D93-42A9-A612-5AF34FC79A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF4DB53-5D93-42A9-A612-5AF34FC79A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3F87E68-97A5-4267-AB89-8D67A6D68C47}
+	EndGlobalSection
+EndGlobal

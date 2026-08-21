@@ -1,0 +1,733 @@
+﻿
+
+.viewSensorConts::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+.viewSensorConts::-webkit-scrollbar-track {
+	background-color: rgb(61, 63, 71);
+	border-radius: 17.992px;
+}
+.viewSensorConts::-webkit-scrollbar-track-piece {
+}
+.viewSensorConts::-webkit-scrollbar-thumb {
+	background-color: rgb(125, 131, 137);
+	border-radius: 17.992px;
+	border: 2px solid transparent;
+	cursor: pointer;
+}
+.viewSensorConts::-webkit-scrollbar-button {
+	width: 0;
+	height: 5px;
+}
+.viewSensorConts::-webkit-scrollbar-button:start {
+}
+.viewSensorConts::-webkit-scrollbar-button:end {
+}
+.viewSensorConts::-webkit-scrollbar-corner {
+}
+
+
+.sensorConts{ display: block; width: 100%; height: 80%; overflow-x: hidden; overflow-y: scroll; }
+.viewDashboardSensorBox { position: absolute; right: 350px; width: 100%; height: 100%; } 
+.dslX {display: inline-block; width: 16px; height: 16px; text-indent: -9999px; position: absolute; right: 30px; top: 50%; margin-top: -8px; 
+       background: url(../../SDMS/img/popup/resize.png)no-repeat center center; /* z-index:99; */ border:dashed 1px red; }
+/* .viewSensorConts { display:block; width:100%; height:calc(100% - 220px); overflow:hidden; padding: 0px 6px; }
+.viewSensorConts.noPage { height: calc(100% - 300px);} */
+.popContainer{ }
+
+
+.sensorIconFlex{ display: flex; border-bottom: dashed 1px #565656; margin:0px 10px; }
+.sensorIconBox{ display: flex; padding: 6px 0px; flex-grow:1; }
+.sensorIconBox .psmIcon{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorPSM_visible.png)no-repeat;  background-size: 30px;
+                         margin-right:5px; }
+.sensorIconBox .psmIcon.selected{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorPSM_selected.png)no-repeat;  background-size: 30px;
+                         margin-right:5px; }
+.sensorIconBox .psmIcon:hover{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorPSM_hover.png)no-repeat;  background-size: 30px;
+                               margin-right:5px; }
+.sensorIconBox .etcIcon{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorETC_visible.png)no-repeat;  background-size: 30px; }
+.sensorIconBox .etcIcon.selected{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorETC_selected.png)no-repeat;  background-size: 30px; }
+.sensorIconBox .etcIcon:hover{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/sensorETC_hover.png)no-repeat;  background-size: 30px; }
+
+
+.fullView { line-height: 40px; padding: 0px 8px; }
+.fullView input[type=checkbox] { display: inline-block; vertical-align: middle; width: 11px; height: 11px; cursor: pointer; border-radius: 50%;
+	                             -webkit-appearance:none; -moz-appearance:none; appearance:none; position: relative; background: #fff; }
+.fullView input[type=checkbox]:checked {background: #ff8400; border:solid 2px #fff; border-radius: 50%; }
+.fullView input[type=checkbox] + label {display: inline; vertical-align: middle; margin-left: 5px; font-size: 10px; color: #fff; font-weight: 400; cursor: pointer;}
+.fullView span{ color: #fff; font-size: 10px; margin-left: 6px; }
+
+
+.sensorBtnArea{ display:block; border-top: dashed 0.5px #d7d7d721; /* float:right; */ padding:0px 8px; }
+.sensorBtnBox{ display: inline-block; /* height:30px; */ }
+.sensorBtnBox .sensorFigure{ display:inline-block; width: 48px; height: 20px; background-color:#455560; border-radius:8px; color: #fff;
+                             text-align:center; line-height: 20px; font-size: 9px; margin-right: 4px; cursor: pointer;}
+.sensorBtnBox .sensorSeq{ display:inline-block; width: 48px; height: 20px; background-color:#17c572; border-radius:8px; color: #fff;
+                          text-align:center; line-height: 20px; font-size: 9px; margin-right: 4px;  cursor: pointer;}
+.sensorSearchBox{ display:flex; padding: 8px 8px; }
+.sensorSearchBox .sensorSearchBlank{ display:inline-block; width: 336px; height: 26px; border-radius: 6px; border: solid 2px #4A575E; background: rgb(10 12 27 / 0%); color: #fff; }
+.sensorSearchBox .sensorSearch{ display: inline-block; background:url(../../SDMS/img/popup/magnifier.png)no-repeat center center; width: 26px; /* height:22px; */ 
+								background-size:22px; background-position-x: 6px; cursor: pointer;}
+
+.sensorNumBox{ display: flex; width: 100%; height: 20px; }
+.leakNumBox{ display: flex; width: 100px; padding: 0px 4px; }
+.leakNumBox .leckCheckIcon{ display:inline-block; width: 20px; height: 20px; background: url('../../SDMS/img/popup/checkBox_orange.png')no-repeat; 
+							background-size: 10px; background-position: center; }
+.leakNumBox .leckNum{ color: #fff; font-size: 10px; line-height: 20px;  }
+
+.etcNumBox{ display: flex; width: 100%; padding: 0px 4px; }
+.etcNumBox .etcCheckIcon{ display:inline-block; width: 20px; height: 20px; background: url('../../SDMS/img/popup/checkBox_orange.png')no-repeat; 
+							background-size: 10px; background-position: center; }
+.etcNumBox .etcNum{ color: #fff; font-size: 10px; line-height: 20px;  }
+
+
+.sensorDataText{ display:flex; width: 100%; /* height: 34px; */ padding: 0px 8px; }
+.sensorName{ display:block; color: #fff; padding: 4px 0px; font-size: 0.8em; }
+.sensorCircle1{ display:inline-block; background-color: greenyellow; border-radius:50%; width: 10px; height: 10px; margin: 0px 4px; }
+.sensorCircle2{ display:inline-block; background-color: #fff; border-radius:50%; width: 10px; height: 10px; margin: 0px 4px; }
+
+
+
+/* 0313 */
+.sensorInfoGrid { width: 100%; height:100%; display: grid; padding-right: 20px; padding-bottom: 20px; grid-gap: 10px; grid-template-rows: 50% 50%; grid-template-columns: 50% 50%; }
+
+.sensorInfoGrid .sensorGrid1 { grid-column: 1; grid-row: 1; position:relative; }
+.sensorInfoGrid .sensorGrid1.full { width: calc(200% + 10px); /* height: calc(200% + 10px); */ }
+.sensorInfoGrid .sensorGrid1.hidden { display: none; }
+
+.sensorInfoGrid .sensorGrid2 { grid-column: 2; grid-row: 1; position: relative; }
+.sensorInfoGrid .sensorGrid2.full { grid-column: 1; grid-row: 1; width: calc(200% + 10px); /* height: calc(200% + 10px); */ }
+.sensorInfoGrid .sensorGrid2.hidden { display: none; }
+
+.sensorInfoGrid .sensorGrid3 { grid-column: 1; grid-row: 2; position:relative;}
+.sensorInfoGrid .sensorGrid3.full { grid-column: 1; grid-row: 1; width: calc(200% + 10px); /* height: calc(200% + 10px); */ }
+.sensorInfoGrid .sensorGrid3.hidden { display: none; }
+
+.sensorInfoGrid .sensorGrid4 { grid-column: 2; grid-row: 2; position:relative;}
+.sensorInfoGrid .sensorGrid4.full { grid-column: 1; grid-row: 1; width: calc(200% + 10px); /* height: calc(200% + 10px); */ }
+.sensorInfoGrid .sensorGrid4.hidden { display: none; }
+
+
+
+.sensorInfoBox{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 8px; 
+                 margin: 5px 5px; position:relative; /* min-width: 170px; min-height: 156px; */ width: 100%; height: 100%; }
+
+.sensorInfoBox .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBox .sensorTitleBox{ display: flex; flex-grow: 1; }        
+.sensorInfoBox .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 11px; width: 140px; font-weight: 500; letter-spacing: -1px; overflow: hidden;
+                              text-overflow: ellipsis; white-space: nowrap; }
+.sensorInfoBox .sensorTitle2{ display: block; color: #7b8f9a; font-size: 9px; font-weight: 500;  letter-spacing: -1px; }
+.sensorInfoBox .sensorItem{ display: inline-block; width: 20px; height: 20px; background: url(../../SDMS/img/popup/alarmBellYellow.png)no-repeat; background-size: 20px; }
+
+.sensorInfoBox .sensorStepNormal { display: block; width: 11px; height: 11px; border-radius: 50%; background: #17C572; }
+.sensorInfoBox .sensorStepInterest { display: block; width: 11px; height: 11px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBox .sensorStepCaution { display: block; width: 11px; height: 11px; border-radius: 50%; background: #fff100; }
+.sensorInfoBox .sensorStepBoundary { display: block; width: 11px; height: 11px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBox .sensorStepSerious { display: block; width: 11px; height: 11px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBox .sensorStepNone { display: block; width: 11px; height: 11px; border-radius: 50%; background: #223641; }
+
+
+.sensorInfoBox .sensorText{ display: inline-block; color:#7b8f9a; font-size: 12px; font-weight: 900; }
+.sensorInfoBox .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 10px; font-weight: 900; position: absolute;
+                             left:14px; top: 94px; }
+.sensorInfoBox .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 10px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+.sensorInfoBox .halfLine1{ display: inline-block; width: 1px; height: 10px; border: solid 0.5px #484848; position: absolute;
+                           left: 18px; bottom: -4px; transform: rotate(270deg); }
+.sensorInfoBox .halfLine4{ display: inline-block; width: 1px; height: 10px; border: solid 0.5px #484848; position: absolute;
+                            left: 80px; bottom: -4px; transform: rotate(90deg); }
+
+.sensorInfoBox .chartArea{ /* display: flex; flex-direction: column;  height: 58%; */ display:block; height: 100%; }
+.sensorInfoBox .chartArea .chartBox{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+
+.sensorInfoBox .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:120px; height:60px; margin-top: 20px; 
+                               /* padding-top:20px; padding-left: 14px; */ padding-right: 14px; font-size: 10px; }
+.sensorInfoBox .chartSkills *,
+.sensorInfoBox .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBox .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 10px solid rgba(51, 78, 87, .3);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBox .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 10px solid rgba(46, 71, 255, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBox .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 10px solid rgba(255, 241, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBox .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 10px solid rgba(246, 123, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBox .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 10px solid rgba(254, 2, 46, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+
+.sensorInfoBox .chartSkills li { position: absolute;  top: 101%; /* left: 10%; */ width: 120px; height: 60px; border: 10px solid; border-top: none;  border-bottom-left-radius: 175px;
+                                  border-bottom-right-radius: 175px;  transform-origin: 50% 0; padding-left: 10px; padding-right: 10px; }
+.sensorInfoBox .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal.png)no-repeat; width:40px; height:30px;
+                                  position: absolute; background-position: right; background-size: 40px; left: 24%; top: 50%;  transform-origin: 32px 14px; }
+.sensorInfoBox .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue.png)no-repeat; width:40px; height:30px;
+                                    position: absolute; background-position: right; background-size: 40px; left: 24%; top: 50%;  transform-origin: 32px 14px; }
+.sensorInfoBox .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow.png)no-repeat; width:40px; height:30px;
+                                    position: absolute; background-position: right; background-size: 40px; left: 24%; top: 50%;  transform-origin: 32px 14px; }
+.sensorInfoBox .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange2.png)no-repeat; width:40px; height:30px;
+                                    position: absolute; background-position: right; background-size: 40px; left: 24%; top: 50%;  transform-origin: 32px 14px; }
+.sensorInfoBox .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed.png)no-repeat; width:40px; height:30px;
+                                    position: absolute; background-position: right; background-size: 40px; left: 24%; top: 50%;  transform-origin: 32px 14px; }       
+.sensorInfoBox .figureSignNone{ display: inline-block; width: 14px; height: 14px; border-radius: 50%; background-color: #334e57; 
+                                position: absolute; left: 46%; top: 90%; }
+
+
+.sensorInfoBox .sensorLH{ display: block; height: 20px; color: #7b8f9a; font-size: 8px;  padding: 4px 28px; }
+.sensorInfoBox .sensorTextL{ display: block; float: left; }
+.sensorInfoBox .sensorTextH{ display: block; float: right; }
+
+.sensorInfoBox .figure{ display: flex; width: 140px; height: 20px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 8px;  padding: 2px 4px; 
+                        margin-top: 20px; margin-bottom: 10px; align-items: center;  }
+.sensorInfoBox .figureType{ display: block; width: 52%; text-align: center; }
+
+.sensorInfoBox .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 4px; margin-right: 4px; }
+.sensorInfoBox .numBoldNormal{ display: inline-block; width: 54px; color: #16ca73; font-size: 12px; text-align: center; } 
+.sensorInfoBox .numBoldInterest{ display: inline-block; width: 54px; color: #2E47FF; font-size: 12px; text-align: center; } 
+.sensorInfoBox .numBoldCaution{ display: inline-block; width: 54px; color: #FFF100; font-size: 12px; text-align: center; } 
+.sensorInfoBox .numBoldBoundary{ display: inline-block; width: 54px; color: #F67B00; font-size: 12px; text-align: center; } 
+.sensorInfoBox .numBoldSerious{ display: inline-block; width: 54px; color: #FE022E; font-size: 12px; text-align: center; } 
+.sensorInfoBox .numBoldNone{ display: inline-block; width: 54px; color: #7A8D98; font-size: 12px; text-align: center; } 
+
+
+.sensorInfoBox .sensorCheck{ display: block; width: 70px; height: 24px; line-height: 24px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 12px; cursor:pointer; margin: 0 auto; margin-top: 20px; }
+
+
+
+/* 관심단계 */
+.dangerSteps{ display: flex; /* width: 350px; */ /* height:30px; */ height: 10%; line-height:30px; justify-content:center; background-color: #1b2b38; border-radius:6px; margin: 2px 14px;  align-items: center; }
+.dangerSteps .normal{ color: #fff; display:inline-block; font-size: 9px; text-align:center; margin-right: 10px; }
+.dangerSteps .normal2L{ color: #fff; display:inline-block; font-size: 16px; text-align:center; margin-right: 14px; }
+.dangerSteps .normal3L{ color: #fff; display:inline-block; font-size: 22px; text-align:center; margin-right: 18px; }
+.dangerSteps .normal4L{ color: #fff; display:inline-block; font-size: 28px; text-align:center; margin-right: 22px; }
+.dangerSteps .normal5L{ color: #fff; display:inline-block; font-size: 34px; text-align:center; margin-right: 26px; }
+
+.dangerSteps .interest{ color: #fff; display:inline-block; font-size: 9px; text-align:center; margin-right: 10px; }
+.dangerSteps .interest2L{ color: #fff; display:inline-block; font-size: 16px; text-align:center; margin-right: 14px; }
+.dangerSteps .interest3L{ color: #fff; display:inline-block; font-size: 22px; text-align:center; margin-right: 18px; }
+.dangerSteps .interest4L{ color: #fff; display:inline-block; font-size: 28px; text-align:center; margin-right: 22px; }
+.dangerSteps .interest5L{ color: #fff; display:inline-block; font-size: 34px; text-align:center; margin-right: 26px; }
+
+.dangerSteps .caution{ color: #fff; display:inline-block; font-size: 9px; text-align:center; margin-right: 10px; }
+.dangerSteps .caution2L{ color: #fff; display:inline-block; font-size: 16px; text-align:center; margin-right: 14px; }
+.dangerSteps .caution3L{ color: #fff; display:inline-block; font-size: 22px; text-align:center; margin-right: 18px; }
+.dangerSteps .caution4L{ color: #fff; display:inline-block; font-size: 28px; text-align:center; margin-right: 22px; }
+.dangerSteps .caution5L{ color: #fff; display:inline-block; font-size: 34px; text-align:center; margin-right: 26px; }
+
+.dangerSteps .boundary{ color: #fff; display:inline-block; font-size: 9px; text-align:center; margin-right: 10px; }
+.dangerSteps .boundary2L{ color: #fff; display:inline-block; font-size: 16px; text-align:center; margin-right: 14px; }
+.dangerSteps .boundary3L{ color: #fff; display:inline-block; font-size: 22px; text-align:center; margin-right: 18px; }
+.dangerSteps .boundary4L{ color: #fff; display:inline-block; font-size: 28px; text-align:center; margin-right: 22px; }
+.dangerSteps .boundary5L{ color: #fff; display:inline-block; font-size: 34px; text-align:center; margin-right: 26px; }
+
+.dangerSteps .serious{ color: #fff; display:inline-block; font-size: 9px; text-align:center; margin-right: 10px; }
+.dangerSteps .serious2L{ color: #fff; display:inline-block; font-size: 16px; text-align:center; margin-right: 14px; }
+.dangerSteps .serious3L{ color: #fff; display:inline-block; font-size: 22px; text-align:center; margin-right: 18px; }
+.dangerSteps .serious4L{ color: #fff; display:inline-block; font-size: 28px; text-align:center; margin-right: 22px; }
+.dangerSteps .serious5L{ color: #fff; display:inline-block; font-size: 34px; text-align:center; margin-right: 26px; }
+
+
+.dangerSteps .normalCircle{ display:inline-block; width: 10px; height:10px; border-radius: 50%; background-color:#17c572;  margin-right: 8px; } 
+.dangerSteps .normalCircle2L{ display:inline-block; width: 14px; height:14px; border-radius: 50%; background-color:#17c572;  margin-right: 8px; } 
+.dangerSteps .normalCircle3L{ display:inline-block; width: 20px; height:20px; border-radius: 50%; background-color:#17c572;  margin-right: 8px; } 
+.dangerSteps .normalCircle4L{ display:inline-block; width: 24px; height:24px; border-radius: 50%; background-color:#17c572;  margin-right: 8px; } 
+.dangerSteps .normalCircle5L{ display:inline-block; width: 32px; height: 32px; border-radius: 50%; background-color:#17c572;  margin-right: 8px; } 
+
+.dangerSteps .interestCircle{ display:inline-block; width: 10px; height:10px; border-radius: 50%; background-color:#2e47ff;  margin-right: 8px; } 
+.dangerSteps .interestCircle2L{ display:inline-block; width: 14px; height:14px; border-radius: 50%; background-color:#2e47ff;  margin-right: 8px; } 
+.dangerSteps .interestCircle3L{ display:inline-block; width: 20px; height:20px; border-radius: 50%; background-color:#2e47ff;  margin-right: 8px; } 
+.dangerSteps .interestCircle4L{ display:inline-block; width: 24px; height:24px; border-radius: 50%; background-color:#2e47ff;  margin-right: 8px; } 
+.dangerSteps .interestCircle5L{ display:inline-block; width: 32px; height:32px; border-radius: 50%; background-color:#2e47ff;  margin-right: 8px; } 
+
+.dangerSteps .cautionCircle{ display:inline-block; width: 10px; height:10px; border-radius: 50%; background-color:#fff100; margin-right: 8px; }
+.dangerSteps .cautionCircle2L{ display:inline-block; width: 14px; height:14px; border-radius: 50%; background-color:#fff100; margin-right: 8px; }
+.dangerSteps .cautionCircle3L{ display:inline-block; width: 20px; height:20px; border-radius: 50%; background-color:#fff100; margin-right: 8px; }
+.dangerSteps .cautionCircle4L{ display:inline-block; width: 24px; height:24px; border-radius: 50%; background-color:#fff100; margin-right: 8px; }
+.dangerSteps .cautionCircle5L{ display:inline-block; width: 32px; height:32px; border-radius: 50%; background-color:#fff100; margin-right: 8px; }
+
+.dangerSteps .boundaryCircle{ display:inline-block; width: 10px; height:10px; border-radius: 50%; background-color:#F67B00; margin-right: 8px; }
+.dangerSteps .boundaryCircle2L{ display:inline-block; width: 14px; height:14px; border-radius: 50%; background-color:#F67B00; margin-right: 8px; }
+.dangerSteps .boundaryCircle3L{ display:inline-block; width: 20px; height:20px; border-radius: 50%; background-color:#F67B00; margin-right: 8px; }
+.dangerSteps .boundaryCircle4L{ display:inline-block; width: 24px; height:24px; border-radius: 50%; background-color:#F67B00; margin-right: 8px; }
+.dangerSteps .boundaryCircle5L{ display:inline-block; width: 32px; height:32px; border-radius: 50%; background-color:#F67B00; margin-right: 8px; }
+
+.dangerSteps .seriousCircle{ display:inline-block; width: 10px; height:10px; border-radius: 50%; background-color:#fe022e; margin-right: 8px; }
+.dangerSteps .seriousCircle2L{ display:inline-block; width: 14px; height:14px; border-radius: 50%; background-color:#fe022e; margin-right: 8px; }
+.dangerSteps .seriousCircle3L{ display:inline-block; width: 20px; height:20px; border-radius: 50%; background-color:#fe022e; margin-right: 8px; }
+.dangerSteps .seriousCircle4L{ display:inline-block; width: 24px; height:24px; border-radius: 50%; background-color:#fe022e; margin-right: 8px; }
+.dangerSteps .seriousCircle5L{ display:inline-block; width: 32px; height:32px; border-radius: 50%; background-color:#fe022e; margin-right: 8px; }
+
+
+
+
+/* 페이징 */
+.sensorPaging{ text-align:center; }
+.pagination{ list-style:none; display:inline-block; padding:0; margin-top: 2px; }
+.pagination li{ display:inline; text-align:center; }
+.pagination a{ width:30px; height:30px; float:left; display:block; font-size:10px; text-decoration: none; padding: 5px 8px; color: #96a0ad; line-height: 1.5; }
+.pagination a:hover{ color: #ffffff; }
+.left:hover, .right:hover{ }
+.pagination a.active{ cursor: default; color: #ffffff; }
+.pagination a:active{ outline:none; }
+.modal .num{ margin-left: 3px; padding:0; width: 30px; height:30px; line-height: 30px;  }
+.modal .num:hover{ color: #ffffff; }
+.modal .num.active, .modal .num:active{ /* background-color: #ef8019; */ color: #ef8019; cursor: pointer; }
+
+.arrowLeft{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/arrowOrangeLeft.png)no-repeat; background-size: 22px;
+            margin-right: 12px; background-position: center; }
+.arrowLeft:hover{ display:inline-block; width: 30px; height:30px; background:url(../../SDMS/img/popup/arrowOrangeLeft.png)no-repeat; background-size: 22px;
+                  margin-right: 12px; background-position: center;  }
+.arrowRight{ display:inline-block; width: 30px; height:30px; background: url(../../SDMS/img/popup/arrowOrangeRight.png)no-repeat; background-size: 22px;
+             margin-left:12px; background-position: center; }
+.arrowRight:hover{ display:inline-block; width: 30px; height:30px; background: url(../../SDMS/img/popup/arrowOrangeRight.png)no-repeat; background-size: 22px;
+                   margin-left:12px; background-position: center; }
+
+
+
+/*****************************************************************************************************************************************************************************/
+/*****************************************************************************************************************************************************************************/
+/*****************************************************************************************************************************************************************************/
+
+
+.sensorInfoBoxL{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                 margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 98%; }
+
+.sensorInfoBoxL .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBoxL .sensorTitleBox{ display: block; flex-grow:1; }        
+.sensorInfoBoxL .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 14px; font-weight: 500; letter-spacing: -1px; }
+
+.sensorInfoBoxL .sensorStepNormal { display: block; width: 14px; height: 14px; border-radius: 50%; background: #17C572; }
+.sensorInfoBoxL .sensorStepInterest { display: block; width: 14px; height: 14px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBoxL .sensorStepCaution { display: block; width: 14px; height: 14px; border-radius: 50%; background: #fff100; }
+.sensorInfoBoxL .sensorStepBoundary { display: block; width: 14px; height: 14px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBoxL .sensorStepSerious { display: block; width: 14px; height: 14px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBoxL .sensorStepNone { display: block; width: 14px; height: 14px; border-radius: 50%; background: #223641; }
+
+.sensorInfoBoxL .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                               left:50px; top: 188px; }
+.sensorInfoBoxL .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+
+.sensorInfoBoxL .chartArea{ /* display: flex; flex-direction: column; *//* height: 58%; */ display:block; height: 90%; }
+.sensorInfoBoxL .chartArea .chartBox{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+
+.sensorInfoBoxL .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:220px; height:110px; margin-top: 18%; 
+                               /* padding-top:20px; padding-left: 14px; */ padding-right: 14px; font-size: 10px; }
+.sensorInfoBoxL .chartSkills *,
+.sensorInfoBoxL .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBoxL .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 18px solid rgba(51, 78, 87, .3);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBoxL .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 18px solid rgba(46, 71, 255, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBoxL .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 18px solid rgba(255, 241, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBoxL .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 18px solid rgba(246, 123, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+.sensorInfoBoxL .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 18px solid rgba(254, 2, 46, 1);
+                                       border-bottom: none; border-top-left-radius: 175px; border-top-right-radius: 175px; }
+
+.sensorInfoBoxL .chartSkills li { position: absolute;  top: 101%; /* left: 10%; */ width: 220px; height: 110px; border: 18px solid; border-top: none;  border-bottom-left-radius: 175px;
+                                  border-bottom-right-radius: 175px;  transform-origin: 50% 0; padding-left: 10px; padding-right: 10px;  }
+
+.sensorInfoBoxL .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal.png)no-repeat; width:83px; height:28px;
+                                  position: absolute; background-position: right; background-size: 60px; left: 18%; top: 54%; transform-origin: 74px 14px;  }
+.sensorInfoBoxL .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue.png)no-repeat; width:83px; height:28px;
+                                    position: absolute; background-position: right; background-size: 60px; left: 18%; top: 54%; transform-origin: 74px 14px; }
+.sensorInfoBoxL .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow.png)no-repeat; width:83px; height:28px;
+                                    position: absolute; background-position: right; background-size: 60px; left: 18%; top: 54%; transform-origin: 74px 14px;  }
+.sensorInfoBoxL .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange2.png)no-repeat; width:83px; height:28px;
+                                    position: absolute; background-position: right; background-size: 60px; left: 18%; top: 54%; transform-origin: 74px 14px; }
+.sensorInfoBoxL .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed.png)no-repeat; width:83px; height:28px;
+                                    position: absolute; background-position: right; background-size: 60px; left: 18%; top: 54%; transform-origin: 74px 14px; }       
+
+.sensorInfoBoxL .figure{ display: flex; width: 220px; height: 34px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 11px;  padding: 2px 10px; 
+                         margin-top: 50px; margin-bottom: 10px; align-items: center;  }
+
+.sensorInfoBoxL .figureType{ display: block; width: 52%; text-align: center; }
+.sensorInfoBoxL .figure .sensorName{ display: block; width: 90px; text-align: center; font-size: 14px; }
+
+.sensorInfoBoxL .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 10px; margin-right: 10px; }
+.sensorInfoBoxL .numBoldNormal{ display: inline-block; width: 90px; color: #16ca73; font-size: 20px; text-align: center; } 
+.sensorInfoBoxL .numBoldInterest{ display: inline-block; width: 90px; color: #2E47FF; font-size: 20px; text-align: center; } 
+.sensorInfoBoxL .numBoldCaution{ display: inline-block; width: 90px; color: #FFF100; font-size: 20px; text-align: center; } 
+.sensorInfoBoxL .numBoldBoundary{ display: inline-block; width: 90px; color: #F67B00; font-size: 20px; text-align: center; } 
+.sensorInfoBoxL .numBoldSerious{ display: inline-block; width: 90px; color: #FE022E; font-size: 20px; text-align: center; } 
+.sensorInfoBoxL .numBoldNone{ display: inline-block; width: 90px; color: #7A8D98; font-size: 20px; text-align: center; } 
+
+.sensorInfoBoxL .sensorCheck{ display: block; width: 70px; height: 24px; line-height: 24px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 12px; cursor:pointer; margin: 0 auto;}
+
+/* 라인 활성화 */
+.sensorInfoBoxLNormalLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 100%; } 
+.sensorInfoBoxLInterestLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 100%;  border: solid 1px #17c572; } 
+.sensorInfoBoxLCautionLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 100%; border: solid 1px #fff100; } 
+.sensorInfoBoxLBoundaryLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 100%; border: solid 1px #f67b00; } 
+.sensorInfoBoxLSeriousLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 360px; min-height: 336px; */ /* width: 360px; height: 336px; */ width: 100%; height: 100%; border: solid 1px #fe022e; } 
+
+
+/**************************************************************************************************************************************************************************/
+
+
+.sensorInfoBox2L{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                   margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; }
+
+.sensorInfoBox2L .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBox2L .sensorTitleBox{ display: block; flex-grow:1; }        
+.sensorInfoBox2L .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 20px; font-weight: 500; letter-spacing: -1px; }
+
+.sensorInfoBox2L .sensorStepNormal { display: block; width: 24px; height: 24px; border-radius: 50%; background: #17C572; }
+.sensorInfoBox2L .sensorStepInterest { display: block; width: 24px; height: 24px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBox2L .sensorStepCaution { display: block; width: 24px; height: 24px; border-radius: 50%; background: #fff100; }
+.sensorInfoBox2L .sensorStepBoundary { display: block; width: 24px; height: 24px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBox2L .sensorStepSerious { display: block; width: 24px; height: 24px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBox2L .sensorStepNone { display: block; width: 24px; height: 24px; border-radius: 50%; background: #223641; }
+
+.sensorInfoBox2L .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                               left:50px; top: 188px; }
+.sensorInfoBox2L .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+.sensorInfoBox2L .chartArea{ /* display: flex; flex-direction: column; */ /* height: 58%; */ display:block; height: 90%; }
+.sensorInfoBox2L .chartArea .chartBox{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.sensorInfoBox2L .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:340px; height:170px; margin-top: 20%; 
+                                /* padding-top:20px; */ /* padding-left: 14px; */ padding-right: 20px; font-size: 10px; }
+.sensorInfoBox2L .chartSkills *,
+.sensorInfoBox2L .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBox2L .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 26px solid rgba(51, 78, 87, .3);
+                                                   border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox2L .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 26px solid rgba(46, 71, 255, 1);
+                                                     border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox2L .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 26px solid rgba(255, 241, 0, 1);
+                                                    border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox2L .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 26px solid rgba(246, 123, 0, 1);
+                                                      border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox2L .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 26px solid rgba(254, 2, 46, 1);
+                                                    border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+
+.sensorInfoBox2L .chartSkills li { position: absolute;  top: 101%; left: 0%; width: 340px; height: 170px; border: 26px solid; border-top: none;  border-bottom-left-radius: 260px;
+                                  border-bottom-right-radius: 260px;  transform-origin: 50% 0; padding-left: 30px; padding-right: 10px; }
+
+.sensorInfoBox2L .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal3L.png)no-repeat; width:120px; height:70px;
+                                   position: absolute; background-position: right; background-size: 120px; left: 22%; top: 56%; transform-origin: 100px 30px; }
+.sensorInfoBox2L .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 120px; left: 22%; top: 56%; transform-origin: 100px 30px; }
+.sensorInfoBox2L .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 120px; left: 22%; top: 56%; transform-origin: 100px 30px; }
+.sensorInfoBox2L .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 120px; left: 22%; top: 56%; transform-origin: 100px 30px; }
+.sensorInfoBox2L .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 120px; left: 22%; top: 56%; transform-origin: 100px 30px; }       
+
+.sensorInfoBox2L .figure{ display: flex; width: 340px; height: 50px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 22px;  padding: 2px 10px; 
+                          margin-top: 60px; margin-bottom: 10px; align-items: center;  }
+
+.sensorInfoBox2L .figureType{ display: block; width: 52%; text-align: center; }
+.sensorInfoBox2L .figure .sensorName{ display: block; width: 190px; text-align: center; font-size: 26px; }
+
+.sensorInfoBox2L .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 10px; margin-right: 10px; }
+.sensorInfoBox2L .numBoldNormal{ display: inline-block; width: 190px; color: #16ca73; font-size: 24px; text-align: center; } 
+.sensorInfoBox2L .numBoldInterest{ display: inline-block; width: 190px; color: #2E47FF; font-size: 24px; text-align: center; } 
+.sensorInfoBox2L .numBoldCaution{ display: inline-block; width: 190px; color: #FFF100; font-size: 24px; text-align: center; } 
+.sensorInfoBox2L .numBoldBoundary{ display: inline-block; width: 190px; color: #F67B00; font-size: 24px; text-align: center; } 
+.sensorInfoBox2L .numBoldSerious{ display: inline-block; width: 190px; color: #FE022E; font-size: 24px; text-align: center; } 
+.sensorInfoBox2L .numBoldNone{ display: inline-block; width: 190px; color: #7A8D98; font-size: 24px; text-align: center; } 
+
+.sensorInfoBox2L .sensorCheck{ display: block; width: 80px; height: 32px; line-height: 32px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 15px; cursor:pointer; margin: 0 auto; }
+
+
+/* 라인 활성화 */
+.sensorInfoBox2LNormalLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; } 
+.sensorInfoBox2LInterestLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; border: solid 1px #17c572; } 
+.sensorInfoBox2LCautionLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                             margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; border: solid 1px #fff100; } 
+.sensorInfoBox2LBoundaryLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; border: solid 1px #f67b00; } 
+.sensorInfoBox2LSeriousLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                             margin: 5px 5px; position:relative; /* min-width: 620px; min-height: 570px; */ /* width: 620px; height: 570px; */  width: 100%; height: 100%; border: solid 1px #fe022e; } 
+
+
+/**************************************************************************************************************************************************************************/
+
+
+.sensorInfoBox3L{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                  margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%; }
+
+.sensorInfoBox3L .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBox3L .sensorTitleBox{ display: block; flex-grow:1; }        
+.sensorInfoBox3L .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 20px; font-weight: 500; letter-spacing: -1px; }
+
+.sensorInfoBox3L .sensorStepNormal { display: block; width: 24px; height: 24px; border-radius: 50%; background: #17C572; }
+.sensorInfoBox3L .sensorStepInterest { display: block; width: 24px; height: 24px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBox3L .sensorStepCaution { display: block; width: 24px; height: 24px; border-radius: 50%; background: #fff100; }
+.sensorInfoBox3L .sensorStepBoundary { display: block; width: 24px; height: 24px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBox3L .sensorStepSerious { display: block; width: 24px; height: 24px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBox3L .sensorStepNone { display: block; width: 24px; height: 24px; border-radius: 50%; background: #223641; }
+
+.sensorInfoBox3L .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                               left:50px; top: 188px; }
+.sensorInfoBox3L .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+.sensorInfoBox3L .chartArea{ /* display: flex; flex-direction: column; */ /* height: 58%; */  display:block; height: 90%; }
+.sensorInfoBox3L .chartArea .chartBox{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.sensorInfoBox3L .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:460px; height:230px; margin-top: 20%; 
+                                /* padding-top:20px; */ /* padding-left: 14px; */ padding-right: 20px; font-size: 10px; }
+.sensorInfoBox3L .chartSkills *,
+.sensorInfoBox3L .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBox3L .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 32px solid rgba(51, 78, 87, .3);
+                                                   border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox3L .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 32px solid rgba(46, 71, 255, 1);
+                                                     border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox3L .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 32px solid rgba(255, 241, 0, 1);
+                                                    border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox3L .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 32px solid rgba(246, 123, 0, 1);
+                                                      border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+.sensorInfoBox3L .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 32px solid rgba(254, 2, 46, 1);
+                                                    border-bottom: none; border-top-left-radius: 260px; border-top-right-radius: 260px; }
+
+.sensorInfoBox3L .chartSkills li { position: absolute;  top: 101%; left: 0%; width: 460px; height: 230px; border: 32px solid; border-top: none;  border-bottom-left-radius: 260px;
+                                  border-bottom-right-radius: 260px;  transform-origin: 50% 0; padding-left: 30px; padding-right: 10px; }
+
+.sensorInfoBox3L .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal3L.png)no-repeat; width:120px; height:70px;
+                                   position: absolute; background-position: right; background-size: 118px; left: 29%; top: 62%; transform-origin: 100px 30px; }
+.sensorInfoBox3L .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 118px; left: 29%; top: 62%; transform-origin: 100px 30px; }
+.sensorInfoBox3L .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 118px; left: 29%; top: 62%; transform-origin: 100px 30px; }
+.sensorInfoBox3L .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 118px; left: 29%; top: 62%; transform-origin: 100px 30px; }
+.sensorInfoBox3L .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed3L.png)no-repeat; width:120px; height:70px;
+                                     position: absolute; background-position: right; background-size: 118px; left: 29%; top: 62%; transform-origin: 100px 30px; }       
+
+.sensorInfoBox3L .figure{ display: flex; width: 460px; height: 50px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 22px;  padding: 2px 10px; 
+                          margin-top: 70px; margin-bottom: 10px; align-items: center;  }
+
+.sensorInfoBox3L .figureType{ display: block; width: 52%; text-align: center; }
+.sensorInfoBox3L .figure .sensorName{ display: block; width: 190px; text-align: center; font-size: 26px; }
+
+.sensorInfoBox3L .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 10px; margin-right: 10px; }
+.sensorInfoBox3L .numBoldNormal{ display: inline-block; width: 190px; color: #16ca73; font-size: 24px; text-align: center; } 
+.sensorInfoBox3L .numBoldInterest{ display: inline-block; width: 190px; color: #2E47FF; font-size: 24px; text-align: center; } 
+.sensorInfoBox3L .numBoldCaution{ display: inline-block; width: 190px; color: #FFF100; font-size: 24px; text-align: center; } 
+.sensorInfoBox3L .numBoldBoundary{ display: inline-block; width: 190px; color: #F67B00; font-size: 24px; text-align: center; } 
+.sensorInfoBox3L .numBoldSerious{ display: inline-block; width: 190px; color: #FE022E; font-size: 24px; text-align: center; } 
+.sensorInfoBox3L .numBoldNone{ display: inline-block; width: 190px; color: #7A8D98; font-size: 24px; text-align: center; } 
+
+.sensorInfoBox3L .sensorCheck{ display: block; width: 120px; height: 50px; line-height: 50px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 20px; cursor:pointer; margin: 0 auto; }
+
+
+/* 라인 활성화 */
+.sensorInfoBox3LNormalLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%;  } 
+.sensorInfoBox3LInterestLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                               margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%;  border: solid 1px #17c572; } 
+.sensorInfoBox3LCautionLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%;  border: solid 1px #fff100; } 
+.sensorInfoBox3LBoundaryLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%;  border: solid 1px #f67b00; } 
+.sensorInfoBox3LSeriousLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                             margin: 5px 5px; position:relative; /* min-width: 900px; min-height: 750px; */ /*  width: 900px; height: 750px; */  width: 100%; height: 100%;  border: solid 1px #fe022e; } 
+
+
+/***************************************************************************************************************************************************************************/
+
+
+.sensorInfoBox4L{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                   margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%; 
+                   /* border:dashed 1px red; */ }
+
+.sensorInfoBox4L .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBox4L .sensorTitleBox{ display: block; flex-grow:1; }        
+.sensorInfoBox4L .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 30px; font-weight: 500; letter-spacing: -1px; }
+
+.sensorInfoBox4L .sensorStepNormal { display: block; width: 30px; height: 30px; border-radius: 50%; background: #17C572; }
+.sensorInfoBox4L .sensorStepInterest { display: block; width: 30px; height: 30px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBox4L .sensorStepCaution { display: block; width: 30px; height: 30px; border-radius: 50%; background: #fff100; }
+.sensorInfoBox4L .sensorStepBoundary { display: block; width: 30px; height: 30px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBox4L .sensorStepSerious { display: block; width: 30px; height: 30px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBox4L .sensorStepNone { display: block; width: 30px; height: 30px; border-radius: 50%; background: #223641; }
+
+
+.sensorInfoBox4L .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                               left:50px; top: 188px; }
+.sensorInfoBox4L .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+.sensorInfoBox4L .chartArea{ /* display: flex; flex-direction: column; */ /* height: 66%; */ display:block; height: 90%; }
+.sensorInfoBox4L .chartArea .chartBox{ display: block;  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.sensorInfoBox4L .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:680px; height:340px; margin-top: 20%; 
+                                /* padding-top:20px; */ /* padding-left: 14px; */ padding-right: 20px; font-size: 10px; }
+.sensorInfoBox4L .chartSkills *,
+.sensorInfoBox4L .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBox4L .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 42px solid rgba(51, 78, 87, .3);
+                                                   border-bottom: none; border-top-left-radius: 340px; border-top-right-radius: 340px; }
+.sensorInfoBox4L .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 42px solid rgba(46, 71, 255, 1);
+                                                     border-bottom: none; border-top-left-radius: 340px; border-top-right-radius: 340px; }
+.sensorInfoBox4L .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 42px solid rgba(255, 241, 0, 1);
+                                                    border-bottom: none; border-top-left-radius: 340px; border-top-right-radius: 340px; }
+.sensorInfoBox4L .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 42px solid rgba(246, 123, 0, 1);
+                                                     border-bottom: none; border-top-left-radius: 340px; border-top-right-radius: 340px; }
+.sensorInfoBox4L .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 42px solid rgba(254, 2, 46, 1);
+                                                    border-bottom: none; border-top-left-radius: 340px; border-top-right-radius: 340px; }
+
+.sensorInfoBox4L .chartSkills li { position: absolute;  top: 101%; left: 0%; width: 680px; height: 340px; border: 42px solid; border-top: none;  border-bottom-left-radius: 340px;
+                                  border-bottom-right-radius: 340px;  transform-origin: 50% 0; padding-left: 30px; padding-right: 10px; }
+
+.sensorInfoBox4L .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal3L.png)no-repeat; width:210px; height:143px;
+                                   position: absolute; background-position: right; background-size: 200px; left: 26%; top: 63%; transform-origin: 170px 70px; }
+.sensorInfoBox4L .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue3L.png)no-repeat; width:210px; height:143px;
+                                     position: absolute; background-position: right; background-size: 200px; left: 26%; top: 63%; transform-origin: 170px 70px; }
+.sensorInfoBox4L .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow3L.png)no-repeat; width:210px; height:143px;
+                                     position: absolute; background-position: right; background-size: 200px; left: 26%; top: 63%; transform-origin: 170px 70px; }
+.sensorInfoBox4L .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange3L.png)no-repeat; width:210px; height:143px;
+                                     position: absolute; background-position: right; background-size: 200px; left: 26%; top: 63%; transform-origin: 170px 70px; }
+.sensorInfoBox4L .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed3L.png)no-repeat; width:210px; height:143px;
+                                     position: absolute; background-position: right; background-size: 200px; left: 26%; top: 63%; transform-origin: 170px 70px; }       
+
+.sensorInfoBox4L .figure{ display: flex; width: 650px; height: 70px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 36px;  padding: 2px 10px; 
+                          margin-top: 80px; margin-bottom: 10px; align-items: center;  }
+
+.sensorInfoBox4L .figureType{ display: block; width: 52%; text-align: center; }
+.sensorInfoBox4L .figure .sensorName{ display: block; width: 300px; text-align: center; font-size: 36px; }
+
+.sensorInfoBox4L .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 10px; margin-right: 10px; }
+.sensorInfoBox4L .numBoldNormal{ display: inline-block; width: 300px; color: #16ca73; font-size: 36px; text-align: center; } 
+.sensorInfoBox4L .numBoldInterest{ display: inline-block; width: 300px; color: #2E47FF; font-size: 36px; text-align: center; } 
+.sensorInfoBox4L .numBoldCaution{ display: inline-block; width: 300px; color: #FFF100; font-size: 36px; text-align: center; } 
+.sensorInfoBox4L .numBoldBoundary{ display: inline-block; width: 300px; color: #F67B00; font-size: 36px; text-align: center; } 
+.sensorInfoBox4L .numBoldSerious{ display: inline-block; width: 300px; color: #FE022E; font-size: 36px; text-align: center; } 
+.sensorInfoBox4L .numBoldNone{ display: inline-block; width: 300px; color: #7A8D98; font-size: 36px; text-align: center; } 
+
+.sensorInfoBox4L .sensorCheck{ display: block; width: 160px; height: 60px; line-height: 60px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 22px; cursor:pointer; margin: 0 auto;}
+
+
+/* 라인 활성화 */
+.sensorInfoBox4LNormalLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                            margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%;   } 
+.sensorInfoBox4LInterestLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                               margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%;  border: solid 1px #17c572; } 
+.sensorInfoBox4LCautionLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%;  border: solid 1px #fff100; } 
+.sensorInfoBox4LBoundaryLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                              margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%;  border: solid 1px #f67b00; } 
+.sensorInfoBox4LSeriousLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 20px; 
+                             margin: 5px 5px; position:relative; /* min-width: 1390px; min-height: 1120px; */ /*  width: 1390px; height: 1120px; */  width: 100%; height: 100%;  border: solid 1px #fe022e; } 
+
+
+/**************************************************************************************************************************************************************************/
+
+
+
+.sensorInfoBox5L{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                   margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;  }
+
+.sensorInfoBox5L .sensorTopBox{ display: inline-flex; width: 100%; }  
+.sensorInfoBox5L .sensorTitleBox{ display: block; flex-grow:1; }        
+.sensorInfoBox5L .sensorTitle1 { display: block; /*color: #7b8f9a;*/ font-size: 40px; font-weight: 500; letter-spacing: -1px; }
+
+.sensorInfoBox5L .sensorStepNormal { display: block; width: 44px; height: 44px; border-radius: 50%; background: #17C572; }
+.sensorInfoBox5L .sensorStepInterest { display: block; width: 44px; height: 44px; border-radius: 50%; background: #2e47ff; }
+.sensorInfoBox5L .sensorStepCaution { display: block; width: 44px; height: 44px; border-radius: 50%; background: #fff100; }
+.sensorInfoBox5L .sensorStepBoundary { display: block; width: 44px; height: 44px; border-radius: 50%; background: #F67B00; }
+.sensorInfoBox5L .sensorStepSerious { display: block; width: 44px; height: 44px; border-radius: 50%; background: #fe022e; }
+.sensorInfoBox5L .sensorStepNone { display: block; width: 44px; height: 44px; border-radius: 50%; background: #223641; }
+
+.sensorInfoBox5L .sensorText0{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                               left:50px; top: 188px; }
+.sensorInfoBox5L .sensorText3{ display: inline-block; color: #7b8f9a; font-size: 14px; font-weight: 900; position: absolute;
+                              left: 150px; top: 94px;  }
+
+.sensorInfoBox5L .chartArea{ /* display: flex; flex-direction: column; */ /* height: 58%; */ display:block; height: 90%  }
+.sensorInfoBox5L .chartArea .chartBox{ display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+
+.sensorInfoBox5L .chartSkills { margin: 0 auto; padding: 0; list-style-type: none; overflow: hidden; position: relative; width:800px; height:400px; margin-top: 14%; 
+                               /* padding-top:20px; padding-left: 14px; */ padding-right: 14px; font-size: 10px; }
+.sensorInfoBox5L .chartSkills *,
+.sensorInfoBox5L .chartSkills::before { box-sizing: border-box; }
+
+.sensorInfoBox5L .backNormal.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 50px solid rgba(51, 78, 87, .3);
+                                       border-bottom: none; border-top-left-radius: 400px; border-top-right-radius: 400px; }
+.sensorInfoBox5L .backInterest.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 50px solid rgba(46, 71, 255, 1);
+                                       border-bottom: none; border-top-left-radius: 400px; border-top-right-radius: 400px; }
+.sensorInfoBox5L .backCaution.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 50px solid rgba(255, 241, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 400px; border-top-right-radius: 400px; }
+.sensorInfoBox5L .backBoundary.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 50px solid rgba(246, 123, 0, 1);
+                                       border-bottom: none; border-top-left-radius: 400px; border-top-right-radius: 400px; }
+.sensorInfoBox5L .backSerious.chartSkills::before { position: absolute; content: ''; width: inherit; height: inherit; border: 50px solid rgba(254, 2, 46, 1);
+                                       border-bottom: none; border-top-left-radius: 400px; border-top-right-radius: 400px; }
+
+.sensorInfoBox5L .chartSkills li { position: absolute;  top: 101%; /* left: 10%; */ width: 800px; height: 400px; border: 50px solid; border-top: none;  border-bottom-left-radius: 400px;
+                                  border-bottom-right-radius: 400px;  transform-origin: 50% 0; padding-left: 10px; padding-right: 10px;  }
+
+.sensorInfoBox5L .figureSignNormal{ display: inline-block; background: url(../../SDMS/img/popup/stickNormal3L.png)no-repeat; width:288px; height:143px;
+                                  position: absolute; background-position: right; background-size: 280px; left: 20%; top: 58%; transform-origin: 250px 60px;  }
+.sensorInfoBox5L .figureSignInterest{ display: inline-block; background: url(../../SDMS/img/popup/stickBlue3L.png)no-repeat; width:288px; height:143px;
+                                    position: absolute; background-position: right; background-size: 280px; left: 20%; top: 58%; transform-origin: 250px 60px; }
+.sensorInfoBox5L .figureSignCaution{ display: inline-block; background: url(../../SDMS/img/popup/stickYellow3L.png)no-repeat; width:288px; height:143px;
+                                    position: absolute; background-position: right; background-size: 280px; left: 20%; top: 58%; transform-origin: 250px 60px;  }
+.sensorInfoBox5L .figureSignBoundary{ display: inline-block; background: url(../../SDMS/img/popup/stickOrange3L.png)no-repeat; width:288px; height:143px;
+                                    position: absolute; background-position: right; background-size: 280px; left: 20%; top: 58%; transform-origin: 250px 60px; }
+.sensorInfoBox5L .figureSignSerious{ display: inline-block; background: url(../../SDMS/img/popup/stickRed3L.png)no-repeat; width:288px; height:143px;
+                                    position: absolute; background-position: right; background-size: 280px; left: 20%; top: 58%; transform-origin: 250px 60px; }       
+
+.sensorInfoBox5L .figure{ display: flex; width: 800px; height: 76px; background-color: #334e57; border-radius: 3px; margin: 0 auto; font-size: 40px;  padding: 2px 10px; 
+                          margin-top: 140px; margin-bottom: 10px; align-items: center;  }
+
+.sensorInfoBox5L .figureType{ display: block; width: 52%; text-align: center; }
+.sensorInfoBox5L .figure .sensorName{ display: block; width: 340px; text-align: center; font-size: 40px; }
+
+.sensorInfoBox5L .line{ display: inline-block;  width: 1px; height: 16px; border-right: solid 1.5px #090909; margin-left: 10px; margin-right: 10px; }
+.sensorInfoBox5L .numBoldNormal{ display: inline-block; width: 340px; color: #16ca73; font-size: 40px; text-align: center; } 
+.sensorInfoBox5L .numBoldInterest{ display: inline-block; width: 340px; color: #2E47FF; font-size: 40px; text-align: center; } 
+.sensorInfoBox5L .numBoldCaution{ display: inline-block; width: 340px; color: #FFF100; font-size: 40px; text-align: center; } 
+.sensorInfoBox5L .numBoldBoundary{ display: inline-block; width: 340px; color: #F67B00; font-size: 40px; text-align: center; } 
+.sensorInfoBox5L .numBoldSerious{ display: inline-block; width: 340px; color: #FE022E; font-size: 40px; text-align: center; } 
+.sensorInfoBox5L .numBoldNone{ display: inline-block; width: 340px; color: #7A8D98; font-size: 40px; text-align: center; } 
+
+.sensorInfoBox5L .sensorCheck{ display: block; width: 240px; height: 70px; line-height: 70px; text-align: center; background-image: linear-gradient(#434343, #000000);
+                              border-radius: 24px; font-size: 40px; cursor:pointer; margin: 0 auto; }
+
+/* 라인 활성화 */
+.sensorInfoBox5LNormalLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                            margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;  } 
+.sensorInfoBox5LInterestLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                              margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;  border: solid 1px #17c572; } 
+.sensorInfoBox5LCautionLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                              margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;   border: solid 1px #fff100; } 
+.sensorInfoBox5LBoundaryLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                              margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;  border: solid 1px #f67b00; } 
+.sensorInfoBox5LSeriousLine{ display:inline-block; background-color: #1b2b38; border-radius: 10px; color: #ffffff; padding: 40px; 
+                             margin: 5px 5px; position:relative; /* min-width: 1870px; min-height: 1390px; */ /* width: 1870px; height: 1390px; */  width: 100%; height: 100%;  border: solid 1px #fe022e; } 
+
+
+/******************************************************************************************************************************************************************************/
+
+
+/* 라인 활성화 */
+.sensorInfoBoxInterestLine{ border: solid 1px #17c572; } 
+.sensorInfoBoxCautionLine{ border: solid 1px #fff100; } 
+.sensorInfoBoxBoundaryLine{ border: solid 1px #f67b00; } 
+.sensorInfoBoxSeriousLine{ border: solid 1px #fe022e; } 
+

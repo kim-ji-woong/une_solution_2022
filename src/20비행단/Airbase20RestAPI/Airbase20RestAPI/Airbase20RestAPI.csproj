@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+    <DocumentationFile>C:\UnESolution2022\src\20비행단\Airbase20RestAPI\Airbase20RestAPI\Airbase20RestAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj" />
+    <ProjectReference Include="..\..\Airbase20.BLL\Airbase20.BLL.csproj" />
+    <ProjectReference Include="..\..\Airbase20.DAL\Airbase20.DAL.csproj" />
+    <ProjectReference Include="..\..\Airbase20.IDAL\Airbase20.IDAL.csproj" />
+    <ProjectReference Include="..\..\Airbase20.Model\Airbase20.Model.csproj" />
+  </ItemGroup>
+
+
+</Project>

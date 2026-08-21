@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\SOPWebServer2\AgentFactory.BLL\Facility.cs" Link="External\Facility.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\dnsAlarmScript\dnsAlarmScript.csproj" />
+    <ProjectReference Include="..\..\Hynix.DAL\Hynix.DAL.csproj" />
+    <ProjectReference Include="..\..\Hynix.IDAL\Hynix.IDAL.csproj" />
+    <ProjectReference Include="..\..\Hynix.Model\Hynix.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="External\" />
+  </ItemGroup>
+
+</Project>

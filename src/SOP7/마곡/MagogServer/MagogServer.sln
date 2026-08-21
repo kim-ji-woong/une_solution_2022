@@ -1,0 +1,103 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34407.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagogServer", "MagogServer\MagogServer.csproj", "{DFACFA55-2DB7-4CF8-B77E-6281514C314D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDBUtil", "..\..\..\..\esdk\workspace\DNS_DBUtil\DNS_DBUtil\dnsDBUtil.csproj", "{6D161A75-5303-4AD4-981E-274944A734AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsTcpLib2", "..\..\..\..\esdk\workspace\dnsTcpLib2\dnsTcpLib2\dnsTcpLib2.csproj", "{09AA6D60-6117-4886-85BF-2136CACEB88D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsSopID", "..\..\DNS\dnsSopID\dnsSopID.csproj", "{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E32D0B7D-DBF7-4090-8025-272485C1BCE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{C0E28D90-797B-4560-BFE4-76234209EF2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogicLayer", "BusinessLogicLayer", "{1C2635E5-C657-4022-B473-04BAE984859A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.Model", "..\..\SDMS\SDMS.Model\SDMS.Model.csproj", "{07D62A84-9A2C-47AD-9B67-D228C88DFE62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.IDAL", "..\..\SDMS\SDMS.IDAL\SDMS.IDAL.csproj", "{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDMS.DAL", "..\..\SDMS\SDMS.DAL\SDMS.DAL.csproj", "{E900D821-4167-4008-BB6D-CB2003926F53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsCommunicateSopServer", "..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj", "{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagogService", "MagogService\MagogService.csproj", "{A46603FF-4550-4D17-892D-CB95C43591AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release_Kakaowork|Any CPU = Release_Kakaowork|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFACFA55-2DB7-4CF8-B77E-6281514C314D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D161A75-5303-4AD4-981E-274944A734AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09AA6D60-6117-4886-85BF-2136CACEB88D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E6D5EA-1047-4D86-BC0A-7FBE6A1E48B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E900D821-4167-4008-BB6D-CB2003926F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Release_Kakaowork|Any CPU.ActiveCfg = Release_Kakaowork|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Release_Kakaowork|Any CPU.Build.0 = Release_Kakaowork|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA967A5-7C17-4E9E-B1EF-9499F33C01F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Release_Kakaowork|Any CPU.ActiveCfg = Release|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Release_Kakaowork|Any CPU.Build.0 = Release|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A46603FF-4550-4D17-892D-CB95C43591AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{07D62A84-9A2C-47AD-9B67-D228C88DFE62} = {E32D0B7D-DBF7-4090-8025-272485C1BCE3}
+		{1116B5B8-7D6E-449D-9BBA-310E6AC322DB} = {C0E28D90-797B-4560-BFE4-76234209EF2D}
+		{E900D821-4167-4008-BB6D-CB2003926F53} = {C0E28D90-797B-4560-BFE4-76234209EF2D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FEE38C4-DFCD-4C31-8244-EDA358DBB791}
+	EndGlobalSection
+EndGlobal

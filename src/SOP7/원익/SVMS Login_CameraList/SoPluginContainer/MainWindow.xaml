@@ -1,0 +1,76 @@
+﻿<Window
+        x:Class="SoPluginContainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoPluginContainer"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:prop="clr-namespace:SoPluginContainer.Properties"
+        xmlns:viewmodel="clr-namespace:SoPluginContainer.ViewModel"
+        x:Name="root"
+        Background="Black"
+        BorderThickness="1"
+        Title="{Binding Source={x:Static prop:Settings.Default}, Path=DisplayTitle}"
+        FontFamily="{DynamicResource NotoSansCJKkrRegular}"
+        StateChanged="root_StateChanged"
+        Closing="root_Closing"
+        Loaded="root_Loaded"
+        Height="550" 
+        Width="800"
+        mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource DarkTreeViewItemStyle}">
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+            </Style>
+            <ContextMenu x:Key="elementContextMenu" Style="{DynamicResource LightContextMenuStyle}" IsOpen="True">
+            </ContextMenu>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="VideoPanel" Grid.Row="0">
+        </Grid>
+        <TextBlock Grid.Row="0" x:Name="ConnectStatus" VerticalAlignment="Center" FontSize="20" Foreground="DimGray"></TextBlock>
+        <Grid Grid.Row ="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox 
+                x:Name="GroupListView" 
+                Grid.Column="0" 
+                Background="Transparent" 
+                DataContext="{viewmodel:ViewModelBinder ViewModelType={x:Type viewmodel:CameraListViewModel}, VMKey=CameraListViewModelKey}"
+                ItemsSource="{Binding DeviceGroupList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=GroupName}" Foreground="DimGray" ></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox 
+                x:Name="CameraListView" 
+                Grid.Column="1" 
+                Background="Transparent" 
+                DataContext="{viewmodel:ViewModelBinder ViewModelType={x:Type viewmodel:CameraListViewModel}, VMKey=CameraListViewModelKey}"
+                ItemsSource="{Binding DeviceCameraList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CameraName}" Foreground="DimGray" ></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row ="2"  Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="LoginButton" Content="Login" Width="150" Background="DimGray" Click="LoginButton_Click" Margin="2,2,2,4"/>
+            <Button x:Name="LogoutButton" Content="Logout" Width="150" Background="DimGray" Click="LogoutButton_Click" Margin="2,2,2,4"/>
+        </StackPanel>
+    </Grid>
+    
+</Window>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13.696" height="14" viewBox="0 0 13.696 14">
+  <g id="siren" transform="translate(-5.565)">
+    <g id="그룹_958" data-name="그룹 958" transform="translate(11.956)">
+      <g id="그룹_957" data-name="그룹 957">
+        <path id="패스_3217" data-name="패스 3217" d="M239.761,0a.457.457,0,0,0-.457.457V1.37a.457.457,0,1,0,.913,0V.457A.457.457,0,0,0,239.761,0Z" transform="translate(-239.304)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_960" data-name="그룹 960" transform="translate(5.565 6.391)">
+      <g id="그룹_959" data-name="그룹 959" transform="translate(0)">
+        <path id="패스_3218" data-name="패스 3218" d="M6.935,233.739H6.022a.457.457,0,0,0,0,.913h.913a.457.457,0,0,0,0-.913Z" transform="translate(-5.565 -233.739)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_962" data-name="그룹 962" transform="translate(17.435 6.391)">
+      <g id="그룹_961" data-name="그룹 961">
+        <path id="패스_3219" data-name="패스 3219" d="M441.022,233.739h-.913a.457.457,0,0,0,0,.913h.913a.457.457,0,0,0,0-.913Z" transform="translate(-439.652 -233.739)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_964" data-name="그룹 964" transform="translate(15.83 1.872)">
+      <g id="그룹_963" data-name="그룹 963">
+        <path id="패스_3220" data-name="패스 3220" d="M382.392,68.6a.457.457,0,0,0-.646,0l-.646.646a.457.457,0,0,0,.645.646l.646-.646A.457.457,0,0,0,382.392,68.6Z" transform="translate(-380.967 -68.463)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_966" data-name="그룹 966" transform="translate(7.437 1.872)">
+      <g id="그룹_965" data-name="그룹 965">
+        <path id="패스_3221" data-name="패스 3221" d="M75.447,69.242,74.8,68.6a.457.457,0,0,0-.646.646l.646.646a.457.457,0,0,0,.646-.646Z" transform="translate(-74.022 -68.463)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_968" data-name="그룹 968" transform="translate(7.391 11.87)">
+      <g id="그룹_967" data-name="그룹 967">
+        <path id="패스_3222" data-name="패스 3222" d="M81.935,434.087H72.8a.457.457,0,0,0-.457.457v1.217a.457.457,0,0,0,.457.457h9.13a.457.457,0,0,0,.457-.457v-1.217A.457.457,0,0,0,81.935,434.087Z" transform="translate(-72.348 -434.087)" fill="#ff7d7d"/>
+      </g>
+    </g>
+    <g id="그룹_970" data-name="그룹 970" transform="translate(8.304 2.739)">
+      <g id="그룹_969" data-name="그룹 969">
+        <path id="패스_3223" data-name="패스 3223" d="M109.848,100.174a4.113,4.113,0,0,0-4.109,4.109v4.109h8.217v-4.109A4.113,4.113,0,0,0,109.848,100.174Zm1.826,4.565a.457.457,0,0,1-.457-.457,1.371,1.371,0,0,0-1.37-1.37.457.457,0,1,1,0-.913,2.285,2.285,0,0,1,2.283,2.283A.457.457,0,0,1,111.674,104.739Z" transform="translate(-105.739 -100.174)" fill="#ff7d7d"/>
+      </g>
+    </g>
+  </g>
+</svg>
