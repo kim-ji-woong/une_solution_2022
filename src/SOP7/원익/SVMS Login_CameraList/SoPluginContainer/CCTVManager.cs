@@ -57,6 +57,13 @@ namespace SoPluginContainer
                     m_dicCCTVIDs[cctv.ID] = cctv;
                 }
             }
+            else
+            {
+                // DB 조회 실패 시 기존에는 조용히 넘어가 캐시가 빈 채로 유지되었고,
+                // 그 결과 이후 SVMS 목록의 모든 CCTV가 '신규'로 판정되어 중복 삽입되는 원인이 되었다.
+                // (삽입 자체는 AddCCTVs의 DB 재확인으로 차단되지만, 실패는 로그로 남긴다.)
+                Logger.Instance.Write("CCTVManager.ReadCCTVs 조회 실패 - CCTV 캐시가 비어있음 : " + strErrorMessage);
+            }
 
             List<EquipZoneCCTV> equipZoneCCTVs = m_dataManager.GetSelectManager().SelectEquipZoneCCTVs(null, null, out strErrorMessage);
 
@@ -188,6 +195,29 @@ namespace SoPluginContainer
         {
             foreach (CCTV cctv in newCCTVs)
             {
+                // 삽입 직전에 DB에서 UniqueKey 중복을 다시 확인한다.
+                // m_dicCCTVs는 기동 시 1회만 채워지므로, 기동 시 DB 조회 실패 등으로
+                // 캐시가 비어있으면 기존 CCTV가 '신규'로 잘못 판정되어 중복 삽입될 수 있다.
+                // DB를 직접 확인하여 이 경로를 원천 차단한다.
+                CCTV existing;
+                if (TryGetCCTVFromDB(cctv.UniqueKey, out existing) == false)
+                {
+                    // DB 조회 자체가 실패하면 중복 생성 위험이 있으므로 삽입하지 않는다.
+                    Logger.Instance.Write("CCTVManager.AddCCTVs 보류(UniqueKey 조회 실패) : " + cctv.UniqueKey);
+                    continue;
+                }
+
+                if (existing != null)
+                {
+                    // 이미 DB에 존재 → 삽입하지 않고 캐시에만 반영한다.
+                    // (다음 주기부터는 변경 감지(ChangeCCTVs) 경로로 정상 처리된다.)
+                    m_dicCCTVs[existing.UniqueKey] = existing;
+                    m_dicCCTVIDs[existing.ID] = existing;
+
+                    Logger.Instance.Write("CCTVManager.AddCCTVs 중복 방지(이미 존재하여 건너뜀) : CCTV[" + existing.ID + "], " + existing.UniqueKey);
+                    continue;
+                }
+
                 string strCCTVType = IsSafetyI(cctv, safetyI_IP_List) ? Safety_I_Type : RTSP_Type;
 
                 CCTV _cctv = m_dataManager.GetCreateManager().CreateCCTV(cctv.CameraName, "", cctv.UniqueKey, null, null, null, null, false, strCCTVType, null, cctv.UserID, cctv.Password, cctv.URL, cctv.BigURL, cctv.SmallURL, cctv.Enabled, cctv.CameraIP, cctv.CameraCompanyName, cctv.CameraModelName, null, null);
@@ -200,6 +230,34 @@ namespace SoPluginContainer
                     Logger.Instance.Write("CCTVManager.AddCCTVs, CCTV[" + _cctv.ID + "], " + _cctv.UniqueKey + ", Enabled : " + _cctv.Enabled);
                 }
             }
+        }
+
+        /// <summary>
+        /// DB에서 UniqueKey로 CCTV를 조회한다.
+        /// 반환값 : 조회 성공 여부. (false = DB 조회 실패)
+        /// existing : 존재하면 해당 CCTV, 없으면 null.
+        /// UniqueKey가 비어있으면 '조회 성공 + 존재 안 함'으로 처리한다.
+        /// </summary>
+        private bool TryGetCCTVFromDB(string strUniqueKey, out CCTV existing)
+        {
+            existing = null;
+
+            if (string.IsNullOrEmpty(strUniqueKey))
+                return true;
+
+            Dictionary<CCTV.Fields, object> dicConditions = new Dictionary<CCTV.Fields, object>();
+            dicConditions[CCTV.Fields.UniqueKey] = strUniqueKey;
+
+            string strErrorMessage;
+            List<CCTV> cctvs = m_dataManager.GetSelectManager().SelectCCTVs(dicConditions, null, 1, out strErrorMessage);
+
+            if (cctvs == null)
+                return false;   // DB 조회 실패
+
+            if (cctvs.Count > 0)
+                existing = cctvs[0];
+
+            return true;
         }
 
         private bool IsSafetyI(CCTV cctv, List<string> safetyI_IP_List)
