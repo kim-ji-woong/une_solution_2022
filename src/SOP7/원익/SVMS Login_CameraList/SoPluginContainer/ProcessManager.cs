@@ -163,6 +163,8 @@ namespace SoPluginContainer
             OnTimer(null, null);
 
             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(MessageThread));
+            // 종료 시 이 스레드가 프로세스를 붙잡지 않도록 백그라운드로 설정한다.
+            t.IsBackground = true;
             t.Start();
         }
 
@@ -209,7 +211,11 @@ namespace SoPluginContainer
         public void Stop()
         {
             Logger.Instance.Write("[ProcessManager] STOP");
-            m_timer.Stop();
+
+            // ReadConfig 실패 등으로 Start()가 실행되지 않았으면 m_timer가 null일 수 있다.
+            if (m_timer != null)
+                m_timer.Stop();
+
             m_closeThread = true;
         }
 
