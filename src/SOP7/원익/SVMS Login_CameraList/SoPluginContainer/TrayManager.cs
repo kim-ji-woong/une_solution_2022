@@ -30,7 +30,6 @@ namespace SoPluginContainer
         private System.ComponentModel.IContainer components;
 
         private System.Windows.Forms.ToolStripMenuItem tsMenuClose;
-        private System.Windows.Forms.ToolStripMenuItem tsMenuReload;
 
         ProcessManager m_processManager = null;
 
@@ -49,13 +48,10 @@ namespace SoPluginContainer
 
             this.m_contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsMenuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuReload = new System.Windows.Forms.ToolStripMenuItem();
 
             // Initialize contextMenu1
             this.m_contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsMenuClose});
-            this.m_contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuReload});
             this.m_contextMenu.Size = new System.Drawing.Size(181, 140);
 
             // Create the NotifyIcon.
@@ -84,25 +80,37 @@ namespace SoPluginContainer
             this.tsMenuClose.Size = new System.Drawing.Size(180, 22);
             this.tsMenuClose.Text = "종료";
             this.tsMenuClose.Click += new System.EventHandler(this.tsMenuClose_Click);
-
-            // 
-            // tsMenuReload
-            // 
-            this.tsMenuReload.Name = "tsMenuReload";
-            this.tsMenuReload.Size = new System.Drawing.Size(180, 22);
-            this.tsMenuReload.Text = "다시 불러오기";
-            this.tsMenuReload.Click += new System.EventHandler(this.tsMenuReload_Click);
         }
 
         private void tsMenuClose_Click(object sender, EventArgs e)
         {
-            //m_closeThread = true;
-            Application.Exit();
-        }
+            // 1) 백그라운드 작업 정지 (타이머/메시지 스레드 종료 플래그)
+            try
+            {
+                if (m_processManager != null)
+                    m_processManager.Stop();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Write("[TrayManager] ProcessManager.Stop 오류 : " + ex.Message);
+            }
 
-        private void tsMenuReload_Click(object sender, EventArgs e)
-        {
-            //Logger.Instance.Write("tsMenuReload_Click");
+            // 2) 트레이 아이콘 제거 (남는 아이콘 방지)
+            try
+            {
+                if (m_icon != null)
+                {
+                    m_icon.Visible = false;
+                    m_icon.Dispose();
+                    m_icon = null;
+                }
+            }
+            catch { }
+
+            // 3) 프로세스 확실히 종료.
+            //    이 앱은 WPF이므로 WinForms의 Application.Exit()로는 종료되지 않고,
+            //    SVMS SDK가 포그라운드 스레드를 유지할 수 있어 Environment.Exit로 강제 종료한다.
+            Environment.Exit(0);
         }
 
         private void trayIcon_MouseClick(object sender, MouseEventArgs e)
