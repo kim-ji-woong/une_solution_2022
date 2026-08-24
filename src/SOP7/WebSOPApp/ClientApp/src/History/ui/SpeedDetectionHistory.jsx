@@ -54,6 +54,8 @@ class SpeedDetectionHistory extends Component {
 			maxPageIndex: 1,  // 최대 페이지 Index
 
 			loadingIndicator: false, // 새로고침중인지 표시
+
+			stats: null,      // 통계 카드용 (현재/이전 기간 과속 횟수 등)
 		}
 
 		this.refDatepicker01 = React.createRef();
@@ -128,9 +130,42 @@ class SpeedDetectionHistory extends Component {
 		const value2 = datacount % (this.state.maxRowCount); // 나머지가 있는 경우 페이지 하나를 추가한다.
 		let maxPageIndex = value1 + ((value2 > 0) ? 1 : 0);
 
+		// --- 통계 카드용: 현재 기간 / 이전 기간 과속 횟수 집계 ---
+		//  이전 기간 = 현재 조회 기간과 같은 길이의 바로 직전 구간
+		//  (오늘→전일, 해당주→전주, 해당월→전월, 해당년→전년, 기간선택→이전 기간)
+		const appliedDateType = this.state.dateType;
+		const curCount = datacount || 0;
+
+		const msDay = 24 * 60 * 60 * 1000;
+		const curBeginD = new Date(this.state.beginDate); curBeginD.setHours(0, 0, 0, 0);
+		const curEndD = new Date(this.state.endDate); curEndD.setHours(0, 0, 0, 0);
+		const nDays = Math.round((curEndD - curBeginD) / msDay) + 1; // 포함 일수
+
+		const prevEndD = new Date(curBeginD.getTime() - msDay);
+		const prevBeginD = new Date(curBeginD.getTime() - nDays * msDay);
+
+		const prevBeginStr = this.getMakeDateTime(prevBeginD);
+		const prevEndStr = this.getMakeDateTime(prevEndD);
+
+		let prevCount = 0;
+		const prevResult = await HistoryController.requestWonikSpeedDetectionHistorys(prevBeginStr + ' 00:00:00', prevEndStr + ' 23:59:59', selectedSensor);
+		if (prevResult && prevResult.success !== false && prevResult.speedDetectionDatas?.length > 0) {
+			prevCount = prevResult.speedDetectionDatas.filter(d => d.speed > SpeedDetectionHistory.SPEED_LIMIT).length;
+		}
+
+		const stats = {
+			dateType: appliedDateType,
+			curBegin: this.getMakeDateTime(curBeginD),
+			curEnd: this.getMakeDateTime(curEndD),
+			prevBegin: prevBeginStr,
+			prevEnd: prevEndStr,
+			curCount,
+			prevCount,
+		};
+
 		$("body").css("cursor", "default");
 
-		this.setState({ dataSource, maxPageIndex, minPageIndex: 1, pageIndex: 1, loadingIndicator: false });
+		this.setState({ dataSource, maxPageIndex, minPageIndex: 1, pageIndex: 1, loadingIndicator: false, stats });
 	}
 
 	getMakeDateTime(dateTime) {
@@ -220,6 +255,23 @@ class SpeedDetectionHistory extends Component {
 		if (over <= 10) return { label: '주의', lv: 2 };
 		if (over <= 20) return { label: '경계', lv: 3 };
 		return { label: '심각', lv: 4 };
+	}
+
+	// 조회기간 옵션(dateType)에 따른 카드 라벨
+	//   기간선택 : 해당기간 / 이전 기간
+	//   오늘     : 오늘     / 전일
+	//   1주      : 해당주   / 전주
+	//   1개월    : 해당월   / 전월
+	//   1년      : 해당년   / 전년
+	getPeriodLabels(dateType) {
+		switch (dateType) {
+			case 'today': return { cur: '오늘', prev: '전일' };
+			case 'week': return { cur: '해당주', prev: '전주' };
+			case 'year': return { cur: '해당년', prev: '전년' };
+			case 'select': return { cur: '해당기간', prev: '이전 기간' };
+			case 'month':
+			default: return { cur: '해당월', prev: '전월' };
+		}
 	}
 
 	getTimeSlotIndex(hour) {
@@ -563,6 +615,11 @@ class SpeedDetectionHistory extends Component {
 
 		const calendarImg = ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik;
 
+		// 조회기간 수동 선택 제한: 시작일자는 현재로부터 최대 1년 전까지, 종료일자는 현재일자까지
+		const today = new Date();
+		const oneYearAgo = new Date();
+		oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
 		// 시간대별 과속 현황 : 보안실 A / S1동 B
 		const timeColorsA = '#3b82f6';
 		const timeColorsB = '#93c5fd';
@@ -574,6 +631,37 @@ class SpeedDetectionHistory extends Component {
 		const maxTimeLabel = (analysis.maxTimeIdx >= 0) ? analysis.timeLabels[analysis.maxTimeIdx] : '-';
 		const maxSpeedLabel = (analysis.maxSpeedIdx >= 0) ? analysis.speedLabels[analysis.maxSpeedIdx] : '-';
 
+		// --- 통계 카드 데이터 ---
+		const stats = this.state.stats;
+		const labels = this.getPeriodLabels(stats ? stats.dateType : this.state.dateType);
+
+		const curCount = stats ? stats.curCount : null;
+		const prevCount = stats ? stats.prevCount : null;
+
+		// 이전 기간 대비 증감률
+		let cmpValueUI = <>-</>;
+		let cmpSub = labels.prev + ' 대비 증감';
+		let cmpClass = '';
+		if (stats) {
+			const diff = curCount - prevCount;
+			if (prevCount > 0) {
+				const pct = Math.abs((diff / prevCount) * 100).toFixed(1);
+				const word = diff < 0 ? '감소' : (diff > 0 ? '증가' : '변동 없음');
+				cmpClass = diff < 0 ? 'up' : (diff > 0 ? 'down' : '');
+				cmpValueUI = (diff === 0) ? <>0<small>%</small></> : <>{pct}<small>% {word}</small></>;
+				cmpSub = (diff === 0) ? '변동 없음' : ('과속 ' + Math.abs(diff) + '건 ' + (diff < 0 ? '감소' : '증가'));
+			} else {
+				// 이전 기간 데이터가 없어 증감률 계산 불가
+				cmpValueUI = <>-</>;
+				cmpSub = '이전 기간 데이터 없음';
+			}
+		}
+
+		// 최다 발생시간 (예: 06-09 -> 06~09시)
+		const maxTimeCardValue = (analysis.maxTimeIdx >= 0) ? (maxTimeLabel.replace('-', '~') + '시') : '-';
+		const maxTimeRatio = (analysis.total > 0) ? ((analysis.maxTimeCount / analysis.total) * 100).toFixed(1) : 0;
+		const maxTimeSub = (analysis.maxTimeIdx >= 0) ? (analysis.maxTimeCount + '건 · 전체의 ' + maxTimeRatio + '%') : '집중 발생 시간대';
+
 		return (
 			<>
 				<div id={'hsty'}>
@@ -584,7 +672,6 @@ class SpeedDetectionHistory extends Component {
 							<div className={'hscHead'}>
 								<div className={'hscHeadTop'}>
 									<h2>차량 과속 이력 및 분석</h2>
-									<span className={'hscBadge'}>수집 정상</span>
 								</div>
 								<p className={'hscDesc'}>위치별 과속 현황과 전월 대비 변화, 집중 발생시간을 확인합니다.</p>
 							</div>
@@ -615,7 +702,8 @@ class SpeedDetectionHistory extends Component {
 															locale={ko}
 															showYearDropdown
 															showMonthDropdown
-															maxDate={new Date()}
+															minDate={oneYearAgo}
+															maxDate={today}
 															selected={this.state.beginDate}
 															onChange={date => this.onChangeBegin(date)} />
 														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -629,7 +717,8 @@ class SpeedDetectionHistory extends Component {
 															locale={ko}
 															showYearDropdown
 															showMonthDropdown
-															maxDate={new Date()}
+															minDate={oneYearAgo}
+															maxDate={today}
 															selected={this.state.endDate}
 															onChange={date => this.onChangeEnd(date)} />
 														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />
@@ -659,27 +748,27 @@ class SpeedDetectionHistory extends Component {
 								<li><a onClick={this.onClickDownload} className={'exl'}>Excel 다운로드</a></li>
 							</ul>
 
-							{/* 통계 카드 4개 (레이아웃만 - 데이터는 추후 연동) */}
+							{/* 통계 카드 4개 */}
 							<div className={'hscCards'}>
 								<div className={'card'}>
-									<p className={'cardTitle'}>해당월 과속 횟수</p>
-									<p className={'cardValue'}>-<small>건</small></p>
-									<p className={'cardSub'}>조회 기간 과속 발생</p>
+									<p className={'cardTitle'}>{labels.cur} 과속 횟수</p>
+									<p className={'cardValue'}>{stats ? curCount : '-'}<small>건</small></p>
+									<p className={'cardSub'}>{stats ? (stats.curBegin + ' ~ ' + stats.curEnd) : (labels.cur + ' 과속 발생')}</p>
 								</div>
 								<div className={'card'}>
-									<p className={'cardTitle'}>전월 과속 횟수</p>
-									<p className={'cardValue'}>-<small>건</small></p>
-									<p className={'cardSub'}>전월 동일 기간</p>
+									<p className={'cardTitle'}>{labels.prev} 과속 횟수</p>
+									<p className={'cardValue'}>{stats ? prevCount : '-'}<small>건</small></p>
+									<p className={'cardSub'}>{stats ? (stats.prevBegin + ' ~ ' + stats.prevEnd) : (labels.prev + ' 동일 기간')}</p>
 								</div>
 								<div className={'card'}>
-									<p className={'cardTitle'}>전월 대비</p>
-									<p className={'cardValue'}>-<small>%</small></p>
-									<p className={'cardSub'}>전월 대비 증감</p>
+									<p className={'cardTitle'}>{labels.prev} 대비</p>
+									<p className={'cardValue ' + cmpClass}>{cmpValueUI}</p>
+									<p className={'cardSub'}>{cmpSub}</p>
 								</div>
 								<div className={'card'}>
 									<p className={'cardTitle'}>최다 발생시간</p>
-									<p className={'cardValue'}>-</p>
-									<p className={'cardSub'}>집중 발생 시간대</p>
+									<p className={'cardValue'}>{maxTimeCardValue}</p>
+									<p className={'cardSub'}>{maxTimeSub}</p>
 								</div>
 							</div>
 

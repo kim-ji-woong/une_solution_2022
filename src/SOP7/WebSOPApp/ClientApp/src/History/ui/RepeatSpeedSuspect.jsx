@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getSearchMinDate } from '../util/searchDateLimit';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
@@ -152,7 +153,6 @@ class RepeatSpeedSuspect extends Component {
 							<div className={'hscHead'}>
 								<div className={'hscHeadTop'}>
 									<h2>반복 과속 의심차량</h2>
-									<span className={'hscBadge'}>LPR 수집 정상</span>
 								</div>
 								<p className={'hscDesc'}>동일하게 인식된 차량번호의 반복 과속 횟수와 위험도를 확인합니다.</p>
 							</div>
@@ -182,7 +182,7 @@ class RepeatSpeedSuspect extends Component {
 															locale={ko}
 															showYearDropdown
 															showMonthDropdown
-															maxDate={new Date()}
+															maxDate={new Date()} minDate={getSearchMinDate()}
 															selected={this.state.beginDate}
 															onChange={date => this.onChangeBegin(date)} />
 														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -196,7 +196,7 @@ class RepeatSpeedSuspect extends Component {
 															locale={ko}
 															showYearDropdown
 															showMonthDropdown
-															maxDate={new Date()}
+															maxDate={new Date()} minDate={getSearchMinDate()}
 															selected={this.state.endDate}
 															onChange={date => this.onChangeEnd(date)} />
 														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />
