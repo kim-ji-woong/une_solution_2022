@@ -1441,6 +1441,101 @@ export const SpeedDetectionHistoryComponent = styled(SensorDetectAnalysisCompone
 `;
 
 
+// 차량 과속 분석 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
+export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
+
+    .hscHead {
+        margin-bottom: 15px;
+    }
+
+    .hscHead .hscHeadTop {
+        display: flex;
+        align-items: center;
+    }
+
+    .hscHead h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscHead .hscBadge {
+        display: inline-block;
+        margin-left: 12px;
+        padding: 3px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1f7244;
+        background: #e5f5ec;
+        border-radius: 14px;
+    }
+
+    .hscHead .hscDesc {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* 카메라 인식번호 입력 */
+    .hscsNum input[type="text"] {
+        width: 200px;
+        height: 32px;
+        border: solid 1px #ddd;
+        border-radius: 3px;
+        padding: 0 10px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+
+    /* 표시 순위 토글 */
+    .hscsRank {
+        float: left;
+    }
+
+    .hscsRank:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .hscsRank li {
+        float: left;
+        margin-right: 8px;
+    }
+
+    .hscsRank li:last-child {
+        margin-right: 0;
+    }
+
+    .hscsRank li a {
+        display: block;
+        min-width: 46px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        padding: 0 12px;
+        border: solid 1px #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .hscsRank li a.on {
+        background: #004BB9;
+        border-color: #004BB9;
+        color: #fff;
+    }
+`;
+
+
+// 반복 과속 의심차량 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
+export const RepeatSpeedSuspectComponent = styled(SpeedAnalysisComponent)`
+
+`;
+
+
 // 안전구역 평가 이력
 export const SafetyAreaHistoryComponent = styled(HistorysCommon)`
 

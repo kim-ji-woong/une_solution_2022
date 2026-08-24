@@ -13,6 +13,7 @@ export default class HistoryResource {
         고장_이력: "고장 이력",
         점검_이력: "점검 이력",
         차량과속_이력: "차량과속 이력",
+        반복과속_의심차량: "반복 과속 의심차량",
     }
 
     static AssessmentClass = {
