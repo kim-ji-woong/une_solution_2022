@@ -1438,12 +1438,7 @@ export const SpreadHistoryComponent = styled(HistorysCommon)`
 // 차량 과속 이력
 export const SpeedDetectionHistoryComponent = styled(SensorDetectAnalysisComponent)`
 
-`;
-
-
-// 차량 과속 분석 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
-export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
-
+    /* 헤더 (제목 + 배지 + 설명) */
     .hscHead {
         margin-bottom: 15px;
     }
@@ -1476,6 +1471,174 @@ export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
         font-size: 14px;
         color: #888;
     }
+
+    /* 통계 카드 4개 */
+    .hscCards {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .hscCards .card {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .hscCards .card .cardTitle {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .hscCards .card .cardValue {
+        margin-top: 10px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.1;
+    }
+
+    .hscCards .card .cardValue small {
+        font-size: 14px;
+        font-weight: 500;
+        color: #888;
+        margin-left: 4px;
+    }
+
+    .hscCards .card .cardValue.up {
+        color: #1f7244;
+    }
+
+    .hscCards .card .cardValue.down {
+        color: #d92d20;
+    }
+
+    .hscCards .card .cardSub {
+        margin-top: 8px;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    /* 차트 영역 (2단) */
+    .hscChartRow {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .hscChartBox {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .hscChartBox .chartHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .hscChartBox .chartHead h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscChartBox .chartHead .chartBadge {
+        font-size: 12px;
+        color: #b8860b;
+        background: #fff6e0;
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+
+    .hscChartBox .chartHead .chartHeadRight {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .hscChartBox .chartHead .chartLegend {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .hscChartBox .chartHead .chartLegend span {
+        display: inline-flex;
+        align-items: center;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .hscChartBox .chartHead .chartLegend span i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    .hscChartBox .chartBody {
+        height: 260px;
+        position: relative;
+    }
+
+    /* 최근 과속 이력 테이블 헤더 */
+    .hscTbHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0 10px;
+    }
+
+    .hscTbHead h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscTbHead .hscTbCnt {
+        font-size: 13px;
+        color: #888;
+    }
+
+    /* 측정/초과 속도 강조 */
+    .spdOver {
+        color: #d92d20;
+        font-weight: 600;
+    }
+
+    /* 위험도 배지 (관심 / 주의 / 경계 / 심각) */
+    .riskBadge {
+        display: inline-block;
+        min-width: 44px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .riskBadge.lv1 { background: #e6f4ea; color: #1f7244; }  /* 관심 */
+    .riskBadge.lv2 { background: #fff6e0; color: #b8860b; }  /* 주의 */
+    .riskBadge.lv3 { background: #ffecd9; color: #d97706; }  /* 경계 */
+    .riskBadge.lv4 { background: #fde7e7; color: #d92d20; }  /* 심각 */
+`;
+
+
+// 반복 과속 의심차량 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
+// (헤더 스타일은 SpeedDetectionHistoryComponent 에서 상속)
+export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
 
     /* 카메라 인식번호 입력 */
     .hscsNum input[type="text"] {
