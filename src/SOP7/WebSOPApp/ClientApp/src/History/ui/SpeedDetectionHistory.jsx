@@ -558,13 +558,24 @@ class SpeedDetectionHistory extends Component {
 		const beginDate = this.getMakeDateTime(this.state.beginDate);
 		const endDate = this.getMakeDateTime(this.state.endDate);
 		worksheet.addRow([i18n.t('history.formText.조회 기간') + ' : ' + beginDate + ' ~ ' + endDate]);
+
+		// 요약 (통계 카드)
+		const analysis = this.buildAnalysis();
+		const stats = this.state.stats;
+		const labels = this.getPeriodLabels(stats ? stats.dateType : this.state.dateType);
+		const maxTimeLabel = (analysis.maxTimeIdx >= 0) ? analysis.timeLabels[analysis.maxTimeIdx].replace('-', '~') + '시' : '-';
+
+		worksheet.addRow([labels.cur + ' 과속 횟수 : ' + (stats ? stats.curCount : analysis.total) + '건']);
+		worksheet.addRow([labels.prev + ' 과속 횟수 : ' + (stats ? stats.prevCount : '-') + '건']);
+		worksheet.addRow(['최다 발생시간 : ' + (analysis.maxTimeIdx >= 0 ? (maxTimeLabel + ' · ' + analysis.maxTimeCount + '건') : '-')]);
 		worksheet.addRow([]);
 
 		// column
 		let columnRow = worksheet.addRow(['No', i18n.t('history.formText.일시'), i18n.t('common.위치'), '측정속도', '제한속도', '초과속도', '위험도']);
 		columnRow.eachCell((cell) => {
-			cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '#A24B40' } };
-			cell.style = { alignment: { vertical: 'middle', horizontal: 'center' } };
+			cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA24B40' } };
+			cell.font = { color: { argb: 'FFFFFFFF' }, bold: true };
+			cell.alignment = { vertical: 'middle', horizontal: 'center' };
 			cell.border = {
 				top: { style: 'thin' }, left: { style: 'thin' },
 				bottom: { style: 'thin' }, right: { style: 'thin' }

@@ -1693,9 +1693,260 @@ export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
 `;
 
 
-// 반복 과속 의심차량 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
+// 반복 과속 의심차량 (원익 전용)
 export const RepeatSpeedSuspectComponent = styled(SpeedAnalysisComponent)`
 
+    /* 필터 컨트롤 반응형 배치 (화면 너비에 따라 한 줄 ↔ 여러 줄) */
+    .hscSch {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px 26px;
+        padding: 18px 20px;
+    }
+
+    .hscSch dl {
+        display: flex;
+        align-items: center;
+        width: auto;
+        margin: 0;
+        gap: 10px;
+    }
+
+    .hscSch dl dt {
+        display: block;
+        width: auto;
+        white-space: nowrap;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .hscSch dl dd {
+        display: block;
+        position: static;
+    }
+
+    .hscSch dl dd:after {
+        display: none;
+    }
+
+    .hscSch .hscsLoc {
+        display: flex;
+    }
+
+    .hscSch .hscsLoc li {
+        float: none;
+        width: 150px;
+        margin: 0;
+    }
+
+    .hscSch .hscsNum {
+        display: flex;
+    }
+
+    .hscSch .hscsNum li {
+        float: none;
+    }
+
+    .hscSch .hscsDate {
+        display: flex;
+        align-items: center;
+        float: none;
+    }
+
+    .hscSch .hscsDate li {
+        float: none;
+    }
+
+    .hscSch .hscsRank {
+        display: flex;
+        float: none;
+        gap: 8px;
+    }
+
+    .hscSch .hscsRank li {
+        float: none;
+        margin: 0;
+    }
+
+    /* 검색 버튼: 절대배치 대신 흐름 안에서 오른쪽 정렬 */
+    .hscsSbmt {
+        position: static;
+        margin-left: auto;
+        flex: 0 0 auto;
+        width: 100px;
+        height: 40px;
+        top: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    /* 통계 카드 3개 */
+    .rsCards {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .rsCards .card {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .rsCards .card .cardTitle {
+        font-size: 14px;
+        color: #888;
+        text-align: center;
+    }
+
+    .rsCards .card .cardBody {
+        margin-top: 14px;
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .rsCards .cardNum {
+        font-size: 30px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.1;
+    }
+
+    .rsCards .cardUnit {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .rsCards .riskMini {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .rsCards .riskMini .item {
+        text-align: center;
+        padding: 6px 16px;
+        border-radius: 8px;
+        min-width: 74px;
+    }
+
+    .rsCards .riskMini .item .lbl {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .rsCards .riskMini .item .cnt {
+        font-size: 20px;
+        font-weight: 700;
+        color: #222;
+        margin-top: 2px;
+    }
+
+    .rsCards .riskMini .item .cnt small {
+        font-size: 12px;
+        font-weight: 400;
+        color: #888;
+        margin-left: 2px;
+    }
+
+    .rsCards .riskMini .item.lv4 { background: #fde7e7; }
+    .rsCards .riskMini .item.lv4 .lbl { color: #d92d20; }
+    .rsCards .riskMini .item.lv3 { background: #ffecd9; }
+    .rsCards .riskMini .item.lv3 .lbl { color: #d97706; }
+    .rsCards .riskMini .item.lv2 { background: #fff6e0; }
+    .rsCards .riskMini .item.lv2 .lbl { color: #b8860b; }
+
+    .rsCards .topPlate {
+        font-size: 24px;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .rsCards .topMeta {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .rsCards .topMeta .maxSpd {
+        color: #d92d20;
+        font-weight: 600;
+    }
+
+    /* 안내 문구 */
+    .rsNotice {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 15px;
+        padding: 12px 16px;
+        background: #fff8e6;
+        border: solid 1px #ffe2a8;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #8a6d3b;
+    }
+
+    .rsNotice > span:first-child {
+        color: #e0a300;
+        font-weight: 700;
+    }
+
+    /* 테이블 헤더 메타 */
+    .hscTbHead .hscTbMeta {
+        font-size: 13px;
+        color: #888;
+    }
+
+    /* 카메라 인식번호 보조 */
+    .plateSub {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 2px;
+    }
+
+    /* 순위 배지 */
+    .rankNo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        background: #c4c8cf;
+    }
+
+    .rankNo.top {
+        background: #e5484d;
+    }
+
+    /* 평균 매칭 시간차 색상 */
+    .diffLow { color: #1f7244; font-weight: 600; }
+    .diffMid { color: #d97706; font-weight: 600; }
+    .diffHigh { color: #d92d20; font-weight: 600; }
+
+    /* 상세보기 버튼 */
+    .detailBtn {
+        display: inline-block;
+        min-width: 64px;
+        height: 28px;
+        line-height: 26px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #555;
+        cursor: pointer;
+    }
 `;
 
 
