@@ -57,6 +57,9 @@ class SpeedDetectionHistory extends Component {
 			loadingIndicator: false, // 새로고침중인지 표시
 
 			stats: null,      // 통계 카드용 (현재/이전 기간 과속 횟수 등)
+
+			// 위험도 초과속도 임계값 (appsettings.json Options.speedDetection)
+			levels: this.getSpeedLevels(),
 		}
 
 		this.refDatepicker01 = React.createRef();
@@ -255,13 +258,21 @@ class SpeedDetectionHistory extends Component {
 		this.refDatepicker02.current.setOpen(true);
 	}
 
+	// 위험도 초과속도 임계값 (appsettings.json Options.speedDetection.level1~3)
+	getSpeedLevels() {
+		const cfg = (ProjectResource.getUserInfo() || {}).options?.speedDetection || {};
+		return { level1: cfg.level1, level2: cfg.level2, level3: cfg.level3 };
+	}
+
 	// 측정속도 -> 위험도 (제한속도 초과량 기준 4단계)
+	//   초과량 ≤ level1 : 관심 / ≤ level2 : 주의 / ≤ level3 : 경계 / 그 이상 : 심각
 	getRisk(speed) {
 		const over = speed - SpeedDetectionHistory.SPEED_LIMIT;
+		const lv = this.state.levels;
 
-		if (over <= 5) return { label: '관심', lv: 1 };
-		if (over <= 10) return { label: '주의', lv: 2 };
-		if (over <= 20) return { label: '경계', lv: 3 };
+		if (over <= lv.level1) return { label: '관심', lv: 1 };
+		if (over <= lv.level2) return { label: '주의', lv: 2 };
+		if (over <= lv.level3) return { label: '경계', lv: 3 };
 		return { label: '심각', lv: 4 };
 	}
 
@@ -295,17 +306,26 @@ class SpeedDetectionHistory extends Component {
 
 	getSpeedOverIndex(speed) {
 		const over = speed - SpeedDetectionHistory.SPEED_LIMIT;
+		const lv = this.state.levels;
 		if (over <= 0) return -1;
-		if (over <= 5) return 0;    // 1~5km/h
-		if (over <= 10) return 1;   // 6~10km/h
-		if (over <= 20) return 2;   // 11~20km/h
-		return 3;                   // 21km/h 이상
+		if (over <= lv.level1) return 0;    // 1 ~ level1
+		if (over <= lv.level2) return 1;    // level1+1 ~ level2
+		if (over <= lv.level3) return 2;    // level2+1 ~ level3
+		return 3;                           // level3 초과
 	}
 
 	// 차트/요약 집계 (보안실 A = place1, S1동 B = place2)
 	buildAnalysis() {
 		const timeLabels = ['00-06', '06-09', '09-12', '12-15', '15-17', '17-18', '18-21', '21-24'];
-		const speedLabels = ['1~5km/h', '6~10km/h', '11~20km/h', '21km/h 이상'];
+
+		// 속도 초과 구간 라벨: level1/2/3 기준으로 동적 생성
+		const lv = this.state.levels;
+		const speedLabels = [
+			'1~' + lv.level1 + 'km/h',
+			(lv.level1 + 1) + '~' + lv.level2 + 'km/h',
+			(lv.level2 + 1) + '~' + lv.level3 + 'km/h',
+			(lv.level3 + 1) + 'km/h 이상',
+		];
 
 		const timeA = new Array(timeLabels.length).fill(0);
 		const timeB = new Array(timeLabels.length).fill(0);
@@ -643,7 +663,7 @@ class SpeedDetectionHistory extends Component {
 		const timeColorsA = '#3b82f6';
 		const timeColorsB = '#93c5fd';
 
-		// 속도 초과 구간 : 마지막(21km/h 이상 · 심각) 구간은 빨강 강조
+		// 속도 초과 구간 : 마지막(level3 초과 · 심각) 구간은 빨강 강조
 		const speedColorsA = ['#3b82f6', '#3b82f6', '#3b82f6', '#ef4444'];
 		const speedColorsB = ['#93c5fd', '#93c5fd', '#93c5fd', '#fca5a5'];
 

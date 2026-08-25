@@ -253,7 +253,7 @@ class RepeatSpeedSuspect extends Component {
 		const endDate = this.getMakeDateTime(this.state.endDate);
 		worksheet.addRow([i18n.t('history.formText.조회 기간') + ' : ' + beginDate + ' ~ ' + endDate]);
 
-		// 요약
+		// 요약 (통계 카드 값)
 		const all = this.state.suspects || [];
 		let cntAlert = 0, cntWarning = 0, cntCaution = 0;
 		for (let i = 0; i < all.length; i++) {
@@ -262,7 +262,15 @@ class RepeatSpeedSuspect extends Component {
 			else if (lv === 3) cntWarning++;
 			else if (lv === 2) cntCaution++;
 		}
-		worksheet.addRow(['반복 과속 의심번호 : ' + all.length + '개  (집중관리 ' + cntAlert + ' / 경고 ' + cntWarning + ' / 주의 ' + cntCaution + ')']);
+		const topSuspect = all.length > 0 ? all[0] : null;
+
+		worksheet.addRow([]);
+		const statTitleRow = worksheet.addRow(['[ 통계 ]']);
+		statTitleRow.getCell(1).font = { bold: true };
+
+		worksheet.addRow(['반복 과속 의심번호 : ' + all.length + '개']);
+		worksheet.addRow(['위험도별 의심차량 : 집중관리 ' + cntAlert + '대 / 경고 ' + cntWarning + '대 / 주의 ' + cntCaution + '대']);
+		worksheet.addRow(['최다 반복 인식번호 : ' + (topSuspect ? (topSuspect.carNo + ' · ' + topSuspect.count + '건 · 최고속도 ' + topSuspect.maxSpeed + 'km/h') : '-')]);
 		worksheet.addRow([]);
 
 		// 헤더
