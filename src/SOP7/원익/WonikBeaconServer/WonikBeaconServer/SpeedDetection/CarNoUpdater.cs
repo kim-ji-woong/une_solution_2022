@@ -135,9 +135,11 @@ namespace WonikBeaconServer.SpeedDetection
             // 소급 구간을 벗어난 행의 재시도 기록은 더 쓸 일이 없다.
             PurgeRetry(rows.Select(r => r.ID));
 
-            // 비어 있는 행만 갱신 대상. 재시도 대기 중인 것은 건너뛴다.
+            // CarNo 나 DiffSeconds 중 하나라도 비어 있으면 갱신 대상. 재시도 대기 중인 것은 건너뛴다.
+            //   CarNo 만 보면, 예전 버전이 CarNo 만 채워둔 행은 영영 DiffSeconds 가 비어 있게 된다.
+            //   둘 다 확인해야 그런 행도 뒤늦게 메워진다.
             List<VehicleSpeedDetection> targets = rows
-                .Where(r => string.IsNullOrEmpty(r.CarNo) && IsRetryDue(r.ID, dtNow))
+                .Where(r => (string.IsNullOrEmpty(r.CarNo) || r.DiffSeconds == null) && IsRetryDue(r.ID, dtNow))
                 .ToList();
 
             if (targets.Count == 0)

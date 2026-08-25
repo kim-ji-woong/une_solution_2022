@@ -17,7 +17,8 @@ import ProjectResource from '../../Root/resource/id';
 import { i18n, withTranslation } from '../../language/i18n';
 
 // 차량 과속 이력 및 분석 (원익 전용)
-//  - 제한속도(SPEED_LIMIT)는 30km/h 로 고정.
+//  - 제한속도(SPEED_LIMIT)는 BeaconServer 의 appsettings.json(SpeedDetection:SpeedLimit)에서 받아온다.
+//    아래 값은 API 호출 실패 시에만 쓰이는 기본값이다. 기준을 바꿀 때는 BeaconServer 설정을 고칠 것.
 //  - 위험도 4단계: 초과량(측정속도-제한속도) 기준
 //      ~5km/h  : 관심(lv1)
 //      ~10km/h : 주의(lv2)
@@ -27,7 +28,7 @@ class SpeedDetectionHistory extends Component {
 	static PLACE_1 = 19000;   // 보안실 A
 	static PLACE_2 = 19001;   // S1동 B
 
-	static SPEED_LIMIT = 30;  // 제한속도 고정값
+	static SPEED_LIMIT = 25;  // 기본값. init() 에서 BeaconServer 값으로 덮어쓴다.
 
 	static PLACE_1_NAME = '보안실 A';
 	static PLACE_2_NAME = 'S1동 B';
@@ -69,6 +70,13 @@ class SpeedDetectionHistory extends Component {
 	}
 
 	init = async () => {
+		// 과속 기준 속도 불러오기.
+		// 원본은 BeaconServer 의 appsettings.json (SpeedDetection:SpeedLimit) 한 곳뿐이다.
+		// 못 받아오면 아래 기본값(SPEED_LIMIT)을 그대로 쓴다.
+		const speedLimit = await HistoryController.requestWonikSpeedLimit();
+		if (speedLimit !== null && speedLimit > 0)
+			SpeedDetectionHistory.SPEED_LIMIT = speedLimit;
+
 		// 위치 불러오기
 		let result = await HistoryController.requestWonikSpeedDetectionSensors();
 

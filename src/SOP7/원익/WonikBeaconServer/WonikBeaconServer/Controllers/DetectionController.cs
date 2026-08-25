@@ -54,6 +54,23 @@ namespace WonikBeaconServer.Controllers
         }
 
         /// <summary>
+        /// 과속 기준 속도 불러오기
+        /// </summary>
+        /// <returns>
+        /// </returns>
+        /// <remarks>
+        /// "SpeedLimit": 25      // 이 값을 초과하면 과속 (25 이면 26km/h 부터)
+        /// </remarks>
+        [HttpPost]
+        [Route("/Detection/RequestSpeedLimit")]
+        [ProducesResponseType(typeof(ResponseSpeedLimit), 200)]
+        public IActionResult RequestSpeedLimit()
+        {
+            ResponseSpeedLimit response = m_processManager.GetSpeedLimit();
+            return Ok(response);
+        }
+
+        /// <summary>
         /// 차량과속 센서 리스트 불러오기
         /// </summary>
         /// <returns>

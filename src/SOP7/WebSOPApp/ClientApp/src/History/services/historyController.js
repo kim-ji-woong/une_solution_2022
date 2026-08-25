@@ -255,6 +255,31 @@ export default class HistoryController {
         }
     }
 
+    // 과속 기준 속도(km/h). BeaconServer 의 appsettings.json(SpeedDetection:SpeedLimit)에서 온다.
+    // 감지 로직과 화면이 같은 기준을 쓰도록 값을 프론트에 두지 않고 서버에서 받아 쓴다.
+    static async requestWonikSpeedLimit() {
+        try {
+            const res = await fetch('http://10.6.13.71:2420/Detection/RequestSpeedLimit', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (res.ok) {
+                const result = await res.json();
+
+                if (result.success === true)
+                    return result.speedLimit;
+            }
+        }
+        catch (e) {
+            //console.log(e);
+        }
+
+        return null;
+    }
+
     static async requestWonikSpeedDetectionSensors() {
         try {
             const res = await fetch('http://10.6.13.71:2420/Detection/RequestSpeedDetectionSensors', {

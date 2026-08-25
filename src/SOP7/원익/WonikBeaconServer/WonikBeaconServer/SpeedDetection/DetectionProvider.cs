@@ -138,9 +138,9 @@ namespace WonikBeaconServer.SpeedDetection
 
                     m_lastDistance = distance;
 
-                    // 차량 속도 25 이하는 제외 
+                    // 기준 속도 "초과"만 기록 (appsettings.json 의 SpeedDetection:SpeedLimit, 기본 25 → 26km/h 부터)
                     // 측정 거리가 70 M 이상도 제외
-                    if (speed < 26 || distance > 70)
+                    if (speed <= Startup.ConfigManager.SpeedDetection.SpeedLimit || distance > 70)
                         return;
 
                     DateTime dtNow = DateTime.Now;

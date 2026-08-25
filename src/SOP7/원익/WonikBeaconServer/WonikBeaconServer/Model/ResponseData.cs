@@ -38,6 +38,26 @@ namespace WonikBeaconServer.Model
         }
     }
 
+    public class ResponseSpeedLimit : MessageResult
+    {
+        /// <summary>
+        /// 과속 기준 속도(km/h). 이 값을 "초과"하는 경우만 과속으로 본다.
+        /// (25 이면 26km/h 부터 과속)
+        /// </summary>
+        public int SpeedLimit { get; set; }
+
+        public ResponseSpeedLimit()
+        {
+
+        }
+
+        public ResponseSpeedLimit(bool success, string strMessage)
+        {
+            Success = success;
+            Message = strMessage;
+        }
+    }
+
     public class ResponseSpeedDetectionSensors : MessageResult
     {
         public List<SDMS.Model.Sensor.ETC> Sensors { get; set; }

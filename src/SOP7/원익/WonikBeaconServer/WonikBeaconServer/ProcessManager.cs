@@ -477,6 +477,19 @@ namespace WonikBeaconServer
             return response;
         }
 
+        /// <summary>
+        /// 과속 기준 속도를 돌려준다. appsettings.json 의 SpeedDetection:SpeedLimit 값이다.
+        /// 감지 로직과 화면이 같은 기준을 쓰도록 이 한 곳에서 배포한다.
+        /// </summary>
+        public ResponseSpeedLimit GetSpeedLimit()
+        {
+            ResponseSpeedLimit response = new ResponseSpeedLimit();
+
+            response.SpeedLimit = Startup.ConfigManager.SpeedDetection.SpeedLimit;
+            response.Success = true;
+            return response;
+        }
+
         public ResponseSpeedDetectionSensors GetSpeedDetectionSensors()
         {
             string strErrorMessage;
