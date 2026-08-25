@@ -13,6 +13,7 @@ import * as ExcelJS from 'exceljs'; /*excel 만들기*/
 import { saveAs } from 'file-saver'; /*excel 다운로드*/
 
 import HistoryController from '../services/historyController';
+import RepeatSpeedDetail from './RepeatSpeedDetail';
 import ProjectResource from '../../Root/resource/id';
 import { i18n, withTranslation } from '../../language/i18n';
 
@@ -46,6 +47,8 @@ class RepeatSpeedSuspect extends Component {
 			rank: 5,                      // 표시 순위 (Top N = 페이지당 행 수)
 
 			suspects: null,               // 집계 결과 (차량번호별)
+			detections: [],               // 과속(제한초과 & 차량번호 有) 원본 감지 목록 (상세 팝업용)
+			detailCarNo: null,            // 상세 팝업 대상 차량번호 (null 이면 닫힘)
 
 			pageIndex: 1,
 
@@ -72,6 +75,10 @@ class RepeatSpeedSuspect extends Component {
 			alert: (cfg && cfg.alert != null) ? cfg.alert : 3,
 			period: (cfg && cfg.period != null) ? cfg.period : 1,
 			periodType: (cfg && cfg.periodType) ? cfg.periodType : 'year',
+			// 개별 과속 위험도(상세 팝업)용 초과속도 임계값
+			level1: cfg ? cfg.level1 : undefined,
+			level2: cfg ? cfg.level2 : undefined,
+			level3: cfg ? cfg.level3 : undefined,
 		};
 	}
 
@@ -126,12 +133,15 @@ class RepeatSpeedSuspect extends Component {
 
 		// 차량번호(CarNo)별 집계 - 과속(제한초과) & 차량번호가 있는 건만
 		const groups = {};
+		const detections = [];   // 상세 팝업용 원본 감지 목록
 		for (let i = 0; i < datas.length; i++) {
 			const d = datas[i];
 
 			if (d.speed <= RepeatSpeedSuspect.SPEED_LIMIT) continue;   // 과속만
 			const plate = d.carNo;
 			if (!plate) continue;                                      // 차량번호 없으면 제외
+
+			detections.push({ carNo: plate, detectionTime: d.detectionTime, speed: d.speed, sensorName: d.sensorName, diffSeconds: d.diffSeconds });
 
 			let g = groups[plate];
 			if (!g) {
@@ -182,7 +192,7 @@ class RepeatSpeedSuspect extends Component {
 
 		$("body").css("cursor", "default");
 
-		this.setState({ suspects, pageIndex: 1, loadingIndicator: false });
+		this.setState({ suspects, detections, detailCarNo: null, pageIndex: 1, loadingIndicator: false });
 	}
 
 	getMakeDateTime(dateTime) {
@@ -325,7 +335,13 @@ class RepeatSpeedSuspect extends Component {
 	}
 
 	// 상세보기 - 동작은 추후 구현 예정
+	// 상세보기 팝업 열기 / 닫기
 	onClickDetail = (carNo) => {
+		this.setState({ detailCarNo: carNo });
+	}
+
+	closeDetail = () => {
+		this.setState({ detailCarNo: null });
 	}
 
 	setPageIndex(index, maxPageIndex) {
@@ -639,7 +655,6 @@ class RepeatSpeedSuspect extends Component {
 															<td><span className={'riskBadge lv' + s.risk.lv}>{s.risk.label}</span></td>
 															<td>
 																<div>{s.carNo}</div>
-																<div className={'plateSub'}>단독 해당 {s.count}건</div>
 															</td>
 															<td>{s.count}건</td>
 															<td>{s.avgSpeed}km/h</td>
@@ -681,6 +696,27 @@ class RepeatSpeedSuspect extends Component {
 						</div>
 					</div>
 				</div>
+
+				{
+					this.state.detailCarNo &&
+					(() => {
+						const carNo = this.state.detailCarNo;
+						const dets = (this.state.detections || []).filter(d => d.carNo === carNo);
+						const sus = (this.state.suspects || []).find(s => s.carNo === carNo);
+						return (
+							<RepeatSpeedDetail
+								carNo={carNo}
+								risk={sus ? sus.risk : null}
+								detections={dets}
+								speedLimit={RepeatSpeedSuspect.SPEED_LIMIT}
+								levels={{ level1: this.state.cfg.level1, level2: this.state.cfg.level2, level3: this.state.cfg.level3 }}
+								beginDate={this.getMakeDateTime(this.state.beginDate)}
+								endDate={this.getMakeDateTime(this.state.endDate)}
+								onClose={this.closeDetail}
+							/>
+						);
+					})()
+				}
 			</>
 		);
 	}

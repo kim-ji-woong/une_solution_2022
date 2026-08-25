@@ -2385,3 +2385,137 @@ textarea.hsmTxt {padding: 10px !important;}
 
 
 `;
+
+
+// 반복 과속 상세 팝업
+export const RepeatSpeedDetailComponent = styled.div`
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    * { box-sizing: border-box; }
+
+    .rsdBox {
+        width: 940px;
+        max-width: 94vw;
+        max-height: 92vh;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 24px 28px;
+    }
+
+    .rsdHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .rsdHead h2 { font-size: 20px; font-weight: 700; color: #222; margin: 0; }
+
+    .rsdClose {
+        width: 30px; height: 30px;
+        border: none; background: none;
+        font-size: 22px; color: #888; cursor: pointer;
+        line-height: 1;
+    }
+
+    .rsdTop {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .rsdTop .plateLabel { font-size: 13px; color: #888; }
+    .rsdTop .plateBox { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+    .rsdTop .plate { font-size: 30px; font-weight: 700; color: #222; }
+    .rsdTop .period { font-size: 13px; color: #888; }
+    .rsdTop .period b { color: #444; font-weight: 600; margin-left: 6px; }
+
+    .rsdBadge {
+        display: inline-block;
+        min-width: 44px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .rsdBadge.lv1 { background: #e6f4ea; color: #1f7244; }
+    .rsdBadge.lv2 { background: #fff6e0; color: #b8860b; }
+    .rsdBadge.lv3 { background: #ffecd9; color: #d97706; }
+    .rsdBadge.lv4 { background: #fde7e7; color: #d92d20; }
+
+    .rsdNotice {
+        display: flex; align-items: center; gap: 8px;
+        margin-top: 14px; padding: 10px 14px;
+        background: #fff8e6; border: solid 1px #ffe2a8; border-radius: 8px;
+        font-size: 13px; color: #8a6d3b;
+    }
+    .rsdNotice > span:first-child { color: #e0a300; font-weight: 700; }
+
+    .rsdCards {
+        display: flex; gap: 12px; margin-top: 16px;
+    }
+    .rsdCards .card {
+        flex: 1; min-width: 0;
+        background: #f8f9fb; border: solid 1px #eee; border-radius: 8px;
+        padding: 14px; text-align: center;
+    }
+    .rsdCards .card .t { font-size: 12px; color: #888; }
+    .rsdCards .card .v { font-size: 20px; font-weight: 700; color: #222; margin-top: 6px; }
+    .rsdCards .card .v.red { color: #d92d20; }
+
+    .rsdCharts { display: flex; gap: 15px; margin-top: 16px; }
+    .rsdChartBox {
+        flex: 1; min-width: 0;
+        border: solid 1px #eee; border-radius: 8px; padding: 16px;
+    }
+    .rsdChartBox h3 { font-size: 15px; font-weight: 700; color: #222; margin: 0 0 14px; }
+    .rsdChartBox .chartHeadRow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .rsdChartBox .chartHeadRow h3 { margin: 0; }
+    .rsdChartBox .badge { font-size: 12px; color: #b8860b; background: #fff6e0; padding: 4px 10px; border-radius: 12px; }
+
+    /* 발생 위치 분포 (가로 바) */
+    .rsdLoc .row { margin-bottom: 14px; }
+    .rsdLoc .row:last-child { margin-bottom: 0; }
+    .rsdLoc .row .name { font-size: 13px; color: #444; }
+    .rsdLoc .row .name b { font-weight: 400; color: #999; margin-left: 6px; }
+    .rsdLoc .row .barLine { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .rsdLoc .row .track { flex: 1; height: 14px; background: #eef1f5; border-radius: 7px; overflow: hidden; }
+    .rsdLoc .row .fill { height: 100%; background: #1f5fd0; border-radius: 7px; }
+    .rsdLoc .row:nth-child(2) .fill { background: #93c5fd; }
+    .rsdLoc .row .pct { font-size: 13px; color: #444; width: 42px; text-align: right; }
+
+    /* 시간대별 발생 패턴 (세로 바) */
+    .rsdTime .bars { display: flex; align-items: flex-end; gap: 10px; height: 150px; padding-top: 20px; }
+    .rsdTime .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+    .rsdTime .col .cnt { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .rsdTime .col .bar { width: 60%; min-height: 2px; background: #3b82f6; border-radius: 3px 3px 0 0; }
+    .rsdTime .col.max .bar { background: #f59e0b; }
+    .rsdTime .labels { display: flex; gap: 10px; margin-top: 8px; }
+    .rsdTime .labels span { flex: 1; text-align: center; font-size: 11px; color: #888; }
+
+    /* 최근 과속 발생 표 */
+    .rsdTableWrap { margin-top: 20px; }
+    .rsdTableWrap .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .rsdTableWrap .head h3 { font-size: 15px; font-weight: 700; color: #222; margin: 0; }
+    .rsdTableWrap .head .meta { font-size: 12px; color: #888; }
+    .rsdTable { width: 100%; border-collapse: collapse; border-top: solid 2px #333; }
+    .rsdTable th, .rsdTable td { padding: 10px 8px; text-align: center; font-size: 13px; border-bottom: solid 1px #eee; }
+    .rsdTable th { background: #f8f9fb; color: #555; font-weight: 600; }
+    .rsdTable td.red { color: #d92d20; font-weight: 600; }
+
+    .rsdFoot { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+    .rsdFoot a {
+        display: inline-block; height: 40px; line-height: 38px; padding: 0 20px;
+        border-radius: 6px; font-size: 14px; cursor: pointer; text-align: center;
+    }
+    .rsdFoot a.close { border: solid 1px #cbd5e1; color: #475569; background: #fff; }
+    .rsdFoot a.excel { border: solid 1px #1f7244; color: #1f7244; background: #fff; font-weight: 600; }
+`;
