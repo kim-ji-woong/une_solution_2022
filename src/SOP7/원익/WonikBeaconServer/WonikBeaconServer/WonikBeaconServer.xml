@@ -25,6 +25,9 @@
             실패하면 false 를 돌려준다.
             </summary>
         </member>
+        <member name="P:WonikBeaconServer.Config.SpeedDetection.SpeedLimit">
+            <summary>과속 기준 속도(km/h). 기록/판정은 이 값 초과일 때만 이뤄진다.</summary>
+        </member>
         <member name="M:WonikBeaconServer.Controllers.BeaconController.RequestEquipZoneMembers(WonikBeaconServer.Model.RequestEquipZoneMembers)">
             <summary>
             구역 입실자 리스트 불러오기
@@ -71,6 +74,16 @@
             <returns>
             </returns>
             <remarks>    
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedLimit">
+            <summary>
+            과속 기준 속도 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>
+            "SpeedLimit": 25      // 이 값을 초과하면 과속 (25 이면 26km/h 부터)
             </remarks>
         </member>
         <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedDetectionSensors">
@@ -135,6 +148,18 @@
         <member name="P:WonikBeaconServer.SpeedDetectionData.SensorName">
             <summary>
             센서 이름 >> 위치 이름
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.Model.ResponseSpeedLimit.SpeedLimit">
+            <summary>
+            과속 기준 속도(km/h). 이 값을 "초과"하는 경우만 과속으로 본다.
+            (25 이면 26km/h 부터 과속)
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.ProcessManager.GetSpeedLimit">
+            <summary>
+            과속 기준 속도를 돌려준다. appsettings.json 의 SpeedDetection:SpeedLimit 값이다.
+            감지 로직과 화면이 같은 기준을 쓰도록 이 한 곳에서 배포한다.
             </summary>
         </member>
         <member name="T:WonikBeaconServer.SpeedDetection.CarNoUpdater">

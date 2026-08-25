@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,9 @@ namespace WonikBeaconServer.Config
         private int? m_nMatchTolerance = 3;      // 보정 후 허용 잔차 (초)
         private int? m_nMinSamplesForScan = 5;   // 자동추정에 필요한 최소 매칭 수
         private bool m_bEnabled = true;
+        // 같은 차량번호 + 같은 감지시각인 행이 이미 있으면 그 행을 지울지 여부.
+        // 감지 로직이 한 차량을 두 번 기록하는 경우를 정리한다. 끄면 갱신도 건너뛴다.
+        private bool m_bDeleteDuplicate = true;
 
         public string ApiSearch { get { return m_strApiSearch; } set { m_strApiSearch = value; } }
         public string ApiResult { get { return m_strApiResult; } set { m_strApiResult = value; } }
@@ -50,6 +53,7 @@ namespace WonikBeaconServer.Config
         public int MatchTolerance { get { return m_nMatchTolerance ?? 3; } }
         public int MinSamplesForScan { get { return m_nMinSamplesForScan ?? 5; } }
         public bool Enabled { get { return m_bEnabled; } }
+        public bool DeleteDuplicate { get { return m_bDeleteDuplicate; } }
 
         /// <summary>api_search / api_result / api_token 이 모두 채워져 있어야 동작한다.</summary>
         public bool IsValid
@@ -115,14 +119,8 @@ namespace WonikBeaconServer.Config
             ReadInt(config, "LPR:MatchTolerance", ref m_nMatchTolerance);
             ReadInt(config, "LPR:MinSamplesForScan", ref m_nMinSamplesForScan);
 
-            string strEnabled = null;
-            ReadString(config, "LPR:Enabled", ref strEnabled);
-            if (strEnabled != null)
-            {
-                bool bTemp;
-                if (bool.TryParse(strEnabled, out bTemp))
-                    m_bEnabled = bTemp;
-            }
+            ReadBool(config, "LPR:Enabled", ref m_bEnabled);
+            ReadBool(config, "LPR:DeleteDuplicate", ref m_bDeleteDuplicate);
         }
     }
 }
