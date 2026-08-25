@@ -64,6 +64,8 @@ bin/
 obj/
 .svn/
 node_modules/
+PostBoy/
+RtspChecker/
 
 # === 대형 바이너리 자산 제외 (GitHub 파일당 100MB 한도) ===
 # 유니티/일렉트론 빌드 데이터

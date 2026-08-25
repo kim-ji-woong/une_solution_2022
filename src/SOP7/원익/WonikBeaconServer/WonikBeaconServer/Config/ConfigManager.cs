@@ -12,6 +12,7 @@ namespace WonikBeaconServer.Config
         private Log m_log = new Log();
         private Beacon m_beacon = new Beacon();
         private SpeedDetection m_speedDetection = new SpeedDetection();
+        private Lpr m_lpr = new Lpr();
 
         public Site Site
         {
@@ -33,12 +34,18 @@ namespace WonikBeaconServer.Config
             get { return m_speedDetection; }
         }
 
+        public Lpr Lpr
+        {
+            get { return m_lpr; }
+        }
+
         public void ReadConfig(IConfiguration config)
         {
             m_site.ReadConfig(config);
             m_log.ReadConfig(config);
             m_beacon.ReadConfig(config);
             m_speedDetection.ReadConfig(config);
+            m_lpr.ReadConfig(config);
         }
     }
 }

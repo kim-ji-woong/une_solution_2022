@@ -201,6 +201,8 @@ namespace WonikBeaconServer
             this.DetectionTime = vehicleSpeedDetection.DetectionTime;
             this.SensorID = vehicleSpeedDetection.SensorID;
             this.Speed = vehicleSpeedDetection.Speed;
+            this.CarNo = vehicleSpeedDetection.CarNo;
+            this.DiffSeconds = vehicleSpeedDetection.DiffSeconds;
         }
     }
 }

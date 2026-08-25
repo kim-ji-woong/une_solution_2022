@@ -33,6 +33,7 @@ namespace WonikBeaconServer
         }
 
         DetectionManager m_detectionManager = null;
+        CarNoUpdater m_carNoUpdater = null;
 
         Thread m_watchWorker = null;
         Thread m_watchAlarm = null;
@@ -67,6 +68,10 @@ namespace WonikBeaconServer
 
             m_detectionManager = new DetectionManager(dataManager, m_wonikDataManager);
             m_detectionManager.Start();
+
+            // 과속 기록의 CarNo 를 LPR 이벤트로 사후에 채운다. 설정(LPR)이 비어 있으면 스스로 시작하지 않는다.
+            m_carNoUpdater = new CarNoUpdater(m_wonikDataManager);
+            m_carNoUpdater.Start();
         }
 
         private void InitConfig()

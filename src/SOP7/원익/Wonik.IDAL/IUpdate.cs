@@ -9,6 +9,7 @@ namespace Wonik.IDAL
     public interface IUpdate
     {
         bool UpdateVehicleSpeedDetection(VehicleSpeedDetection obj, out string strErrorMessage);
-        bool UpdateVehicleSpeedDetection(Dictionary<VehicleSpeedDetection.Fields, object> dicSets, Dictionary<VehicleSpeedDetection.Fields, object> dicConditions, string strAdditionalConditions, out string strErrorMessage);        
+        bool UpdateVehicleSpeedDetection(Dictionary<VehicleSpeedDetection.Fields, object> dicSets, Dictionary<VehicleSpeedDetection.Fields, object> dicConditions, string strAdditionalConditions, out string strErrorMessage);
+        bool UpdateVehicleSpeedDetectionCarNo(int nID, string strCarNo, double? dDiffSeconds, out string strErrorMessage);
     }
 }

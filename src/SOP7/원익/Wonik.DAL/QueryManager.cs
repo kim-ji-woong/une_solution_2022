@@ -248,6 +248,30 @@ namespace Wonik.DAL
             return GetFieldNames<EnumType>(out nFieldCount);
         }
 
+        /// <summary>
+        /// 사전에 실제로 들어 있는 필드만 골라 컬럼 목록을 만든다.
+        /// GetFieldValues 와 동일한 순서(Enum.GetValues)로 훑으므로 컬럼과 값이 1:1 로 맞는다.
+        /// IDENTITY 컬럼처럼 Insert 문에서 빼야 하는 컬럼이 있을 때 GetFieldNames() 대신 쓴다.
+        /// </summary>
+        protected string GetFieldNames<EnumType>(Dictionary<EnumType, object> dicFieldDatas)
+        {
+            string strFields = "";
+            object data;
+
+            foreach (EnumType type in Enum.GetValues(typeof(EnumType)))
+            {
+                if (dicFieldDatas.TryGetValue(type, out data) == false)
+                    continue;
+
+                if (strFields.Length == 0)
+                    strFields = type.ToString();
+                else
+                    strFields += ", " + type.ToString();
+            }
+
+            return strFields;
+        }
+
         protected string GetFieldValues<EnumType>(Dictionary<EnumType, object> dicFieldDatas)
         {
             string strValues = "";
