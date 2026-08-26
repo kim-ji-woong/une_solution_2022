@@ -25,7 +25,7 @@ import { i18n, withTranslation } from '../../language/i18n';
 //  - 평균 매칭 시간차 = SdmsVehicleSpeedDetection.DiffSeconds 의 평균(절대값)
 //  - Excel 다운로드 / 상세보기 버튼은 UI만. 동작은 추후 구현 예정.
 class RepeatSpeedSuspect extends Component {
-	static SPEED_LIMIT = 30;  // 제한속도(고정) - 이 값을 초과하면 과속
+	static FALLBACK_SPEED_LIMIT = 25;  // BeaconServer 조회 실패 시 임시 기준값
 	static PAGE_SIZE = 10;    // 한 페이지에 표시할 최대 행 수(고정)
 
 	constructor(props) {
@@ -35,6 +35,8 @@ class RepeatSpeedSuspect extends Component {
 
 		this.state = {
 			cfg: cfg,
+
+			speedLimit: RepeatSpeedSuspect.FALLBACK_SPEED_LIMIT,   // BeaconServer 에서 받아옴
 
 			sensors: [],
 			selectedSensor: -1,
@@ -91,6 +93,12 @@ class RepeatSpeedSuspect extends Component {
 	}
 
 	init = async () => {
+		// 제한속도(과속 기준)를 BeaconServer 에서 받아온다. (실패 시 폴백값 유지)
+		let speedLimit = await HistoryController.requestWonikSpeedLimit();
+		if (speedLimit !== null && speedLimit !== undefined && speedLimit > 0) {
+			this.state.speedLimit = speedLimit;
+		}
+
 		let result = await HistoryController.requestWonikSpeedDetectionSensors();
 
 		let sensors = [];
@@ -137,7 +145,7 @@ class RepeatSpeedSuspect extends Component {
 		for (let i = 0; i < datas.length; i++) {
 			const d = datas[i];
 
-			if (d.speed <= RepeatSpeedSuspect.SPEED_LIMIT) continue;   // 과속만
+			if (d.speed <= this.state.speedLimit) continue;   // 과속만
 			const plate = d.carNo;
 			if (!plate) continue;                                      // 차량번호 없으면 제외
 
@@ -708,7 +716,7 @@ class RepeatSpeedSuspect extends Component {
 								carNo={carNo}
 								risk={sus ? sus.risk : null}
 								detections={dets}
-								speedLimit={RepeatSpeedSuspect.SPEED_LIMIT}
+								speedLimit={this.state.speedLimit}
 								levels={{ level1: this.state.cfg.level1, level2: this.state.cfg.level2, level3: this.state.cfg.level3 }}
 								beginDate={this.getMakeDateTime(this.state.beginDate)}
 								endDate={this.getMakeDateTime(this.state.endDate)}

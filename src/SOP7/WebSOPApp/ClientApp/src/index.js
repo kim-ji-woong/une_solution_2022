@@ -3,7 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './Root/app';
-import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
+import { initVersionChecker } from './versionChecker';
 //import './Root/css/index.css';
 
 //import './Common/css/default.css';
@@ -36,5 +37,9 @@ ReactDOM.render(
     </BrowserRouter>,
     rootElement);
 
-registerServiceWorker();
+// 서비스워커 캐시로 새 배포가 늦게 반영되던 문제를 없애기 위해 등록을 해제한다.
+unregister();
+
+// 새 빌드가 배포되면(=asset-manifest 의 main.js 해시 변경) 자동으로 새로고침한다. (1분 주기)
+initVersionChecker(60000);
 
