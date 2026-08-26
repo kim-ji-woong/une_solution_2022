@@ -88,8 +88,14 @@ namespace WonikErpNSheServer
 
 		private void RequestThread()
 		{
+			// 폴링 시작 전, 기준 시각(m_dtLast)을 로컬 시각이 아니라
+			// alarm_list 의 실제 최신 dtm 으로 맞춘다.
+			// 이렇게 하면 비교 대상(dtm)과 기준(m_dtLast)이 같은 시각 체계가 되어
+			// HMI/로컬 시계 차이로 기동 직후 알람이 누락되는 문제가 사라진다.
+			this.InitLastTime();
+
 			while (this.m_runThread)
-			{			
+			{
                 try
                 {
 					string strErrorMessage = default(string);
@@ -113,6 +119,37 @@ namespace WonikErpNSheServer
 				{
 					this.Logger.Write("[ERROR] RequestThread() Exception : " + ex.Message);
 				}
+			}
+		}
+
+		// 기준 시각(m_dtLast)을 alarm_list 의 최신 dtm 으로 초기화한다.
+		// 조회 실패 또는 빈 테이블이면 기존값(DateTime.Now)을 유지한다.
+		// (그 경우에도 다음 폴링에서 첫 이벤트를 읽으면 소스 시각으로 자연 보정된다.)
+		private void InitLastTime()
+		{
+			try
+			{
+				ArrayList arrResult = this.m_envDBManager.GetResultData("Select MAX(dtm) From alarm_list", null);
+				if (arrResult == null || arrResult.Count == 0)
+				{
+					this.Logger.Write("InitLastTime: alarm_list 최신 dtm 조회 결과 없음, 기준 시각을 로컬 시각으로 유지");
+					return;
+				}
+
+				VariousData<DateTime> dtm = WebDBManager.GetDateTimeField(arrResult[0]);
+				if (dtm == null)
+				{
+					// alarm_list 가 비어있어 MAX(dtm) 이 NULL 인 경우
+					this.Logger.Write("InitLastTime: alarm_list 가 비어있음, 기준 시각을 로컬 시각으로 유지");
+					return;
+				}
+
+				this.m_dtLast = dtm.Data;
+				this.Logger.Write("InitLastTime: 기준 시각을 alarm_list 최신 dtm 으로 설정 : " + this.m_dtLast.ToString("yyyy-MM-dd HH:mm:ss"));
+			}
+			catch (Exception ex)
+			{
+				this.Logger.Write("[ERROR] InitLastTime() Exception : " + ex.Message);
 			}
 		}
 
