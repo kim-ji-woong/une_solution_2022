@@ -13,7 +13,7 @@ import ProjectResource from '../../../Root/resource/id';
 //  - 위험도(개별 과속): 초과속도 기준 주의/경고/집중관리 (appsettings Options.speedDetection.level1~3)
 //  - 상세이력: 반복 과속 의심차량 페이지의 상세보기 팝업(RepeatSpeedDetail) 재사용
 class SpeedingInfo extends Component {
-	static FALLBACK_SPEED_LIMIT = 30;   // BeaconServer 조회 실패 시 임시 기준값
+	static FALLBACK_SPEED_LIMIT = 25;   // BeaconServer 조회 실패 시 임시 기준값
 
 	constructor(props) {
 		super(props);

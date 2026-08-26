@@ -855,45 +855,9 @@ class SDMS extends Component {
     
     setSpeedDetectionDatas(storeValue) {
         if (storeValue.actionType === 'SPEED_DETECTION' && storeValue.speedDetections) {
-            const speedDetections = storeValue.speedDetections;
-            let visiblePopups = this.state.visiblePopups;
-
-            // 새로 '차량번호가 확인된' 과속이 10분 내이면 알림창을 띄운다.
-            //   - 감지 직후엔 번호가 없어 표시할 게 없고, 번호가 채워지는 시점이 실제 확인 시점이다.
-            //   - 이미 있던 번호나, 번호와 무관한 내용 변화(중복 삭제 등)로는 열지 않는다.
-            if (speedDetections.length > 0) {
-                const prevKeys = new Set(
-                    (this.state.speedDetectionDatas || [])
-                        .filter(d => d.carNo)
-                        .map(d => d.carNo + '|' + d.detectionTime)
-                );
-
-                const now = new Date().getTime();
-                let hasNewIdentified = false;
-
-                for (let i = 0; i < speedDetections.length; i++) {
-                    const d = speedDetections[i];
-                    if (!d.carNo) continue;                       // 아직 번호 미확인
-                    const key = d.carNo + '|' + d.detectionTime;
-                    if (prevKeys.has(key)) continue;              // 이미 표시되던 번호
-
-                    const t = new Date(d.detectionTime).getTime();
-                    if ((now - t) < (60 * 1000 * 10)) {           // 10분 내 발생
-                        hasNewIdentified = true;
-                        break;
-                    }
-                }
-
-                if (hasNewIdentified) {
-                    visiblePopups[SDMS.menu.speedingInfo] = true;
-                }
-            }
-            else if (speedDetections.length <= 0 && visiblePopups[SDMS.menu.speedingInfo] === true) {
-                // 과속 데이터가 없는 경우 알림창이 떠 있을 경우 끄기
-                visiblePopups[SDMS.menu.speedingInfo] = false;
-            }
-
-            this.setState({ speedDetectionDatas: storeValue.speedDetections, visiblePopups: visiblePopups });
+            // 데이터만 갱신한다. '과속차량 알림' 팝업은 자동으로 열지 않는다.
+            //   → 오직 '과속감지 이력' 창의 '과속차량 확인' 버튼으로만 수동으로 연다.
+            this.setState({ speedDetectionDatas: storeValue.speedDetections });
         }
     }
 
