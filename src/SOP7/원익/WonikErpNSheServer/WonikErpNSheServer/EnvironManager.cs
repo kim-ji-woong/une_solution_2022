@@ -119,12 +119,10 @@ namespace WonikErpNSheServer
         {
             strErrorMessage = "";
             Dictionary<string, string> dicEnvironAlarms = null;
-            DateTime dtNow = DateTime.Now;
 
             // HMI_YN: 업데이트 유무 확인값 (HMI 데이터를 기록하면 Y, 우리 쪽에서 데이터를 읽으면 N 값으로 업데이트)
             // PV: 알람 유무 확인값(0: 정상, 1: 알람)
             string strSQL = string.Format("Select DATETIME, HMI_ID, TAG_ID, HMI_YN, PV From CAMPUS_HMI_ALARM_PV Where PV = 1");
-            //string strSQL = string.Format("Select DATETIME, HMI_ID, TAG_ID, HMI_YN, PV From CAMPUS_HMI_ALARM_PV Where PV = 1 And HMI_YN = 'N'");
 
             ArrayList arrResult = m_environDBManager.GetResultData(strSQL);
             if (arrResult == null)
@@ -133,60 +131,124 @@ namespace WonikErpNSheServer
                 return null;
             }
 
-
-
-            // HMI_YN 업데이트
-            strSQL = $"UPDATE CAMPUS_HMI_ALARM_PV SET HMI_YN = 'Y' Where HMI_YN = 'N'";
-            ArrayList arrResult2 = m_environDBManager.GetResultData(strSQL);
-            if (arrResult2 == null)
-            {
-                strErrorMessage = m_environDBManager.LastErrorMessage;
-                return null;
-            }
-
-
-
-
             dicEnvironAlarms = new Dictionary<string, string>();
 
             int nCount = arrResult.Count;
 
             for (int i = 0; i < nCount - 4; i += 5)
             {
-                //string strDATETIME = WebDBManager.GetDateTimeField(arrResult[i].ToString());
-                VariousData<DateTime> data = WebDBManager.GetDateTimeField(arrResult[i]);                
+                //VariousData<DateTime> data = WebDBManager.GetDateTimeField(arrResult[i]);   // HMI 기록 시각(시계 편차 문제로 판정 기준에서 제외)
                 string strHMI_ID = WebDBManager.GetStringField(arrResult[i + 1].ToString());
                 string strTAG_ID = WebDBManager.GetStringField(arrResult[i + 2].ToString());
                 string strHMI_YN = WebDBManager.GetStringField(arrResult[i + 3].ToString());
-                int nPV = WebDBManager.GetIntField(arrResult[i + 4].ToString(), 0);
+                //int nPV = WebDBManager.GetIntField(arrResult[i + 4].ToString(), 0);
 
-
-                if (data == null)
+                if (strHMI_ID == null || strTAG_ID == null)
                     continue;
 
-                DateTime dtDATETIME = data.Data;
-
-                TimeSpan span = dtNow - dtDATETIME;
-
-                if (span.TotalMinutes >= 3.0)
+                // 새로 발견된 알람(HMI_YN = 'N')만 처리:
+                //  - CLONE 테이블에 '발견 시각(DB서버 GETDATE())'과 함께 등록 → 3분 타이머의 기준
+                //  - HMI_YN 을 'Y'로 변경하여 읽음 처리
+                // 3분 경과 판정을 HMI가 기록한 DATETIME 대신 '우리가 처음 발견한 시각'으로 하여
+                // HMI 시스템과 로컬(서버) 시계 차이에 영향을 받지 않도록 한다.
+                if (strHMI_YN == "N")
                 {
-                    strSQL = $"UPDATE CAMPUS_HMI_ALARM_PV Set PV = 0 Where HMI_ID = '{strHMI_ID}' And TAG_ID = '{strTAG_ID}'";
+                    // 중복 등록 방지: 아직 CLONE에 없을 때만 추가
+                    strSQL = string.Format(
+                        "IF NOT EXISTS (SELECT 1 FROM CAMPUS_HMI_ALARM_PV_CLONE WHERE HMI_ID = '{0}' AND TAG_ID = '{1}') " +
+                        "INSERT INTO CAMPUS_HMI_ALARM_PV_CLONE (HMI_ID, TAG_ID, REG_DATE) VALUES ('{0}', '{1}', GETDATE())",
+                        strTAG_ID_Escape(strHMI_ID), strTAG_ID_Escape(strTAG_ID));
 
-                    arrResult2 = m_environDBManager.GetResultData(strSQL);
-                    if (arrResult2 == null)
+                    if (m_environDBManager.GetResultData(strSQL) == null)
                     {
-                        strErrorMessage = m_environDBManager.LastErrorMessage;
+                        strErrorMessage = "2. GetEnvironAlarm Error (CAMPUS_HMI_ALARM_PV_CLONE 등록 실패) : " + m_environDBManager.LastErrorMessage;
+                        return null;
+                    }
+
+                    strSQL = string.Format(
+                        "UPDATE CAMPUS_HMI_ALARM_PV SET HMI_YN = 'Y' WHERE HMI_ID = '{0}' AND TAG_ID = '{1}' AND HMI_YN = 'N'",
+                        strTAG_ID_Escape(strHMI_ID), strTAG_ID_Escape(strTAG_ID));
+
+                    if (m_environDBManager.GetResultData(strSQL) == null)
+                    {
+                        strErrorMessage = "3. GetEnvironAlarm Error (HMI_YN 업데이트 실패) : " + m_environDBManager.LastErrorMessage;
                         return null;
                     }
                 }
 
-                strTAG_ID += "_" + strHMI_ID;
-
-                dicEnvironAlarms[strTAG_ID] = strTAG_ID;
+                string strKey = strTAG_ID + "_" + strHMI_ID;
+                dicEnvironAlarms[strKey] = strKey;
             }
 
+            // 발견 후 3분(180초) 지난 알람은 원본 PV = 0 으로 해제하고 CLONE에서 제거한다.
+            if (ResetExpiredAlarms(out strErrorMessage) == false)
+                return null;
 
             return dicEnvironAlarms;
+        }
+
+        /// <summary>
+        /// CAMPUS_HMI_ALARM_PV_CLONE 에 등록된 항목 중 발견 시각(REG_DATE)으로부터
+        /// 3분(180초)이 지난 것을 찾아 원본 CAMPUS_HMI_ALARM_PV 의 PV 를 0으로 되돌리고
+        /// CLONE 에서 삭제한다.
+        /// 경과 판정을 DB 서버 시각(GETDATE())으로만 수행하므로 HMI/로컬 시계 차이의 영향이 없다.
+        /// </summary>
+        private bool ResetExpiredAlarms(out string strErrorMessage)
+        {
+            strErrorMessage = "";
+
+            string strSQL = "SELECT HMI_ID, TAG_ID FROM CAMPUS_HMI_ALARM_PV_CLONE WHERE DATEDIFF(second, REG_DATE, GETDATE()) >= 180";
+
+            ArrayList arrResult = m_environDBManager.GetResultData(strSQL);
+            if (arrResult == null)
+            {
+                strErrorMessage = "4. ResetExpiredAlarms Error (CAMPUS_HMI_ALARM_PV_CLONE 조회 실패) : " + m_environDBManager.LastErrorMessage;
+                return false;
+            }
+
+            int nCount = arrResult.Count;
+
+            for (int i = 0; i < nCount - 1; i += 2)
+            {
+                string strHMI_ID = WebDBManager.GetStringField(arrResult[i].ToString());
+                string strTAG_ID = WebDBManager.GetStringField(arrResult[i + 1].ToString());
+
+                if (strHMI_ID == null || strTAG_ID == null)
+                    continue;
+
+                // 원본 알람 해제 (PV = 0)
+                strSQL = string.Format(
+                    "UPDATE CAMPUS_HMI_ALARM_PV SET PV = 0 WHERE HMI_ID = '{0}' AND TAG_ID = '{1}'",
+                    strTAG_ID_Escape(strHMI_ID), strTAG_ID_Escape(strTAG_ID));
+
+                if (m_environDBManager.GetResultData(strSQL) == null)
+                {
+                    strErrorMessage = "5. ResetExpiredAlarms Error (PV=0 업데이트 실패) : " + m_environDBManager.LastErrorMessage;
+                    return false;
+                }
+
+                // 처리 완료된 CLONE 항목 삭제
+                strSQL = string.Format(
+                    "DELETE FROM CAMPUS_HMI_ALARM_PV_CLONE WHERE HMI_ID = '{0}' AND TAG_ID = '{1}'",
+                    strTAG_ID_Escape(strHMI_ID), strTAG_ID_Escape(strTAG_ID));
+
+                if (m_environDBManager.GetResultData(strSQL) == null)
+                {
+                    strErrorMessage = "6. ResetExpiredAlarms Error (CLONE 삭제 실패) : " + m_environDBManager.LastErrorMessage;
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // 문자열 값을 SQL 리터럴에 넣기 전 작은따옴표 이스케이프 (태그명 안전 처리)
+        private static string strTAG_ID_Escape(string strValue)
+        {
+            if (strValue == null)
+                return "";
+
+            return strValue.Replace("'", "''");
         }
 
         public bool CheckEnvironAlarm(Dictionary<string, string> dicEnvironAlarms, out string strErrorMessage)
