@@ -47,6 +47,8 @@ namespace WonikBeaconServer
         private bool m_bIsOneCycle = false;
 
         private static List<SpeedDetectionData> m_todaySpeedDetections = new List<SpeedDetectionData>();
+        // 목록 내용 변화 감지용 시그니처(행 수뿐 아니라 CarNo/DiffSeconds 갱신도 반영)
+        private static string m_strTodaySignature = null;
 
         public ProcessManager(SDMS.IDAL.IDataManager dataManager, TeamEditor.IDAL.IDataManager teamDataManager, Wonik.IDAL.IDataManager wonikDataManager)
         {
@@ -418,8 +420,14 @@ namespace WonikBeaconServer
                         }
                     }
 
-                    if (m_todaySpeedDetections.Count != speedDetections.Count)
-                        m_todaySpeedDetections = speedDetections;                    
+                    // 행 수뿐 아니라 내용(CarNo/DiffSeconds 갱신 포함) 변화도 감지해 목록을 교체한다.
+                    // (순수 UPDATE 로 CarNo 가 채워진 경우에도 곧바로 반영되도록)
+                    string strSignature = BuildDetectionSignature(speedDetections);
+                    if (m_strTodaySignature != strSignature)
+                    {
+                        m_todaySpeedDetections = speedDetections;
+                        m_strTodaySignature = strSignature;
+                    }                    
 
                     Thread.Sleep(m_nThreadSleep);
                 }
@@ -429,6 +437,20 @@ namespace WonikBeaconServer
                     Thread.Sleep(m_nErrorSleep);
                 }
             }
+        }
+
+        // 오늘 과속 목록의 내용 시그니처. ID + CarNo + DiffSeconds 를 이어붙여
+        // 새 행(INSERT)/삭제(DELETE)뿐 아니라 CarNo/DiffSeconds 갱신(UPDATE)까지 감지한다.
+        private static string BuildDetectionSignature(List<SpeedDetectionData> list)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (SpeedDetectionData d in list)
+            {
+                sb.Append(d.ID).Append(':')
+                  .Append(d.CarNo ?? "").Append(':')
+                  .Append(d.DiffSeconds.HasValue ? d.DiffSeconds.Value.ToString() : "").Append('|');
+            }
+            return sb.ToString();
         }
 
         public ResponseVehicleSpeedDetections GetSpeedDetectionHistorys(RequestSpeedDetectionHistorys req)

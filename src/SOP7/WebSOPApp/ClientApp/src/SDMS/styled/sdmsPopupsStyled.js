@@ -16358,6 +16358,36 @@ export const SpeedingHistoryComponent = styled(PopupsCommon)`
     .dslCont {
         padding: 20px;
 
+        .infoTop {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+
+            .infoWrap {
+                flex: 1;
+                margin-bottom: 0;
+            }
+        }
+
+        .checkSpeedBtn {
+            flex: 0 0 auto;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            background: #c0202a;
+            border: 1px solid #c0202a;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .checkSpeedBtn:hover { background: #d3323b; }
+
         .infoWrap {
             height: 60px;
             background: var(--navy-color);
@@ -16471,56 +16501,195 @@ export const SpeedingHistoryComponent = styled(PopupsCommon)`
 export const SpeedingInfoComponent = styled(PopupsCommon)`
     position: absolute;
     left: 10px;
-    top: 245px;
-    width: 280px;
-    height: 220px;
+    top: 120px;
+    /* DB에 저장된 예전 팝업 크기(작은 값)가 인라인으로 적용되어도 덮어쓰이지 않도록 !important */
+    /* 높이는 콘텐츠에 맞춰 자동 (상세이력 버튼 바로 아래에서 끝남) */
+    width: 560px !important;
+    height: auto !important;
     overflow: hidden;
     opacity: 1;
 
+    .dslTitle { color: #5aa0ff; }
+
     .dslCont {
-        ${(props) => props.theme.variables.flex()};
+        display: flex;
         flex-direction: column;
-        padding: 20px;
-
-        p {
-            ${(props) => props.theme.variables.flex('center', 'center')};
-        }
-
-        p:nth-child(1) {
-            color: #EB4242;
-            font-family: 'LABDigital', sans-serif;
-            font-size: 52px;
-            line-height: 59px;
-            letter-spacing: 5.2px;
-            margin-bottom: 12px;
-        }
-
-        p:nth-child(2) {
-            color: var(--white-color);
-            font-size: 14px;
-            letter-spacing: 0.7px;
-            margin-bottom: 8px;
-        }
-
-        p:nth-child(3) {
-            color: var(--middle-gray-color);
-            font-size: 14px;
-            letter-spacing: 0.7px;
-            margin-bottom: 12px;
-        }
-
-        p:nth-child(4) {
-            width: 100%;
-            text-align: center;
-            color: #EB4242;
-            font-size: 12px;
-            letter-spacing: 0.6px;
-            padding: 5px 0;
-            background: #3A4154 0% 0% no-repeat padding-box;
-            border: 1px solid #454C5D;
-            border-radius: 3px;
-        }
+        padding: 16px 18px;
+        color: #cdd6e6;
     }
+
+    .spdSecTitle {
+        color: #f0a53a;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 6px 0 10px;
+    }
+
+    /* 최근 과속 발생 - 헤더(제목 + 위치 필터) */
+    .spdListHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .spdLocSel {
+        min-width: 130px;
+        height: 34px;
+        background: #1c2942;
+        color: #cdd6e6;
+        border: 1px solid #2f3e5c;
+        border-radius: 6px;
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    /* 최근 과속 발생 - 표 */
+    .spdTableWrap {
+        margin-top: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #2a3a5c;
+        border-radius: 8px;
+    }
+    .spdTable {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+    }
+    .spdTable th, .spdTable td {
+        padding: 9px 4px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .spdTable thead th {
+        position: sticky;
+        top: 0;
+        background: #16233b;
+        color: #9fb0cc;
+        font-weight: 600;
+        border-bottom: 1px solid #2a3a5c;
+        z-index: 1;
+    }
+    .spdTable tbody tr {
+        background: #111d31;
+        border-bottom: 1px dashed #263652;
+        cursor: pointer;
+    }
+    .spdTable tbody tr:nth-child(even) { background: #0e1828; }
+    .spdTable tbody tr:hover { background: #1a2a46; }
+    .spdTable tbody tr.on {
+        /* 전역 '.on { display:block }' 규칙이 tr 을 표에서 이탈시키는 것을 되돌림 */
+        display: table-row;
+        border-bottom: 1px solid #c0202a;
+    }
+    /* 선택 행: 셀 전체에 배경 적용(행 전체 강조) */
+    .spdTable tbody tr.on td { background: #c0202a; color: #fff; }
+    .spdTable td.over { color: #ff7a7a; }
+    .spdTable tbody tr.on td.over { color: #ffdada; }
+
+    /* 위험도 배지 */
+    .spdRisk {
+        display: inline-block;
+        min-width: 40px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .spdRisk.lv2 { color: #f0c040; border: 1px solid #b8912f; background: rgba(240,192,64,0.08); }
+    .spdRisk.lv3 { color: #ff9b3b; border: 1px solid #c46f22; background: rgba(255,155,59,0.10); }
+    .spdRisk.lv4 { color: #fff; background: #c0202a; border: 1px solid #c0202a; }
+    .spdTable tbody tr.on .spdRisk { border-color: rgba(255,255,255,0.5); }
+
+    /* 선택 차량 상세정보 */
+    .spdDetail {
+        margin-top: 6px;
+        background: #101c30;
+        border: 1px solid #263652;
+        border-radius: 10px;
+        padding: 18px;
+    }
+    .spdPlateRow {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    .spdPlate {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+        height: 64px;
+        background: #f4f5f7;
+        border: 3px solid #c9ccd2;
+        border-radius: 8px;
+        font-size: 34px;
+        font-weight: 800;
+        color: #1a1a1a;
+        letter-spacing: 2px;
+    }
+    .spdPlateInfo .repeat {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 6px;
+        background: #c0202a;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .spdPlateInfo .meta { margin-top: 8px; font-size: 14px; color: #b9c4d8; }
+
+    .spdStats {
+        display: flex;
+        margin-top: 18px;
+        border-top: 1px solid #22314c;
+        border-bottom: 1px solid #22314c;
+        padding: 16px 0;
+    }
+    .spdStats .col { flex: 1; text-align: center; }
+    .spdStats .col .t { font-size: 13px; color: #9fb0cc; }
+    .spdStats .col .v { font-size: 30px; font-weight: 800; color: #ffffff; margin-top: 8px; }
+    .spdStats .col .v small { font-size: 14px; font-weight: 500; margin-left: 2px; color: #9fb0cc; }
+    .spdStats .col .v.red { color: #ff5a5a; }
+    .spdStats .col .v.red small { color: #ff9a9a; }
+
+    .spdLoc {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 14px;
+        font-size: 15px;
+    }
+    .spdLoc .t { color: #9fb0cc; }
+    .spdLoc .v { color: #fff; font-weight: 600; }
+
+    .spdNote {
+        margin-top: 14px;
+        text-align: center;
+        font-size: 12.5px;
+        color: #8290a8;
+    }
+
+    /* 하단 상세이력 버튼 */
+    .spdFoot { margin-top: 16px; }
+    .spdHistBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 46px;
+        padding: 0 22px;
+        background: #17233b;
+        border: 1px solid #35507e;
+        border-radius: 8px;
+        color: #cdd6e6;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .spdHistBtn:hover { background: #1d2c49; }
+
+    .spdEmpty { text-align: center; color: #7f8ba3; padding: 26px 0; font-size: 13px; }
 `;
 
 /**********************************************************************/
