@@ -214,8 +214,11 @@
             잔차 절대값이 작은 쌍부터 확정한다. 이벤트 하나가 두 행에 붙지 않도록 막는다.
             </summary>
         </member>
-        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MakeKey(System.String,System.DateTime)">
-            <summary>중복 판정 키. 같은 차량번호 + 같은 감지시각이면 한 대의 차량으로 본다.</summary>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MakeKey(System.Int32,System.String)">
+            <summary>
+            중복 판정 묶음 키. 같은 센서에서 같은 번호판이면 같은 묶음이다.
+            실제 중복 여부는 그 묶음 안에서 감지시각 차이(DuplicateWindowSeconds)로 판정한다.
+            </summary>
         </member>
         <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.PurgeRetry(System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>
