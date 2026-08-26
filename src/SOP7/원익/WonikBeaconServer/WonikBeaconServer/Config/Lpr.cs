@@ -37,6 +37,10 @@ namespace WonikBeaconServer.Config
         // 같은 차량번호 + 같은 감지시각인 행이 이미 있으면 그 행을 지울지 여부.
         // 감지 로직이 한 차량을 두 번 기록하는 경우를 정리한다. 끄면 갱신도 건너뛴다.
         private bool m_bDeleteDuplicate = true;
+        // 같은 센서 + 같은 번호판이 이 시간(초) 안에 다시 나오면 한 대의 차량으로 본다.
+        // 감지 로직이 한 차량을 몇 초 간격으로 여러 번 기록하는 경우가 있어 넉넉히 1분으로 둔다.
+        // (실측: 같은 센서·번호판 쌍의 시간차는 최대 6초였고 그 이후 2분까지 한 쌍도 없었다)
+        private int? m_nDuplicateWindowSeconds = 60;
 
         public string ApiSearch { get { return m_strApiSearch; } set { m_strApiSearch = value; } }
         public string ApiResult { get { return m_strApiResult; } set { m_strApiResult = value; } }
@@ -54,6 +58,7 @@ namespace WonikBeaconServer.Config
         public int MinSamplesForScan { get { return m_nMinSamplesForScan ?? 5; } }
         public bool Enabled { get { return m_bEnabled; } }
         public bool DeleteDuplicate { get { return m_bDeleteDuplicate; } }
+        public int DuplicateWindowSeconds { get { return m_nDuplicateWindowSeconds ?? 60; } }
 
         /// <summary>api_search / api_result / api_token 이 모두 채워져 있어야 동작한다.</summary>
         public bool IsValid
@@ -121,6 +126,7 @@ namespace WonikBeaconServer.Config
 
             ReadBool(config, "LPR:Enabled", ref m_bEnabled);
             ReadBool(config, "LPR:DeleteDuplicate", ref m_bDeleteDuplicate);
+            ReadInt(config, "LPR:DuplicateWindowSeconds", ref m_nDuplicateWindowSeconds);
         }
     }
 }

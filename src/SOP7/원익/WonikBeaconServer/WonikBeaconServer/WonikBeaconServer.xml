@@ -208,11 +208,14 @@
         <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.HasNear(System.Double[],System.Double,System.Int32)">
             <summary>정렬된 시각 배열에 target 기준 ±tolerance 안의 값이 있는지.</summary>
         </member>
-        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MatchAndUpdate(System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Collections.Generic.List{WonikBeaconServer.SpeedDetection.LprEvent},System.Collections.Generic.Dictionary{System.Int32,System.Int32},System.DateTime)">
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MatchAndUpdate(System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Collections.Generic.List{WonikBeaconServer.SpeedDetection.LprEvent},System.Collections.Generic.Dictionary{System.Int32,System.Int32},System.DateTime,System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Int32@)">
             <summary>
             보정값을 적용해 행과 이벤트를 1:1 로 짝짓고 CarNo 를 갱신한다.
             잔차 절대값이 작은 쌍부터 확정한다. 이벤트 하나가 두 행에 붙지 않도록 막는다.
             </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MakeKey(System.String,System.DateTime)">
+            <summary>중복 판정 키. 같은 차량번호 + 같은 감지시각이면 한 대의 차량으로 본다.</summary>
         </member>
         <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.PurgeRetry(System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>

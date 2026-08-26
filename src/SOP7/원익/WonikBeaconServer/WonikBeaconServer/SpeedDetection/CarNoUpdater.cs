@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -283,18 +283,31 @@ namespace WonikBeaconServer.SpeedDetection
                                    List<VehicleSpeedDetection> allRows, out int nDeleted)
         {
             int nTolerance = m_config.MatchTolerance;
+            int nWindow = m_config.DuplicateWindowSeconds;
             nDeleted = 0;
 
-            // 이미 (차량번호 + 감지시각) 조합이 존재하는지 확인하기 위한 집합.
-            //   감지 로직이 한 차량을 두 번 기록하는 경우가 있는데(추적 상태가 하나뿐이라
-            //   레이더가 두 대를 번갈아 보고하면 같은 차를 새 차로 오인한다),
-            //   그 쌍둥이 행은 다음 주기에 같은 LPR 이벤트와 다시 짝지어져 같은 번호판을 받는다.
-            //   그때 UPDATE 하지 않고 지워서 중복이 남지 않게 한다.
-            HashSet<string> existingKeys = new HashSet<string>(StringComparer.Ordinal);
+            // 이미 번호판이 붙은 행을 (센서 + 차량번호) 로 묶어둔다.
+            //   감지 로직은 추적 상태를 하나만 들고 있어서, 레이더가 두 대를 번갈아 보고하면
+            //   같은 차를 "새 차량"으로 다시 인식해 몇 초 사이에 여러 건을 기록한다.
+            //   시각이 정확히 같지 않아도 같은 센서에서 같은 번호판이 짧은 시간 안에 다시 나오면
+            //   한 대로 봐야 한다. 그래서 시각이 아니라 (센서 + 번호판) 으로 묶고
+            //   DuplicateWindowSeconds(기본 60초) 안에 있는지로 판정한다.
+            Dictionary<string, List<VehicleSpeedDetection>> existing =
+                new Dictionary<string, List<VehicleSpeedDetection>>(StringComparer.Ordinal);
+
             foreach (VehicleSpeedDetection r in allRows)
             {
-                if (string.IsNullOrEmpty(r.CarNo) == false)
-                    existingKeys.Add(MakeKey(r.CarNo, r.DetectionTime));
+                if (string.IsNullOrEmpty(r.CarNo))
+                    continue;
+
+                string k = MakeKey(r.SensorID, r.CarNo);
+                List<VehicleSpeedDetection> lst;
+                if (existing.TryGetValue(k, out lst) == false)
+                {
+                    lst = new List<VehicleSpeedDetection>();
+                    existing[k] = lst;
+                }
+                lst.Add(r);
             }
 
             var candidates = new List<Tuple<double, VehicleSpeedDetection, LprEvent>>();
@@ -337,34 +350,88 @@ namespace WonikBeaconServer.SpeedDetection
                 double dDiffSeconds = (row.DetectionTime - e.Time).TotalSeconds;
 
                 string strErrorMessage;
-                string strKey = MakeKey(strCarNo, row.DetectionTime);
+                string strKey = MakeKey(row.SensorID, strCarNo);
 
-                if (existingKeys.Contains(strKey))
+                List<VehicleSpeedDetection> siblings;
+                if (existing.TryGetValue(strKey, out siblings) == false)
                 {
-                    // 같은 차량번호가 같은 시각에 이미 있다. 이 행은 한 차량을 두 번 기록한 것이다.
-                    if (m_config.DeleteDuplicate)
+                    siblings = new List<VehicleSpeedDetection>();
+                    existing[strKey] = siblings;
+                }
+
+                // 같은 센서 + 같은 번호판이면서 시각이 창(기본 60초) 안에 있는 기존 행
+                List<VehicleSpeedDetection> near = siblings
+                    .Where(x => Math.Abs((row.DetectionTime - x.DetectionTime).TotalSeconds) <= nWindow)
+                    .ToList();
+
+                if (near.Count > 0)
+                {
+                    // 한 대의 차량이 여러 건으로 기록된 것이다. 속도가 가장 큰 것 하나만 남긴다.
+                    VehicleSpeedDetection best = near.OrderByDescending(x => x.Speed).First();
+
+                    if (m_config.DeleteDuplicate == false)
                     {
+                        // 삭제를 끄면 갱신도 하지 않는다. 중복 행에 번호판을 또 붙이지 않기 위해서다.
+                        usedRows.Add(row.ID);
+                        m_logger.Write($"MatchAndUpdate() : 중복 감지 ID {row.ID} ({strCarNo}) - DeleteDuplicate 가 false 라 건너뜀");
+                        continue;
+                    }
+
+                    if (row.Speed > best.Speed)
+                    {
+                        // 새 행이 더 빠르다 → 새 행을 남기고 창 안의 기존 행들을 지운다.
+                        if (m_wonikDataManager.GetUpdateManager().UpdateVehicleSpeedDetectionCarNo(row.ID, strCarNo, dDiffSeconds, out strErrorMessage) == false)
+                        {
+                            m_logger.Write($"MatchAndUpdate() : ID {row.ID} 갱신 실패 : {strErrorMessage}");
+                            continue;
+                        }
+
+                        row.CarNo = strCarNo;
+                        row.DiffSeconds = dDiffSeconds;
+
+                        usedRows.Add(row.ID);
+                        usedEvents.Add(e.Index);
+                        nUpdated++;
+                        lock (m_dicRetry) m_dicRetry.Remove(row.ID);
+
+                        foreach (VehicleSpeedDetection old in near)
+                        {
+                            if (m_wonikDataManager.GetDeleteManager().DeleteVehicleSpeedDetection(old.ID, out strErrorMessage))
+                            {
+                                siblings.Remove(old);
+                                nDeleted++;
+                                lock (m_dicRetry) m_dicRetry.Remove(old.ID);
+
+                                m_logger.Write($"MatchAndUpdate() : 중복 삭제(속도 낮음) ID {old.ID} {old.Speed}km/h " +
+                                               $"← 유지 ID {row.ID} {row.Speed}km/h " +
+                                               $"({old.DetectionTime:yyyy-MM-dd HH:mm:ss}, 센서 {old.SensorID}, {strCarNo})");
+                            }
+                            else
+                            {
+                                m_logger.Write($"MatchAndUpdate() : ID {old.ID} 중복 삭제 실패 : {strErrorMessage}");
+                            }
+                        }
+
+                        siblings.Add(row);
+                    }
+                    else
+                    {
+                        // 기존 행이 같거나 더 빠르다 → 새 행을 버린다.
                         if (m_wonikDataManager.GetDeleteManager().DeleteVehicleSpeedDetection(row.ID, out strErrorMessage))
                         {
                             usedRows.Add(row.ID);
                             usedEvents.Add(e.Index);
                             nDeleted++;
-
                             lock (m_dicRetry) m_dicRetry.Remove(row.ID);
 
-                            m_logger.Write($"MatchAndUpdate() : 중복 삭제 ID {row.ID} " +
-                                           $"({row.DetectionTime:yyyy-MM-dd HH:mm:ss}, 센서 {row.SensorID}, {row.Speed}km/h, {strCarNo})");
+                            m_logger.Write($"MatchAndUpdate() : 중복 삭제 ID {row.ID} {row.Speed}km/h " +
+                                           $"← 유지 ID {best.ID} {best.Speed}km/h " +
+                                           $"({row.DetectionTime:yyyy-MM-dd HH:mm:ss}, 센서 {row.SensorID}, {strCarNo})");
                         }
                         else
                         {
                             m_logger.Write($"MatchAndUpdate() : ID {row.ID} 중복 삭제 실패 : {strErrorMessage}");
                         }
-                    }
-                    else
-                    {
-                        // 삭제를 끄면 갱신도 하지 않는다. 중복 행에 번호판을 또 붙이지 않기 위해서다.
-                        usedRows.Add(row.ID);
-                        m_logger.Write($"MatchAndUpdate() : 중복 감지 ID {row.ID} ({strCarNo}) - DeleteDuplicate 가 false 라 건너뜀");
                     }
 
                     continue;
@@ -372,9 +439,12 @@ namespace WonikBeaconServer.SpeedDetection
 
                 if (m_wonikDataManager.GetUpdateManager().UpdateVehicleSpeedDetectionCarNo(row.ID, strCarNo, dDiffSeconds, out strErrorMessage))
                 {
+                    row.CarNo = strCarNo;
+                    row.DiffSeconds = dDiffSeconds;
+
                     usedRows.Add(row.ID);
                     usedEvents.Add(e.Index);
-                    existingKeys.Add(strKey);
+                    siblings.Add(row);
                     nUpdated++;
 
                     lock (m_dicRetry) m_dicRetry.Remove(row.ID);
@@ -391,10 +461,13 @@ namespace WonikBeaconServer.SpeedDetection
             return nUpdated;
         }
 
-        /// <summary>중복 판정 키. 같은 차량번호 + 같은 감지시각이면 한 대의 차량으로 본다.</summary>
-        private static string MakeKey(string strCarNo, DateTime dtDetection)
+        /// <summary>
+        /// 중복 판정 묶음 키. 같은 센서에서 같은 번호판이면 같은 묶음이다.
+        /// 실제 중복 여부는 그 묶음 안에서 감지시각 차이(DuplicateWindowSeconds)로 판정한다.
+        /// </summary>
+        private static string MakeKey(int nSensorID, string strCarNo)
         {
-            return strCarNo + "|" + dtDetection.ToString("yyyy-MM-dd HH:mm:ss");
+            return nSensorID.ToString() + "|" + strCarNo;
         }
 
         private bool IsRetryDue(int nID, DateTime dtNow)
