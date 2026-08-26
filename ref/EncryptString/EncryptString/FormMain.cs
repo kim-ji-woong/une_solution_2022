@@ -20,7 +20,7 @@ namespace EncryptString
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string strEncrypt = "pDQZs84W6veIjMhOPZ2cUw==";
+            string strEncrypt = "Ay4a/BivsoFc8chiyqyyDg==";
             string strOrigin = dnsDapperDBUtil.AES256Cipher.AES_decrypt(strEncrypt);
         }
 

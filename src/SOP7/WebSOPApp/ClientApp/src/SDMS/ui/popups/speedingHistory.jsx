@@ -239,9 +239,12 @@ class SpeedingHistory extends Component {
                     </div>
 
                     <div className={'dslCont'}>
-                        <div className='infoWrap'>
-                            <p>총 {cnt}건의 과속감지가 발생했습니다.</p>
-                            <p>과속평균속도 : {avgSpeed} km/h</p>
+                        <div className='infoTop'>
+                            <div className='infoWrap'>
+                                <p>총 {cnt}건의 과속감지가 발생했습니다.</p>
+                                <p>과속평균속도 : {avgSpeed} km/h</p>
+                            </div>
+                            <a className='checkSpeedBtn' onClick={() => this.props.setVisiblePopups(SDMS.menu.speedingInfo, true)}>과속차량 확인</a>
                         </div>
                         <div className='filterWrap'>
                             {/* 위치명 dropdown */}

@@ -170,6 +170,17 @@ namespace Wonik.DAL
                         model.Speed = data.Data;
                     }
                 }
+                else if (field == VehicleSpeedDetection.Fields.CarNo)
+                {
+                    // LPR 연동 전이면 null 이다. (isNullable = true)
+                    model.CarNo = WebDBManager.GetStringField(arrResult[index]);
+                }
+                else if (field == VehicleSpeedDetection.Fields.DiffSeconds)
+                {
+                    // CarNo 와 함께 기록된다. 연동 전이면 null 이다.
+                    VariousData<double> data = WebDBManager.GetDoubleField(arrResult[index].ToString());
+                    model.DiffSeconds = data == null ? (double?)null : data.Data;
+                }
 
                 index++;
             }

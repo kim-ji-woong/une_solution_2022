@@ -1784,9 +1784,12 @@ export class SDMSController {
             speedDetectionDatas = result.speedDetectionDatas;
 
             // 값 비교 후 다를 경우 dispatch
+            // (행 수뿐 아니라 내용(차량번호 등) 변화도 비교 → CarNo 가 뒤늦게 채워져도 바로 반영)
             let currentDatas = store.getState().speedDetections;
 
-            if (speedDetectionDatas?.length >= 0 && speedDetectionDatas?.length != currentDatas?.length) {
+            const buildSig = (arr) => (arr || []).map(d => d.detectionTime + '|' + (d.carNo || '') + '|' + d.speed).join(';');
+
+            if (buildSig(speedDetectionDatas) !== buildSig(currentDatas)) {
                 store.dispatch({ type: 'SPEED_DETECTION', speedDetections: speedDetectionDatas });
             }
         }

@@ -1,5 +1,6 @@
 ﻿//import { Button } from '@amcharts/amcharts4/core';
 import React, { Component } from 'react';
+import { getSearchMinDate } from '../util/searchDateLimit';
 import $ from 'jquery';
 import HistoryResource from "../resource/id";
 import HistoryController from '../services/historyController';
@@ -786,7 +787,7 @@ class UserHistory extends Component {
 																	locale={i18n.language === "ko" ? ko : enUS}
 																	showYearDropdown // 년도 드롭다운 활성화
 																	showMonthDropdown // 월 드롭다운 활성화
-																	maxDate={new Date()}
+																	maxDate={new Date()} minDate={getSearchMinDate()}
 																	selected={this.state.beginDate}
 																	onChange={date => this.onChangeBegin(date)} />
 																<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -800,7 +801,7 @@ class UserHistory extends Component {
 																	locale={i18n.language === "ko" ? ko : enUS}
 																	showYearDropdown // 년도 드롭다운 활성화
 																	showMonthDropdown // 월 드롭다운 활성화
-																	maxDate={new Date()}
+																	maxDate={new Date()} minDate={getSearchMinDate()}
 																	selected={this.state.endDate}
 																	onChange={date => this.onChangeEnd(date)} />
 																<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />
@@ -833,7 +834,7 @@ class UserHistory extends Component {
 																locale={i18n.language === "ko" ? ko : enUS}
 																showYearDropdown // 년도 드롭다운 활성화
 																showMonthDropdown // 월 드롭다운 활성화
-																maxDate={new Date()}
+																maxDate={new Date()} minDate={getSearchMinDate()}
 																selected={this.state.beginDate}
 																onChange={date => this.onChangeBegin(date)} />
 															<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -847,7 +848,7 @@ class UserHistory extends Component {
 																locale={i18n.language === "ko" ? ko : enUS}
 																showYearDropdown // 년도 드롭다운 활성화
 																showMonthDropdown // 월 드롭다운 활성화
-																maxDate={new Date()}
+																maxDate={new Date()} minDate={getSearchMinDate()}
 																selected={this.state.endDate}
 																onChange={date => this.onChangeEnd(date)} />
 															<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />

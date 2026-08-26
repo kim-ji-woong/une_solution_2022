@@ -857,20 +857,34 @@ class SDMS extends Component {
         if (storeValue.actionType === 'SPEED_DETECTION' && storeValue.speedDetections) {
             const speedDetections = storeValue.speedDetections;
             let visiblePopups = this.state.visiblePopups;
-            
-            // 과속데이터 시점이 현재로부터 10분 내에 데이터이라면 과속 알림창 띄우기
+
+            // 새로 '차량번호가 확인된' 과속이 10분 내이면 알림창을 띄운다.
+            //   - 감지 직후엔 번호가 없어 표시할 게 없고, 번호가 채워지는 시점이 실제 확인 시점이다.
+            //   - 이미 있던 번호나, 번호와 무관한 내용 변화(중복 삭제 등)로는 열지 않는다.
             if (speedDetections.length > 0) {
-                let speedDetection = speedDetections[speedDetections.length - 1];
+                const prevKeys = new Set(
+                    (this.state.speedDetectionDatas || [])
+                        .filter(d => d.carNo)
+                        .map(d => d.carNo + '|' + d.detectionTime)
+                );
 
-                let date = new Date(speedDetection.detectionTime);
-                date = date.getTime();
+                const now = new Date().getTime();
+                let hasNewIdentified = false;
 
-                let now = new Date();
-                now = now.getTime();
+                for (let i = 0; i < speedDetections.length; i++) {
+                    const d = speedDetections[i];
+                    if (!d.carNo) continue;                       // 아직 번호 미확인
+                    const key = d.carNo + '|' + d.detectionTime;
+                    if (prevKeys.has(key)) continue;              // 이미 표시되던 번호
 
-                const diffTime = now - date;
+                    const t = new Date(d.detectionTime).getTime();
+                    if ((now - t) < (60 * 1000 * 10)) {           // 10분 내 발생
+                        hasNewIdentified = true;
+                        break;
+                    }
+                }
 
-                if (diffTime < (60 * 1000 * 10)) {
+                if (hasNewIdentified) {
                     visiblePopups[SDMS.menu.speedingInfo] = true;
                 }
             }

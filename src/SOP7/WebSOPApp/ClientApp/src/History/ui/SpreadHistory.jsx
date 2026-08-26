@@ -1,5 +1,6 @@
 ﻿import $ from 'jquery';
 import React, { Component } from 'react';
+import { getSearchMinDate } from '../util/searchDateLimit';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import newStyles from '../../Common/css/newStyle.module.css';
@@ -552,7 +553,7 @@ class SpreadHistory extends Component {
 																	locale={i18n.language === "ko" ? ko : enUS}
 																	showYearDropdown // 년도 드롭다운 활성화
 																	showMonthDropdown // 월 드롭다운 활성화
-																	maxDate={new Date()}
+																	maxDate={new Date()} minDate={getSearchMinDate()}
 																	selected={this.state.beginDate}
 																	onChange={date => this.onChangeBegin(date)} />
 																<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -566,7 +567,7 @@ class SpreadHistory extends Component {
 																	locale={i18n.language === "ko" ? ko : enUS}
 																	showYearDropdown // 년도 드롭다운 활성화
 																	showMonthDropdown // 월 드롭다운 활성화
-																	maxDate={new Date()}
+																	maxDate={new Date()} minDate={getSearchMinDate()}
 																	selected={this.state.endDate}
 																	onChange={date => this.onChangeEnd(date)} />
 																<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />

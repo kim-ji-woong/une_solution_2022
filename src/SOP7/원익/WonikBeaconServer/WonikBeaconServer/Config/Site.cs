@@ -104,6 +104,19 @@ namespace WonikBeaconServer.Config
                 strValue = strData.Trim();
         }
 
+        protected void ReadBool(IConfiguration config, string strTarget, ref bool bValue)
+        {
+            string strData = config[strTarget];
+
+            if (strData != null)
+            {
+                bool data;
+
+                if (bool.TryParse(strData.Trim(), out data))
+                    bValue = data;
+            }
+        }
+
         protected void ReadInt(IConfiguration config, string strTarget, ref int? nValue)
         {
             string strData = config[strTarget];

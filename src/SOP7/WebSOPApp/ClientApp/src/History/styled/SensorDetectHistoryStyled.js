@@ -1438,6 +1438,515 @@ export const SpreadHistoryComponent = styled(HistorysCommon)`
 // 차량 과속 이력
 export const SpeedDetectionHistoryComponent = styled(SensorDetectAnalysisComponent)`
 
+    /* 헤더 (제목 + 배지 + 설명) */
+    .hscHead {
+        margin-bottom: 15px;
+    }
+
+    .hscHead .hscHeadTop {
+        display: flex;
+        align-items: center;
+    }
+
+    .hscHead h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscHead .hscBadge {
+        display: inline-block;
+        margin-left: 12px;
+        padding: 3px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1f7244;
+        background: #e5f5ec;
+        border-radius: 14px;
+    }
+
+    .hscHead .hscDesc {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* 통계 카드 4개 */
+    .hscCards {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .hscCards .card {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .hscCards .card .cardTitle {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .hscCards .card .cardValue {
+        margin-top: 10px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.1;
+    }
+
+    .hscCards .card .cardValue small {
+        font-size: 14px;
+        font-weight: 500;
+        color: #888;
+        margin-left: 4px;
+    }
+
+    .hscCards .card .cardValue.up {
+        color: #1f7244;
+    }
+
+    .hscCards .card .cardValue.down {
+        color: #d92d20;
+    }
+
+    .hscCards .card .cardSub {
+        margin-top: 8px;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    /* 차트 영역 (2단) */
+    .hscChartRow {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .hscChartBox {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .hscChartBox .chartHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .hscChartBox .chartHead h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscChartBox .chartHead .chartBadge {
+        font-size: 12px;
+        color: #b8860b;
+        background: #fff6e0;
+        padding: 4px 10px;
+        border-radius: 12px;
+    }
+
+    .hscChartBox .chartHead .chartHeadRight {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .hscChartBox .chartHead .chartLegend {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .hscChartBox .chartHead .chartLegend span {
+        display: inline-flex;
+        align-items: center;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .hscChartBox .chartHead .chartLegend span i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    .hscChartBox .chartBody {
+        height: 260px;
+        position: relative;
+    }
+
+    /* 최근 과속 이력 테이블 헤더 */
+    .hscTbHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0 10px;
+    }
+
+    .hscTbHead h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscTbHead .hscTbCnt {
+        font-size: 13px;
+        color: #888;
+    }
+
+    /* 측정/초과 속도 강조 */
+    .spdOver {
+        color: #d92d20;
+        font-weight: 600;
+    }
+
+    /* 위험도 배지 (관심 / 주의 / 경계 / 심각) */
+    .riskBadge {
+        display: inline-block;
+        min-width: 44px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .riskBadge.lv1 { background: #e6f4ea; color: #1f7244; }  /* 관심 */
+    .riskBadge.lv2 { background: #fff6e0; color: #b8860b; }  /* 주의 */
+    .riskBadge.lv3 { background: #ffecd9; color: #d97706; }  /* 경계 */
+    .riskBadge.lv4 { background: #fde7e7; color: #d92d20; }  /* 심각 */
+`;
+
+
+// 반복 과속 의심차량 (원익 전용) - 헤더 + 필터바 (상세 화면은 추후 구현)
+// (헤더 스타일은 SpeedDetectionHistoryComponent 에서 상속)
+export const SpeedAnalysisComponent = styled(SpeedDetectionHistoryComponent)`
+
+    /* 카메라 인식번호 입력 */
+    .hscsNum input[type="text"] {
+        width: 200px;
+        height: 32px;
+        border: solid 1px #ddd;
+        border-radius: 3px;
+        padding: 0 10px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+
+    /* 표시 순위 토글 */
+    .hscsRank {
+        float: left;
+    }
+
+    .hscsRank:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .hscsRank li {
+        float: left;
+        margin-right: 8px;
+    }
+
+    .hscsRank li:last-child {
+        margin-right: 0;
+    }
+
+    .hscsRank li a {
+        display: block;
+        min-width: 46px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        padding: 0 12px;
+        border: solid 1px #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .hscsRank li a.on {
+        background: #004BB9;
+        border-color: #004BB9;
+        color: #fff;
+    }
+`;
+
+
+// 반복 과속 의심차량 (원익 전용)
+export const RepeatSpeedSuspectComponent = styled(SpeedAnalysisComponent)`
+
+    /* 필터 컨트롤 반응형 배치 (화면 너비에 따라 한 줄 ↔ 여러 줄) */
+    .hscSch {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px 26px;
+        padding: 18px 20px;
+    }
+
+    .hscSch dl {
+        display: flex;
+        align-items: center;
+        width: auto;
+        margin: 0;
+        gap: 10px;
+    }
+
+    .hscSch dl dt {
+        display: block;
+        width: auto;
+        white-space: nowrap;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .hscSch dl dd {
+        display: block;
+        position: static;
+    }
+
+    .hscSch dl dd:after {
+        display: none;
+    }
+
+    .hscSch .hscsLoc {
+        display: flex;
+    }
+
+    .hscSch .hscsLoc li {
+        float: none;
+        width: 150px;
+        margin: 0;
+    }
+
+    .hscSch .hscsNum {
+        display: flex;
+    }
+
+    .hscSch .hscsNum li {
+        float: none;
+    }
+
+    .hscSch .hscsDate {
+        display: flex;
+        align-items: center;
+        float: none;
+    }
+
+    .hscSch .hscsDate li {
+        float: none;
+    }
+
+    .hscSch .hscsRank {
+        display: flex;
+        float: none;
+        gap: 8px;
+    }
+
+    .hscSch .hscsRank li {
+        float: none;
+        margin: 0;
+    }
+
+    /* 검색 버튼: 절대배치 대신 흐름 안에서 오른쪽 정렬 */
+    .hscsSbmt {
+        position: static;
+        margin-left: auto;
+        flex: 0 0 auto;
+        width: 100px;
+        height: 40px;
+        top: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    /* 통계 카드 3개 */
+    .rsCards {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .rsCards .card {
+        flex: 1;
+        min-width: 0;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .rsCards .card .cardTitle {
+        font-size: 14px;
+        color: #888;
+        text-align: center;
+    }
+
+    .rsCards .card .cardBody {
+        margin-top: 14px;
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .rsCards .cardNum {
+        font-size: 30px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.1;
+    }
+
+    .rsCards .cardUnit {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .rsCards .riskMini {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .rsCards .riskMini .item {
+        text-align: center;
+        padding: 6px 16px;
+        border-radius: 8px;
+        min-width: 74px;
+    }
+
+    .rsCards .riskMini .item .lbl {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .rsCards .riskMini .item .cnt {
+        font-size: 20px;
+        font-weight: 700;
+        color: #222;
+        margin-top: 2px;
+    }
+
+    .rsCards .riskMini .item .cnt small {
+        font-size: 12px;
+        font-weight: 400;
+        color: #888;
+        margin-left: 2px;
+    }
+
+    .rsCards .riskMini .item.lv4 { background: #fde7e7; }
+    .rsCards .riskMini .item.lv4 .lbl { color: #d92d20; }
+    .rsCards .riskMini .item.lv3 { background: #ffecd9; }
+    .rsCards .riskMini .item.lv3 .lbl { color: #d97706; }
+    .rsCards .riskMini .item.lv2 { background: #fff6e0; }
+    .rsCards .riskMini .item.lv2 .lbl { color: #b8860b; }
+
+    .rsCards .topPlate {
+        font-size: 24px;
+        font-weight: 700;
+        color: #222;
+    }
+
+    .rsCards .topMeta {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .rsCards .topMeta .maxSpd {
+        color: #d92d20;
+        font-weight: 600;
+    }
+
+    /* 안내 문구 */
+    .rsNotice {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 15px;
+        padding: 12px 16px;
+        background: #fff8e6;
+        border: solid 1px #ffe2a8;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #8a6d3b;
+    }
+
+    .rsNotice > span:first-child {
+        color: #e0a300;
+        font-weight: 700;
+    }
+
+    /* 테이블 헤더 메타 */
+    .hscTbHead .hscTbMeta {
+        font-size: 13px;
+        color: #888;
+    }
+
+    /* 카메라 인식번호 보조 */
+    .plateSub {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 2px;
+    }
+
+    /* 순위 배지 */
+    .rankNo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+        background: #c4c8cf;
+    }
+
+    .rankNo.top {
+        background: #e5484d;
+    }
+
+    /* 평균 매칭 시간차 색상 */
+    .diffLow { color: #1f7244; font-weight: 600; }
+    .diffMid { color: #d97706; font-weight: 600; }
+    .diffHigh { color: #d92d20; font-weight: 600; }
+
+    /* 상세보기 버튼 */
+    .detailBtn {
+        display: inline-block;
+        min-width: 64px;
+        height: 28px;
+        line-height: 26px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #555;
+        cursor: pointer;
+    }
 `;
 
 
@@ -1875,4 +2384,138 @@ textarea.hsmTxt {padding: 10px !important;}
 
 
 
+`;
+
+
+// 반복 과속 상세 팝업
+export const RepeatSpeedDetailComponent = styled.div`
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    * { box-sizing: border-box; }
+
+    .rsdBox {
+        width: 940px;
+        max-width: 94vw;
+        max-height: 92vh;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 24px 28px;
+    }
+
+    .rsdHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+
+    .rsdHead h2 { font-size: 20px; font-weight: 700; color: #222; margin: 0; }
+
+    .rsdClose {
+        width: 30px; height: 30px;
+        border: none; background: none;
+        font-size: 22px; color: #888; cursor: pointer;
+        line-height: 1;
+    }
+
+    .rsdTop {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .rsdTop .plateLabel { font-size: 13px; color: #888; }
+    .rsdTop .plateBox { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+    .rsdTop .plate { font-size: 30px; font-weight: 700; color: #222; }
+    .rsdTop .period { font-size: 13px; color: #888; }
+    .rsdTop .period b { color: #444; font-weight: 600; margin-left: 6px; }
+
+    .rsdBadge {
+        display: inline-block;
+        min-width: 44px;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .rsdBadge.lv1 { background: #e6f4ea; color: #1f7244; }
+    .rsdBadge.lv2 { background: #fff6e0; color: #b8860b; }
+    .rsdBadge.lv3 { background: #ffecd9; color: #d97706; }
+    .rsdBadge.lv4 { background: #fde7e7; color: #d92d20; }
+
+    .rsdNotice {
+        display: flex; align-items: center; gap: 8px;
+        margin-top: 14px; padding: 10px 14px;
+        background: #fff8e6; border: solid 1px #ffe2a8; border-radius: 8px;
+        font-size: 13px; color: #8a6d3b;
+    }
+    .rsdNotice > span:first-child { color: #e0a300; font-weight: 700; }
+
+    .rsdCards {
+        display: flex; gap: 12px; margin-top: 16px;
+    }
+    .rsdCards .card {
+        flex: 1; min-width: 0;
+        background: #f8f9fb; border: solid 1px #eee; border-radius: 8px;
+        padding: 14px; text-align: center;
+    }
+    .rsdCards .card .t { font-size: 12px; color: #888; }
+    .rsdCards .card .v { font-size: 20px; font-weight: 700; color: #222; margin-top: 6px; }
+    .rsdCards .card .v.red { color: #d92d20; }
+
+    .rsdCharts { display: flex; gap: 15px; margin-top: 16px; }
+    .rsdChartBox {
+        flex: 1; min-width: 0;
+        border: solid 1px #eee; border-radius: 8px; padding: 16px;
+    }
+    .rsdChartBox h3 { font-size: 15px; font-weight: 700; color: #222; margin: 0 0 14px; }
+    .rsdChartBox .chartHeadRow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .rsdChartBox .chartHeadRow h3 { margin: 0; }
+    .rsdChartBox .badge { font-size: 12px; color: #b8860b; background: #fff6e0; padding: 4px 10px; border-radius: 12px; }
+
+    /* 발생 위치 분포 (가로 바) */
+    .rsdLoc .row { margin-bottom: 14px; }
+    .rsdLoc .row:last-child { margin-bottom: 0; }
+    .rsdLoc .row .name { font-size: 13px; color: #444; }
+    .rsdLoc .row .name b { font-weight: 400; color: #999; margin-left: 6px; }
+    .rsdLoc .row .barLine { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+    .rsdLoc .row .track { flex: 1; height: 14px; background: #eef1f5; border-radius: 7px; overflow: hidden; }
+    .rsdLoc .row .fill { height: 100%; background: #1f5fd0; border-radius: 7px; }
+    .rsdLoc .row:nth-child(2) .fill { background: #93c5fd; }
+    .rsdLoc .row .pct { font-size: 13px; color: #444; width: 42px; text-align: right; }
+
+    /* 시간대별 발생 패턴 (세로 바) */
+    .rsdTime .bars { display: flex; align-items: flex-end; gap: 10px; height: 150px; padding-top: 20px; }
+    .rsdTime .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+    .rsdTime .col .cnt { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .rsdTime .col .bar { width: 60%; min-height: 2px; background: #3b82f6; border-radius: 3px 3px 0 0; }
+    .rsdTime .col.max .bar { background: #f59e0b; }
+    .rsdTime .labels { display: flex; gap: 10px; margin-top: 8px; }
+    .rsdTime .labels span { flex: 1; text-align: center; font-size: 11px; color: #888; }
+
+    /* 최근 과속 발생 표 */
+    .rsdTableWrap { margin-top: 20px; }
+    .rsdTableWrap .head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .rsdTableWrap .head h3 { font-size: 15px; font-weight: 700; color: #222; margin: 0; }
+    .rsdTableWrap .head .meta { font-size: 12px; color: #888; }
+    .rsdTable { width: 100%; border-collapse: collapse; border-top: solid 2px #333; }
+    .rsdTable th, .rsdTable td { padding: 10px 8px; text-align: center; font-size: 13px; border-bottom: solid 1px #eee; }
+    .rsdTable th { background: #f8f9fb; color: #555; font-weight: 600; }
+    .rsdTable td.red { color: #d92d20; font-weight: 600; }
+
+    .rsdFoot { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+    .rsdFoot a {
+        display: inline-block; height: 40px; line-height: 38px; padding: 0 20px;
+        border-radius: 6px; font-size: 14px; cursor: pointer; text-align: center;
+    }
+    .rsdFoot a.close { border: solid 1px #cbd5e1; color: #475569; background: #fff; }
+    .rsdFoot a.excel { border: solid 1px #1f7244; color: #1f7244; background: #fff; font-weight: 600; }
 `;

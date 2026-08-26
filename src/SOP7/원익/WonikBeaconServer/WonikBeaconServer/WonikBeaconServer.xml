@@ -4,6 +4,30 @@
         <name>WonikBeaconServer</name>
     </assembly>
     <members>
+        <member name="T:WonikBeaconServer.Config.Lpr">
+             <summary>
+             LPR(번호판 인식) 이벤트 검색 API 설정.
+            
+               api_search : 전체 건수/페이지 수를 얻는 URL (page_summary=1)
+               api_result : 실제 로그 데이터를 얻는 URL   (page_summary=0)
+               api_token  : "ID PW" 를 AES 로 암호화한 값. 복호화 후 공백으로 잘라 쓴다.
+            
+             URL 은 쿼리 스트링까지 포함한 형태로 두고, 조회 구간(start_date/time, end_date/time)과
+             page_index 는 LprApiClient 가 덧붙이거나 덮어쓴다.
+             </summary>
+        </member>
+        <member name="P:WonikBeaconServer.Config.Lpr.IsValid">
+            <summary>api_search / api_result / api_token 이 모두 채워져 있어야 동작한다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.Config.Lpr.TryGetCredential(System.String@,System.String@)">
+            <summary>
+            api_token 을 복호화해 ID / PW 로 나눈다. 평문은 "ID PW" 형태(공백 구분)다.
+            실패하면 false 를 돌려준다.
+            </summary>
+        </member>
+        <member name="P:WonikBeaconServer.Config.SpeedDetection.SpeedLimit">
+            <summary>과속 기준 속도(km/h). 기록/판정은 이 값 초과일 때만 이뤄진다.</summary>
+        </member>
         <member name="M:WonikBeaconServer.Controllers.BeaconController.RequestEquipZoneMembers(WonikBeaconServer.Model.RequestEquipZoneMembers)">
             <summary>
             구역 입실자 리스트 불러오기
@@ -50,6 +74,16 @@
             <returns>
             </returns>
             <remarks>    
+            </remarks>
+        </member>
+        <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedLimit">
+            <summary>
+            과속 기준 속도 불러오기
+            </summary>
+            <returns>
+            </returns>
+            <remarks>
+            "SpeedLimit": 25      // 이 값을 초과하면 과속 (25 이면 26km/h 부터)
             </remarks>
         </member>
         <member name="M:WonikBeaconServer.Controllers.DetectionController.RequestSpeedDetectionSensors">
@@ -115,6 +149,157 @@
             <summary>
             센서 이름 >> 위치 이름
             </summary>
+        </member>
+        <member name="P:WonikBeaconServer.Model.ResponseSpeedLimit.SpeedLimit">
+            <summary>
+            과속 기준 속도(km/h). 이 값을 "초과"하는 경우만 과속으로 본다.
+            (25 이면 26km/h 부터 과속)
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.ProcessManager.GetSpeedLimit">
+            <summary>
+            과속 기준 속도를 돌려준다. appsettings.json 의 SpeedDetection:SpeedLimit 값이다.
+            감지 로직과 화면이 같은 기준을 쓰도록 이 한 곳에서 배포한다.
+            </summary>
+        </member>
+        <member name="T:WonikBeaconServer.SpeedDetection.CarNoUpdater">
+             <summary>
+             SdmsVehicleSpeedDetection 의 CarNo(차량번호)를 LPR 이벤트로 채우는 백그라운드 작업.
+            
+             과속 감지 로직(DetectionProvider)은 CarNo 를 모른 채 행을 만든다. 이 클래스가 주기적으로
+             CarNo 가 비어 있는 행을 찾아 LPR API 결과와 시각으로 짝지어 UPDATE 한다.
+            
+             [시각 보정]
+               LPR 장비 시계와 SOP 서버 시계가 어긋나 있고, 그 차이가 하루 1~2초씩 밀린다.
+               (2026-08-20 +15초 → 08-24 +9초 로 관측)
+               그래서 고정 상수를 쓰지 않고, 매 주기 실측 데이터로 보정값을 다시 추정한다.
+                   DB 시각 ≒ API 시각 + offset
+               표본이 모자라면 직전에 학습한 값을, 그것도 없으면 설정의 DefaultOffset 을 쓴다.
+            
+             [센서별 분리]
+               센서마다 LPR 카메라와의 거리가 달라 offset 이 다르다. 센서별로 따로 추정한다.
+             </summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.CarNoUpdater.CarNoMaxLength">
+            <summary>CarNo 컬럼 길이. 넘치면 잘라 넣는다. (nvarchar(10))</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.CarNoUpdater.RetryBackoffBase">
+            <summary>매칭에 실패한 행을 다시 시도하기까지의 최소 간격. 실패할수록 2배씩 늘린다.</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.CarNoUpdater.m_dicOffsets">
+            <summary>센서별로 학습해 둔 보정값(초).</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.CarNoUpdater.m_dicRetry">
+            <summary>매칭 실패한 행의 다음 재시도 시각과 실패 횟수.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.RunOnce">
+            <summary>한 주기 분량의 작업. 예외는 호출자가 잡는다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.SelectRows(System.DateTime,System.DateTime)">
+            <summary>지정 구간의 과속 기록을 모두 읽는다. (CarNo 유무 무관)</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.EstimateOffsets(System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Collections.Generic.List{WonikBeaconServer.SpeedDetection.LprEvent})">
+            <summary>
+            센서별로 보정값을 추정한다.
+            -OffsetScanRange ~ +OffsetScanRange 를 훑어 "짝이 생기는 행 수"가 가장 많은 값을 고른다.
+            표본이 MinSamplesForScan 에 못 미치면 직전 학습값 또는 DefaultOffset 을 유지한다.
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.HasNear(System.Double[],System.Double,System.Int32)">
+            <summary>정렬된 시각 배열에 target 기준 ±tolerance 안의 값이 있는지.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MatchAndUpdate(System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Collections.Generic.List{WonikBeaconServer.SpeedDetection.LprEvent},System.Collections.Generic.Dictionary{System.Int32,System.Int32},System.DateTime,System.Collections.Generic.List{Wonik.Model.VehicleSpeedDetection},System.Int32@)">
+            <summary>
+            보정값을 적용해 행과 이벤트를 1:1 로 짝짓고 CarNo 를 갱신한다.
+            잔차 절대값이 작은 쌍부터 확정한다. 이벤트 하나가 두 행에 붙지 않도록 막는다.
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.MakeKey(System.Int32,System.String)">
+            <summary>
+            중복 판정 묶음 키. 같은 센서에서 같은 번호판이면 같은 묶음이다.
+            실제 중복 여부는 그 묶음 안에서 감지시각 차이(DuplicateWindowSeconds)로 판정한다.
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.CarNoUpdater.PurgeRetry(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            이번 조회 구간에 더 이상 나타나지 않는 행의 재시도 기록을 버린다.
+            (구간을 벗어난 행은 다시 볼 일이 없으므로 계속 들고 있으면 메모리만 샌다)
+            </summary>
+        </member>
+        <member name="T:WonikBeaconServer.SpeedDetection.HttpDigest">
+             <summary>
+             서버가 내려준 WWW-Authenticate 챌린지를 해석해 Authorization 헤더 값을 만든다.
+             Digest(MD5, MD5-sess, SHA-256, SHA-256-sess / qop=auth) 와 Basic 을 지원한다.
+            
+             ref\PostBoy\PostBoy\HttpDigest.cs 를 이식한 것이다.
+             .NET 5 에 맞춰 난수 생성만 RandomNumberGenerator.Fill 로 바꿨다.
+             (.NET 기본 Digest 핸들러는 MD5 만 지원해 SHA-256 장비에 붙지 않으므로 직접 만든다.)
+             </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.HttpDigest.CreateAuthorization(System.String,System.String,System.String,System.Uri,System.String,System.String)">
+            <summary>
+            응답 헤더의 챌린지 하나를 받아 Authorization 헤더 값을 만든다.
+            지원하지 않는 인증 방식이면 null 을 돌려준다.
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.HttpDigest.SelectQop(System.String)">
+            <summary>서버가 제시한 qop 목록 중 지원 가능한 것을 고른다. (auth 만 지원)</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.HttpDigest.ParseParameters(System.String)">
+            <summary>name=value 또는 name="value" 목록을 해석한다. 따옴표 안의 쉼표는 구분자로 보지 않는다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.HttpDigest.NextNonceCount(System.String)">
+            <summary>해당 nonce 로 보내는 몇 번째 요청인지 돌려준다. 새 nonce 면 00000001 부터 시작한다.</summary>
+        </member>
+        <member name="T:WonikBeaconServer.SpeedDetection.LprEvent">
+            <summary>LPR 이벤트 한 건.</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.LprEvent.Index">
+            <summary>로그 고유번호</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.LprEvent.Time">
+            <summary>Date + Time 을 합친 장비 기준 시각</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.LprEvent.Channel">
+            <summary>CCTV 채널 번호</summary>
+        </member>
+        <member name="F:WonikBeaconServer.SpeedDetection.LprEvent.CarNo">
+            <summary>인식된 번호판</summary>
+        </member>
+        <member name="T:WonikBeaconServer.SpeedDetection.LprApiClient">
+             <summary>
+             LPR 이벤트 검색 API 호출기.
+            
+               1) api_search (page_summary=1) 로 전체 건수를 얻고
+               2) api_result (page_summary=0) 로 페이지를 돌며 로그를 모은다.
+            
+             인증은 HTTP Digest(SHA-256) 이며 HttpDigest 로 직접 헤더를 만든다.
+             </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.GetEvents(System.DateTime,System.DateTime,System.String@)">
+            <summary>
+            지정 구간의 LPR 이벤트를 모두 가져온다.
+            실패하면 null 을 돌려주고 strErrorMessage 에 사유를 담는다.
+            (구간 안에 이벤트가 하나도 없으면 빈 리스트를 돌려준다. null 과 구분된다.)
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.BuildUrl(System.String,System.DateTime,System.DateTime,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            설정에 든 URL 에 조회 구간과 page_index / page_summary 를 덧붙인다.
+            이미 같은 이름의 파라미터가 있으면 덮어쓴다.
+            </summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.Get(System.String,System.String@)">
+            <summary>GET 한 번. 401 이면 Digest 응답을 만들어 한 번 더 시도한다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.BuildAuthorization(System.Net.Http.HttpResponseMessage,System.Uri)">
+            <summary>401 응답의 챌린지 중 Digest 를 우선 선택해 Authorization 헤더 값을 만든다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.ParseSummary(System.String,System.Int32@,System.Int32@)">
+            <summary>api_search 응답에서 TotalLog / TotalPage 를 읽는다.</summary>
+        </member>
+        <member name="M:WonikBeaconServer.SpeedDetection.LprApiClient.ParseLogItems(System.String)">
+            <summary>api_result 응답에서 LogItem 들을 읽는다. 해석 못한 항목은 조용히 건너뛴다.</summary>
         </member>
         <member name="M:WonikBeaconServer.WebServiceManager.RequestRemnant(System.String,System.String@)">
             <summary>

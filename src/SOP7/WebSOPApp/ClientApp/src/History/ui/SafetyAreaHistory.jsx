@@ -1,5 +1,6 @@
 //import { Button } from '@amcharts/amcharts4/core';
 import React, { Component } from 'react';
+import { getSearchMinDate } from '../util/searchDateLimit';
 import $ from 'jquery';
 import HistoryController from '../services/historyController';
 import teamEditorCss from "../../TeamEditor/css/teamEditor.module.css";
@@ -669,7 +670,7 @@ class SafetyAreaHistory extends Component {
 															locale={ko}
 															showYearDropdown // 년도 드롭다운 활성화
 															showMonthDropdown // 월 드롭다운 활성화
-															maxDate={new Date()}
+															maxDate={new Date()} minDate={getSearchMinDate()}
 															selected={this.state.beginDate}
 															onChange={date => this.onChangeBegin(date)} />
 														<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
@@ -683,7 +684,7 @@ class SafetyAreaHistory extends Component {
 															locale={ko}
 															showYearDropdown // 년도 드롭다운 활성화
 															showMonthDropdown // 월 드롭다운 활성화
-															maxDate={new Date()}
+															maxDate={new Date()} minDate={getSearchMinDate()}
 															selected={this.state.endDate}
 															onChange={date => this.onChangeEnd(date)} />
 														<img src={ProjectResource.styleMode === ProjectResource.StyleType.Soulbrain ? btnCalendarBk : btnCalendarBk_wonik} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />

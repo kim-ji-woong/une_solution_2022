@@ -33,6 +33,7 @@ namespace WonikBeaconServer
         }
 
         DetectionManager m_detectionManager = null;
+        CarNoUpdater m_carNoUpdater = null;
 
         Thread m_watchWorker = null;
         Thread m_watchAlarm = null;
@@ -46,6 +47,8 @@ namespace WonikBeaconServer
         private bool m_bIsOneCycle = false;
 
         private static List<SpeedDetectionData> m_todaySpeedDetections = new List<SpeedDetectionData>();
+        // 목록 내용 변화 감지용 시그니처(행 수뿐 아니라 CarNo/DiffSeconds 갱신도 반영)
+        private static string m_strTodaySignature = null;
 
         public ProcessManager(SDMS.IDAL.IDataManager dataManager, TeamEditor.IDAL.IDataManager teamDataManager, Wonik.IDAL.IDataManager wonikDataManager)
         {
@@ -67,6 +70,10 @@ namespace WonikBeaconServer
 
             m_detectionManager = new DetectionManager(dataManager, m_wonikDataManager);
             m_detectionManager.Start();
+
+            // 과속 기록의 CarNo 를 LPR 이벤트로 사후에 채운다. 설정(LPR)이 비어 있으면 스스로 시작하지 않는다.
+            m_carNoUpdater = new CarNoUpdater(m_wonikDataManager);
+            m_carNoUpdater.Start();
         }
 
         private void InitConfig()
@@ -413,8 +420,14 @@ namespace WonikBeaconServer
                         }
                     }
 
-                    if (m_todaySpeedDetections.Count != speedDetections.Count)
-                        m_todaySpeedDetections = speedDetections;                    
+                    // 행 수뿐 아니라 내용(CarNo/DiffSeconds 갱신 포함) 변화도 감지해 목록을 교체한다.
+                    // (순수 UPDATE 로 CarNo 가 채워진 경우에도 곧바로 반영되도록)
+                    string strSignature = BuildDetectionSignature(speedDetections);
+                    if (m_strTodaySignature != strSignature)
+                    {
+                        m_todaySpeedDetections = speedDetections;
+                        m_strTodaySignature = strSignature;
+                    }                    
 
                     Thread.Sleep(m_nThreadSleep);
                 }
@@ -424,6 +437,20 @@ namespace WonikBeaconServer
                     Thread.Sleep(m_nErrorSleep);
                 }
             }
+        }
+
+        // 오늘 과속 목록의 내용 시그니처. ID + CarNo + DiffSeconds 를 이어붙여
+        // 새 행(INSERT)/삭제(DELETE)뿐 아니라 CarNo/DiffSeconds 갱신(UPDATE)까지 감지한다.
+        private static string BuildDetectionSignature(List<SpeedDetectionData> list)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (SpeedDetectionData d in list)
+            {
+                sb.Append(d.ID).Append(':')
+                  .Append(d.CarNo ?? "").Append(':')
+                  .Append(d.DiffSeconds.HasValue ? d.DiffSeconds.Value.ToString() : "").Append('|');
+            }
+            return sb.ToString();
         }
 
         public ResponseVehicleSpeedDetections GetSpeedDetectionHistorys(RequestSpeedDetectionHistorys req)
@@ -469,6 +496,19 @@ namespace WonikBeaconServer
                 response.Success = false;
             }
            
+            return response;
+        }
+
+        /// <summary>
+        /// 과속 기준 속도를 돌려준다. appsettings.json 의 SpeedDetection:SpeedLimit 값이다.
+        /// 감지 로직과 화면이 같은 기준을 쓰도록 이 한 곳에서 배포한다.
+        /// </summary>
+        public ResponseSpeedLimit GetSpeedLimit()
+        {
+            ResponseSpeedLimit response = new ResponseSpeedLimit();
+
+            response.SpeedLimit = Startup.ConfigManager.SpeedDetection.SpeedLimit;
+            response.Success = true;
             return response;
         }
 
