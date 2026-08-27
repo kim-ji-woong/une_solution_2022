@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -84,6 +85,12 @@ namespace WonikErpNSheServer
                     DBExport(m_dbBackup30);
                     DBExport(m_dbBackup31);
                     FileDelete();
+
+#if BACKUP
+                    // DB 백업 직후 오래된 로그 파일 정리.
+                    // 기동 직후 첫 백업(즉시 실행) 시 1회, 이후 하루 1회 백업 직후에 수행된다.
+                    DeleteOldLogFiles();
+#endif
 
                     m_dtLast = DateTime.Today;
                 }
@@ -331,5 +338,90 @@ namespace WonikErpNSheServer
                 this.Logger.Write("[ERROR] FileDelete() : " + ex.Message);
             }
         }
+
+#if BACKUP
+        /// <summary>
+        /// App.config 에 지정된 로그 폴더들에서 보관기간(logLifeTime, 일)이 지난 파일을 삭제한다.
+        /// - DeleteLogFolderCount : 삭제 대상 폴더 개수
+        /// - DeleteLogFolder_1 ~ DeleteLogFolder_N : 각 폴더 경로
+        /// - logLifeTime : 보관 기간(일). 파일의 마지막 수정 시각 기준으로 이보다 오래되면 삭제.
+        /// BACKUP 심볼로 빌드된 경우에만 컴파일/실행된다.
+        /// </summary>
+        private void DeleteOldLogFiles()
+        {
+            try
+            {
+                // 삭제 대상 폴더 개수
+                int nFolderCount = 0;
+                int.TryParse(ConfigurationManager.AppSettings.Get("DeleteLogFolderCount"), out nFolderCount);
+                if (nFolderCount <= 0)
+                    return;
+
+                // 보관 기간(일). 설정이 없거나 잘못되면 30일을 기본값으로 사용.
+                double dLifeDays = 30;
+                string strLifeTime = ConfigurationManager.AppSettings.Get("logLifeTime");
+                if (string.IsNullOrEmpty(strLifeTime) || double.TryParse(strLifeTime, out dLifeDays) == false)
+                    dLifeDays = 30;
+
+                DateTime dtLimit = DateTime.Now.AddDays(-dLifeDays);
+
+                for (int i = 1; i <= nFolderCount; i++)
+                {
+                    string strFolder = ConfigurationManager.AppSettings.Get("DeleteLogFolder_" + i);
+
+                    if (string.IsNullOrEmpty(strFolder))
+                        continue;
+
+                    if (!Directory.Exists(strFolder))
+                    {
+                        this.Logger.Write("DeleteOldLogFiles: 폴더 없음, 건너뜀 - " + strFolder);
+                        continue;
+                    }
+
+                    int nDeleted = DeleteOldFilesInFolder(strFolder, dtLimit);
+                    this.Logger.Write("DeleteOldLogFiles: " + strFolder + " 에서 " + nDeleted + "개 파일 삭제 (기준 " + dtLimit.ToString("yyyy-MM-dd HH:mm:ss") + " 이전)");
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Logger.Write("[ERROR] DeleteOldLogFiles() : " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 지정 폴더(하위 폴더 포함)에서 마지막 수정 시각이 dtLimit 이전인 파일을 삭제하고 삭제 개수를 반환한다.
+        /// </summary>
+        private int DeleteOldFilesInFolder(string strFolder, DateTime dtLimit)
+        {
+            int nDeleted = 0;
+
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(strFolder);
+
+                foreach (FileInfo item in dir.GetFiles("*", SearchOption.AllDirectories))
+                {
+                    try
+                    {
+                        if (item.LastWriteTime < dtLimit)
+                        {
+                            item.Delete();
+                            nDeleted++;
+                        }
+                    }
+                    catch (Exception exFile)
+                    {
+                        this.Logger.Write("[ERROR] DeleteOldFilesInFolder 파일 삭제 실패 (" + item.FullName + ") : " + exFile.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.Logger.Write("[ERROR] DeleteOldFilesInFolder(" + strFolder + ") : " + ex.Message);
+            }
+
+            return nDeleted;
+        }
+#endif
     }
 }
