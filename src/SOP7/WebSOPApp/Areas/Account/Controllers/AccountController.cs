@@ -529,6 +529,10 @@ namespace WebSOPApp.Areas.Account.Controllers
             if (result == null || result.Success == false)
                 return;
 
+            // Auth:Enabled = true 일 때만 토큰을 발급한다. (BeaconServer 의 Auth:Enabled 와 대칭)
+            if (Startup.ConfigManager.AuthEnabled == false)
+                return;
+
             string secret = Startup.ConfigManager.AuthSecret;
             if (string.IsNullOrEmpty(secret))
                 return;

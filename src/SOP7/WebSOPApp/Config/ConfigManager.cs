@@ -24,11 +24,13 @@ namespace WebSOPApp.Config
         public bool UseWorkerInfo { get { return m_bUseWorkerInfo; } set { m_bUseWorkerInfo = value; } }
 
         // JWT(WonikBeaconServer 토큰) 설정. Secret 은 BeaconServer 와 동일해야 한다.
+        private bool m_bAuthEnabled = false;        // 토큰 발급 사용 여부 (없으면 false)
         private string m_strAuthSecret = "";
         private string m_strAuthIssuer = "WebSOPApp";
         private string m_strAuthAudience = "WonikBeaconServer";
         private int m_nAuthExpireMinutes = 10080;   // 7일
 
+        public bool AuthEnabled { get { return m_bAuthEnabled; } }
         public string AuthSecret { get { return m_strAuthSecret; } }
         public string AuthIssuer { get { return m_strAuthIssuer; } }
         public string AuthAudience { get { return m_strAuthAudience; } }
@@ -49,6 +51,7 @@ namespace WebSOPApp.Config
             var auth = config.GetSection("Auth");
             if (auth != null)
             {
+                bool.TryParse(auth["Enabled"], out m_bAuthEnabled);   // 없으면 false
                 if (!string.IsNullOrEmpty(auth["Secret"])) m_strAuthSecret = auth["Secret"];
                 if (!string.IsNullOrEmpty(auth["Issuer"])) m_strAuthIssuer = auth["Issuer"];
                 if (!string.IsNullOrEmpty(auth["Audience"])) m_strAuthAudience = auth["Audience"];
