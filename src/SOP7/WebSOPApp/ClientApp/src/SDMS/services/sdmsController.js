@@ -1,4 +1,5 @@
 import store from '../../Root/store';
+import { beaconHeaders } from '../../Root/apiToken';
 import { SdmsJsonManager } from './sdmsJsonManager';
 import SessionString from '../../Common/js/sessionString';
 import { SettingController } from '../../Settings/services/settingController';
@@ -1799,9 +1800,7 @@ export class SDMSController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Beacon/RequestEquipZoneMembers', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: beaconHeaders(),
                 body: JSON.stringify({ EquipZoneID: equipZoneID })
             });
 
@@ -1827,9 +1826,7 @@ export class SDMSController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Beacon/RequestRemainerMembers', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: beaconHeaders(),
                 body: JSON.stringify({ EquipZoneID: equipZoneID })
             });
 
@@ -1855,9 +1852,7 @@ export class SDMSController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Beacon/RequestRemainerSMS', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: beaconHeaders(),
                 body: JSON.stringify({ PhoneNumbers: phoneNumbers, Message: message })
             });
 
@@ -1883,9 +1878,7 @@ export class SDMSController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Detection/RequestTodaySpeedDetections', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                headers: beaconHeaders()
             });
 
             if (res.ok) {

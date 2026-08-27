@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +31,11 @@ namespace WonikBeaconServer
 
         public Startup(IConfiguration configuration)
         {
+            Configuration = configuration;
+
             m_configManager.ReadConfig(configuration);
 
-            Logger.Instance.Write("Startup ����");
+            Logger.Instance.Write("Startup 실행");
 
             if (m_configManager.Site.SiteID != null && m_configManager.Site.DBType != null)
             {
@@ -55,9 +58,15 @@ namespace WonikBeaconServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // CORS: appsettings.json 의 Cors:AllowedOrigins 에 지정된 출처만 허용.
+            //       (미지정 시에는 임시로 전체 허용 - 반드시 배포 전 WebSOPApp 주소를 넣어 제한할 것)
+            string[] allowedOrigins = Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
             services.AddCors(o => o.AddPolicy("UnEPolicy", builder =>
             {
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                if (allowedOrigins != null && allowedOrigins.Length > 0)
+                    builder.WithOrigins(allowedOrigins).AllowAnyMethod().AllowAnyHeader();
+                else
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             }));
 
             //services.AddControllers();
@@ -76,13 +85,13 @@ namespace WonikBeaconServer
                 c.SwaggerDoc("Beacon", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "Beacon",
-                    Title = "Beacon ������",
-                    Description = "Beacon �����͸� ���� API"
+                    Title = "Beacon 데이터",
+                    Description = "Beacon 데이터를 위한 API"
                 });
 
                 c.DocumentFilter<HideInDocsFilter>();
 
-                // XML�� ���� Swagger Description ���
+                // XML을 통한 Swagger Description 사용
                 var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(System.AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -95,26 +104,64 @@ namespace WonikBeaconServer
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // Swagger 는 개발 환경에서만 노출한다. (운영에서는 API 스펙 비공개)
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/Beacon/swagger.json", "Beacon API");
+                    c.DefaultModelsExpandDepth(-1);
+                });
+
+                app.UseSwagger(options =>
+                {
+                    options.SerializeAsV2 = true;
+                });
             }
 
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/Beacon/swagger.json", "Beacon ������ API");
-
-                c.DefaultModelsExpandDepth(-1);
-            });
-
-            app.UseSwagger(options =>
-            {
-                options.SerializeAsV2 = true;
-            });
-
             app.UseRouting();
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            // CORS: ConfigureServices 에서 정의한 정책(허용 출처 제한) 적용
+            app.UseCors("UnEPolicy");
+
+            // === JWT(Bearer) 토큰 검증 미들웨어 ===
+            //   Auth:Enabled = true 일 때만 동작한다(단계적 적용). 보호 대상 API(/Detection, /Beacon)에
+            //   대해 Authorization: Bearer <token> 을 검증하고, 실패 시 401 을 반환한다.
+            //   (OPTIONS 프리플라이트/그 외 경로는 통과)
+            bool authEnabled = Configuration.GetValue<bool>("Auth:Enabled");
+            if (authEnabled)
+            {
+                string secret = Configuration["Auth:Secret"];
+                string issuer = Configuration["Auth:Issuer"];
+                string audience = Configuration["Auth:Audience"];
+
+                app.Use(async (context, next) =>
+                {
+                    string path = context.Request.Path.Value ?? "";
+                    bool isProtected = path.StartsWith("/Detection", StringComparison.OrdinalIgnoreCase)
+                                    || path.StartsWith("/Beacon", StringComparison.OrdinalIgnoreCase);
+
+                    if (isProtected && !HttpMethods.IsOptions(context.Request.Method))
+                    {
+                        string authz = context.Request.Headers["Authorization"];
+                        string token = (authz != null && authz.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                            ? authz.Substring(7).Trim() : null;
+
+                        string err;
+                        if (!Security.JwtHmac.Validate(token, secret, issuer, audience, out err))
+                        {
+                            context.Response.StatusCode = 401;
+                            await context.Response.WriteAsync("Unauthorized: " + err);
+                            return;
+                        }
+                    }
+
+                    await next();
+                });
+            }
 
             app.UseEndpoints(endpoints =>
             {
-                // Areas ���
+                // Areas
                 endpoints.MapControllerRoute(
                     name: "Beacon",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
@@ -123,13 +170,6 @@ namespace WonikBeaconServer
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
-
-            app.UseAuthorization();
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllers();
-            //});
         }
     }
 
