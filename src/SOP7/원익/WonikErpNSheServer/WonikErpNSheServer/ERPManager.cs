@@ -680,6 +680,18 @@ namespace WonikErpNSheServer
             if (dicRemoveRegularMembers == null)
                 return false;
 
+            // 이미 '퇴사'(Resign) 상태인 직원은 삭제 대상에서 제외한다.
+            // 평가 이력 등 FK 참조로 삭제가 불가능해 퇴사 상태로 전환된 직원이
+            // 매 동기화마다 다시 삭제 시도되어 로그가 반복되는 것을 방지한다.
+            List<int> resignedMemberIDs = new List<int>();
+            foreach (KeyValuePair<int, RegularMember> pair in dicRemoveRegularMembers)
+            {
+                if (pair.Value.StatusID == (int)RegularMember.WorkStatus.Resign)
+                    resignedMemberIDs.Add(pair.Key);
+            }
+            foreach (int resignedID in resignedMemberIDs)
+                dicRemoveRegularMembers.Remove(resignedID);
+
             foreach (KeyValuePair<string, RegularMember> pair in dicRegularMembers)
             {
                 string strMemberID = pair.Key;
@@ -1333,8 +1345,24 @@ namespace WonikErpNSheServer
 
                 foreach (RegularMember member in regularMembers)
                 {
-                    if (m_dataManager.GetDeleteManager().DeleteRegularMember(member.ID, out strErrorMessage) == false)                    
-                        Logger.Write($"RemoveRegularMember DeleteRegularMember 예외처리: member.ID: {member.ID}, member.MemberName: {member.MemberName} ({strErrorMessage})");
+                    if (m_dataManager.GetDeleteManager().DeleteRegularMember(member.ID, out strErrorMessage) == false)
+                    {
+                        // 퇴사자이지만 평가 이력 등 다른 테이블이 FK로 참조 중이면 삭제가 거부된다.
+                        // 이 경우 삭제 대신 상태를 '퇴사'(WorkStatus.Resign)로 변경하여 이력은 보존하고 명단에서 제외한다.
+                        Logger.Write($"RemoveRegularMember DeleteRegularMember 예외처리: member.ID: {member.ID}, member.MemberName: {member.MemberName} - 퇴사자이나 FK 참조(평가 이력 등)로 삭제 불가. 상태를 '퇴사'로 변경합니다. ({strErrorMessage})");
+
+                        Dictionary<RegularMember.Fields, object> dicSets = new Dictionary<RegularMember.Fields, object>();
+                        dicSets[RegularMember.Fields.StatusID] = (int)RegularMember.WorkStatus.Resign;
+
+                        Dictionary<RegularMember.Fields, object> dicConditions = new Dictionary<RegularMember.Fields, object>();
+                        dicConditions[RegularMember.Fields.ID] = member.ID;
+
+                        string strUpdateError;
+                        if (m_dataManager.GetUpdateManager().UpdateRegularMember(dicSets, dicConditions, "", out strUpdateError) == false)
+                            Logger.Write($"RemoveRegularMember 상태 변경(퇴사) 실패: member.ID: {member.ID}, member.MemberName: {member.MemberName} ({strUpdateError})");
+                        else
+                            Logger.Write($"RemoveRegularMember 상태 변경(퇴사) 완료: member.ID: {member.ID}, member.MemberName: {member.MemberName}");
+                    }
                 }
             }
             catch (Exception ex)
