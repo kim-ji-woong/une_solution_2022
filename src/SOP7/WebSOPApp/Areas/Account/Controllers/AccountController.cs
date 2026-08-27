@@ -544,7 +544,18 @@ namespace WebSOPApp.Areas.Account.Controllers
                 "",
                 Startup.ConfigManager.AuthExpireMinutes);
 
+            // (1) BeaconServer(교차 출처)용 - 응답 헤더로 전달 → 프론트가 localStorage 저장 후 Bearer 로 첨부
             Response.Headers["X-Api-Token"] = token;
+
+            // (2) WebSOPApp(동일 출처) 서버측 인증용 - HttpOnly 쿠키. 브라우저가 API 요청에 자동 첨부한다.
+            Response.Cookies.Append("AuthToken", token, new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                Secure = Request.IsHttps,
+                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax,
+                Path = "/",
+                Expires = System.DateTimeOffset.UtcNow.AddMinutes(Startup.ConfigManager.AuthExpireMinutes)
+            });
         }
 
         [HttpPost]
