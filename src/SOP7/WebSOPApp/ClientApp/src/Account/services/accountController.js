@@ -7,6 +7,7 @@ import AccountStore from '../accountStore';
 import AccountResource from '../resource/id';
 
 import ProjectResource from '../../Root/resource/id';
+import { saveApiTokenFromResponse } from '../../Root/apiToken';
 
 export class AccountController {
     static logoutMsgChk = false;
@@ -89,6 +90,7 @@ export class AccountController {
             });
 
             if (res.ok) {
+                saveApiTokenFromResponse(res);   // 로그인/세션 유효 시 BeaconServer 토큰 저장(주기적 갱신)
                 const result = await res.json();
                 AccountController.loading3DChk = false;
 
@@ -567,6 +569,7 @@ export class AccountController {
             });
 
             if (res.ok) {
+                saveApiTokenFromResponse(res);   // BeaconServer 토큰 저장
                 const result = await res.json();
 
                 if (result.success === true) {
@@ -620,6 +623,7 @@ export class AccountController {
             });
 
             if (res.ok) {
+                saveApiTokenFromResponse(res);   // BeaconServer 토큰 저장
                 const result = await res.json();
 
                 if (result.success === true) {
@@ -665,6 +669,7 @@ export class AccountController {
             });
 
             if (res.ok) {
+                saveApiTokenFromResponse(res);   // BeaconServer 토큰 저장
                 const result = await res.json();
                 return result;
             }

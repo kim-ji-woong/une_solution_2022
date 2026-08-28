@@ -1,4 +1,5 @@
 ﻿import JsonManager from "./jsonManager";
+import { beaconHeaders } from "../../Root/apiToken";
 
 export default class HistoryController {
     static async DisplayUserHistories(beginTime, endTime, siteID) {
@@ -261,9 +262,7 @@ export default class HistoryController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Detection/RequestSpeedLimit', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                headers: beaconHeaders()
             });
 
             if (res.ok) {
@@ -284,9 +283,7 @@ export default class HistoryController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Detection/RequestSpeedDetectionSensors', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                headers: beaconHeaders()
             });
 
             if (res.ok) {
@@ -308,9 +305,7 @@ export default class HistoryController {
         try {
             const res = await fetch('http://10.6.13.71:2420/Detection/RequestSpeedDetectionHistorys', {
                 method: 'post',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: beaconHeaders(),
                 body: JSON.stringify({ BeginDate: beginDate, EndDate: endDate, SensorID: sensorID })
             });
 

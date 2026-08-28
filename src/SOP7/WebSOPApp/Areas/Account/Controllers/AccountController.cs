@@ -332,6 +332,7 @@ namespace WebSOPApp.Areas.Account.Controllers
                 result.Success = false;
             }
 
+            SetApiTokenHeader(result);
             return Ok(result);
         }
 
@@ -342,6 +343,7 @@ namespace WebSOPApp.Areas.Account.Controllers
             if (result.Success && result.User != null)
                 result.User.Options = Startup.ConfigManager.LoginOption;
 
+            SetApiTokenHeader(result);
             return Ok(result);
         }
 
@@ -515,7 +517,45 @@ namespace WebSOPApp.Areas.Account.Controllers
             if (result.User != null)
                 result.User.Options = Startup.ConfigManager.LoginOption;
 
+            SetApiTokenHeader(result);
             return Ok(result);
+        }
+
+        // 로그인/세션확인 성공 시 WonikBeaconServer 검증용 JWT 를 응답 헤더(X-Api-Token)로 내려준다.
+        //   프론트가 저장해 BeaconServer 호출 시 Authorization: Bearer 로 첨부한다.
+        //   CheckLoginSession 이 주기적으로 호출되므로 토큰은 세션 동안 자동 갱신된다.
+        private void SetApiTokenHeader(LoginResult result)
+        {
+            if (result == null || result.Success == false)
+                return;
+
+            // Auth:Enabled = true 일 때만 토큰을 발급한다. (BeaconServer 의 Auth:Enabled 와 대칭)
+            if (Startup.ConfigManager.AuthEnabled == false)
+                return;
+
+            string secret = Startup.ConfigManager.AuthSecret;
+            if (string.IsNullOrEmpty(secret))
+                return;
+
+            string token = WebSOPApp.Security.JwtHmac.Create(
+                secret,
+                Startup.ConfigManager.AuthIssuer,
+                Startup.ConfigManager.AuthAudience,
+                "",
+                Startup.ConfigManager.AuthExpireMinutes);
+
+            // (1) BeaconServer(교차 출처)용 - 응답 헤더로 전달 → 프론트가 localStorage 저장 후 Bearer 로 첨부
+            Response.Headers["X-Api-Token"] = token;
+
+            // (2) WebSOPApp(동일 출처) 서버측 인증용 - HttpOnly 쿠키. 브라우저가 API 요청에 자동 첨부한다.
+            Response.Cookies.Append("AuthToken", token, new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                Secure = Request.IsHttps,
+                SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax,
+                Path = "/",
+                Expires = System.DateTimeOffset.UtcNow.AddMinutes(Startup.ConfigManager.AuthExpireMinutes)
+            });
         }
 
         [HttpPost]

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.AspNetCore.StaticFiles;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 
 namespace WebSOPApp
@@ -81,7 +83,7 @@ namespace WebSOPApp
 
             app.UseStaticFiles(); 
 
-            // °í¿ë·® ¹öÀü ¸ðµ¨¸µ ÆÄÀÏ ¼³Á¤
+            // ï¿½ï¿½ï¿½ë·® ï¿½ï¿½ï¿½ï¿½ ï¿½ðµ¨¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             string strPath = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp\\build\\resource\\gltf");
 
             if (Directory.Exists(strPath))
@@ -93,13 +95,13 @@ namespace WebSOPApp
                     ContentTypeProvider = provider,
                     OnPrepareResponse = ctx =>
                     {
-                        // ¼­¹ö Àç°ËÁõ(ETag/Last-Modified) ¡æ ÆÄÀÏ ¹Ù²î¸é Áï½Ã »õ·Î ¹ÞÀ½
+                        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½(ETag/Last-Modified) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                         ctx.Context.Response.Headers["Cache-Control"] = "no-cache";
                     }
                 });
             }
 
-            // Àú¿ë·® ¹öÀü ¸ðµ¨¸µ ÆÄÀÏ ¼³Á¤
+            // ï¿½ï¿½ï¿½ë·® ï¿½ï¿½ï¿½ï¿½ ï¿½ðµ¨¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             string strLightPath = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp\\build\\resource\\gltf_light");
 
             if (Directory.Exists(strLightPath))
@@ -111,13 +113,13 @@ namespace WebSOPApp
                     ContentTypeProvider = provider,
                     OnPrepareResponse = ctx =>
                     {
-                        // ¼­¹ö Àç°ËÁõ(ETag/Last-Modified) ¡æ ÆÄÀÏ ¹Ù²î¸é Áï½Ã »õ·Î ¹ÞÀ½
+                        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½(ETag/Last-Modified) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                         ctx.Context.Response.Headers["Cache-Control"] = "no-cache";
                     }
                 });
             }
 
-            // ¿¢¼¿ ÆÄÀÏ ÀÐ±â/¾²±â °ü·Ã ¼³Á¤ Ãß°¡
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
             if (env.IsDevelopment())
@@ -140,6 +142,49 @@ namespace WebSOPApp
             app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+            // === ì„œë²„ì¸¡ ì¸ì¦ ë¯¸ë“¤ì›¨ì–´ (ì¿ í‚¤ ì„¸ì…˜) ===
+            //   Auth:Enabled = true ì¼ ë•Œë§Œ ë™ìž‘(ë‹¨ê³„ì  ì ìš©). ì»¨íŠ¸ë¡¤ëŸ¬(API) ìš”ì²­ë§Œ ê²€ì‚¬í•˜ê³ ,
+            //   ì •ì  íŒŒì¼/SPA íŽ˜ì´ì§€ ë¼ìš°íŠ¸(endpoint == null)ì™€ ë¡œê·¸ì¸/ë¶€íŠ¸ìŠ¤íŠ¸ëž©(/Account, /Commons)ì€ í†µê³¼ì‹œí‚¨ë‹¤.
+            //   ë¡œê·¸ì¸/ìžë™ë¡œê·¸ì¸ ì‹œ ë°œê¸‰ëœ HttpOnly ì¿ í‚¤(AuthToken) ë¥¼ ê²€ì¦í•˜ê³ , ì‹¤íŒ¨ ì‹œ 401 ì„ ë°˜í™˜í•œë‹¤.
+            if (Startup.ConfigManager.AuthEnabled)
+            {
+                string authSecret = Startup.ConfigManager.AuthSecret;
+                string authIssuer = Startup.ConfigManager.AuthIssuer;
+                string authAudience = Startup.ConfigManager.AuthAudience;
+
+                app.Use(async (context, next) =>
+                {
+                    // ì»¨íŠ¸ë¡¤ëŸ¬(API)ì— ë§¤ì¹­ëœ ìš”ì²­ë§Œ ê²€ì‚¬. ì •ì íŒŒì¼/SPA íŽ˜ì´ì§€ëŠ” endpoint ê°€ null ì´ë¼ í†µê³¼.
+                    if (context.GetEndpoint() != null)
+                    {
+                        string path = context.Request.Path.Value ?? "";
+                        bool exempt = path.StartsWith("/Account", StringComparison.OrdinalIgnoreCase)   // ë¡œê·¸ì¸/ì„¸ì…˜/SSO
+                                   || path.StartsWith("/Commons", StringComparison.OrdinalIgnoreCase);  // SiteID ë¶€íŠ¸ìŠ¤íŠ¸ëž©(ë¡œê·¸ì¸ ì „ í˜¸ì¶œ)
+
+                        if (!exempt && !HttpMethods.IsOptions(context.Request.Method))
+                        {
+                            string token = context.Request.Cookies["AuthToken"];
+                            if (string.IsNullOrEmpty(token))
+                            {
+                                string authz = context.Request.Headers["Authorization"];
+                                if (authz != null && authz.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                                    token = authz.Substring(7).Trim();
+                            }
+
+                            string err;
+                            if (!WebSOPApp.Security.JwtHmac.Validate(token, authSecret, authIssuer, authAudience, out err))
+                            {
+                                context.Response.StatusCode = 401;
+                                await context.Response.WriteAsync("Unauthorized: " + err);
+                                return;
+                            }
+                        }
+                    }
+
+                    await next();
+                });
+            }
+
             //var options = new StaticFileOptions
             //{
             //    ContentTypeProvider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider()
@@ -151,7 +196,7 @@ namespace WebSOPApp
 
             app.UseEndpoints(endpoints =>
             {
-                // Areas °æ·Î
+                // Areas ï¿½ï¿½ï¿½
                 endpoints.MapControllerRoute(
                     name: "WebSOPApp",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

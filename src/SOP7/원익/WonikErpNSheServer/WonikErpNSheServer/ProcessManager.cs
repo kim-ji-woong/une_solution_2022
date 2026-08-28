@@ -175,17 +175,24 @@ namespace WonikErpNSheServer
             if (strSHEDBType == null || strSHEDBType.Length == 0)
                 strSHEDBType = "0";
 
+            // SHE_HOST / SHE_ID / SHE_PW 는 AES256 암호화되어 저장되므로 기본값도 암호문으로 둔다.
+            // (기본값 평문: 10.199.3.31 / qncshe / Qnc12345^)
             string strSHEDBHost = ConfigurationManager.AppSettings.Get("SHE_HOST");
             if (strSHEDBHost == null || strSHEDBHost.Length == 0)
-                strSHEDBHost = "10.199.3.31";
+                strSHEDBHost = "lKX/i6jb42jMUc3LUEh1ww==";
 
             string strSHEDBId = ConfigurationManager.AppSettings.Get("SHE_ID");
             if (strSHEDBId == null || strSHEDBId.Length == 0)
-                strSHEDBId = "qncshe";
+                strSHEDBId = "pmp6wJ+k2PL0Ir1EiDg+AA==";
 
             string strSHEDBPw = ConfigurationManager.AppSettings.Get("SHE_PW");
             if (strSHEDBPw == null || strSHEDBPw.Length == 0)
-                strSHEDBPw = "Qnc12345^";
+                strSHEDBPw = "ZwGcSDNEsUG7BBxdSRgS2Q==";
+
+            // DB_HOST / DB_ID / DB_PW 와 동일한 키로 복호화한다. (key 는 위에서 정의됨)
+            strSHEDBHost = AES256Cipher.AES_decrypt(strSHEDBHost.Trim(), key);
+            strSHEDBId = AES256Cipher.AES_decrypt(strSHEDBId.Trim(), key);
+            strSHEDBPw = AES256Cipher.AES_decrypt(strSHEDBPw.Trim(), key);
 
             int nSHEDBType = 0;
 

@@ -66,6 +66,10 @@ obj/
 node_modules/
 PostBoy/
 RtspChecker/
+WonikCctvZoneMapper/
+
+# 빌드 시 컴파일러가 재생성하는 XML 문서 파일 (Swagger 설명용, 소스 아님)
+WonikBeaconServer.xml
 
 # === 대형 바이너리 자산 제외 (GitHub 파일당 100MB 한도) ===
 # 유니티/일렉트론 빌드 데이터
