@@ -66,6 +66,7 @@ obj/
 node_modules/
 PostBoy/
 RtspChecker/
+WonikCctvZoneMapper/
 
 # 빌드 시 컴파일러가 재생성하는 XML 문서 파일 (Swagger 설명용, 소스 아님)
 WonikBeaconServer.xml
