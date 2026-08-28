@@ -119,7 +119,11 @@ class SensorSimulator extends Component {
                 }
 
                 if (result.cctvs) {
-                    this.setSensorList(result.cctvs, _3dOptions, sensorList, SdmsResource.facilityType.Intrusion_S1);
+                    // 침입(SensorType=900) SensorZone과 SensorTagInfo까지 등록된 CCTV만 표출.
+                    // 백엔드가 등록된 CCTV에만 sensorZoneID/sensorTagInfoID를 채워주므로 둘 다 있는 것만 남긴다.
+                    const registeredCctvs = result.cctvs.filter(
+                        cctv => cctv.sensorZoneID != null && cctv.sensorTagInfoID != null);
+                    this.setSensorList(registeredCctvs, _3dOptions, sensorList, SdmsResource.facilityType.Intrusion_S1);
                 }
                 
                 if (result.laserSensors)
