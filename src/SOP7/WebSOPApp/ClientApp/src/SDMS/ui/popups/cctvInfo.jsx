@@ -14,6 +14,7 @@ import Contents3D from '../3D/contents3D';
 
 import SdmsResource from '../../resource/id';
 import ProjectResource from '../../../Root/resource/id';
+import { withStreamToken } from '../../../Root/apiToken';
 
 import PopupDraggable from './popupDraggable';
 
@@ -706,12 +707,12 @@ class CCTVInfo extends PureComponent {
                 if (url !== null && url.indexOf("/stream/player/") !== -1) 
                     url += param;
                 
-                frame.setAttribute("src", url);
+                frame.setAttribute("src", withStreamToken(url));
             }
             else {
                 //let url = this.state.streamServerURL + "/stream/player/" + suuid + param;             // 기존 방식(RTSPtoWebRTC)
                 const url = this.state.streamServerURL + "/stream.html?src=" + suuid + "&mode=mse";     // MSE 미디어 서버 방식
-                frame.setAttribute("src", url);
+                frame.setAttribute("src", withStreamToken(url));
 
                 //전체화면 이벤트에 사용
                 //frame.parentNode.dataset.url = this.state.streamServerURL + "/stream/player/" + suuid;                                // 기존 방식(RTSPtoWebRTC)
@@ -848,7 +849,7 @@ class CCTVInfo extends PureComponent {
 
         if (frame !== null && frame !== undefined) {
             const url = "";
-            frame.setAttribute("src", url);
+            frame.setAttribute("src", withStreamToken(url));
 
             title.innerHTML = "";
 
@@ -884,7 +885,7 @@ class CCTVInfo extends PureComponent {
 
             if (frame !== null && frame !== undefined) {
                 let url = frame.parentNode.dataset.url + "?w=" + width + "px&h=" + height + "px";
-                frame.setAttribute("src", url);
+                frame.setAttribute("src", withStreamToken(url));
             }
 
             this.setState({ cctvWidth: width, cctvHeight: height });
@@ -920,12 +921,12 @@ class CCTVInfo extends PureComponent {
                             url += "?w=" + width + "px&h=" + height + "px";
                         }
 
-                        frame.setAttribute("src", url);
+                        frame.setAttribute("src", withStreamToken(url));
                     }
                     else {
                         //let url = frame.parentNode.dataset.url + "?w=" + width + "px&h=" + height + "px";     // 기존 방식(RTSPtoWebRTC)
                         let url = frame.parentNode.dataset.url;                                                 // MSE 미디어 서버 방식
-                        frame.setAttribute("src", url);
+                        frame.setAttribute("src", withStreamToken(url));
                     }                    
                 }
 
@@ -955,12 +956,12 @@ class CCTVInfo extends PureComponent {
                             url += "?w=" + width + "px&h=" + height + "px";
                         }
 
-                        frame.setAttribute("src", url);
+                        frame.setAttribute("src", withStreamToken(url));
                     }
                     else {
                         //let url = frame.parentNode.dataset.url + "?w=" + width + "px&h=" + height + "px";     // 기존 방식(RTSPtoWebRTC)
                         let url = frame.parentNode.dataset.url;                                                 // MSE 미디어 서버 방식
-                        frame.setAttribute("src", url);
+                        frame.setAttribute("src", withStreamToken(url));
                     }                    
                 }
 
@@ -1104,7 +1105,7 @@ class CCTVInfo extends PureComponent {
             div.appendChild(title);
 
             let frame = document.createElement('iframe');
-            frame.src = url + "?w=" + width + "&h=" + height;
+            frame.src = withStreamToken(url + "?w=" + width + "&h=" + height);
             div.appendChild(frame);
 
             cctvConts.prepend(div);

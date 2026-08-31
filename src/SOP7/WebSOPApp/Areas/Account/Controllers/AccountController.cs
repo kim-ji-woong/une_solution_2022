@@ -333,6 +333,7 @@ namespace WebSOPApp.Areas.Account.Controllers
             }
 
             SetApiTokenHeader(result);
+            SetStreamTokenHeader(result);
             return Ok(result);
         }
 
@@ -344,6 +345,7 @@ namespace WebSOPApp.Areas.Account.Controllers
                 result.User.Options = Startup.ConfigManager.LoginOption;
 
             SetApiTokenHeader(result);
+            SetStreamTokenHeader(result);
             return Ok(result);
         }
 
@@ -518,6 +520,7 @@ namespace WebSOPApp.Areas.Account.Controllers
                 result.User.Options = Startup.ConfigManager.LoginOption;
 
             SetApiTokenHeader(result);
+            SetStreamTokenHeader(result);
             return Ok(result);
         }
 
@@ -556,6 +559,34 @@ namespace WebSOPApp.Areas.Account.Controllers
                 Path = "/",
                 Expires = System.DateTimeOffset.UtcNow.AddMinutes(Startup.ConfigManager.AuthExpireMinutes)
             });
+        }
+
+        // 로그인/세션확인 성공 시 go2rtc 인증 프록시(WonikStreamProxy) 검증용 JWT 를 응답 헤더(X-Stream-Token)로 내려준다.
+        //   프론트가 저장해 영상 URL(stream.html?...&token=<JWT>) 에 부착하고, 프록시가 동일 Auth:Secret 으로 검증한다.
+        //   audience = "go2rtc" (프록시 appsettings 의 Auth:Audience 와 일치).
+        //   Auth:Enabled=true 일 때만 발급한다. false 면 토큰을 안 내리므로 프론트는 예전처럼 토큰 없이 go2rtc 를 사용한다.
+        //   (로그인 상태(result.Success)에서만 발급되므로 로그인하지 않은 사용자는 토큰을 얻을 수 없다.)
+        private void SetStreamTokenHeader(LoginResult result)
+        {
+            if (result == null || result.Success == false)
+                return;
+
+            // 스트림 인증(go2rtc 프록시)은 Auth:Enabled=true 일 때만 사용. false 면 예전 방식(토큰 없이).
+            if (Startup.ConfigManager.AuthEnabled == false)
+                return;
+
+            string secret = Startup.ConfigManager.AuthSecret;
+            if (string.IsNullOrEmpty(secret))
+                return;
+
+            string token = WebSOPApp.Security.JwtHmac.Create(
+                secret,
+                Startup.ConfigManager.AuthIssuer,
+                "go2rtc",
+                "",
+                Startup.ConfigManager.AuthExpireMinutes);
+
+            Response.Headers["X-Stream-Token"] = token;
         }
 
         [HttpPost]
