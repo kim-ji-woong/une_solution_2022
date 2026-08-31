@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    WonikStreamProxy
+      go2rtc(미디어 서버) 앞단에 두는 인증 리버스 프록시.
+      - 요청의 ?token=<JWT> (또는 쿠키)를 검증(HMAC-SHA256, WebSOPApp 과 동일 비밀키)한 뒤에만 go2rtc 로 전달.
+      - WebSocket(go2rtc MSE, /api/ws) 프록시 지원(YARP).
+      - go2rtc 는 localhost 로 숨기고, 이 프록시만 공개 포트로 노출한다.
+
+    빌드/배포: .NET 8 SDK 필요. 자세한 publish 옵션은 README.md 참고.
+      (self-contained 단일 exe 로 빌드하면 런타임 미설치 Windows 서버에서도 실행 가능)
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>WonikStreamProxy</RootNamespace>
+    <AssemblyName>WonikStreamProxy</AssemblyName>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
+  </ItemGroup>
+
+</Project>
