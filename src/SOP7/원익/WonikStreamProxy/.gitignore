@@ -1,0 +1,4 @@
+# 게시(publish) 산출물 - 빌드 결과물이므로 추적하지 않음
+publish/
+publish-console/
+publish-service/

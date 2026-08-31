@@ -18,10 +18,34 @@
     <RootNamespace>WonikStreamProxy</RootNamespace>
     <AssemblyName>WonikStreamProxy</AssemblyName>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- 게시 결과 폴더는 빌드 산출물이므로 프로젝트 항목/솔루션 탐색기에서 제외한다. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);publish\**;publish-console\**;publish-service\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <!--
+    빌드 모드 스위치 (SERVICE 심볼)
+      · 콘솔  : 그냥 빌드/게시 (심볼 없음)            → 일반 콘솔 앱 (UseWindowsService 미포함)
+      · 서비스: SERVICE 심볼 정의                     → Windows 서비스로 동작 (UseWindowsService 포함)
+    SERVICE 를 켜는 방법 두 가지 (아무거나):
+      (1) 속성으로:   dotnet publish ... -p:ServiceMode=true
+      (2) 구성으로:   VS 구성 관리자에서 Release 를 복사한 'Service' 구성으로 빌드/게시
+                      (또는 CLI: dotnet publish -c Service ...)
+      · VS 게시 프로필(.pubxml)에 <ServiceMode>true</ServiceMode> 한 줄 추가해도 동일.
+  -->
+  <PropertyGroup Condition="'$(ServiceMode)' == 'true' Or '$(Configuration)' == 'Service'">
+    <DefineConstants>$(DefineConstants);SERVICE</DefineConstants>
+  </PropertyGroup>
+
+  <!-- 'Service' 구성은 Release 처럼 최적화되도록 -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Service'">
+    <Optimize>true</Optimize>
+    <DebugType>portable</DebugType>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.1" />
   </ItemGroup>
 
 </Project>

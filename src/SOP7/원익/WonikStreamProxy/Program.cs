@@ -3,6 +3,13 @@ using WonikStreamProxy;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#if SERVICE
+// SERVICE 심볼이 정의된 빌드에서만 Windows 서비스로 동작(부팅 시 자동 시작).
+//   서비스로 뜰 때 ContentRoot 를 exe 폴더로 잡아주므로 appsettings.json 을 정상적으로 읽는다.
+//   심볼이 없는(콘솔) 빌드에서는 이 호출이 컴파일에 포함되지 않아 일반 콘솔 앱으로 실행된다.
+builder.Host.UseWindowsService();
+#endif
+
 // YARP 리버스 프록시 (appsettings.json 의 ReverseProxy 섹션 사용)
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
