@@ -159,7 +159,12 @@ namespace WebSOPApp
                     {
                         string path = context.Request.Path.Value ?? "";
                         bool exempt = path.StartsWith("/Account", StringComparison.OrdinalIgnoreCase)   // 로그인/세션/SSO
-                                   || path.StartsWith("/Commons", StringComparison.OrdinalIgnoreCase);  // SiteID 부트스트랩(로그인 전 호출)
+                                   || path.StartsWith("/Commons", StringComparison.OrdinalIgnoreCase)   // SiteID 부트스트랩(로그인 전 호출)
+                                   // 공개 안전평가표(이메일 링크로 접근하는 비로그인 페이지)가 쓰는 API 는 예외.
+                                   //   수신 대상자(memberID)는 WebSOPApp 로그인 사용자가 아니므로 인증 쿠키가 없다.
+                                   //   접근 통제는 URL 의 assessmentID+memberID 로 이루어진다.
+                                   || path.StartsWith("/SDMS/Assessment/LoadAssessment", StringComparison.OrdinalIgnoreCase)
+                                   || path.StartsWith("/SDMS/Assessment/SaveAssessment", StringComparison.OrdinalIgnoreCase);
 
                         if (!exempt && !HttpMethods.IsOptions(context.Request.Method))
                         {
