@@ -66,16 +66,24 @@ export function getStreamToken() {
 	}
 }
 
-// go2rtc(stream.html) URL 에만 최신 스트림 토큰을 부착한다. 다른 URL(직접 카메라 http 등)은 그대로 반환.
+// go2rtc(stream.html) 영상 URL 처리.
+//   - 스트림 토큰이 없으면(Auth:Enabled=false) 원래 URL(go2rtc stream.html) 그대로 반환 → 예전 방식.
+//   - 토큰이 있으면(Auth:Enabled=true) WebSOPApp 이 호스팅하는 커스텀 MSE 플레이어(streamPlayer.html) URL 로 전환한다.
+//     · go2rtc stream.html 은 영상 WebSocket 에 토큰을 못 실어, 교차 사이트/HTTP 에서 쿠키가 막혀 401 이 난다.
+//     · 커스텀 플레이어는 토큰을 WS URL 에 직접 실어(ws://proxy/api/ws?src=..&token=..) 쿠키 없이 통과시킨다.
 export function withStreamToken(url) {
 	try {
-		if (!url || url.indexOf('/stream.html') === -1) return url;
+		if (!url || url.indexOf('/stream.html') === -1) return url;   // go2rtc 스트림 URL 이 아니면 그대로
 		const token = getStreamToken();
-		if (!token) return url;
-		// 기존 token 파라미터가 있으면 제거 후 최신값으로 재부착(만료 대비)
-		let base = url.replace(/([?&])token=[^&]*/g, '$1').replace(/[?&]$/, '');
-		const sep = base.indexOf('?') === -1 ? '?' : '&';
-		return base + sep + 'token=' + encodeURIComponent(token);
+		if (!token) return url;   // Auth off → 예전 방식(원래 stream.html)
+
+		const base = url.substring(0, url.indexOf('/stream.html'));   // 프록시 베이스: 예) http://10.6.13.44:1984
+		const m = url.match(/[?&]src=([^&]+)/);                       // 스트림 이름(뒤에 ?w= 등이 붙어도 안전하게 추출)
+		const src = m ? m[1] : '';
+
+		return '/streamPlayer.html?proxy=' + encodeURIComponent(base)
+			+ '&src=' + encodeURIComponent(src)
+			+ '&token=' + encodeURIComponent(token);
 	} catch (e) {
 		return url;
 	}

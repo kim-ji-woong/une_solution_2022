@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stream</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;overflow:hidden;}
+  video{width:100%;height:100%;object-fit:contain;background:#000;display:block;}
+</style>
+</head>
+<body>
+<video id="v" muted autoplay playsinline></video>
+<script>
+/*
+  go2rtc 인증 프록시(WonikStreamProxy)용 커스텀 MSE 플레이어.
+    - go2rtc 의 stream.html 은 WebSocket 에 토큰을 안 싣기 때문에, 교차 사이트/HTTP 에서는
+      프록시가 심는 쿠키가 WS 에 전달되지 않아 401 이 난다.
+    - 이 플레이어는 토큰을 WS URL 에 직접 실어(ws://proxy/api/ws?src=..&token=..) 쿠키 없이 통과시킨다.
+  쿼리: ?proxy=http://호스트:포트 & src=<스트림> & token=<JWT>
+*/
+(function () {
+  var params = new URLSearchParams(location.search);
+  var proxy = params.get('proxy') || '';      // 예: http://10.6.13.44:1984
+  var src = params.get('src') || '';
+  var token = params.get('token') || '';
+
+  // http -> ws, https -> wss
+  var wsBase = proxy.replace(/^http/i, 'ws');
+  var wsUrl = wsBase + '/api/ws?src=' + encodeURIComponent(src) + '&token=' + encodeURIComponent(token);
+
+  var video = document.getElementById('v');
+  var ws, ms, sb;
+  var queue = [];
+  var reconnectTimer = null;
+
+  // go2rtc 에 요청할 지원 코덱 목록(video-rtc.js 기본값과 동일 계열)
+  var CODECS = 'avc1.640029,avc1.64001f,avc1.42e01f,hvc1.1.6.L153.B0,mp4a.40.2,mp4a.40.5,opus,flac';
+
+  function flush() {
+    if (!sb || sb.updating || queue.length === 0) return;
+    // 버퍼 과다 방지: 재생지점보다 한참 앞선 오래된 구간 제거
+    try {
+      if (sb.buffered.length && (video.currentTime - sb.buffered.start(0)) > 60) {
+        sb.remove(sb.buffered.start(0), video.currentTime - 30);
+        return; // remove 완료(updateend)되면 flush 재호출됨
+      }
+    } catch (e) {}
+    try {
+      sb.appendBuffer(queue.shift());
+    } catch (e) {
+      // QuotaExceeded 등 - 큐를 비워 밀림 방지
+      queue = [];
+    }
+  }
+
+  function startMSE(mime) {
+    try {
+      ms = new MediaSource();
+      video.src = URL.createObjectURL(ms);
+      ms.addEventListener('sourceopen', function () {
+        try {
+          sb = ms.addSourceBuffer(mime);
+          sb.mode = 'segments';
+          sb.addEventListener('updateend', flush);
+          flush();
+        } catch (e) {}
+      }, { once: true });
+    } catch (e) {}
+  }
+
+  function cleanup() {
+    try { if (sb) sb.abort(); } catch (e) {}
+    sb = null; ms = null; queue = [];
+  }
+
+  function connect() {
+    if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
+    try { ws = new WebSocket(wsUrl); } catch (e) { scheduleReconnect(); return; }
+    ws.binaryType = 'arraybuffer';
+
+    ws.onopen = function () {
+      try { ws.send(JSON.stringify({ type: 'mse', value: CODECS })); } catch (e) {}
+    };
+    ws.onmessage = function (ev) {
+      if (typeof ev.data === 'string') {
+        try {
+          var msg = JSON.parse(ev.data);
+          if (msg.type === 'mse' && msg.value) startMSE(msg.value);
+        } catch (e) {}
+      } else {
+        queue.push(ev.data);
+        flush();
+      }
+    };
+    ws.onclose = function () { cleanup(); scheduleReconnect(); };
+    ws.onerror = function () { try { ws.close(); } catch (e) {} };
+  }
+
+  function scheduleReconnect() {
+    if (reconnectTimer) return;
+    reconnectTimer = setTimeout(function () { reconnectTimer = null; connect(); }, 3000);
+  }
+
+  // 자동재생(음소거) 시도
+  video.muted = true;
+  video.play && video.play().catch(function () {});
+
+  if (!proxy || !src || !token) {
+    // 파라미터 부족 시 아무것도 안 함(검은 화면)
+    return;
+  }
+  connect();
+
+  window.addEventListener('beforeunload', function () {
+    try { if (ws) ws.close(); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
