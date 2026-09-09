@@ -65,6 +65,28 @@ namespace GGHTServices
                     ConfigManager.DbType = nDBType;
                 }
             }
+
+            string strSyswillDBName = Configuration["Syswill:DBName"];
+            string strSyswillDBType = Configuration["Syswill:DBType"];
+            string strSyswillDBHost = Configuration["Syswill:DbHost"];
+            string strSyswillDbId = Configuration["Syswill:DbID"];
+            string strSyswillDbPw = Configuration["Syswill:DbPw"];
+
+            if (strSyswillDBName != null && strSyswillDbId != null && strSyswillDbPw != null &&
+                strSyswillDBHost.Trim().Length > 0 && strSyswillDbId.Trim().Length > 0 && strSyswillDbPw.Trim().Length > 0)
+            {
+                ConfigManager.SyswillDbHost = dnsDapperDBUtil.AES256Cipher.AES_decrypt(strSyswillDBHost);
+                ConfigManager.SyswillDbName = dnsDapperDBUtil.AES256Cipher.AES_decrypt(strSyswillDBName);
+                ConfigManager.SyswillDbID = dnsDapperDBUtil.AES256Cipher.AES_decrypt(strSyswillDbId);
+                ConfigManager.SyswillDbPw = dnsDapperDBUtil.AES256Cipher.AES_decrypt(strSyswillDbPw);
+
+                int nDBType;
+
+                if (int.TryParse(strSyswillDBType.Trim(), out nDBType))
+                {
+                    ConfigManager.SyswillDbType = nDBType;
+                }
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

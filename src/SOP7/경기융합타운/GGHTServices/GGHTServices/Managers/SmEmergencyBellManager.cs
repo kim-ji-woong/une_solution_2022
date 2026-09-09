@@ -10,9 +10,12 @@ namespace GGHTServices.Managers
     {
         private BellInfoModel m_model = null;
         private dnsDapperDBUtil.Manager.WebDBManager m_dbManager = null;
+        private dnsDapperDBUtil.DataAccessLayer.DAL.DataManager m_syswillDataManager = null;
         public SmEmergencyBellManager(BellInfoModel model, bool isAlarm)
         {
-            m_dbManager = new dnsDapperDBUtil.Manager.WebDBManager(ConfigManager.DbType, ConfigManager.DbHost, ConfigManager.DbName, ConfigManager.DbID, ConfigManager.DbPw);
+            m_dbManager = new dnsDapperDBUtil.Manager.WebDBManager(ConfigManager.DbType, ConfigManager.DbHost, ConfigManager.DbName, ConfigManager.DbID, ConfigManager.DbPw, null);
+            m_syswillDataManager = new dnsDapperDBUtil.DataAccessLayer.DAL.DataManager(ConfigManager.SyswillDbType, ConfigManager.SyswillDbHost, ConfigManager.SyswillDbName, ConfigManager.SyswillDbID, ConfigManager.SyswillDbPw);
+
             m_model = model;
             ProcessData(isAlarm);
         }
@@ -31,11 +34,14 @@ namespace GGHTServices.Managers
 
             dnsCommunicateSopServer.SopQueryManager sopQueryManager = new dnsCommunicateSopServer.SopQueryManager(ConfigManager.SOPWebServerURL + "/api/etcSensor");
             sopQueryManager.SendAlarmQuery(arrList, "POST");
+
+            SyswillProcessManager processManager = new SyswillProcessManager(m_syswillDataManager, m_dbManager);
+            processManager.UpdateEmergencyBell(sensor.OrgSensorID, isAlarm);
         }
 
         public SensorInfoModel FindSensor()
         {            
-            string strSQL = $@"select sz.ID sensorZoneID, sti.ID sensorTagInfoID, sensorType 
+            string strSQL = $@"select sz.ID sensorZoneID, sti.ID sensorTagInfoID, sensorType, sz.OrgSensorID sensorID
                                  from SdmsSensorZone sz
                                 inner join SdmsSensorTagInfo sti on sz.ID=sti.SensorZoneID
                                 where sti.SensorServerID=(select id from SdmsSensorServerInfo where ServerType={(int)dnsSopID.ID.ServerTypes.EmergencyBell_Smcom})
@@ -49,7 +55,8 @@ namespace GGHTServices.Managers
             {
                 SensorTagInfoID = result.sensorTagInfoID,
                 SensorZoneID = result.sensorZoneID,
-                SensorType = result.sensorType
+                SensorType = result.sensorType,
+                OrgSensorID = result.sensorID
             };
 
             return sensor;
@@ -70,5 +77,6 @@ namespace GGHTServices.Managers
         public int SensorTagInfoID { get; set; }
         public int SensorZoneID { get; set; }
         public int SensorType { get; set; }
+        public int OrgSensorID { get; set; }
     }
 }

@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\..\..\..\esdk\workspace\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
     <ProjectReference Include="..\..\..\DNS\dnsCommunicateSopServer\dnsCommunicateSopServer.csproj" />
     <ProjectReference Include="..\..\..\DNS\dnsSopID\dnsSopID.csproj" />
+    <ProjectReference Include="..\..\..\SDMS\SDMS.Model\SDMS.Model.csproj" />
   </ItemGroup>
 
 

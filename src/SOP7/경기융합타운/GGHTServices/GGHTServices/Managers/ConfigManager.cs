@@ -17,5 +17,11 @@ namespace GGHTServices.Managers
         public static string LogFolder { get; set; }
         public static string LogFileTag { get; set; }
         public static int LogLifeDays { get; set; }
+
+        public static int SyswillDbType { get; set; }
+        public static string SyswillDbHost { get; set; }
+        public static string SyswillDbName { get; set; }
+        public static string SyswillDbID { get; set; }
+        public static string SyswillDbPw { get; set; }
     }
 }
