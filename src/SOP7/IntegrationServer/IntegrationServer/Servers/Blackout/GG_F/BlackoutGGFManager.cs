@@ -13,7 +13,7 @@ using static dnsSopID.ID;
 
 namespace IntegrationServer.Servers.Blackout.GG_F
 {
-    class BlackoutGGFManager : IServer
+    class BlackoutGGFManager : SyswillProcessManager, IServer
     {
         private int m_nServerSeqNo = -1;
         public int ServerSeqNo { get { return m_nServerSeqNo; } }
@@ -65,6 +65,7 @@ namespace IntegrationServer.Servers.Blackout.GG_F
         private int? m_nBlackoutID = null;
 
         public BlackoutGGFManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -202,7 +203,8 @@ namespace IntegrationServer.Servers.Blackout.GG_F
                             if (m_dataManager.GetUpdate().Update<ETC, ETC.Fields>(dicSets, strCondition, out string strErrorMessage) == false)
                                 WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                         }
-                        
+
+                        UpdateBlackoutF(fVolA, fVolB, fVolC, true, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                     }
                     else
                     {
@@ -230,7 +232,8 @@ namespace IntegrationServer.Servers.Blackout.GG_F
                         if (m_dataManager.GetUpdate().Update<ETC, ETC.Fields>(dicSets, strCondition, out string strErrorMessage) == false)
                             WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                     }
-                    
+
+                    UpdateBlackoutF(fVolA, fVolB, fVolC, false, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                 }
                 else
                 {

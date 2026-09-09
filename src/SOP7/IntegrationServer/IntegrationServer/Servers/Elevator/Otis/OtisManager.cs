@@ -9,7 +9,7 @@ namespace IntegrationServer.Servers.Elevator.Otis
     using Datas;
     using ViewModels.Elevator;
 
-    class OtisManager : IServer
+    class OtisManager : SyswillProcessManager, IServer
     {
         private ServerManager m_serverManager = null;
         private int m_nServerSeqNo = -1;
@@ -63,6 +63,7 @@ namespace IntegrationServer.Servers.Elevator.Otis
         public string ServerAlias { get { return m_strServerAlias; } }
 
         public OtisManager(ServerManager serverManager, IDataManager dataManager, int nSiteID, int nServerSeqNo, string strServerIP, int nPort, string strServerAlias)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_nServerSeqNo = nServerSeqNo;
@@ -307,6 +308,15 @@ namespace IntegrationServer.Servers.Elevator.Otis
                     _elevator.Door = elevator.Door;
                     _elevator.Direction = elevator.Direction;
                 }
+
+                int doorStatus = -1;
+
+                if (elevator.Door == (int)Elevator.DoorStatus.Opened)
+                    doorStatus = 0;
+                else if (elevator.Door == (int)Elevator.DoorStatus.Closed)
+                    doorStatus = 1;
+
+                UpdateElevator(elevator.Name, doorStatus, elevator.Floor, (int)Elevator.RunStatus.Normal, elevator.Direction, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
             }
 
             m_nTransactionID = ++nTransactionID;

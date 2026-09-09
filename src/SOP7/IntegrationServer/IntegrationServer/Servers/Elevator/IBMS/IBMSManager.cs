@@ -9,7 +9,7 @@ namespace IntegrationServer.Servers.Elevator.IBMS
     using Datas;
     using ViewModels.Elevator;
 
-    class IBMSManager : IServer
+    class IBMSManager : SyswillProcessManager, IServer
     {
         private ServerManager m_serverManager = null;
         private int m_nServerSeqNo = -1;
@@ -56,6 +56,7 @@ namespace IntegrationServer.Servers.Elevator.IBMS
         public string ServerAlias { get { return m_strServerAlias; } }
 
         public IBMSManager(ServerManager serverManager, IDataManager dataManager, int nSiteID, int nServerSeqNo, string strServerIP, int nPort, string strServerAlias)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_nServerSeqNo = nServerSeqNo;
@@ -267,6 +268,17 @@ namespace IntegrationServer.Servers.Elevator.IBMS
             if (m_dataManager.GetUpdate().Update<Elevator, Elevator.Fields>(dicSets, strCondition, out strErrorMessage) == false)
             {
                 WriteLog(strErrorMessage, LogTypes.Error);
+            }
+            else
+            {
+                int doorStatus = -1;
+
+                if (elevator.Door == (int)Elevator.DoorStatus.Opened)
+                    doorStatus = 0;
+                else if (elevator.Door == (int)Elevator.DoorStatus.Closed)
+                    doorStatus = 1;
+
+                UpdateElevator(elevator.Name, doorStatus, elevator.Floor, elevator.Run, elevator.Direction, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
             }
         }
     }

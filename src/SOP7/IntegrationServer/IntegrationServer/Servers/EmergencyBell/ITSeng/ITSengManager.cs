@@ -15,7 +15,7 @@ using dnsTcpLib2;
 
 namespace IntegrationServer.Servers.EmergencyBell.ITSeng
 {
-    public class ITSengManager : IServer
+    public class ITSengManager : SyswillProcessManager, IServer
     {
         #region IServer 인터페이스
         private int m_nServerSeqNo = -1;
@@ -74,6 +74,7 @@ namespace IntegrationServer.Servers.EmergencyBell.ITSeng
         private Dictionary<string, SensorTag> m_dicSensorTags2 = new Dictionary<string, SensorTag>();
 
         public ITSengManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nSiteID, int nServerSeqNo, string strServerIP, int nPort,  string strServerAlias)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -231,12 +232,18 @@ namespace IntegrationServer.Servers.EmergencyBell.ITSeng
 
         public bool SendSensorData(SensorTag sensorTag, bool bIsAlarm)
         {
-            return m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.EmergencyBell, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+            bool isSuccess = m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.EmergencyBell, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+
+            if (isSuccess)
+                UpdateEmergencyBell(sensorTag.OrgSensorID, true, m_dataManager, bIsAlarm, this.Logger, ServerType, m_nServerSeqNo);
+
+            return isSuccess;
         }
 
         public void SendSensorDataAsync(SensorTag sensorTag, bool bIsAlarm)
         {
             m_serverManager.SendSensorDataAsync(m_sopQueryManager, (int)FacilityType.EmergencyBell, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+            UpdateEmergencyBell(sensorTag.OrgSensorID, true, m_dataManager, bIsAlarm, this.Logger, ServerType, m_nServerSeqNo);
         }
 
         public void WriteLog(string strLog, LogTypes logTypes = LogTypes.Info)

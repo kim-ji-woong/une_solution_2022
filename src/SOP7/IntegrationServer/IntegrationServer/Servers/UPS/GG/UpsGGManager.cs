@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace IntegrationServer.Servers.UPS.GG
 {
-    public class UpsGGManager : IServer
+    public class UpsGGManager : SyswillProcessManager, IServer
     {
         public static string Community = "public";
 
@@ -43,8 +43,8 @@ namespace IntegrationServer.Servers.UPS.GG
         private static int Battery_Alert = 50;
         private static int Battery_Caution = 70;
 
-        private static int BLACKOUT_STATE = 3;
-        private static int BLACKOUT_BYPASS = 6;
+        public static int BLACKOUT_STATE = 3;
+        public static int BLACKOUT_BYPASS = 6;
 
         private int? m_nBlackoutID = null;
 
@@ -90,6 +90,7 @@ namespace IntegrationServer.Servers.UPS.GG
         private int m_nThreadDeley = 1000 * 30;
 
         public UpsGGManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerAlias, bool bUse)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -561,7 +562,7 @@ namespace IntegrationServer.Servers.UPS.GG
                                     string strCondition = string.Format("{0} = {1}", Nipa.Model.Sdms.Sensor.ETC.Fields.ID, m_nBlackoutID.Value);
 
                                     if (m_dataManager.GetUpdate().Update<Nipa.Model.Sdms.Sensor.ETC, Nipa.Model.Sdms.Sensor.ETC.Fields>(dicSets, strCondition, out strErrorMessage) == false)
-                                        Logger.Write(LogTypes.Info, ID.ServerTypes.UPS_GG, m_nServerSeqNo, $"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})");                                    
+                                        Logger.Write(LogTypes.Info, ID.ServerTypes.UPS_GG, m_nServerSeqNo, $"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})");
                                 }
                                     
                             }
@@ -590,9 +591,12 @@ namespace IntegrationServer.Servers.UPS.GG
                             if (m_dataManager.GetUpdate().Update<Nipa.Model.Sdms.Sensor.ETC, Nipa.Model.Sdms.Sensor.ETC.Fields>(dicSets, strCondition, out strErrorMessage) == false)
                                 Logger.Write(LogTypes.Info, ID.ServerTypes.UPS_GG, m_nServerSeqNo, $"ETC Update Error (ID: {m_nBlackoutID}, Status: {(int)AlarmDepths.None})");
                         }
-                        
+
                         nBlackoutDepth = (int)AlarmDepths.None;
                     }
+
+                    // 시스윌 연동 : 정전 상태 변화와 무관하게 폴링 주기(30초)마다 UPS 동작상태와 배터리 잔량을 전달한다.
+                    UpdateUps(nState_100kva_1, nState_100kva_2, nState_100kva_3, nState_200kva, nState_500kva_1, nState_500kva_2, nValue_100kva_1, nValue_100kva_2, nValue_100kva_3, nValue_200kva, nValue_500kva_1, nValue_500kva_2, nBlackoutDepth, this.Logger, ServerType, m_nServerSeqNo);
                 }
                 catch (Exception e)
                 {

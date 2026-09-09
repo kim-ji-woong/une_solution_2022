@@ -16,7 +16,7 @@ namespace IntegrationServer.Servers.Fire.Safesystem
     /// <summary>
     /// 화재-세이프시스템 통신 관리
     /// </summary>
-    public class SafesystemManager : IServer
+    public class SafesystemManager : SyswillProcessManager, IServer
     {
         #region IServer 인터페이스                        
         private int m_nServerSeqNo = -1;
@@ -56,6 +56,7 @@ namespace IntegrationServer.Servers.Fire.Safesystem
         public string ServerAlias { get { return m_strServerAlias; } }
 
         public SafesystemManager(ServerManager serverManager, IDataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_sopQueryManager = new SopQueryManager(strSOPWebServerURL);
@@ -142,7 +143,12 @@ namespace IntegrationServer.Servers.Fire.Safesystem
 
         public bool SendSensorData(SensorTag sensorTag, bool bIsAlarm)
         {
-            return m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.FIRE_SENSOR, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+            bool isSuccess = m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.FIRE_SENSOR, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+
+            if (isSuccess)
+                UpdateFire(sensorTag.TagNo, bIsAlarm, this.Logger, ServerType, m_nServerSeqNo);
+
+            return isSuccess;
         }
 
         public void SendAllClear(int? nSiteID = null)

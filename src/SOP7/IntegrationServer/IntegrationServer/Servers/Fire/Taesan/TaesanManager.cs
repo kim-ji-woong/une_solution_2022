@@ -14,7 +14,7 @@ namespace IntegrationServer.Servers.Fire.Taesan
     /// <summary>
     /// 화재-동방 통신 관리
     /// </summary>
-    public class TaesanManager : IServer
+    public class TaesanManager : SyswillProcessManager, IServer
     {
         #region IServer 인터페이스                        
         private int m_nServerSeqNo = -1;
@@ -61,6 +61,7 @@ namespace IntegrationServer.Servers.Fire.Taesan
         }        
 
         public TaesanManager(ServerManager serverManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, DataManager dataManager)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_sopQueryManager = new SopQueryManager(strSOPWebServerURL);
@@ -148,12 +149,18 @@ namespace IntegrationServer.Servers.Fire.Taesan
 
         public bool SendSensorData(SensorTag sensorTag, bool bIsAlarm)
         {
-            return m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.FIRE_SENSOR, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+            bool isSuccess = m_serverManager.SendSensorData(m_sopQueryManager, (int)FacilityType.FIRE_SENSOR, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+
+            if (isSuccess)
+                UpdateFire(sensorTag.TagNo, bIsAlarm, this.Logger, ServerType, m_nServerSeqNo);
+
+            return isSuccess;
         }
 
         public void SendSensorDataAsync(SensorTag sensorTag, bool bIsAlarm)
         {
             m_serverManager.SendSensorDataAsync(m_sopQueryManager, (int)FacilityType.FIRE_SENSOR, sensorTag.ID, sensorTag.SensorZoneID, bIsAlarm);
+            UpdateFire(sensorTag.TagNo, bIsAlarm, this.Logger, ServerType, m_nServerSeqNo);
         }
 
         public void SendAllClear(int? nSiteID)

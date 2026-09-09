@@ -13,7 +13,7 @@ namespace IntegrationServer.Servers.Door.Biostar
     using ViewModels.Sdms.Sensor;
     using Data;
 
-    class BiostarDoorManager : IServer
+    class BiostarDoorManager : SyswillProcessManager, IServer
     {
         private ServerManager m_serverManager = null;
         private int m_nServerSeqNo = -1;
@@ -60,6 +60,7 @@ namespace IntegrationServer.Servers.Door.Biostar
         private LoginManager m_loginManager = null;
 
         public BiostarDoorManager(ServerManager serverManager, IDataManager dataManager, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, Dictionary<ServerProperty, object> serverProperties)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_nServerSeqNo = nServerSeqNo;
@@ -233,6 +234,12 @@ namespace IntegrationServer.Servers.Door.Biostar
                 {
                     if (dicSensors.TryGetValue(pair.Key, out sensor))
                         sensor.Status = pair.Value;
+                }
+
+                if (dicSensors.TryGetValue(pair.Key, out sensor))
+                {
+                    bool isOpened = pair.Value == (int)DDS.DoorManager.DoorStatus.Opened;
+                    UpdateDoor(sensor.UniqueKey, sensor.ZoneID, isOpened, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                 }
             }
         }

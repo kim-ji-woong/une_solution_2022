@@ -3,6 +3,7 @@ using dnsDapperDBUtil.DataAccessLayer.DAL;
 using dnsData.Sensor;
 using dnsSopID;
 using IntegrationServer.Datas;
+using Newtonsoft.Json.Linq;
 using Nipa.Model.Sdms.Sensor;
 using Nipa.Model.Sdms.Spatial;
 using System;
@@ -13,7 +14,7 @@ using static dnsSopID.ID;
 
 namespace IntegrationServer.Servers.FMS.GG_F
 {
-    public class SumpPitGGFManager : IServer
+    public class SumpPitGGFManager : SyswillProcessManager, IServer
     {
         private int m_nServerSeqNo = -1;
         public int ServerSeqNo { get { return m_nServerSeqNo; } }
@@ -62,7 +63,12 @@ namespace IntegrationServer.Servers.FMS.GG_F
 
         private int m_nAlarmDepth = 0;
 
+        // 시스윌로 마지막에 전달한 접점 비트플래그와 알람 단계
+        private int m_nSyswillValue = 0;
+        private int m_nSyswillAlarmDepth = 0;
+
         public SumpPitGGFManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -237,35 +243,91 @@ namespace IntegrationServer.Servers.FMS.GG_F
                 $"DA-2 우수 배수 고수위 경보 {n2403}, ", LogTypes.Info);
 
             int nAlarmCnt = 0;
+            int value = 0;
 
             if (n2384 == 1)
+            {
                 nAlarmCnt++;
+                value = 1;
+            }
+
             if (n2385 == 1)
+            {
                 nAlarmCnt++;
+                value |= 2;
+            }
+
             if (n2386 == 1)
+            {
                 nAlarmCnt++;
+                value |= 4;
+            }
+
             if (n2387 == 1)
+            {
                 nAlarmCnt++;
+                value |= 8;
+            }
+
             if (n2388 == 1)
+            {
                 nAlarmCnt++;
+                value |= 16;
+            }
+
             if (n2389 == 1)
+            {
                 nAlarmCnt++;
+                value |= 32;
+            }
+
             if (n2390 == 1)
+            {
                 nAlarmCnt++;
+                value |= 64;
+            }
+
             if (n2391 == 1)
+            {
                 nAlarmCnt++;
+                value |= 128;
+            }
+
             if (n2392 == 1)
+            {
                 nAlarmCnt++;
+                value |= 256;
+            }
+
             if (n2393 == 1)
+            {
                 nAlarmCnt++;
+                value |= 512;
+            }
+
             if (n2400 == 1)
+            {
                 nAlarmCnt++;
+                value |= 1024;
+            }
+
             if (n2401 == 1)
+            {
                 nAlarmCnt++;
+                value |= 2048;
+            }
+
             if (n2402 == 1)
+            {
                 nAlarmCnt++;
+                value |= 4096;
+            }
+
             if (n2403 == 1)
+            {
                 nAlarmCnt++;
+                value |= 8192;
+            }
 
             int nAlarmDepth = 0;
             if (nAlarmCnt >= 12)
@@ -279,6 +341,16 @@ namespace IntegrationServer.Servers.FMS.GG_F
             else if (nAlarmCnt >= 5)
             {   // 주의
                 nAlarmDepth = 2;
+            }
+
+            // 시스윌 연동 : 알람 단계뿐 아니라 접점 상태가 바뀌어도 전달한다.
+            if (m_nSyswillValue != value || m_nSyswillAlarmDepth != nAlarmDepth)
+            {
+                if (UpdateSubmerge(value, nAlarmDepth, this.Logger, ServerType, m_nServerSeqNo))
+                {
+                    m_nSyswillValue = value;
+                    m_nSyswillAlarmDepth = nAlarmDepth;
+                }
             }
 
             if (m_nAlarmDepth != nAlarmDepth)

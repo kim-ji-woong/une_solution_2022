@@ -68,6 +68,7 @@
   <ItemGroup>
     <Folder Include="ViewModels\MES\Hansol\Buy\" />
     <Folder Include="ViewModels\MES\Hansol\Sell\" />
+    <Folder Include="ViewModels\Syswill\" />
     <Folder Include="ViewModels\Weather\Korea\" />
   </ItemGroup>
 

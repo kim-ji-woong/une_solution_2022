@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace IntegrationServer.Servers.EmergencyBell.Eraeseeds
 {
-    class EraeseedsManager : IServer
+    class EraeseedsManager : SyswillProcessManager, IServer
     {
         #region IServer 인터페이스
         private int m_nServerSeqNo = -1;
@@ -95,6 +95,7 @@ namespace IntegrationServer.Servers.EmergencyBell.Eraeseeds
         private ClientProvider m_provider = null;
 
         public EraeseedsManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nSiteID, int nServerSeqNo, string strServerIP, int nPort, string strServerAlias, bool use)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -166,7 +167,12 @@ namespace IntegrationServer.Servers.EmergencyBell.Eraeseeds
 
         public bool SendSensorData(SensorTag sensorTag, bool isAlarm)
         {
-            return m_serverManager.SendSensorData(m_sopQueryManager, sensorTag.SensorType, sensorTag.ID, sensorTag.SensorZoneID, isAlarm);
+            bool isSuccess = m_serverManager.SendSensorData(m_sopQueryManager, sensorTag.SensorType, sensorTag.ID, sensorTag.SensorZoneID, isAlarm);
+
+            if (isSuccess)
+                UpdateEmergencyBell(sensorTag.OrgSensorID, false, m_dataManager, isAlarm, this.Logger, ServerType, m_nServerSeqNo);
+
+            return isSuccess;
         }
     }
 }

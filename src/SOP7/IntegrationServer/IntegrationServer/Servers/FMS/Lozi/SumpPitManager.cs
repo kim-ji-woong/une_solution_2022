@@ -17,7 +17,7 @@ namespace IntegrationServer.Servers.FMS.Lozi
     /// <summary>
     /// 집수정
     /// </summary>
-    public class SumpPitManager : IServer
+    public class SumpPitManager : SyswillProcessManager, IServer
     {
         #region IServer 인터페이스
         private int m_nServerSeqNo = -1;
@@ -46,6 +46,10 @@ namespace IntegrationServer.Servers.FMS.Lozi
 
         private bool m_bIsAlarm = false;
         private int m_nAlarmDepth = 0;
+
+        // 시스윌로 마지막에 전달한 접점 비트플래그와 알람 단계
+        private int m_nSyswillValue = 0;
+        private int m_nSyswillAlarmDepth = 0;
 
         private SensorZone m_sensorZone = null;
         private TagInfo m_tag = null;
@@ -99,6 +103,7 @@ namespace IntegrationServer.Servers.FMS.Lozi
         private bool m_use = false;
 
         public SumpPitManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -275,29 +280,73 @@ namespace IntegrationServer.Servers.FMS.Lozi
                     $"{(b31003_3 ? "배수펌프8_고수위경보_유류탱크오픈_P112D: " + b31003_3 : "")}", LogTypes.Info);
 
             int nAlarmCnt = 0;
+            int value = 0;
 
             if (b31000_2)
+            {
                 nAlarmCnt++;
+                value = 1;
+            }
+
             if (b31000_3)
+            {
                 nAlarmCnt++;
+                value |= 2;
+            }
+
             if (b31002_10)
+            {
                 nAlarmCnt++;
+                value |= 4;
+            }
+
             if (b31002_11)
+            {
                 nAlarmCnt++;
+                value |= 8;
+            }
+
             if (b31002_12)
+            {
                 nAlarmCnt++;
+                value |= 16;
+            }
+
             if (b31002_13)
+            {
                 nAlarmCnt++;
+                value |= 32;
+            }
+
             if (b31002_14)
+            {
                 nAlarmCnt++;
+                value |= 64;
+            }
+
             if (b31002_15)
+            {
                 nAlarmCnt++;
+                value |= 128;
+            }
+
             if (b31003_1)
+            {
                 nAlarmCnt++;
+                value |= 256;
+            }
+
             if (b31003_2)
+            {
                 nAlarmCnt++;
+                value |= 512;
+            }
+
             if (b31003_3)
+            {
                 nAlarmCnt++;
+                value |= 1024;
+            }
 
             int nAlarmDepth = 0;
             if (nAlarmCnt >= 7)
@@ -311,6 +360,16 @@ namespace IntegrationServer.Servers.FMS.Lozi
             else if (nAlarmCnt >= 3)
             {   // 주의
                 nAlarmDepth = 2;
+            }
+
+            // 시스윌 연동 : 알람 단계뿐 아니라 접점 상태가 바뀌어도 전달한다.
+            if (m_nSyswillValue != value || m_nSyswillAlarmDepth != nAlarmDepth)
+            {
+                if (UpdateSubmerge(value, nAlarmDepth, this.Logger, ServerType, m_nServerSeqNo))
+                {
+                    m_nSyswillValue = value;
+                    m_nSyswillAlarmDepth = nAlarmDepth;
+                }
             }
 
             if (m_nAlarmDepth != nAlarmDepth)
@@ -331,7 +390,7 @@ namespace IntegrationServer.Servers.FMS.Lozi
                         m_nAlarmDepth = nAlarmDepth;
                     }
                 }
-            }            
+            }
         }
 
         public void WriteLog(string strLog, LogTypes type = LogTypes.Info)

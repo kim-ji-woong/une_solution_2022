@@ -12,7 +12,7 @@ using static dnsSopID.ID;
 
 namespace IntegrationServer.Servers.Blackout.GG_D
 {
-    class BlackoutGGDManager : IServer
+    class BlackoutGGDManager : SyswillProcessManager, IServer
     {
         private int m_nServerSeqNo = -1;
         public int ServerSeqNo { get { return m_nServerSeqNo; } }
@@ -64,6 +64,7 @@ namespace IntegrationServer.Servers.Blackout.GG_D
         private int? m_nBlackoutID = null;
 
         public BlackoutGGDManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
+            : base(dataManager)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -202,6 +203,7 @@ namespace IntegrationServer.Servers.Blackout.GG_D
                                 WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                         }
 
+                        UpdateBlackout((int)fVolA, (int)fVolB, (int)fVolC, true, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                     }
                     else
                     {
@@ -230,6 +232,7 @@ namespace IntegrationServer.Servers.Blackout.GG_D
                             WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                     }
 
+                    UpdateBlackout((int)fVolA, (int)fVolB, (int)fVolC, false, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                 }
                 else
                 {
