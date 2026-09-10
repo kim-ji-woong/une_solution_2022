@@ -7,11 +7,11 @@ import SOPHistory from './SOPHistory';
 import SpreadHistory from './SpreadHistory';
 import SafetyAreaHistory from './SafetyAreaHistory';
 import SpeedDetectionHistory from './SpeedDetectionHistory';
-import RepeatSpeedSuspect from './RepeatSpeedSuspect';
+import SpeedVehicleSearch from './SpeedVehicleSearch';
 import { SDMSController } from '../../SDMS/services/sdmsController';
 import SettingsStore from '../../Settings/settingsStore';
 import ProjectResource from '../../Root/resource/id';
-import { UserHistoryComponent, SensorDetectHistoryComponent, SensorDetectAnalysisComponent, SOPHistoryComponent, SpreadHistoryComponent, SafetyAreaHistoryComponent, SpeedDetectionHistoryComponent, RepeatSpeedSuspectComponent } from '../styled/SensorDetectHistoryStyled';
+import { UserHistoryComponent, SensorDetectHistoryComponent, SensorDetectAnalysisComponent, SOPHistoryComponent, SpreadHistoryComponent, SafetyAreaHistoryComponent, SpeedDetectionHistoryComponent, SpeedVehicleSearchComponent } from '../styled/SensorDetectHistoryStyled';
 import { i18n, withTranslation } from '../../language/i18n';
 
 class History extends Component {
@@ -294,7 +294,7 @@ class History extends Component {
                         <li><a onClick={() => this.changeContent(menuText.SOP_이력)} className={curContent === menuText.SOP_이력 && 'on'}>{i18n.t('history.menu.SOP 이력')}</a></li>
                         <li><a onClick={() => this.changeContent(menuText.데이터_수정_이력)} className={curContent === menuText.데이터_수정_이력 && 'on'}>{i18n.t('history.menu.데이터 수정 이력')}</a></li>
                         <li><a onClick={() => this.changeContent(menuText.차량과속_이력)} className={curContent === menuText.차량과속_이력 && 'on'}>차량 과속 이력 및 분석</a></li>
-                        <li><a onClick={() => this.changeContent(menuText.반복과속_의심차량)} className={curContent === menuText.반복과속_의심차량 && 'on'}>{menuText.반복과속_의심차량}</a></li>
+                        <li><a onClick={() => this.changeContent(menuText.과속차량_조회)} className={curContent === menuText.과속차량_조회 && 'on'}>{menuText.과속차량_조회}</a></li>
                         {
                             useEquipZoneAssess &&
                             <li><a onClick={() => this.changeContent(menuText.안전구역_평가_이력)} className={curContent === menuText.안전구역_평가_이력 && 'on'}>{i18n.t('history.menu.안전구역 평가 이력')}</a></li>
@@ -394,12 +394,12 @@ class History extends Component {
                     <SpeedDetectionHistory key='history_SpeedDetectionHistory' />
                 </SpeedDetectionHistoryComponent>
             );
-        } else if (this.state.content === HistoryResource.menu.반복과속_의심차량) {
+        } else if (this.state.content === HistoryResource.menu.과속차량_조회) {
             return (
-                <RepeatSpeedSuspectComponent id={'hsback'}>
+                <SpeedVehicleSearchComponent id={'hsback'}>
                     {leftMenu}
-                    <RepeatSpeedSuspect key='history_RepeatSpeedSuspect' selectedSiteID={this.state.selectedSiteID} />
-                </RepeatSpeedSuspectComponent>
+                    <SpeedVehicleSearch key='history_SpeedVehicleSearch' selectedSiteID={this.state.selectedSiteID} />
+                </SpeedVehicleSearchComponent>
             );
         }
         //const menuUI = this.getMenuUI();

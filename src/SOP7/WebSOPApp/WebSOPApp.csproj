@@ -83,6 +83,9 @@
     <ProjectReference Include="..\경기융합타운\GGH.DAL\GGH.DAL.csproj" />
     <ProjectReference Include="..\경기융합타운\GGH.IDAL\GGH.IDAL.csproj" />
     <ProjectReference Include="..\경기융합타운\GGH.Model\GGH.Model\GGH.Model.csproj" />
+    <ProjectReference Include="..\원익\Wonik.DAL\Wonik.DAL.csproj" />
+    <ProjectReference Include="..\원익\Wonik.IDAL\Wonik.IDAL.csproj" />
+    <ProjectReference Include="..\원익\Wonik.Model\Wonik.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

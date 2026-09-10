@@ -1898,6 +1898,26 @@ export const RepeatSpeedSuspectComponent = styled(SpeedAnalysisComponent)`
         font-weight: 700;
     }
 
+    /* 조회 실패 안내 (서버 미기동 · 연결 실패 등) - "결과 0건" 과 구분되어야 한다. */
+    .rsNotice.error {
+        background: #fdecea;
+        border-color: #f5c2c0;
+        color: #b42318;
+    }
+
+    .rsNotice.error > span:first-child {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #d92d20;
+        color: #fff;
+        font-size: 12px;
+    }
+
     /* 테이블 헤더 메타 */
     .hscTbHead .hscTbMeta {
         font-size: 13px;
@@ -1946,6 +1966,227 @@ export const RepeatSpeedSuspectComponent = styled(SpeedAnalysisComponent)`
         font-size: 13px;
         color: #555;
         cursor: pointer;
+    }
+`;
+
+
+// 과속차량 조회 (원익 전용) - '전체 과속 이력' + '반복 과속 의심차량' 탭 컨테이너
+// (필터바 / 안내문구 / 상세보기 버튼 등은 RepeatSpeedSuspectComponent 에서 상속)
+export const SpeedVehicleSearchComponent = styled(RepeatSpeedSuspectComponent)`
+
+    /* 탭 */
+    .svsTab {
+        display: flex;
+        gap: 6px;
+        border-bottom: solid 1px #ddd;
+        margin-bottom: 15px;
+    }
+
+    .svsTab li a {
+        display: block;
+        padding: 0 18px 12px;
+        margin-bottom: -1px;
+        border-bottom: solid 3px transparent;
+        font-size: 16px;
+        font-weight: 500;
+        color: #888;
+        cursor: pointer;
+    }
+
+    .svsTab li a.on {
+        color: #004BB9;
+        font-weight: 700;
+        border-bottom-color: #004BB9;
+    }
+
+    /* 검색 버튼 (필터바 오른쪽) */
+    .hscSch .hscsBtns {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+    }
+
+    .hscSch .hscsBtns .hscsSbmt {
+        margin-left: 0;
+    }
+
+    /* 전체 과속 이력 - 통계 카드 3개 (아이콘 + 텍스트) */
+    .ahCards {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .ahCards .card {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: #fff;
+        border: solid 1px #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    /* 카드 아이콘 - 인라인 <svg> 를 쓰지 않고 background-image 로 그린다.
+       Common/css/section.module.css 에 전역 svg { position:absolute; width:100%; height:100% } 가 있어
+       (CSS Module 이지만 요소 선택자라 스코프가 안 된다) 인라인 svg 는 화면 전체로 늘어난다. */
+    .ahCards .cardIcon {
+        flex: 0 0 auto;
+        display: block;
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+        background-color: #eef4ff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 22px 22px;
+    }
+
+    .ahCards .cardIcon.icoLoc {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004BB9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z'/%3E%3Ccircle cx='12' cy='10' r='2.6'/%3E%3C/svg%3E");
+    }
+
+    .ahCards .cardIcon.icoCount {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004BB9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9 13h6'/%3E%3Cpath d='M9 17h4'/%3E%3C/svg%3E");
+    }
+
+    .ahCards .cardIcon.icoSpeed {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004BB9' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 18.5a8.5 8.5 0 1 1 17 0'/%3E%3Cpath d='M12 18.5l5-6'/%3E%3Ccircle cx='12' cy='18.5' r='1.5' fill='%23004BB9' stroke='none'/%3E%3C/svg%3E");
+    }
+
+    .ahCards .cardText {
+        min-width: 0;
+    }
+
+    .ahCards .cardTitle {
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* 큰 값 + 보조 문구를 한 줄로. 폭이 모자라면 보조 문구가 아래로 내려간다.
+       보조 문구의 "마지막 줄" 바닥을 큰 값의 바닥에 맞춘다(last baseline). 두 줄짜리(최고속도 + 위치)는 윗줄이 위로 올라간다.
+       last baseline 을 모르는 브라우저는 앞 줄의 baseline(첫 줄 기준)을 쓴다. */
+    .ahCards .cardMain {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        align-items: last baseline;
+        column-gap: 14px;
+        row-gap: 2px;
+        margin-top: 6px;
+    }
+
+    .ahCards .cardValue {
+        font-size: 26px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.15;
+        word-break: break-all;
+    }
+
+    .ahCards .cardValue small {
+        font-size: 14px;
+        font-weight: 500;
+        color: #888;
+        margin-left: 4px;
+    }
+
+    .ahCards .cardSub {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    .ahCards .cardSub .spdOver {
+        font-size: 13px;
+    }
+
+    .ahCards .cardSub .cardSubLoc {
+        display: block;
+        margin-top: 2px;
+    }
+
+    /* 표 머리말 (제목 + 설명 + Excel 다운로드) */
+    .hscTbHead .hscTbHeadText h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    .hscTbHead .hscTbDesc {
+        margin-top: 6px;
+        font-size: 13px;
+        color: #888;
+    }
+
+    .hscTbHead .hscExl {
+        margin-top: 0;
+    }
+
+    /* 정렬 가능한 컬럼 머리 */
+    .hscTb th .sortTh {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    .hscTb th .sortTh .sortMark {
+        font-size: 12px;
+        color: #bbb;
+    }
+
+    .hscTb th .sortTh.on,
+    .hscTb th .sortTh.on .sortMark {
+        color: #004BB9;
+    }
+
+    /* 미매칭(인식번호 없음) 배지 */
+    .plateNone {
+        display: inline-block;
+        min-width: 56px;
+        padding: 3px 10px;
+        border-radius: 12px;
+        background: #f1f2f4;
+        font-size: 12px;
+        color: #888;
+    }
+
+    /* 상세보기 불가 (미매칭 건) */
+    .detailBtn.disabled {
+        background: #fafafa;
+        color: #ccc;
+        cursor: default;
+    }
+
+    /* 표 아래: 건수 / 페이지 / 페이지당 행 수 */
+    .hscTbFoot {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .hscTbFoot .footCnt {
+        flex: 0 0 auto;
+        min-width: 180px;
+        font-size: 13px;
+        color: #888;
+    }
+
+    .hscTbFoot .hscNav {
+        flex: 1 1 auto;
+        margin-top: 0;
+    }
+
+    .hscTbFoot .footPageSize {
+        flex: 0 0 auto;
+        width: 100px;
+        height: 32px;
     }
 `;
 

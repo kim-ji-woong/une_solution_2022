@@ -69,6 +69,7 @@ namespace WebSOPApp
                 services.AddTransient<global::Weather.IDAL.IDataManager>(service => new global::Weather.DAL.DataManager(nDBType, strDbHost, strDBName, strDbID, strDbPW, nSiteID));
                 services.AddTransient<global::Dashboard.IDAL.IDataManager>(service => new global::Dashboard.DAL.DataManager(nDBType, strDbHost, strDBName, strDbID, strDbPW, nSiteID));
                 services.AddTransient<global::GGH.IDAL.IDataManager>(service => new global::GGH.DAL.DataManager(nDBType, strDbHost, strDBName, strDbID, strDbPW, nSiteID));
+                services.AddTransient<global::Wonik.IDAL.IDataManager>(service => new global::Wonik.DAL.DataManager(nDBType, strDbHost, strDBName, strDbID, strDbPW, nSiteID));
             }
         }
 

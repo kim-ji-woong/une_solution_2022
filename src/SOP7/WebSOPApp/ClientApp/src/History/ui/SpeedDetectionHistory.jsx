@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import HistoryController from '../services/historyController';
+import { formatNumber } from '../util/numberFormat';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
@@ -420,7 +421,7 @@ class SpeedDetectionHistory extends Component {
 						const value = dataset.data[index];
 						if (value !== null && value !== undefined && bar && bar._model) {
 							// 0건도 숫자를 표시한다.
-							ctx.fillText(value, bar._model.x, bar._model.y - 3);
+							ctx.fillText(formatNumber(value), bar._model.x, bar._model.y - 3);
 						}
 					});
 				});
@@ -440,10 +441,16 @@ class SpeedDetectionHistory extends Component {
 					categoryPercentage: 0.6,
 					barPercentage: 0.95,
 				}],
-				yAxes: [{ ticks: { beginAtZero: true }, gridLines: { color: '#f0f0f0' } }],
+				yAxes: [{ ticks: { beginAtZero: true, callback: (value) => formatNumber(value) }, gridLines: { color: '#f0f0f0' } }],
 			},
 			legend: { display: false },
-			tooltips: { enabled: true },
+			tooltips: {
+				enabled: true,
+				// 툴팁 숫자도 천 단위 쉼표로 표시한다. (chart.js 기본 형식 '데이터셋 이름: 값' 유지)
+				callbacks: {
+					label: (item, data) => data.datasets[item.datasetIndex].label + ': ' + formatNumber(item.yLabel),
+				},
+			},
 			animation: { duration: 0 },
 		};
 
@@ -492,10 +499,10 @@ class SpeedDetectionHistory extends Component {
 		for (let i = 0; i < pageArr.length; i++) {
 			let pageIndex = pageArr[i];
 			if (pageIndex === this.state.pageIndex) {
-				ui.push(<li key={'pageIndex_' + (pageIndex)} className={'on'}><a onClick={() => this.setPageIndex(pageIndex)}>{pageIndex}</a></li>);
+				ui.push(<li key={'pageIndex_' + (pageIndex)} className={'on'}><a onClick={() => this.setPageIndex(pageIndex)}>{formatNumber(pageIndex)}</a></li>);
 			}
 			else {
-				ui.push(<li key={'pageIndex_' + (pageIndex)}><a onClick={() => this.setPageIndex(pageIndex)}>{pageIndex}</a></li>);
+				ui.push(<li key={'pageIndex_' + (pageIndex)}><a onClick={() => this.setPageIndex(pageIndex)}>{formatNumber(pageIndex)}</a></li>);
 			}
 		}
 
@@ -530,7 +537,7 @@ class SpeedDetectionHistory extends Component {
 
 			ui.push(
 				<tr key={'dataSource_' + (i)}>
-					<td>{(i + 1)}</td>
+					<td>{formatNumber(i + 1)}</td>
 					<td>{detectionTime}</td>
 					<td>{dataSource[i].sensorName}</td>
 					<td className={'spdOver'}>{speed}km/h</td>
@@ -585,9 +592,9 @@ class SpeedDetectionHistory extends Component {
 		const labels = this.getPeriodLabels(stats ? stats.dateType : this.state.dateType);
 		const maxTimeLabel = (analysis.maxTimeIdx >= 0) ? analysis.timeLabels[analysis.maxTimeIdx].replace('-', '~') + '시' : '-';
 
-		worksheet.addRow([labels.cur + ' 과속 횟수 : ' + (stats ? stats.curCount : analysis.total) + '건']);
-		worksheet.addRow([labels.prev + ' 과속 횟수 : ' + (stats ? stats.prevCount : '-') + '건']);
-		worksheet.addRow(['최다 발생시간 : ' + (analysis.maxTimeIdx >= 0 ? (maxTimeLabel + ' · ' + analysis.maxTimeCount + '건') : '-')]);
+		worksheet.addRow([labels.cur + ' 과속 횟수 : ' + formatNumber(stats ? stats.curCount : analysis.total) + '건']);
+		worksheet.addRow([labels.prev + ' 과속 횟수 : ' + formatNumber(stats ? stats.prevCount : '-') + '건']);
+		worksheet.addRow(['최다 발생시간 : ' + (analysis.maxTimeIdx >= 0 ? (maxTimeLabel + ' · ' + formatNumber(analysis.maxTimeCount) + '건') : '-')]);
 		worksheet.addRow([]);
 
 		// column
@@ -603,7 +610,7 @@ class SpeedDetectionHistory extends Component {
 		});
 
 		worksheet.columns = [
-			{ key: "no", width: 6 },
+			{ key: "no", width: 8 },
 			{ key: "detectionTime", width: 24 },
 			{ key: "sensorName", width: 20 },
 			{ key: "speed", width: 12 },
@@ -622,7 +629,7 @@ class SpeedDetectionHistory extends Component {
 				const over = speed - SpeedDetectionHistory.SPEED_LIMIT;
 				const risk = this.getRisk(speed);
 
-				worksheet.addRow({
+				const dataRow = worksheet.addRow({
 					no: i + 1,
 					detectionTime: detectionTime,
 					sensorName: this.state.dataSource[i].sensorName,
@@ -630,7 +637,9 @@ class SpeedDetectionHistory extends Component {
 					limit: SpeedDetectionHistory.SPEED_LIMIT + 'km/h',
 					over: '+' + over + 'km/h',
 					risk: risk.label,
-				}).alignment = { vertical: 'middle', horizontal: 'center' };
+				});
+				dataRow.alignment = { vertical: 'middle', horizontal: 'center' };
+				dataRow.getCell('no').numFmt = '#,##0';   // 숫자는 숫자 그대로 두고 천 단위 쉼표 서식만 준다 (엑셀에서 정렬 · 계산 가능)
 			}
 		}
 
@@ -684,11 +693,11 @@ class SpeedDetectionHistory extends Component {
 		if (stats) {
 			const diff = curCount - prevCount;
 			if (prevCount > 0) {
-				const pct = Math.abs((diff / prevCount) * 100).toFixed(1);
+				const pct = formatNumber(Math.abs((diff / prevCount) * 100), 1);
 				const word = diff < 0 ? '감소' : (diff > 0 ? '증가' : '변동 없음');
 				cmpClass = diff < 0 ? 'up' : (diff > 0 ? 'down' : '');
 				cmpValueUI = (diff === 0) ? <>0<small>%</small></> : <>{pct}<small>% {word}</small></>;
-				cmpSub = (diff === 0) ? '변동 없음' : ('과속 ' + Math.abs(diff) + '건 ' + (diff < 0 ? '감소' : '증가'));
+				cmpSub = (diff === 0) ? '변동 없음' : ('과속 ' + formatNumber(Math.abs(diff)) + '건 ' + (diff < 0 ? '감소' : '증가'));
 			} else {
 				// 이전 기간 데이터가 없어 증감률 계산 불가
 				cmpValueUI = <>-</>;
@@ -699,7 +708,7 @@ class SpeedDetectionHistory extends Component {
 		// 최다 발생시간 (예: 06-09 -> 06~09시)
 		const maxTimeCardValue = (analysis.maxTimeIdx >= 0) ? (maxTimeLabel.replace('-', '~') + '시') : '-';
 		const maxTimeRatio = (analysis.total > 0) ? ((analysis.maxTimeCount / analysis.total) * 100).toFixed(1) : 0;
-		const maxTimeSub = (analysis.maxTimeIdx >= 0) ? (analysis.maxTimeCount + '건 · 전체의 ' + maxTimeRatio + '%') : '집중 발생 시간대';
+		const maxTimeSub = (analysis.maxTimeIdx >= 0) ? (formatNumber(analysis.maxTimeCount) + '건 · 전체의 ' + maxTimeRatio + '%') : '집중 발생 시간대';
 
 		return (
 			<>
@@ -791,12 +800,12 @@ class SpeedDetectionHistory extends Component {
 							<div className={'hscCards'}>
 								<div className={'card'}>
 									<p className={'cardTitle'}>{labels.cur} 과속 횟수</p>
-									<p className={'cardValue'}>{stats ? curCount : '-'}<small>건</small></p>
+									<p className={'cardValue'}>{stats ? formatNumber(curCount) : '-'}<small>건</small></p>
 									<p className={'cardSub'}>{stats ? (stats.curBegin + ' ~ ' + stats.curEnd) : (labels.cur + ' 과속 발생')}</p>
 								</div>
 								<div className={'card'}>
 									<p className={'cardTitle'}>{labels.prev} 과속 횟수</p>
-									<p className={'cardValue'}>{stats ? prevCount : '-'}<small>건</small></p>
+									<p className={'cardValue'}>{stats ? formatNumber(prevCount) : '-'}<small>건</small></p>
 									<p className={'cardSub'}>{stats ? (stats.prevBegin + ' ~ ' + stats.prevEnd) : (labels.prev + ' 동일 기간')}</p>
 								</div>
 								<div className={'card'}>
@@ -818,7 +827,7 @@ class SpeedDetectionHistory extends Component {
 										<h3>시간대별 과속 현황</h3>
 										<div className={'chartHeadRight'}>
 											{this.renderChartLegend()}
-											<span className={'chartBadge'}>최다 {maxTimeLabel} · {analysis.maxTimeCount}건</span>
+											<span className={'chartBadge'}>최다 {maxTimeLabel} · {formatNumber(analysis.maxTimeCount)}건</span>
 										</div>
 									</div>
 									<div className={'chartBody'}>
@@ -830,7 +839,7 @@ class SpeedDetectionHistory extends Component {
 										<h3>속도 초과 구간</h3>
 										<div className={'chartHeadRight'}>
 											{this.renderChartLegend()}
-											<span className={'chartBadge'}>최다 {maxSpeedLabel} · {analysis.maxSpeedCount}건</span>
+											<span className={'chartBadge'}>최다 {maxSpeedLabel} · {formatNumber(analysis.maxSpeedCount)}건</span>
 										</div>
 									</div>
 									<div className={'chartBody'}>
@@ -842,7 +851,7 @@ class SpeedDetectionHistory extends Component {
 							{/* 최근 과속 이력 테이블 */}
 							<div className={'hscTbHead'}>
 								<h3>최근 과속 이력</h3>
-								<span className={'hscTbCnt'}>총 {analysis.total}건 · 최근 발생순</span>
+								<span className={'hscTbCnt'}>총 {formatNumber(analysis.total)}건 · 최근 발생순</span>
 							</div>
 
 							<div className={'hscTb'}>

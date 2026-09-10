@@ -42,6 +42,20 @@
     <DebugType>portable</DebugType>
     <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);SERVICE</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    Release 는 자체 포함(self-contained) 단일 exe 로 게시한다.
+      → 대상 Windows PC 에 .NET 8 런타임을 설치하지 않아도 실행된다.
+      dotnet publish -c Release -o publish   (또는 VS 게시) 만으로 자체 포함 exe 생성.
+  -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />

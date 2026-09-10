@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { formatNumber } from '../util/numberFormat';
 
 import * as ExcelJS from 'exceljs'; /*excel 만들기*/
 import { saveAs } from 'file-saver'; /*excel 다운로드*/
@@ -109,7 +110,7 @@ class RepeatSpeedDetail extends Component {
 
 		// 요약
 		const st = worksheet.addRow(['[ 요약 ]']); st.getCell(1).font = { bold: true };
-		worksheet.addRow(['과속 횟수 : ' + detail.count + '건']);
+		worksheet.addRow(['과속 횟수 : ' + formatNumber(detail.count) + '건']);
 		worksheet.addRow(['평균속도 : ' + detail.avgSpeed + 'km/h']);
 		worksheet.addRow(['최고속도 : ' + detail.maxSpeed + 'km/h']);
 		worksheet.addRow(['최근 발생 : ' + this.formatFullDateTime(detail.lastTime)]);
@@ -118,12 +119,12 @@ class RepeatSpeedDetail extends Component {
 
 		// 발생 위치 분포
 		const lt = worksheet.addRow(['[ 발생 위치 분포 ]']); lt.getCell(1).font = { bold: true };
-		detail.locList.forEach(l => worksheet.addRow([l.name + ' : ' + l.count + '건 (' + l.pct + '%)']));
+		detail.locList.forEach(l => worksheet.addRow([l.name + ' : ' + formatNumber(l.count) + '건 (' + l.pct + '%)']));
 		worksheet.addRow([]);
 
 		// 시간대별 발생 패턴
 		const tt = worksheet.addRow(['[ 시간대별 발생 패턴 ]']); tt.getCell(1).font = { bold: true };
-		RepeatSpeedDetail.TIME_LABELS.forEach((lbl, i) => worksheet.addRow([lbl + ' : ' + detail.timeCounts[i] + '건']));
+		RepeatSpeedDetail.TIME_LABELS.forEach((lbl, i) => worksheet.addRow([lbl + ' : ' + formatNumber(detail.timeCounts[i]) + '건']));
 		worksheet.addRow([]);
 
 		// 과속 발생 목록
@@ -200,7 +201,7 @@ class RepeatSpeedDetail extends Component {
 
 					{/* 통계 카드 5개 */}
 					<div className={'rsdCards'}>
-						<div className={'card'}><div className={'t'}>과속 횟수</div><div className={'v'}>{detail.count}건</div></div>
+						<div className={'card'}><div className={'t'}>과속 횟수</div><div className={'v'}>{formatNumber(detail.count)}건</div></div>
 						<div className={'card'}><div className={'t'}>평균속도</div><div className={'v'}>{detail.avgSpeed}km/h</div></div>
 						<div className={'card'}><div className={'t'}>최고속도</div><div className={'v red'}>{detail.maxSpeed}km/h</div></div>
 						<div className={'card'}><div className={'t'}>최근 발생</div><div className={'v'}>{this.formatDateTime(detail.lastTime)}</div></div>
@@ -218,7 +219,7 @@ class RepeatSpeedDetail extends Component {
 									:
 									detail.locList.map((l, i) => (
 										<div className={'row'} key={'loc_' + i}>
-											<div className={'name'}>{l.name}<b>{l.count}건</b></div>
+											<div className={'name'}>{l.name}<b>{formatNumber(l.count)}건</b></div>
 											<div className={'barLine'}>
 												<div className={'track'}><div className={'fill'} style={{ width: l.pct + '%', background: i === 0 ? '#1f5fd0' : '#93c5fd' }}></div></div>
 												<div className={'pct'}>{l.pct}%</div>
@@ -232,13 +233,13 @@ class RepeatSpeedDetail extends Component {
 						<div className={'rsdChartBox rsdTime'}>
 							<div className={'chartHeadRow'}>
 								<h3>시간대별 발생 패턴</h3>
-								<span className={'badge'}>최다 {detail.maxTimeIdx >= 0 ? RepeatSpeedDetail.TIME_LABELS[detail.maxTimeIdx] : '-'} · {maxTimeCount}건</span>
+								<span className={'badge'}>최다 {detail.maxTimeIdx >= 0 ? RepeatSpeedDetail.TIME_LABELS[detail.maxTimeIdx] : '-'} · {formatNumber(maxTimeCount)}건</span>
 							</div>
 							<div className={'bars'}>
 								{
 									detail.timeCounts.map((c, i) => (
 										<div className={'col' + (i === detail.maxTimeIdx && maxTimeCount > 0 ? ' max' : '')} key={'tc_' + i}>
-											<span className={'cnt'}>{c}</span>
+											<span className={'cnt'}>{formatNumber(c)}</span>
 											<div className={'bar'} style={{ height: (maxTimeCount > 0 ? (c / maxTimeCount) * 100 : 0) + '%' }}></div>
 										</div>
 									))
@@ -254,7 +255,7 @@ class RepeatSpeedDetail extends Component {
 					<div className={'rsdTableWrap'}>
 						<div className={'head'}>
 							<h3>최근 과속 발생</h3>
-							<span className={'meta'}>전체 {detail.count}건 중 최근 {recent.length}건</span>
+							<span className={'meta'}>전체 {formatNumber(detail.count)}건 중 최근 {formatNumber(recent.length)}건</span>
 						</div>
 						<table className={'rsdTable'}>
 							<thead>

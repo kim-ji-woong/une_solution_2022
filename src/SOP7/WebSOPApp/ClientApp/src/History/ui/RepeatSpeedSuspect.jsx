@@ -13,11 +13,15 @@ import * as ExcelJS from 'exceljs'; /*excel 만들기*/
 import { saveAs } from 'file-saver'; /*excel 다운로드*/
 
 import HistoryController from '../services/historyController';
+import { formatNumber } from '../util/numberFormat';
 import RepeatSpeedDetail from './RepeatSpeedDetail';
 import ProjectResource from '../../Root/resource/id';
 import { i18n, withTranslation } from '../../language/i18n';
 
-// 반복 과속 의심차량 (원익 전용)
+// 반복 과속 의심차량 (원익 전용) - '과속차량 조회'(SpeedVehicleSearch) 화면의 탭 하나.
+//    페이지 외곽(hsty/hsScr/hsCont)과 제목은 부모가 그리므로 여기서는 탭 내용만 반환한다.
+//    위치 · 조회 기간 · 카메라 인식번호는 두 탭 공통 조건이라 부모가 props.criteria 로 내려주고,
+//    값을 바꿀 때는 props.onChangeCriteria 로 부모에 알린다. (탭을 옮겨도 조건이 유지되도록)
 //  - 동일 차량번호(CarNo, LPR 인식번호)별 과속 횟수를 집계하고 위험도를 분류한다.
 //  - 위험도 기준/측정기간은 appsettings.json 의 Options.speedDetection 에서 온다.
 //      caution(주의) / warning(경고) / alert(집중관리) : 측정기간 내 과속 횟수 임계값
@@ -39,16 +43,11 @@ class RepeatSpeedSuspect extends Component {
 			speedLimit: RepeatSpeedSuspect.FALLBACK_SPEED_LIMIT,   // BeaconServer 에서 받아옴
 
 			sensors: [],
-			selectedSensor: -1,
-
-			beginDate: new Date(),   // 기본값: 오늘
-			endDate: new Date(),
-
-			plateNumber: '',              // 카메라 인식번호 필터
 			riskFilter: 'all',            // 위험도 필터 (all | 집중관리 | 경고 | 주의)
 			rank: 5,                      // 표시 순위 (Top N = 페이지당 행 수)
 
 			suspects: null,               // 집계 결과 (차량번호별)
+			errorMessage: null,           // 조회 실패 사유 (서버 미기동 · 연결 실패 등)
 			detections: [],               // 과속(제한초과 & 차량번호 有) 원본 감지 목록 (상세 팝업용)
 			detailCarNo: null,            // 상세 팝업 대상 차량번호 (null 이면 닫힘)
 
@@ -59,6 +58,8 @@ class RepeatSpeedSuspect extends Component {
 
 		this.refDatepicker01 = React.createRef();
 		this.refDatepicker02 = React.createRef();
+
+		this.lastQuery = null;   // 마지막으로 서버에 조회한 조건(위치 · 조회 기간). 탭 전환 시 재조회 판단용
 
 		this.props = props;
 		this.display = this.display.bind(this);
@@ -114,8 +115,10 @@ class RepeatSpeedSuspect extends Component {
 	async display() {
 		$("body").css("cursor", "wait");
 
-		const beginDate = this.getMakeDateTime(this.state.beginDate) + ' 00:00:00';
-		const endDate = this.getMakeDateTime(this.state.endDate) + ' 23:59:59';
+		const criteria = this.props.criteria;
+
+		const beginDate = this.getMakeDateTime(criteria.beginDate) + ' 00:00:00';
+		const endDate = this.getMakeDateTime(criteria.endDate) + ' 23:59:59';
 
 		if (beginDate > endDate) {
 			$("body").css("cursor", "default");
@@ -123,16 +126,23 @@ class RepeatSpeedSuspect extends Component {
 			return;
 		}
 
+		this.lastQuery = this.getQueryKey();
+
 		await this.setState({ loadingIndicator: true });
 
-		let selectedSensor = this.state.selectedSensor;
+		let selectedSensor = criteria.selectedSensor;
 		if (selectedSensor === -1)
 			selectedSensor = null;
 
 		const result = await HistoryController.requestWonikSpeedDetectionHistorys(beginDate, endDate, selectedSensor);
 		if (result === null || result === undefined || result.success === false) {
+			// 실패를 조용히 삼키면 "조회 결과 0건" 과 구분이 안 된다. 사유를 화면에 남긴다.
 			$("body").css("cursor", "default");
-			await this.setState({ loadingIndicator: false });
+			this.setState({
+				suspects: null,
+				errorMessage: (result && result.message) ? result.message : '과속 이력을 불러오지 못했습니다.',
+				loadingIndicator: false,
+			});
 			return;
 		}
 
@@ -200,7 +210,27 @@ class RepeatSpeedSuspect extends Component {
 
 		$("body").css("cursor", "default");
 
-		this.setState({ suspects, detections, detailCarNo: null, pageIndex: 1, loadingIndicator: false });
+		this.setState({ suspects, detections, errorMessage: null, detailCarNo: null, pageIndex: 1, loadingIndicator: false });
+	}
+
+	componentDidUpdate(prevProps) {
+		// 인식번호 필터가 바뀌면 (어느 탭에서 바꿨든) 첫 페이지부터 보여준다.
+		if (prevProps.criteria.plateNumber !== this.props.criteria.plateNumber && this.state.pageIndex !== 1) {
+			this.setState({ pageIndex: 1 });
+		}
+
+		// 탭이 다시 보이게 됐을 때, 공통 조건(위치 · 조회 기간)이 이 탭의 마지막 조회와 다르면 다시 조회한다.
+		//   다른 탭에서 조건을 바꾸고 넘어온 경우다. 인식번호는 화면에서 거르는 필터라 재조회가 필요 없다.
+		//   아직 첫 조회(init) 전이면 init 이 곧 조회하므로 건너뛴다.
+		if (this.props.active && !prevProps.active && this.lastQuery !== null && this.lastQuery !== this.getQueryKey()) {
+			this.display();
+		}
+	}
+
+	// 서버 조회에 쓰이는 조건만 묶은 키 (위치 · 조회 기간)
+	getQueryKey() {
+		const c = this.props.criteria;
+		return c.selectedSensor + '|' + this.getMakeDateTime(c.beginDate) + '|' + this.getMakeDateTime(c.endDate);
 	}
 
 	getMakeDateTime(dateTime) {
@@ -221,11 +251,11 @@ class RepeatSpeedSuspect extends Component {
 	}
 
 	onChangeSensor = (target) => {
-		this.setState({ selectedSensor: Number(target.value) });
+		this.props.onChangeCriteria({ selectedSensor: Number(target.value) });
 	}
 
 	onChangePlateNumber = (e) => {
-		this.setState({ plateNumber: e.target.value, pageIndex: 1 });
+		this.props.onChangeCriteria({ plateNumber: e.target.value });
 	}
 
 	onChangeRiskFilter = (e) => {
@@ -237,11 +267,11 @@ class RepeatSpeedSuspect extends Component {
 	}
 
 	onChangeBegin = (date) => {
-		this.setState({ beginDate: date });
+		this.props.onChangeCriteria({ beginDate: date });
 	}
 
 	onChangeEnd = (date) => {
-		this.setState({ endDate: date });
+		this.props.onChangeCriteria({ endDate: date });
 	}
 
 	onClickDatepicker01 = () => {
@@ -267,8 +297,8 @@ class RepeatSpeedSuspect extends Component {
 		titleCell.alignment = { vertical: 'middle', horizontal: 'center' };
 
 		// 조회 기간
-		const beginDate = this.getMakeDateTime(this.state.beginDate);
-		const endDate = this.getMakeDateTime(this.state.endDate);
+		const beginDate = this.getMakeDateTime(this.props.criteria.beginDate);
+		const endDate = this.getMakeDateTime(this.props.criteria.endDate);
 		worksheet.addRow([i18n.t('history.formText.조회 기간') + ' : ' + beginDate + ' ~ ' + endDate]);
 
 		// 요약 (통계 카드 값)
@@ -286,9 +316,9 @@ class RepeatSpeedSuspect extends Component {
 		const statTitleRow = worksheet.addRow(['[ 통계 ]']);
 		statTitleRow.getCell(1).font = { bold: true };
 
-		worksheet.addRow(['반복 과속 의심번호 : ' + all.length + '개']);
-		worksheet.addRow(['위험도별 의심차량 : 집중관리 ' + cntAlert + '대 / 경고 ' + cntWarning + '대 / 주의 ' + cntCaution + '대']);
-		worksheet.addRow(['최다 반복 인식번호 : ' + (topSuspect ? (topSuspect.carNo + ' · ' + topSuspect.count + '건 · 최고속도 ' + topSuspect.maxSpeed + 'km/h') : '-')]);
+		worksheet.addRow(['반복 과속 의심번호 : ' + formatNumber(all.length) + '개']);
+		worksheet.addRow(['위험도별 의심차량 : 집중관리 ' + formatNumber(cntAlert) + '대 / 경고 ' + formatNumber(cntWarning) + '대 / 주의 ' + formatNumber(cntCaution) + '대']);
+		worksheet.addRow(['최다 반복 인식번호 : ' + (topSuspect ? (topSuspect.carNo + ' · ' + formatNumber(topSuspect.count) + '건 · 최고속도 ' + topSuspect.maxSpeed + 'km/h') : '-')]);
 		worksheet.addRow([]);
 
 		// 헤더
@@ -319,17 +349,19 @@ class RepeatSpeedSuspect extends Component {
 		const list = this.getFilteredSuspects().slice(0, this.state.rank);
 		for (let i = 0; i < list.length; i++) {
 			const s = list[i];
-			worksheet.addRow({
+			const dataRow = worksheet.addRow({
 				rank: i + 1,
 				risk: s.risk.label,
 				carNo: s.carNo,
-				count: s.count + '건',
+				count: formatNumber(s.count) + '건',
 				avgSpeed: s.avgSpeed + 'km/h',
 				maxSpeed: s.maxSpeed + 'km/h',
 				avgDiff: s.avgDiff === null ? '-' : (s.avgDiff.toFixed(1) + '초'),
 				lastTime: this.formatDateTime(s.lastTime),
 				mainLoc: s.mainLoc,
-			}).alignment = { vertical: 'middle', horizontal: 'center' };
+			});
+			dataRow.alignment = { vertical: 'middle', horizontal: 'center' };
+			dataRow.getCell('rank').numFmt = '#,##0';   // 숫자는 숫자 그대로 두고 천 단위 쉼표 서식만 준다 (엑셀에서 정렬 · 계산 가능)
 		}
 
 		// 다운로드
@@ -374,7 +406,8 @@ class RepeatSpeedSuspect extends Component {
 	}
 
 	getRankUI() {
-		const ranks = [{ value: 5, label: 'Top 5' }, { value: 10, label: '10' }, { value: 20, label: '20' }, { value: 30, label: '30' }];
+		// '전체'는 매우 큰 값 → slice(0, rank) 가 필터 적용된 전체를 반환(조건에 맞는 모든 차량).
+		const ranks = [{ value: 5, label: 'Top 5' }, { value: 10, label: '10' }, { value: 20, label: '20' }, { value: 30, label: '30' }, { value: Number.MAX_SAFE_INTEGER, label: '전체' }];
 
 		return ranks.map((r) => (
 			<li key={'rank_' + r.value}>
@@ -387,7 +420,7 @@ class RepeatSpeedSuspect extends Component {
 	getFilteredSuspects() {
 		let list = this.state.suspects || [];
 
-		const plate = (this.state.plateNumber || '').trim();
+		const plate = (this.props.criteria.plateNumber || '').trim();
 		if (plate.length > 0) {
 			list = list.filter(s => s.carNo && s.carNo.indexOf(plate) >= 0);
 		}
@@ -417,7 +450,7 @@ class RepeatSpeedSuspect extends Component {
 		for (let i = start; i <= end; i++) {
 			ui.push(
 				<li key={'page_' + i} className={i === pageIndex ? 'on' : ''}>
-					<a onClick={() => this.setPageIndex(i, maxPageIndex)}>{i}</a>
+					<a onClick={() => this.setPageIndex(i, maxPageIndex)}>{formatNumber(i)}</a>
 				</li>
 			);
 		}
@@ -458,251 +491,244 @@ class RepeatSpeedSuspect extends Component {
 
 		return (
 			<>
-				<div id={'hsty'}>
-					<div className={'hsScr'}>
-						<div id={'hsCont'}>
-
-							{/* 헤더 */}
-							<div className={'hscHead'}>
-								<div className={'hscHeadTop'}>
-									<h2>반복 과속 의심차량</h2>
-								</div>
-								<p className={'hscDesc'}>동일하게 인식된 차량번호의 반복 과속 횟수와 위험도를 확인합니다.</p>
-							</div>
-
-							{/* 검색(필터) 바 */}
-							<form action="">
-								<div className={'hscSch'}>
-									<dl>
-										<dt>{i18n.t('common.위치')}</dt>
-										<dd>
-											<ul className={'hscsLoc'}>
-												<li>
-													<select name="" id="" onChange={(e) => this.onChangeSensor(e.target)} className={'selWh'}>
-														{sensorUI}
-													</select>
-												</li>
-											</ul>
-										</dd>
-									</dl>
-									<dl>
-										<dt>{i18n.t('history.formText.조회 기간')}</dt>
-										<dd>
-											<ul className={'hscsDate'}>
-												<li>
-													<div className={'datepicker'}>
-														<DatePicker ref={this.refDatepicker01} name="datepicker01" id="datepicker01"
-															dateFormat="yyyy-MM-dd"
-															locale={ko}
-															showYearDropdown
-															showMonthDropdown
-															minDate={minDate}
-															maxDate={today}
-															selected={this.state.beginDate}
-															onChange={date => this.onChangeBegin(date)} />
-														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
-													</div>
-												</li>
-												<li>~</li>
-												<li>
-													<div className={'datepicker'}>
-														<DatePicker ref={this.refDatepicker02} name="datepicker02" id="datepicker02"
-															dateFormat="yyyy-MM-dd"
-															locale={ko}
-															showYearDropdown
-															showMonthDropdown
-															minDate={minDate}
-															maxDate={today}
-															selected={this.state.endDate}
-															onChange={date => this.onChangeEnd(date)} />
-														<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />
-													</div>
-												</li>
-											</ul>
-										</dd>
-									</dl>
-									<dl>
-										<dt>카메라 인식번호</dt>
-										<dd>
-											<ul className={'hscsNum'}>
-												<li>
-													<input type="text" value={this.state.plateNumber} onChange={this.onChangePlateNumber} placeholder="번호를 입력하세요" />
-												</li>
-											</ul>
-										</dd>
-									</dl>
-									<dl>
-										<dt>위험도</dt>
-										<dd>
-											<ul className={'hscsLoc'}>
-												<li>
-													<select value={this.state.riskFilter} onChange={this.onChangeRiskFilter} className={'selWh'}>
-														<option value="all">{i18n.t('common.전체')}</option>
-														<option value="집중관리">집중관리</option>
-														<option value="경고">경고</option>
-														<option value="주의">주의</option>
-													</select>
-												</li>
-											</ul>
-										</dd>
-									</dl>
-									<dl>
-										<dt>표시 순위</dt>
-										<dd>
-											<ul className={'hscsRank'}>
-												{rankUI}
-											</ul>
-										</dd>
-									</dl>
-									{
-										this.state.loadingIndicator === true ?
-											<a className={'hscsSbmt'} id={'hscsSbmting'}><span><span><CircularProgress className="spinner" /></span></span></a>
-											:
-											<a onClick={this.display} className={'hscsSbmt'}><span><span>{i18n.t('history.formText.검색')}</span></span></a>
-									}
-								</div>
-							</form>
-
-							{/* Excel 다운로드 */}
-							<ul className={'hscExl'}>
-								<li><a onClick={this.onClickExcelDownload} className={'exl'}>Excel 다운로드</a></li>
-							</ul>
-
-							{/* 통계 카드 3개 */}
-							<div className={'rsCards'}>
-								<div className={'card'}>
-									<p className={'cardTitle'}>반복 과속 의심번호</p>
-									<div className={'cardBody'}>
-										<span className={'cardNum'}>{this.state.suspects ? suspectCount : '-'}</span>
-										<span className={'cardUnit'}>개</span>
-									</div>
-								</div>
-								<div className={'card'}>
-									<p className={'cardTitle'}>위험도별 의심차량</p>
-									<div className={'cardBody'}>
-										<div className={'riskMini'}>
-											<div className={'item lv4'}>
-												<div className={'lbl'}>집중관리</div>
-												<div className={'cnt'}>{this.state.suspects ? cntAlert : '-'}<small>대</small></div>
-											</div>
-											<div className={'item lv3'}>
-												<div className={'lbl'}>경고</div>
-												<div className={'cnt'}>{this.state.suspects ? cntWarning : '-'}<small>대</small></div>
-											</div>
-											<div className={'item lv2'}>
-												<div className={'lbl'}>주의</div>
-												<div className={'cnt'}>{this.state.suspects ? cntCaution : '-'}<small>대</small></div>
-											</div>
+				{/* 검색(필터) 바 */}
+				<form action="">
+					<div className={'hscSch'}>
+						<dl>
+							<dt>{i18n.t('common.위치')}</dt>
+							<dd>
+								<ul className={'hscsLoc'}>
+									<li>
+										<select value={this.props.criteria.selectedSensor} onChange={(e) => this.onChangeSensor(e.target)} className={'selWh'}>
+											{sensorUI}
+										</select>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>{i18n.t('history.formText.조회 기간')}</dt>
+							<dd>
+								<ul className={'hscsDate'}>
+									<li>
+										<div className={'datepicker'}>
+											<DatePicker ref={this.refDatepicker01} name="datepicker01" id="datepicker01"
+												dateFormat="yyyy-MM-dd"
+												locale={ko}
+												showYearDropdown
+												showMonthDropdown
+												minDate={minDate}
+												maxDate={today}
+												selected={this.props.criteria.beginDate}
+												onChange={date => this.onChangeBegin(date)} />
+											<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker01} />
 										</div>
-									</div>
-								</div>
-								<div className={'card'}>
-									<p className={'cardTitle'}>최다 반복 인식번호</p>
-									<div className={'cardBody'}>
-										{
-											topSuspect ?
-												<>
-													<span className={'topPlate'}>{topSuspect.carNo}</span>
-													<span className={'topMeta'}>{topSuspect.count}건 · 최고속도 <span className={'maxSpd'}>{topSuspect.maxSpeed}km/h</span></span>
-												</>
-												:
-												<span className={'cardNum'}>-</span>
-										}
-									</div>
-								</div>
-							</div>
+									</li>
+									<li>~</li>
+									<li>
+										<div className={'datepicker'}>
+											<DatePicker ref={this.refDatepicker02} name="datepicker02" id="datepicker02"
+												dateFormat="yyyy-MM-dd"
+												locale={ko}
+												showYearDropdown
+												showMonthDropdown
+												minDate={minDate}
+												maxDate={today}
+												selected={this.props.criteria.endDate}
+												onChange={date => this.onChangeEnd(date)} />
+											<img src={calendarImg} alt="" className={'btnCalendarBk'} onClick={this.onClickDatepicker02} />
+										</div>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>카메라 인식번호</dt>
+							<dd>
+								<ul className={'hscsNum'}>
+									<li>
+										<input type="text" value={this.props.criteria.plateNumber} onChange={this.onChangePlateNumber} placeholder="번호를 입력하세요" />
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>위험도</dt>
+							<dd>
+								<ul className={'hscsLoc'}>
+									<li>
+										<select value={this.state.riskFilter} onChange={this.onChangeRiskFilter} className={'selWh'}>
+											<option value="all">{i18n.t('common.전체')}</option>
+											<option value="집중관리">집중관리</option>
+											<option value="경고">경고</option>
+											<option value="주의">주의</option>
+										</select>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>표시 순위</dt>
+							<dd>
+								<ul className={'hscsRank'}>
+									{rankUI}
+								</ul>
+							</dd>
+						</dl>
+						{
+							this.state.loadingIndicator === true ?
+								<a className={'hscsSbmt'} id={'hscsSbmting'}><span><span><CircularProgress className="spinner" /></span></span></a>
+								:
+								<a onClick={this.display} className={'hscsSbmt'}><span><span>{i18n.t('history.formText.검색')}</span></span></a>
+						}
+					</div>
+				</form>
 
-							{/* 안내 문구 */}
-							<div className={'rsNotice'}>
-								<span>ⓘ</span>
-								<span>속도 측정 장비와 LPR 카메라의 수집 시각 차이를 기준으로 차량을 매칭합니다. 시간차가 클수록 매칭 신뢰도가 낮을 수 있습니다.</span>
-							</div>
+				{/* Excel 다운로드 */}
+				<ul className={'hscExl'}>
+					<li><a onClick={this.onClickExcelDownload} className={'exl'}>Excel 다운로드</a></li>
+				</ul>
 
-							{/* 과속 빈도 Top N 테이블 */}
-							<div className={'hscTbHead'}>
-								<h3>과속 빈도 Top {rank}</h3>
-								<span className={'hscTbMeta'}>과속 횟수 내림차순 · 동일 인식번호 기준 · 시간차는 평균값</span>
-							</div>
-
-							<div className={'hscTb'}>
-								<div className={'scrTb'}>
-									<table>
-										<colgroup>
-											<col style={{ width: '6%' }} />
-											<col style={{ width: '9%' }} />
-											<col style={{ width: '16%' }} />
-											<col style={{ width: '8%' }} />
-											<col style={{ width: '9%' }} />
-											<col style={{ width: '9%' }} />
-											<col style={{ width: '11%' }} />
-											<col style={{ width: '13%' }} />
-											<col style={{ width: '11%' }} />
-											<col style={{ width: '8%' }} />
-										</colgroup>
-										<thead>
-											<tr>
-												<th>순위</th>
-												<th>위험도</th>
-												<th>카메라 인식번호</th>
-												<th>과속 횟수</th>
-												<th>평균속도</th>
-												<th>최고속도</th>
-												<th>평균 매칭 시간차</th>
-												<th>최근 발생일시</th>
-												<th>주요 발생위치</th>
-												<th>이력</th>
-											</tr>
-										</thead>
-										<tbody>
-											{
-												pageRows.map((s, i) => {
-													const globalRank = beginRow + i + 1;
-													return (
-														<tr key={'suspect_' + s.carNo}>
-															<td><span className={'rankNo' + (globalRank <= 3 ? ' top' : '')}>{globalRank}</span></td>
-															<td><span className={'riskBadge lv' + s.risk.lv}>{s.risk.label}</span></td>
-															<td>
-																<div>{s.carNo}</div>
-															</td>
-															<td>{s.count}건</td>
-															<td>{s.avgSpeed}km/h</td>
-															<td className={'spdOver'}>{s.maxSpeed}km/h</td>
-															<td className={this.getDiffClass(s.avgDiff)}>{s.avgDiff === null ? '-' : (s.avgDiff.toFixed(1) + '초')}</td>
-															<td>{this.formatDateTime(s.lastTime)}</td>
-															<td>{s.mainLoc}</td>
-															<td><a className={'detailBtn'} onClick={() => this.onClickDetail(s.carNo)}>상세보기</a></td>
-														</tr>
-													);
-												})
-											}
-											{
-												(this.state.suspects && filtered.length === 0) &&
-												<tr><td colSpan={10} style={{ textAlign: 'center', padding: '30px 0', color: '#999' }}>조회된 반복 과속 의심차량이 없습니다.</td></tr>
-											}
-										</tbody>
-									</table>
-								</div>
-
-								{
-									(filtered.length > 0) &&
-									<div className={'hscNav'}>
-										<>
-											<a className={'first'} onClick={() => this.setPageIndex(1, maxPageIndex)}>{i18n.t('history.formText.맨 앞')}</a>
-											<a className={'prev'} onClick={() => this.setPageIndex(pageIndex - 1, maxPageIndex)}>{i18n.t('history.formText.이전')}</a>
-										</>
-										<ul>
-											{this.getPageIndexUI(maxPageIndex)}
-										</ul>
-										<>
-											<a className={'next'} onClick={() => this.setPageIndex(pageIndex + 1, maxPageIndex)}>{i18n.t('history.formText.다음')}</a>
-											<a className={'last'} onClick={() => this.setPageIndex(maxPageIndex, maxPageIndex)}>{i18n.t('history.formText.맨 뒤')}</a>
-										</>
-									</div>
-								}
-							</div>
-
+				{/* 통계 카드 3개 */}
+				<div className={'rsCards'}>
+					<div className={'card'}>
+						<p className={'cardTitle'}>반복 과속 의심번호</p>
+						<div className={'cardBody'}>
+							<span className={'cardNum'}>{this.state.suspects ? formatNumber(suspectCount) : '-'}</span>
+							<span className={'cardUnit'}>개</span>
 						</div>
 					</div>
+					<div className={'card'}>
+						<p className={'cardTitle'}>위험도별 의심차량</p>
+						<div className={'cardBody'}>
+							<div className={'riskMini'}>
+								<div className={'item lv4'}>
+									<div className={'lbl'}>집중관리</div>
+									<div className={'cnt'}>{this.state.suspects ? formatNumber(cntAlert) : '-'}<small>대</small></div>
+								</div>
+								<div className={'item lv3'}>
+									<div className={'lbl'}>경고</div>
+									<div className={'cnt'}>{this.state.suspects ? formatNumber(cntWarning) : '-'}<small>대</small></div>
+								</div>
+								<div className={'item lv2'}>
+									<div className={'lbl'}>주의</div>
+									<div className={'cnt'}>{this.state.suspects ? formatNumber(cntCaution) : '-'}<small>대</small></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className={'card'}>
+						<p className={'cardTitle'}>최다 반복 인식번호</p>
+						<div className={'cardBody'}>
+							{
+								topSuspect ?
+									<>
+										<span className={'topPlate'}>{topSuspect.carNo}</span>
+										<span className={'topMeta'}>{formatNumber(topSuspect.count)}건 · 최고속도 <span className={'maxSpd'}>{topSuspect.maxSpeed}km/h</span></span>
+									</>
+									:
+									<span className={'cardNum'}>-</span>
+							}
+						</div>
+					</div>
+				</div>
+
+				{/* 조회 실패 안내 */}
+				{
+					this.state.errorMessage &&
+					<div className={'rsNotice error'}>
+						<span>!</span>
+						<span>{this.state.errorMessage}</span>
+					</div>
+				}
+
+				{/* 안내 문구 */}
+				<div className={'rsNotice'}>
+					<span>ⓘ</span>
+					<span>속도 측정 장비와 LPR 카메라의 수집 시각 차이를 기준으로 차량을 매칭합니다. 시간차가 클수록 매칭 신뢰도가 낮을 수 있습니다.</span>
+				</div>
+
+				{/* 과속 빈도 Top N 테이블 */}
+				<div className={'hscTbHead'}>
+					<h3>과속 빈도 {rank === Number.MAX_SAFE_INTEGER ? '전체' : ('Top ' + rank)}</h3>
+					<span className={'hscTbMeta'}>과속 횟수 내림차순 · 동일 인식번호 기준 · 시간차는 평균값</span>
+				</div>
+
+				<div className={'hscTb'}>
+					<div className={'scrTb'}>
+						<table>
+							<colgroup>
+								<col style={{ width: '6%' }} />
+								<col style={{ width: '9%' }} />
+								<col style={{ width: '16%' }} />
+								<col style={{ width: '8%' }} />
+								<col style={{ width: '9%' }} />
+								<col style={{ width: '9%' }} />
+								<col style={{ width: '11%' }} />
+								<col style={{ width: '13%' }} />
+								<col style={{ width: '11%' }} />
+								<col style={{ width: '8%' }} />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>순위</th>
+									<th>위험도</th>
+									<th>카메라 인식번호</th>
+									<th>과속 횟수</th>
+									<th>평균속도</th>
+									<th>최고속도</th>
+									<th>평균 매칭 시간차</th>
+									<th>최근 발생일시</th>
+									<th>주요 발생위치</th>
+									<th>이력</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									pageRows.map((s, i) => {
+										const globalRank = beginRow + i + 1;
+										return (
+											<tr key={'suspect_' + s.carNo}>
+												<td><span className={'rankNo' + (globalRank <= 3 ? ' top' : '')}>{formatNumber(globalRank)}</span></td>
+												<td><span className={'riskBadge lv' + s.risk.lv}>{s.risk.label}</span></td>
+												<td>
+													<div>{s.carNo}</div>
+												</td>
+												<td>{formatNumber(s.count)}건</td>
+												<td>{s.avgSpeed}km/h</td>
+												<td className={'spdOver'}>{s.maxSpeed}km/h</td>
+												<td className={this.getDiffClass(s.avgDiff)}>{s.avgDiff === null ? '-' : (s.avgDiff.toFixed(1) + '초')}</td>
+												<td>{this.formatDateTime(s.lastTime)}</td>
+												<td>{s.mainLoc}</td>
+												<td><a className={'detailBtn'} onClick={() => this.onClickDetail(s.carNo)}>상세보기</a></td>
+											</tr>
+										);
+									})
+								}
+								{
+									(this.state.suspects && filtered.length === 0) &&
+									<tr><td colSpan={10} style={{ textAlign: 'center', padding: '30px 0', color: '#999' }}>조회된 반복 과속 의심차량이 없습니다.</td></tr>
+								}
+							</tbody>
+						</table>
+					</div>
+
+					{
+						(filtered.length > 0) &&
+						<div className={'hscNav'}>
+							<>
+								<a className={'first'} onClick={() => this.setPageIndex(1, maxPageIndex)}>{i18n.t('history.formText.맨 앞')}</a>
+								<a className={'prev'} onClick={() => this.setPageIndex(pageIndex - 1, maxPageIndex)}>{i18n.t('history.formText.이전')}</a>
+							</>
+							<ul>
+								{this.getPageIndexUI(maxPageIndex)}
+							</ul>
+							<>
+								<a className={'next'} onClick={() => this.setPageIndex(pageIndex + 1, maxPageIndex)}>{i18n.t('history.formText.다음')}</a>
+								<a className={'last'} onClick={() => this.setPageIndex(maxPageIndex, maxPageIndex)}>{i18n.t('history.formText.맨 뒤')}</a>
+							</>
+						</div>
+					}
 				</div>
 
 				{
@@ -718,8 +744,8 @@ class RepeatSpeedSuspect extends Component {
 								detections={dets}
 								speedLimit={this.state.speedLimit}
 								levels={{ level1: this.state.cfg.level1, level2: this.state.cfg.level2, level3: this.state.cfg.level3 }}
-								beginDate={this.getMakeDateTime(this.state.beginDate)}
-								endDate={this.getMakeDateTime(this.state.endDate)}
+								beginDate={this.getMakeDateTime(this.props.criteria.beginDate)}
+								endDate={this.getMakeDateTime(this.props.criteria.endDate)}
 								onClose={this.closeDetail}
 							/>
 						);
