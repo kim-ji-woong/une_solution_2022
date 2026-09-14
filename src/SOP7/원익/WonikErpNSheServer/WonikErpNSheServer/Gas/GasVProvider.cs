@@ -1002,7 +1002,22 @@ namespace WonikErpNSheServer.Gas
 
                 if (m_dicGasDatas.ContainsKey(strSensorName))
                 {
-                    GasData gasData = m_dicGasDatas[strSensorName];    // 기존값                    
+                    GasData gasData = m_dicGasDatas[strSensorName];    // 기존값
+
+                    // [진단] 물질 가스 알람비트 전이(발생/해제)를 '센서 조회 성공/실패'와 함께 기록한다.
+                    //  - 데이터가 수신되어 알람비트가 바뀌었는지(=데이터가 온 것) 를 남기고,
+                    //  - 조회 실패(gasSensor == null)로 인한 '무음 드롭'을 로그로 드러내어
+                    //    "데이터가 왔는데 조회 실패로 버려진 것"과 "데이터 자체가 안 온 것"을 구분한다.
+                    bool bPrevGasAlarm = gasData.HiAlarm || gasData.LoAlarm || gasData.HiHighAlarm || gasData.LoLowAlarm;
+                    bool bCurrGasAlarm = currentData.HiAlarm || currentData.LoAlarm || currentData.HiHighAlarm || currentData.LoLowAlarm;
+                    if (bPrevGasAlarm != bCurrGasAlarm)
+                    {
+                        string strLookup = (gasSensor != null)
+                            ? $"조회성공(UniqueKey:{gasSensor.UniqueKey})"
+                            : $"조회실패(키:{strSensorName}_{currentData.Type})";
+                        m_parentManager.Logger.Write($"[가스감지] {strSensorName} {currentData.Type} 알람비트 {(bCurrGasAlarm ? "발생" : "해제")} " +
+                            $"(Hi={currentData.HiAlarm}, Lo={currentData.LoAlarm}, HiHigh={currentData.HiHighAlarm}, LoLow={currentData.LoLowAlarm}) {strLookup}");
+                    }
 
                     // 물질 알람
                     if (gasSensor != null)
