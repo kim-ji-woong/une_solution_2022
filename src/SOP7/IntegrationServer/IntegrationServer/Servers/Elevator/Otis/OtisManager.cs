@@ -307,16 +307,17 @@ namespace IntegrationServer.Servers.Elevator.Otis
                     _elevator.Floor = elevator.Floor;
                     _elevator.Door = elevator.Door;
                     _elevator.Direction = elevator.Direction;
+
+                    int doorStatus = -1;
+
+                    if (elevator.Door == (int)Elevator.DoorStatus.Opened)
+                        doorStatus = 0;
+                    else if (elevator.Door == (int)Elevator.DoorStatus.Closed)
+                        doorStatus = 1;
+
+                    // MessageParser가 넘겨주는 elevator는 변경값만 담은 새 객체라 Name이 비어 있다. 호기명은 DB에서 읽어둔 객체에서 가져온다.
+                    UpdateElevator(_elevator.Name, doorStatus, elevator.Floor, (int)Elevator.RunStatus.Normal, elevator.Direction, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                 }
-
-                int doorStatus = -1;
-
-                if (elevator.Door == (int)Elevator.DoorStatus.Opened)
-                    doorStatus = 0;
-                else if (elevator.Door == (int)Elevator.DoorStatus.Closed)
-                    doorStatus = 1;
-
-                UpdateElevator(elevator.Name, doorStatus, elevator.Floor, (int)Elevator.RunStatus.Normal, elevator.Direction, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
             }
 
             m_nTransactionID = ++nTransactionID;

@@ -337,6 +337,13 @@ namespace IntegrationServer.Servers
             if (m_syswillDataManager == null)
                 return false;
 
+            // uniqueid가 비어 있으면 UPDATE가 0건으로 끝나 오류 없이 누락되므로 명시적으로 기록한다.
+            if (string.IsNullOrEmpty(strUniqueID))
+            {
+                (logger ?? Logger.Instance).Write(LogTypes.Error, serverType, serverSeqNo, "[Syswill Elevator update Error] : 엘리베이터 호기명(uniqueid)이 비어 있습니다.");
+                return false;
+            }
+
             string strErrorMessage;
             Dictionary<ViewModels.Syswill.Model.Elevator.Fields, object> dicSets = new Dictionary<ViewModels.Syswill.Model.Elevator.Fields, object>();
 
