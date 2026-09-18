@@ -5,13 +5,14 @@ namespace IntegrationServer.ViewModels.Syswill.Model
 {
 	public class Door : Table
 	{
-		public enum Fields { index, deviceName, openStatus, floorname };
-		public enum WriteFields { index, deviceName, openStatus, floorname };
+		public enum Fields { index, deviceName, openStatus, floorname, uptime };
+		public enum WriteFields { index, deviceName, openStatus, floorname, uptime };
 
 		public int index { get; set; }
 		public string deviceName { get; set; }
 		public string/* nullable */ openStatus { get; set; }
 		public int floorname { get; set; }
+		public DateTime uptime { get; set; }
 
 		public static string TableName { get { return "tb_access_data"; } }
 
@@ -41,6 +42,7 @@ namespace IntegrationServer.ViewModels.Syswill.Model
 			this.deviceName = obj.deviceName;
 			this.openStatus = obj.openStatus;
 			this.floorname = obj.floorname;
+			this.uptime = obj.uptime;
 		}
 	}
 }

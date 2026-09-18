@@ -185,9 +185,17 @@ namespace IntegrationServer.Servers.Blackout.GG_F
             bool isBlackout = fVolA <= 5000 || fVolB <= 5000 || fVolC <= 5000;
 
             // 시스윌 연동 : SOP 알람 상태 전이와 무관하게 상전압이나 정전 판정 결과가 바뀌면 전달한다.
-            if (m_bSyswillUpdated == false || m_fSyswillVolA != fVolA || m_fSyswillVolB != fVolB || m_fSyswillVolC != fVolC || m_bSyswillIsAlarm != isBlackout)
+            int syswillVolA = (int)m_fSyswillVolA;
+            int syswillVolB = (int)m_fSyswillVolB;
+            int syswillVolC = (int)m_fSyswillVolC;
+            int volA = (int)fVolA;
+            int volB = (int)fVolB;
+            int volC = (int)fVolC;
+
+            if (m_bSyswillUpdated == false || syswillVolA != volA || syswillVolB != volB || syswillVolC != volC || m_bSyswillIsAlarm != isBlackout)
+            //if (m_bSyswillUpdated == false || m_fSyswillVolA != fVolA || m_fSyswillVolB != fVolB || m_fSyswillVolC != fVolC || m_bSyswillIsAlarm != isBlackout)
             {
-                if (UpdateBlackoutF(fVolA, fVolB, fVolC, isBlackout, m_dataManager, this.Logger, ServerType, m_nServerSeqNo))
+                if (UpdateBlackout(volA, volB, volC, isBlackout, m_dataManager, this.Logger, ServerType, m_nServerSeqNo))
                 {
                     m_fSyswillVolA = fVolA;
                     m_fSyswillVolB = fVolB;

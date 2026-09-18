@@ -337,6 +337,7 @@ namespace IntegrationServer.Servers
                 dicSets[ViewModels.Syswill.Model.Door.Fields.openStatus] = (bool)isOpened ? "1" : "0";
 
             dicSets[ViewModels.Syswill.Model.Door.Fields.floorname] = (int)floorIndex;
+            dicSets[ViewModels.Syswill.Model.Door.Fields.uptime] = DateTime.Now;
 
             string strCondition = string.Format("{0} = '{1}'", ViewModels.Syswill.Model.Door.Fields.deviceName, strUniqueKey);
 
