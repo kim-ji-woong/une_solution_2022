@@ -61,7 +61,7 @@ namespace IntegrationServer.Servers.Fire.Taesan
         }        
 
         public TaesanManager(ServerManager serverManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, DataManager dataManager)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_sopQueryManager = new SopQueryManager(strSOPWebServerURL);

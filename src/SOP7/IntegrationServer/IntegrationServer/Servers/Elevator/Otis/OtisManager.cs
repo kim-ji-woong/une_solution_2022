@@ -63,7 +63,7 @@ namespace IntegrationServer.Servers.Elevator.Otis
         public string ServerAlias { get { return m_strServerAlias; } }
 
         public OtisManager(ServerManager serverManager, IDataManager dataManager, int nSiteID, int nServerSeqNo, string strServerIP, int nPort, string strServerAlias)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_nServerSeqNo = nServerSeqNo;

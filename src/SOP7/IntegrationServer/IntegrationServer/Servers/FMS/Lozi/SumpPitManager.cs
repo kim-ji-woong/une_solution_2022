@@ -103,7 +103,7 @@ namespace IntegrationServer.Servers.FMS.Lozi
         private bool m_use = false;
 
         public SumpPitManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();

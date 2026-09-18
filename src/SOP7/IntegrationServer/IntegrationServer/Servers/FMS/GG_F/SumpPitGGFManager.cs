@@ -68,7 +68,7 @@ namespace IntegrationServer.Servers.FMS.GG_F
         private int m_nSyswillAlarmDepth = 0;
 
         public SumpPitGGFManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();

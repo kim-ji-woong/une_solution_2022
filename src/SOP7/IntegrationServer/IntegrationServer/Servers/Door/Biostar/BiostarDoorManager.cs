@@ -60,7 +60,7 @@ namespace IntegrationServer.Servers.Door.Biostar
         private LoginManager m_loginManager = null;
 
         public BiostarDoorManager(ServerManager serverManager, IDataManager dataManager, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, Dictionary<ServerProperty, object> serverProperties)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_nServerSeqNo = nServerSeqNo;
@@ -119,6 +119,9 @@ namespace IntegrationServer.Servers.Door.Biostar
                 return;
 
             m_runThread = true;
+
+            // 시스윌 연동 : 시작 시 SQL Server에 저장된 출입문 상태로 시스윌 DB를 초기화한다.
+            InitSyswillDoors();
 
             string strErrorMessage;
             string strServerIP = m_nPort == 80 || m_nPort == 0 ? m_strServerIP : m_strServerIP + ":" + m_nPort;
@@ -186,6 +189,38 @@ namespace IntegrationServer.Servers.Door.Biostar
 
                 Thread.Sleep(1000);
             }
+        }
+
+        // 시스윌 연동 : SQL Server(SdmsSensorETC)에 저장된 출입문 상태를 시스윌 DB에 반영한다.
+        // 이후에는 BioStar 상태가 바뀐 출입문만 UpdateDoorStatus()에서 전달한다.
+        private void InitSyswillDoors()
+        {
+            if (m_syswillDataManager == null)
+                return;
+
+            int nSuccess = 0, nFail = 0;
+
+            try
+            {
+                foreach (EtcSensor sensor in m_dicDoors.Values)
+                {
+                    bool? isOpened = null;
+
+                    if (sensor.Status != null)
+                        isOpened = sensor.Status == (int)DDS.DoorManager.DoorStatus.Opened;
+
+                    if (UpdateDoor(sensor.UniqueKey, sensor.ZoneID, isOpened, m_dataManager, this.Logger, ServerType, m_nServerSeqNo))
+                        nSuccess++;
+                    else
+                        nFail++;
+                }
+            }
+            catch (Exception e)
+            {
+                WriteLog("[ERROR] InitSyswillDoors() : " + e.Message, LogTypes.Error);
+            }
+
+            WriteLog($"시스윌 출입문 초기화 : 전체 {m_dicDoors.Count}, 성공 {nSuccess}, 실패 {nFail}");
         }
 
         private void UpdateDoorStatus(List<Door> doors)

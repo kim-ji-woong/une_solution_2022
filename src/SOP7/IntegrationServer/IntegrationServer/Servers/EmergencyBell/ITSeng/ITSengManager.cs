@@ -74,7 +74,7 @@ namespace IntegrationServer.Servers.EmergencyBell.ITSeng
         private Dictionary<string, SensorTag> m_dicSensorTags2 = new Dictionary<string, SensorTag>();
 
         public ITSengManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nSiteID, int nServerSeqNo, string strServerIP, int nPort,  string strServerAlias)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();

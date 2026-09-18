@@ -95,7 +95,7 @@ namespace IntegrationServer.Servers.EmergencyBell.Eraeseeds
         private ClientProvider m_provider = null;
 
         public EraeseedsManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nSiteID, int nServerSeqNo, string strServerIP, int nPort, string strServerAlias, bool use)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();

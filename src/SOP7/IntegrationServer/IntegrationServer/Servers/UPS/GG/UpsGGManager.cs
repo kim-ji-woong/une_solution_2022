@@ -90,7 +90,7 @@ namespace IntegrationServer.Servers.UPS.GG
         private int m_nThreadDeley = 1000 * 30;
 
         public UpsGGManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerAlias, bool bUse)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -110,7 +110,7 @@ namespace IntegrationServer.Servers.UPS.GG
         private void Init()
         {   // 해당 센서 ID 불러오기
             string strErrorMessage;
-            string strSQL = $"Select {Nipa.Model.Sdms.Sensor.ETC.Fields.ID}, {Nipa.Model.Sdms.Sensor.ETC.Fields.UniqueKey} from {Nipa.Model.Sdms.Sensor.ETC.TableName} where {Nipa.Model.Sdms.Sensor.ETC.Fields.UniqueKey} in ('{UniqueKey_BLACKOUT}', '{UniqueKey_100kva1}', '{UniqueKey_100kva2}', '{UniqueKey_100kva3}', '{UniqueKey_200kva}', '{UniqueKey_500kva1}', '{UniqueKey_500kva2}')";
+            string strSQL = $"Select {Nipa.Model.Sdms.Sensor.ETC.Fields.ID}, {Nipa.Model.Sdms.Sensor.ETC.Fields.UniqueKey}, {ViewModels.Sdms.Sensor.EtcSensor.Fields.SiteID} from {Nipa.Model.Sdms.Sensor.ETC.TableName} where {Nipa.Model.Sdms.Sensor.ETC.Fields.UniqueKey} in ('{UniqueKey_BLACKOUT}', '{UniqueKey_100kva1}', '{UniqueKey_100kva2}', '{UniqueKey_100kva3}', '{UniqueKey_200kva}', '{UniqueKey_500kva1}', '{UniqueKey_500kva2}')";
             IEnumerable<dynamic> datas = m_dataManager.GetSelect().Select(strSQL, out strErrorMessage);
             if (datas == null)
                 return;
@@ -126,6 +126,10 @@ namespace IntegrationServer.Servers.UPS.GG
                     {
                         //m_dicUpsSensors[UniqueKey_BLACKOUT] = new UpsSensor(data.ID, UniqueKey_BLACKOUT);
                         m_nBlackoutID = data.ID;
+
+                        // 서버가 시스윌 설정에 없는 SiteID(예: 0)로 등록된 경우, 정전 센서가 속한 사이트의 시스윌 DB를 사용한다.
+                        if (m_syswillDataManager == null && data.SiteID != null && data.SiteID is int)
+                            SetSyswillSiteID((int)data.SiteID);
                     }
                     else if (strUniqueKey == UniqueKey_100kva1)
                         m_dicUpsSensors[UniqueKey_100kva1] = new UpsSensor(data.ID, UniqueKey_100kva1);

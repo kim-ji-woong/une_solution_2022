@@ -59,7 +59,7 @@ namespace IntegrationServer.Servers.Fire.JTECH
         private Dictionary<int, bool> m_dicAlarms = new Dictionary<int, bool>();
 
         public JTECHManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();

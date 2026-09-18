@@ -56,7 +56,7 @@ namespace IntegrationServer.Servers.Fire.Safesystem
         public string ServerAlias { get { return m_strServerAlias; } }
 
         public SafesystemManager(ServerManager serverManager, IDataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_sopQueryManager = new SopQueryManager(strSOPWebServerURL);

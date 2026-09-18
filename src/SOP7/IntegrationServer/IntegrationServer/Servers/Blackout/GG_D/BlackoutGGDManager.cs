@@ -63,8 +63,13 @@ namespace IntegrationServer.Servers.Blackout.GG_D
         private static string UniqueKey_BLACKOUT = "GGD_BLACKOUT";
         private int? m_nBlackoutID = null;
 
+        // 시스윌로 마지막에 전달한 상전압과 정전 판정 결과
+        private bool m_bSyswillUpdated = false;
+        private UInt32 m_nSyswillVolA = 0, m_nSyswillVolB = 0, m_nSyswillVolC = 0;
+        private bool m_bSyswillIsAlarm = false;
+
         public BlackoutGGDManager(ServerManager serverManager, DataManager dataManager, string strSOPWebServerURL, int nServerSeqNo, int nSiteID, string strServerIP, int nPort, string strServerAlias, bool use)
-            : base(dataManager)
+            : base(dataManager, nSiteID)
         {
             m_serverManager = serverManager;
             m_dataManager = (DataManager)dataManager.Clone();
@@ -177,8 +182,23 @@ namespace IntegrationServer.Servers.Blackout.GG_D
 
             WriteLog($"CheckAlarm 데이터 상전압 A: {fVolA}, 상전압 B: {fVolB}, 상전압 C: {fVolC}", LogTypes.Info);
 
+            bool isBlackout = fVolA <= 5000 || fVolB <= 5000 || fVolC <= 5000;
+
+            // 시스윌 연동 : SOP 알람 상태 전이와 무관하게 상전압이나 정전 판정 결과가 바뀌면 전달한다.
+            if (m_bSyswillUpdated == false || m_nSyswillVolA != fVolA || m_nSyswillVolB != fVolB || m_nSyswillVolC != fVolC || m_bSyswillIsAlarm != isBlackout)
+            {
+                if (UpdateBlackout((int)fVolA, (int)fVolB, (int)fVolC, isBlackout, m_dataManager, this.Logger, ServerType, m_nServerSeqNo))
+                {
+                    m_nSyswillVolA = fVolA;
+                    m_nSyswillVolB = fVolB;
+                    m_nSyswillVolC = fVolC;
+                    m_bSyswillIsAlarm = isBlackout;
+                    m_bSyswillUpdated = true;
+                }
+            }
+
             //if (fVolA <= 20 || fVolB <= 20 || fVolC <= 20)
-            if (fVolA <= 5000 || fVolB <= 5000 || fVolC <= 5000)
+            if (isBlackout)
             {
                 // .TODO: UPS 정보를 이용해서 알람 단계 로직 필요함
 
@@ -202,8 +222,6 @@ namespace IntegrationServer.Servers.Blackout.GG_D
                             if (m_dataManager.GetUpdate().Update<ETC, ETC.Fields>(dicSets, strCondition, out string strErrorMessage) == false)
                                 WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                         }
-
-                        UpdateBlackout((int)fVolA, (int)fVolB, (int)fVolC, true, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                     }
                     else
                     {
@@ -216,7 +234,7 @@ namespace IntegrationServer.Servers.Blackout.GG_D
                 if (m_serverManager.SendSensorData(m_sopQueryManager, (int)Facility.FacilityType.BLACKOUT, m_tag.ID, m_tag.SensorZoneID.Value, false))
                 {
                     WriteLog($"정전 알람 해제 (SendSensorData 성공, Tag ID: {m_tag.ID}, SensorZoneID: {m_tag.SensorZoneID.Value})", LogTypes.Info);
-                    m_bIsAlarm = true;
+                    m_bIsAlarm = false;
 
                     // 센서 상태값 업데이트
                     int nMaxDepth = 0;
@@ -231,8 +249,6 @@ namespace IntegrationServer.Servers.Blackout.GG_D
                         if (m_dataManager.GetUpdate().Update<ETC, ETC.Fields>(dicSets, strCondition, out string strErrorMessage) == false)
                             WriteLog($"ETC Update Error (ID: {m_nBlackoutID}, Status: {nMaxDepth})", LogTypes.Error);
                     }
-
-                    UpdateBlackout((int)fVolA, (int)fVolB, (int)fVolC, false, m_dataManager, this.Logger, ServerType, m_nServerSeqNo);
                 }
                 else
                 {
